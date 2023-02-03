@@ -1,0 +1,43 @@
+@import "../../styles/Variables.scss";
+@import "../../styles/Mixin.scss";
+
+.signInContainer {
+  @include formContainer();
+
+  // to show form card in the center
+  .signInFormDesign {
+    @include authFormCard();
+
+    // to get margin for input field from top
+    .inputFormArea {
+      margin-top: 40px;
+
+      // to design input field
+      .formControlEmail {
+        @include inputFieldDesign();
+      }
+
+      .formControlPassword {
+        @include inputFieldDesign();
+        // @extend .formControlEmail;
+      }
+
+      // sign in button
+      .signInButton {
+        @include buttonStyle($secondButton, 20px);
+        margin-top: 20px;
+
+        // &:hover {
+        //   cursor: pointer;
+        //   background-color: yellow;
+        // }
+      }
+
+      .signUpHereOption {
+        @include itemCenter(20px);
+        margin-top: 5px;
+        font-size: 17px;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.categoryCardContainer {
+  margin-top: 15px;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0 10px 20px 0 rgba(196, 62, 196, 0.1);
+
+  p {
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    position: relative;
+    top: 50%;
+    transform: translateY(40%);
+  }
+  &:hover {
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: yellow;
+    color: black;
+  }
+}
