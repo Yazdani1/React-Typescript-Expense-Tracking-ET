@@ -105,7 +105,7 @@ const ExpenseBookDetails = () => {
   /****** Create Category   ***************/
   /****************************************/
 
-  const [categoryName, setCategoryName] = useState("");
+  const [categoryName, setCategoryName] = useState<string>("");
 
   const onSubmitCreateCategory = async () => {
     try {
