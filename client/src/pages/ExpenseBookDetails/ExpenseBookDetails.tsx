@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import expenseBookDetailsStyle from "./ExpenseBookDetails.module.scss";
 import CardLayout from "../../components/CardLayout/CardLayout";
-import { useNavigate, Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import SubscriberPageLayout from "../../layouts/SubscriberPageLayout";
 import {
   getExpenseBookDetails,
@@ -158,6 +158,7 @@ const ExpenseBookDetails = () => {
 
   const onSubmitCreateExpenseList = async () => {
     try {
+
       const payload: CreateExpenseListProps = {
         title: expenseTitle,
         expense_category: expenseCategory,
