@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import AdminPageLayout from "../../layouts/AdminPageLayout";
 import { getAllUserList } from "../../services/API";
 
 const Admin = () => {
-  
   /****************************************/
   /*********Load All Users List     ******/
   /****************************************/
