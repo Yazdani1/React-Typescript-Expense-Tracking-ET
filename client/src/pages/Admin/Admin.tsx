@@ -4,6 +4,11 @@ import AdminPageLayout from "../../layouts/AdminPageLayout";
 import { getAllUserList } from "../../services/API";
 
 const Admin = () => {
+  
+  /****************************************/
+  /*********Load All Users List     ******/
+  /****************************************/
+
   const [allUser, setAllUser] = useState([]);
 
   const loadAllUserList = async () => {
@@ -28,13 +33,15 @@ const Admin = () => {
     <AdminPageLayout>
       <div className="container-fluid">
         <h5>Admin area</h5>
-        
-        {allUser && allUser.map((users:any,index)=>(
-            <>
-            <h6 className="card">{users.name}. {users.role}.{users.email}</h6>
-            </>
-        ))}
 
+        {allUser &&
+          allUser.map((users: any, index) => (
+            <>
+              <h6 className="card">
+                {users.name}. {users.role}.{users.email}
+              </h6>
+            </>
+          ))}
       </div>
     </AdminPageLayout>
   );
