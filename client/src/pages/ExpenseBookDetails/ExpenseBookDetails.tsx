@@ -364,8 +364,8 @@ const ExpenseBookDetails = () => {
               openModal={onOpenModal}
             >
               {expenseBookCategory &&
-                expenseBookCategory.map((cat, index) => (
-                  <ExpenseCategoryCard expense_category={cat} />
+                expenseBookCategory.map((cat) => (
+                  <ExpenseCategoryCard expense_category={cat} key={cat._id}/>
                 ))}
             </CardLayout>
 
