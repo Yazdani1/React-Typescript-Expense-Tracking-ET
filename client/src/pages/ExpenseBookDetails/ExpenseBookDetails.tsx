@@ -191,7 +191,7 @@ const ExpenseBookDetails = () => {
 
   //This function is to set tab value,.when user click one option it set one interger value
 
-  const [expenseChartType, setExpenseChartType] = useState(1);
+  const [expenseChartType, setExpenseChartType] = useState<number>(1);
 
   const handleChartType = (position: number) => {
     setExpenseChartType(position);
