@@ -338,7 +338,7 @@ const ExpenseBookDetails = () => {
                     onChange={(e) => setExpenseCategory(e.target.value)}
                   >
                     {expenseBookCategory &&
-                      expenseBookCategory.map((c: any, index) => (
+                      expenseBookCategory.map((c) => (
                         <>
                           <option
                             value={c.category_name}
