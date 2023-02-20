@@ -18,6 +18,7 @@ import {
   TotalExpenseChartTypes,
   ExpenseListProps,
   ExpenseCategoryProps,
+  ExpenseBookProps
 } from "../../services/DataProvider";
 import ExpenseListCard from "../ExpenseList/ExpenseListCard";
 import ModalBox from "../../components/Modal/ModalBox";
@@ -110,6 +111,7 @@ const ExpenseBookDetails = () => {
 
   const onSubmitCreateCategory = async () => {
     try {
+
       const payload: CreateExpenseCategoryProps = {
         category_name: categoryName,
         expense_book_id: expenseBookDetails._id,
