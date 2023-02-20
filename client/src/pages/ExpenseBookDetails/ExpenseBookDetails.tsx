@@ -153,7 +153,6 @@ const ExpenseBookDetails = () => {
   // Here by default to save the first category in the category state while create expense list.
 
   const [expenseCategory, setExpenseCategory] = useState<any>(null);
-
   const [expenseTitle, setExpenseTitle] = useState<string>("");
   const [expenseAmmount, setExpenseAmmount] = useState<string>("");
 
