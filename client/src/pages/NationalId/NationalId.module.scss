@@ -1,0 +1,30 @@
+.search_nationaid{
+    display: flex;
+    .searchInputForm{
+        height: 50px;
+        width: 450px;
+        border-radius: 10px;
+        border: 1px solid black;
+    }
+    .searchButton{
+        margin-left: 15px;
+    }
+}
+
+
+.searchResultContainer{
+    display: flex;
+    justify-content: space-around;
+    .imageDesign img{
+        object-fit: cover;
+        height: 350px;
+        width: 350px;
+    }
+    .nationalIdDetails{
+        p{
+            border: 1px solid black;
+            padding: 5px;
+            font-weight: bolder;
+        }
+    }
+}

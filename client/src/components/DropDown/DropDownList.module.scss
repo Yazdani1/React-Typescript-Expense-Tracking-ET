@@ -1,0 +1,31 @@
+.dropDownCard{
+
+    width: 200px;
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.75);
+    padding: 10px;
+    background-color: white;
+    margin-top: 40px;
+    position: absolute;
+    height: auto;
+    z-index: 10;
+    border-radius: 10px;
+
+}
+
+.dropDownMoreIconRow{
+
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+
+}
+.dropDownMoreIconRow p:hover{
+    color: blueviolet;
+    border-radius: 90px;
+    
+
+   
+}

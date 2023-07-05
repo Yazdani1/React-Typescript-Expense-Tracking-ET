@@ -1,0 +1,53 @@
+@import "../../styles/Variables.scss";
+@import "../../styles/Mixin.scss";
+
+
+.expenseBookCardOrange {
+  background-color: orangered;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  line-height: 20px;
+  color: white;
+  .itemPosition {
+    @include itemCenter(10px);
+  }
+  &:hover {
+    background-color: rgb(90, 20, 188);
+    cursor: pointer;
+    color: white;
+  }
+}
+.expenseBookCardYellow {
+    background-color: yellow;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    line-height: 20px;
+    color: black;
+    .itemPosition {
+      @include itemCenter(10px);
+    }
+    &:hover {
+      background-color: rgb(90, 20, 188);
+      cursor: pointer;
+      color: white;
+    }
+  }
+  .expenseBookCardGreen {
+    background-color: green;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    line-height: 20px;
+    color: white;
+    .itemPosition {
+      @include itemCenter(10px);
+    }
+    &:hover {
+      background-color: rgb(90, 20, 188);
+      cursor: pointer;
+      color: white;
+    }
+  }
+  

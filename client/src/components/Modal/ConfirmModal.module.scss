@@ -1,0 +1,9 @@
+@import "../../styles/Variables.scss";
+@import "../../styles/Mixin.scss";
+
+.confirmModalTitle{
+    @include itemCenter(5px);
+}
+.confirmModalMainChildren{
+    @include itemCenter(5px);
+}

@@ -1,0 +1,94 @@
+@import "../../styles/Variables.scss";
+@import "../../styles/Mixin.scss";
+
+.selectExpenseColorOrange {
+  @include inputFieldDesign();
+  height: 150px;
+  border: 1px solid black;
+  background-color: orangered;
+  color: white;
+}
+
+.selectExpenseColorYellow {
+  @include inputFieldDesign();
+  height: 150px;
+  border: 1px solid black;
+  background-color: yellow;
+  color: black;
+}
+
+.selectExpenseColorGreen {
+  @include inputFieldDesign();
+  height: 150px;
+  border: 1px solid black;
+  background-color: green;
+  color: white;
+}
+
+// choose color from radio button option design
+
+.chooseExpenseColorContainer {
+  display: flex;
+  justify-content: center;
+
+  .chooseExpenseOrangeColorDesign input {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 10px;
+    border-radius: 50%;
+    /* The background will be the radio dot's color. */
+    background: orangered;
+    /* The border will be the spacing between the dot and the outer circle */
+    border: 3px solid #fff;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    /* And by creating a box-shadow with no offset and no blur, we have an outer circle */
+    box-shadow: 0 0 0 1px #ff5722;
+    &:hover {
+      box-shadow: 0 0 0 5px #ff5722;
+    }
+    &:checked {
+      background-color: orangered;
+      box-shadow: 0 0 0 5px #ff5722;
+    }
+  }
+  .chooseExpenseGreenColorDesign input {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 10px;
+    border-radius: 50%;
+    background: green;
+    border: 3px solid #fff;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 0 1px green;
+    &:hover {
+      box-shadow: 0 0 0 5px green;
+    }
+    &:checked {
+      background-color: green;
+      box-shadow: 0 0 0 5px green;
+    }
+  }
+  .chooseExpenseYellowColorDesign input {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 10px;
+    border-radius: 50%;
+    background: rgb(223, 223, 66);
+    border: 3px solid #fff;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 0 1px rgb(223, 223, 66);
+    &:hover {
+      box-shadow: 0 0 0 5px rgb(223, 223, 66);
+    }
+    &:checked {
+      background-color: rgb(223, 223, 66);
+      box-shadow: 0 0 0 5px rgb(223, 223, 66);
+    }
+  }
+}

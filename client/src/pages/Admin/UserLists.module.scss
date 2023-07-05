@@ -1,0 +1,14 @@
+@import "../../styles/Variables.scss";
+@import "../../styles/Mixin.scss";
+
+
+
+.userCardContainer{
+    padding: 5px;
+}
+
+.userForm{
+    @include inputFieldDesign();
+
+}
+

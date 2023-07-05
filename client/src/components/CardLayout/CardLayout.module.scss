@@ -1,0 +1,17 @@
+@import "../../styles/Variables.scss";
+@import "../../styles//Mixin.scss";
+
+.cardContainer{
+    border-radius: 5px;
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+    .cardLayoutHeader{
+        display: flex;
+        p{
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    }
+
+}

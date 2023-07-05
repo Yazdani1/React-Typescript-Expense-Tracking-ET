@@ -1,0 +1,34 @@
+.navContainer {
+  height: 80px;
+  background-color: black;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.navItems {
+  display: flex;
+  gap: 50px;
+  list-style: none;
+
+  li {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+      color: yellow;
+    }
+  }
+}
