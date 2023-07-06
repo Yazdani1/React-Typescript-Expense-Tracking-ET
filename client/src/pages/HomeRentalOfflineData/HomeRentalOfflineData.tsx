@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-import style from "./HomeRentalOfflineData.module.scss";
 import SubscriberPageLayout from "../../layouts/SubscriberPageLayout";
 import CardLayout from "../../components/CardLayout/CardLayout";
 import { getAllHomeRentPosts } from "../../services/API";
@@ -33,12 +32,10 @@ const HomeRentalOfflineData = () => {
   const [testData, setTestData] = useState<any>([]);
 
   const loadLocalStorageData = () => {
-
     const testofflineData = localStorage.getItem("homeRentPosts");
     if (testofflineData) {
       setTestData(JSON.parse(testofflineData));
     }
-    
   };
 
   useEffect(() => {
@@ -48,7 +45,6 @@ const HomeRentalOfflineData = () => {
 
   return (
     <SubscriberPageLayout>
-
         <CardLayout>
             <h6>{testData.length}</h6>
             {testData && testData.map((item:any)=>(
