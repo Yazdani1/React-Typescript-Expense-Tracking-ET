@@ -62,14 +62,13 @@ export interface ExpenseBookInfo extends IBase {
   color: string;
   postedBy: UserProfileDetails;
 }
+
 // This interface to add as a promise when user create the expense book and also update the user points
 // in the backend
-
 export interface CreateExpenseBook extends IBase {
   saveExpenseBook: ExpenseBookInfo;
   addUserPoints: UserProfileDetails;
 }
-
 export enum ExpenseBookColor {
   Orange = "Orange",
   Green = "Green",
