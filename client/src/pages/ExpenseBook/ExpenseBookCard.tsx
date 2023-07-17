@@ -24,6 +24,7 @@ const ExpenseBookCard: FC<ExpenseBookCardProps> = ({ expense_book }) => {
           : expenseBookCardStyle.expenseBookCardGreen
       }
     >
+      
       <Link
         to={"/expense-details/" + expense_book.slug}
         style={{ textDecoration: "none", color: "inherit" }}

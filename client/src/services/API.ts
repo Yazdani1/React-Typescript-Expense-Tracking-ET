@@ -151,6 +151,7 @@ export interface CreateExpenseCategoryProps {
   category_name: string;
   expense_book_id: string;
 }
+
 export const createExpenseCategory = async (props: CreateExpenseCategoryProps): Promise<ExpenseCategory> => {
   const res = await axios.post(API_URL + "/create-expense-category",{ ...props },headerConfig());
   return res.data;
@@ -167,6 +168,7 @@ export const createExpenseList = async (props: CreateExpenseListProps): Promise<
   const res = await axios.post(API_URL + "/create-expense-list",{ ...props },headerConfig());
   return res.data;
 };
+
 
 // This api end point and function is from Heme rental platform and i am using it here in the context api.
 // Its for testing purpose -  to implement context api and multiple data in one api end point.
