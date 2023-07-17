@@ -53,7 +53,7 @@ const UserListPagination = () => {
       </div>
       <h1>{userList.length}</h1>
       {isLoading && <div>Loading...</div>}
-        {error && <div>{error}</div>}
+      {error && <div>{error}</div>}
     </AdminPageLayout>
   );
 };
