@@ -30,8 +30,8 @@ const Charts: FC<ChartsProps> = ({
 }) => {
   return (
     <div>
-      {/* Area Chart */}
 
+      {/* Area Chart */}
       {TotalExpenseChartTypes.Area_Chart === chooseChartType &&
         expenseListTotalAmount.length >= 1 && (
           <AreaChart
@@ -58,7 +58,6 @@ const Charts: FC<ChartsProps> = ({
         )}
 
       {/* Line Chart */}
-
       {TotalExpenseChartTypes.Line_Chart === chooseChartType && (
         <LineChart
           width={500}
