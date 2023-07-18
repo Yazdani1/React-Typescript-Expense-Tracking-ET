@@ -18,6 +18,8 @@ const TextField: FC<TextFieldProps> = ({
   setValue,
   name,
 }) => {
+
+  
   const handleClearInputField = () => {
     setValue("");
   };
