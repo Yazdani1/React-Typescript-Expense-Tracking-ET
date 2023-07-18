@@ -106,9 +106,7 @@ const Charts: FC<ChartsProps> = ({
           <Bar dataKey="totalammount" fill="#8884d8" />
         </BarChart>
       )}
-
       {/* Pie Chart */}
-
       {TotalExpenseChartTypes.Pie_Chart === chooseChartType && (
         <PieChart width={400} height={400}>
           <Pie
