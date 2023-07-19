@@ -33,9 +33,7 @@ const ModalBox: FC<ModalBoxProps> = ({
     >
       <h6>{title}</h6>
       <hr />
-
       {children}
-
       <div className={modalBoxStyle.modalActionButton}>
         <button onClick={onResetButton} className="btn btn-danger" >Reset</button>
         <button onClick={onSaveButton} className="btn btn-success" >Save</button>
