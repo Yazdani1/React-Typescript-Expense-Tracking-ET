@@ -42,7 +42,6 @@
 //       });
 //     }
 //   };
-
 //   // This function update the array of state when user create a new income reocrd. as soon as user create
 //   // we need to add the response to this function and then it update arry that holds all the info
 
@@ -60,7 +59,6 @@
 //     </IncomeRecordContext.Provider>
 //   );
 // };
-
 // // In this context api - i am sending multiple api data in just one context api.
 // // Now I can use this context api and can show my desire data in any component.
 

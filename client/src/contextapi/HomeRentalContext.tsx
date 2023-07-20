@@ -49,7 +49,6 @@ export const HomeRentalProvider: FC<HomeRentalProviderProps> = ({ children }) =>
       });
     }
 
-
     // try {
     //   const res = await getAllHomeRentPosts();
     //   setAllHomeRentPosts(res.data);
@@ -58,7 +57,6 @@ export const HomeRentalProvider: FC<HomeRentalProviderProps> = ({ children }) =>
     //     position: toast.POSITION.TOP_RIGHT,
     //   });
     // }
-
 
   };
 
