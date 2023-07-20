@@ -169,6 +169,7 @@ export const createExpenseList = async (props: CreateExpenseListProps): Promise<
   return res.data;
 };
 
+
 // This api end point and function is from Heme rental platform and i am using it here in the context api.
 // Its for testing purpose -  to implement context api and multiple data in one api end point.
 const HRP_API ="https://home-renting-platform-node-js-server-hrp.vercel.app/api/v0";
@@ -183,11 +184,9 @@ export const getAllUserLists = async () => {
   return res;
 };
 
-
 /****************************************/
 /********* Nationa Id            ********/
 /****************************************/
-
 
 export const searchNationalId = async (nationalid: number): Promise<NationalID> => {
   const res = await axios.get(API_URL + `/search-nationalid?nationalid=${nationalid}`);
