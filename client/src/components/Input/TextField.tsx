@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC } from "react";
 import { GrFormClose } from "react-icons/gr";
 
 import style from "./TextField.module.scss";
@@ -36,6 +36,7 @@ const TextField: FC<TextFieldProps> = ({
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
+
         {value && (
           <button
             className={style.clearButton}
@@ -45,6 +46,7 @@ const TextField: FC<TextFieldProps> = ({
             <GrFormClose size={25} />
           </button>
         )}
+
       </div>
     </div>
   );
