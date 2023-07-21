@@ -29,9 +29,7 @@
 //   /****************************************/
 //   /*** Loged In User Income Record ********/
 //   /****************************************/
-
 //   const [allIncomeRecords, setAllIncomeRecords] = useState<IncomeRecord[]>([]);
-
 //   const loadLogedInUserIncomeRecords = async () => {
 //     try {
 //       const res = await getLogedInUserIncomeRecord();
@@ -44,15 +42,12 @@
 //   };
 //   // This function update the array of state when user create a new income reocrd. as soon as user create
 //   // we need to add the response to this function and then it update arry that holds all the info
-
 //   const addNewIncomeRecords = (newIncomeRecord: IncomeRecord) => {
 //     setAllIncomeRecords([newIncomeRecord,...allIncomeRecords]);
 //   };
-
 //   useEffect(() => {
 //     loadLogedInUserIncomeRecords();
 //   }, []);
-
 //   return (
 //     <IncomeRecordContext.Provider value={{ allIncomeRecords,addNewIncomeRecords,loadLogedInUserIncomeRecords }}>
 //       {children}
@@ -116,10 +111,8 @@ export const IncomeRecordProvider: FC<IncomeRecordProviderProps> = ({
   // const addNewIncomeRecords = (newIncomeRecord: IncomeRecord) => {
   //   setAllIncomeRecords((prevRecords) => [newIncomeRecord, ...prevRecords]);
   // };
-
   // This function just take the response after creating a new income record and then update the state.
   // This is a ways to update and show the new created post in the context api array.
-
   // const addNewIncomeRecords = (newIncomeRecord: IncomeRecord) => {
   //   setAllIncomeRecords([newIncomeRecord, ...allIncomeRecords]);
   // };
