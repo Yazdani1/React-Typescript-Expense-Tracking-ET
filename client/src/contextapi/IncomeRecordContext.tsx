@@ -96,8 +96,8 @@ interface IncomeRecordProviderProps {
 export const IncomeRecordProvider: FC<IncomeRecordProviderProps> = ({
   children,
 }) => {
-  const [allIncomeRecords, setAllIncomeRecords] = useState<IncomeRecord[]>([]);
 
+  const [allIncomeRecords, setAllIncomeRecords] = useState<IncomeRecord[]>([]);
   const loadLogedInUserIncomeRecords = async () => {
     try {
       const res = await getLogedInUserIncomeRecord();
@@ -123,8 +123,6 @@ export const IncomeRecordProvider: FC<IncomeRecordProviderProps> = ({
   // const addNewIncomeRecords = (newIncomeRecord: IncomeRecord) => {
   //   setAllIncomeRecords([newIncomeRecord, ...allIncomeRecords]);
   // };
-
-
 
   return (
     <IncomeRecordContext.Provider
