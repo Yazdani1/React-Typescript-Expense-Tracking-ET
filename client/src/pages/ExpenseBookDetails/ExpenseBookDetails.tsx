@@ -25,6 +25,7 @@ import ModalBox from "../../components/Modal/ModalBox";
 import Charts from "../../components/Charts/Charts";
 import TotalExpenseByDateChart from "../../components/Charts/TotalExpenseByDateChart";
 import TextField from "../../components/Input/TextField";
+import { count } from "console";
 
 const ExpenseBookDetails = () => {
   const { slug } = useParams();
@@ -194,6 +195,12 @@ const ExpenseBookDetails = () => {
     setDebugData(!showDebugData);
   };
 
+  const [count,setCount] = useState<number>(1);
+
+  const handleCount = ()=>{
+    setCount((prev)=>prev+5);
+  }
+
   useEffect(() => {
     loadExpenseBookDetails();
   }, []);
@@ -278,6 +285,8 @@ const ExpenseBookDetails = () => {
                 Debug
               </button>
               {showDebugData && <h6>{JSON.stringify(expenseBookDetails)}</h6>}
+              <button className="btn btn-success" onClick={handleCount}>CountChange</button>
+              <h6>{count}</h6>
             </CardLayout>
 
             <CardLayout title="Expense Book Details">
