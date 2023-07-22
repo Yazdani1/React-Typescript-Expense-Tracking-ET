@@ -35,7 +35,6 @@ const TextField: FC<TextFieldProps> = ({
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
-
         {value && (
           <button
             className={style.clearButton}
@@ -45,7 +44,6 @@ const TextField: FC<TextFieldProps> = ({
             <GrFormClose size={25} />
           </button>
         )}
-
       </div>
     </div>
   );
