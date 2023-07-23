@@ -14,6 +14,7 @@ import {
 import TextField from "../../components/Input/TextField";
 
 const Income = () => {
+  
   //Context API
   const { allIncomeRecords, loadLogedInUserIncomeRecords } =
     useIncomeRecordContext();
@@ -48,7 +49,6 @@ const Income = () => {
       };
 
       const res = await createIncomeRecord(payload);
-
       if (res) {
         toast.success("Income record created successfully", {
           position: toast.POSITION.TOP_RIGHT,
