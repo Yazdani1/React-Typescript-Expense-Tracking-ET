@@ -15,7 +15,6 @@ import {
   updateSingleUserProfile,
   getLogedInUserProfile,
 } from "../../services/API";
-import { UserProfileDetails } from "../../services/DataProvider";
 import { useUserContext } from "../../contextapi/UserContextCookies";
 
 const Profile = () => {
@@ -57,7 +56,7 @@ const Profile = () => {
       const res = await updateSingleUserProfile(user?._id!, payload);
       if (res) {
         toast.success("Successfully Updated Profile", {
-          position: toast.POSITION.BOTTOM_RIGHT,
+          position: toast.POSITION.TOP_CENTER,
         });
         /////////////////////////////////////////
         // To update the user context api with the updated profile data need to set response in the local storage
@@ -74,7 +73,6 @@ const Profile = () => {
         // updateUserProfileDetails(res?.user!);
         ////////////////////////////////////////////
         // From cookie context api - to update user info in the context api as soon as user update user info
-       
         setUser(res.user);
       }
 
@@ -117,7 +115,6 @@ const Profile = () => {
       <CardLayout title="Account Details">
         <div className={style.profileContainer}>
           {/*  To show profile picture and if user did not add any profile picture then an avatar will be shown here */}
-
           <div>
             {user?.imageUrl ? (
               <div className={style.profilePicture}>
