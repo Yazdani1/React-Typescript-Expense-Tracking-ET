@@ -58,6 +58,7 @@ const Profile = () => {
         toast.success("Successfully Updated Profile", {
           position: toast.POSITION.TOP_CENTER,
         });
+
         /////////////////////////////////////////
         // To update the user context api with the updated profile data need to set response in the local storage
         // Then also need to update the setState so that newly profile info can be added in th state and can show in the
@@ -73,6 +74,7 @@ const Profile = () => {
         // updateUserProfileDetails(res?.user!);
         ////////////////////////////////////////////
         // From cookie context api - to update user info in the context api as soon as user update user info
+        
         setUser(res.user);
       }
 

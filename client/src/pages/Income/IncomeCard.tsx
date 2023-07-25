@@ -46,10 +46,7 @@ const IncomeCard: FC<IncomeCardProps> = ({ incomeRecord,postid }) => {
       <button className="btn btn-danger" onClick={deleteSingleIncomeRecord}>
         Delete
       </button>
-
       <h6>{incomeRecord._id === postid && "Saved"} </h6>
-
-  
     </div>
   );
 };
