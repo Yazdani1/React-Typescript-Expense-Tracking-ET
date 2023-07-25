@@ -19,15 +19,14 @@ const IncomeCard: FC<IncomeCardProps> = ({ incomeRecord,postid }) => {
   /****************************************/
   /****** To delete income record  ********/
   /****************************************/
+  
   const deleteSingleIncomeRecord = async () => {
     try {
       const res = await deleteIncomeRecord(incomeRecord._id);
-
       if (res) {
         toast.success("Income record deleted successfully", {
           position: toast.POSITION.TOP_RIGHT,
         });
-
         loadLogedInUserIncomeRecords();
       }
     } catch (error: any) {
@@ -38,6 +37,7 @@ const IncomeCard: FC<IncomeCardProps> = ({ incomeRecord,postid }) => {
   };
 
   return (
+
     <div className={style.incomeRecordItems}>
       <h6>{incomeRecord.title}</h6>
       <h6>{incomeRecord.des}</h6>
@@ -46,7 +46,7 @@ const IncomeCard: FC<IncomeCardProps> = ({ incomeRecord,postid }) => {
       <button className="btn btn-danger" onClick={deleteSingleIncomeRecord}>
         Delete
       </button>
-      <h6>{incomeRecord._id === postid && "Saved"} </h6>
+      <p>{incomeRecord._id === postid && "Saved"} </p>
     </div>
   );
 };
