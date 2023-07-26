@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
 import style from "./Income.module.scss";
@@ -47,7 +47,6 @@ const Income = () => {
         des: des,
         amount: parseInt(amount),
       };
-
       const res = await createIncomeRecord(payload);
       if (res) {
         toast.success("Income record created successfully", {
@@ -93,14 +92,12 @@ const Income = () => {
           value={title}
           setValue={setTitle}
         />
-
         <TextField
           label="Description"
           placeholder="description.."
           value={des}
           setValue={setDes}
         />
-
         <TextField
           label="Amount"
           placeholder="amount.."
