@@ -34,6 +34,7 @@ export const HomeRentalProvider: FC<HomeRentalProviderProps> = ({ children }) =>
     // after that we store this data in local storgae and from local storage we can show our data.
     // This way even when users are offline, users can see the data.
     // And from this context api, data can be used anywhere in the project.
+    
     try {
       const offlineData = localStorage.getItem("rentalposts");
       if (offlineData) {
