@@ -38,6 +38,7 @@ const ExpenseBook = () => {
   const onCloseModal = () => {
     onOpenDiscardModal();
   };
+
   /****************************************/
   /** Discard Modal for Discard Box    ****/
   /****************************************/
@@ -73,6 +74,7 @@ const ExpenseBook = () => {
   /**
    * Here Promise<void> is a return type. it means this function return nothing..
    */
+  
   const loadAllExpenseBookList = async (): Promise<void> => {
     try {
       const res = await getExpenseBookList();
