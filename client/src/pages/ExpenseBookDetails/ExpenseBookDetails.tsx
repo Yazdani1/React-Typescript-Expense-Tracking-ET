@@ -190,7 +190,7 @@ const ExpenseBookDetails = () => {
   };
 
   /****************************************/
-  /******To show debug mode api data  ****/
+  /******To show debug mode api data  *****/
   /****************************************/
 
   const [showDebugData, setDebugData] = useState<boolean>(false);
@@ -200,10 +200,10 @@ const ExpenseBookDetails = () => {
   };
 
   const [count,setCount] = useState<number>(1);
-
   const handleCount = ()=>{
     setCount((prev)=>prev+5);
   }
+
 
   useEffect(() => {
     loadExpenseBookDetails();
