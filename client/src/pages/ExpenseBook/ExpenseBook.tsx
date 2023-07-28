@@ -143,8 +143,10 @@ const ExpenseBook = () => {
    * Then user will see empty input fields
    */
   const resetInputFields = () => {
+
     setExpenseBookName("");
     setExpenseBookColor(ExpenseBookColor.Orange);
+    
   };
 
   /****************************************/
