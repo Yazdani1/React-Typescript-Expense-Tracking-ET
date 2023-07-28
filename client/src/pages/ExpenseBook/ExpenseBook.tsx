@@ -24,6 +24,7 @@ const ExpenseBook = () => {
   );
 
   // Context API to update
+
   const { setUser  } = useUserContext();
 
   /****************************************/
@@ -55,13 +56,16 @@ const ExpenseBook = () => {
 
   // to discard post, When user click on the exit button a new modal box should open
   // to show if user really want to discard the post.
+
   const discardCreatingExpenseBookModal = () => {
     setOpenDiscardModal(false);
     setOpen(false);
     resetInputFields();
   };
+
   // to keep adding post, This will open a modal and when user click on the Keep button it should
   // disable the modal box.
+  
   const keepAddingExpenseBook = () => {
     setOpenDiscardModal(false);
   };
@@ -146,7 +150,7 @@ const ExpenseBook = () => {
 
     setExpenseBookName("");
     setExpenseBookColor(ExpenseBookColor.Orange);
-    
+
   };
 
   /****************************************/
