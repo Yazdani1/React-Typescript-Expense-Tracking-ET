@@ -61,6 +61,7 @@ const ExpenseBookDetails = () => {
 
   const loadExpenseBookDetails = async () => {
     try {
+
       const res = await getExpenseBookDetails(slug!);
 
       if (res) {
@@ -72,7 +73,7 @@ const ExpenseBookDetails = () => {
         // in the select tag.
         setExpenseCategory(res.data.expenseBookCategory[0]?.category_name);
         //End To default save the first category in the state
-        
+
         setExpenseBookList(res.data.expenseList);
         setExpenseBookTotalAmount(res.data.totalExpenses);
         setExpenseCountByDate(res.data.totalExpensesCountByDate);
@@ -92,9 +93,11 @@ const ExpenseBookDetails = () => {
   /****************************************/
 
   const [open, setOpen] = useState<boolean>(false);
+
   const onOpenModal = () => {
     setOpen(true);
   };
+  
   const onCloseModal = () => {
     setOpen(false);
   };
