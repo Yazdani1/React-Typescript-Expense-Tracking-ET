@@ -72,6 +72,7 @@ const ExpenseBookDetails = () => {
         // in the select tag.
         setExpenseCategory(res.data.expenseBookCategory[0]?.category_name);
         //End To default save the first category in the state
+        
         setExpenseBookList(res.data.expenseList);
         setExpenseBookTotalAmount(res.data.totalExpenses);
         setExpenseCountByDate(res.data.totalExpensesCountByDate);
@@ -150,6 +151,7 @@ const ExpenseBookDetails = () => {
 
   const onSubmitCreateExpenseList = async () => {
     try {
+
       const payload: CreateExpenseListProps = {
         title: expenseTitle,
         expense_category: expenseCategory,
