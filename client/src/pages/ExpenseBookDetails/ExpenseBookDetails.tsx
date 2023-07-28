@@ -143,6 +143,7 @@ const ExpenseBookDetails = () => {
   /****************************************/
 
   // Here by default to save the first category in the category state while create expense list.
+
   const [expenseTitle, setExpenseTitle] = useState<string>("");
   const [expenseCategory, setExpenseCategory] = useState<string>("");
   const [expenseAmmount, setExpenseAmmount] = useState<string>("");
@@ -174,11 +175,14 @@ const ExpenseBookDetails = () => {
   /****************************************/
   /****** Choose Chart Type     **********/
   /****************************************/
+
   // to choose chart type from a select option --- dropdown list
+
   const [chooseChartType, setChooseChartType] =
     useState<TotalExpenseChartTypes>(TotalExpenseChartTypes.Area_Chart);
 
   //This function is to set tab value,.when user click one option it set one interger value
+  
   const [expenseChartType, setExpenseChartType] = useState<number>(1);
 
   const handleChartType = (position: number) => {
