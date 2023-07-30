@@ -97,6 +97,7 @@ export const getLogedInUserProfile = async (): Promise<UserProfileDetails> => {
 /****************************************/
 /*********User Role For Admin Site ******/
 /****************************************/
+
 export const getUserRoleForAdmin = async (): Promise<UserProfileDetails> => {
   const res = await axios.get(API_URL + "/current-user-role", headerConfig());
   return res.data as UserProfileDetails;
@@ -104,13 +105,16 @@ export const getUserRoleForAdmin = async (): Promise<UserProfileDetails> => {
 /****************************************/
 /********* All User List Only Admin ******/
 /****************************************/
+
 export const getAllUserList = async (): Promise<UserProfileDetails[]> => {
   const res = await axios.get(API_URL + "/alluser", headerConfig());
   return res.data as UserProfileDetails[];
 };
+
 /****************************************/
 /********* Expense Book            ******/
 /****************************************/
+
 export interface CreateExpenseProps {
   name: string;
   color: string;
