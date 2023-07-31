@@ -102,6 +102,7 @@ export const getUserRoleForAdmin = async (): Promise<UserProfileDetails> => {
   const res = await axios.get(API_URL + "/current-user-role", headerConfig());
   return res.data as UserProfileDetails;
 };
+
 /****************************************/
 /********* All User List Only Admin ******/
 /****************************************/
@@ -132,10 +133,7 @@ export const createExpenseBook = async (
 };
 
 export const getExpenseBookList = async (): Promise<ExpenseBookInfo[]> => {
-  const res = await axios.get(
-    API_URL + "/get-expensebook-list",
-    headerConfig()
-  );
+  const res = await axios.get(API_URL + "/get-expensebook-list",headerConfig());
   return res.data as ExpenseBookInfo[];
 };
 
