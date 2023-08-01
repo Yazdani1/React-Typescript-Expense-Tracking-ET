@@ -83,7 +83,6 @@ const Income = () => {
         open={open}
         onCloseModal={onCloseModal}
         title="Create Income Record"
-        // onResetButton={resetInputFields}
         onSaveButton={onSubmitCreateIncomeRecord}
       >
         <TextField
