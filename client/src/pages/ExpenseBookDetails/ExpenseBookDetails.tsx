@@ -231,6 +231,7 @@ const ExpenseBookDetails = () => {
                   onClick={() => handleChartType(1)}
                 >
                   <h6>Category Expenses</h6>
+
                   {totalExpenseCountForEachExpenseBook &&
                     totalExpenseCountForEachExpenseBook.map((total: any) => (
                       <h5>{total.totalammount}.EUR</h5>
@@ -251,7 +252,6 @@ const ExpenseBookDetails = () => {
               </div>
 
               {/* To show chart */}
-
               {/* Chart to count total expenses by date */}
 
               {expenseChartType === 1 && (
@@ -302,10 +302,7 @@ const ExpenseBookDetails = () => {
               {expenseCategory}
             </CardLayout>
 
-            {/* To Show Expense List 
-            
-            all the list of expense book
-            */}
+            {/* To Show Expense List all the list of expense book */}
 
             <CardLayout
               title="Expense List"
