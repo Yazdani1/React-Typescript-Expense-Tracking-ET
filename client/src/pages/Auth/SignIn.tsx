@@ -16,8 +16,8 @@ const SignIn = () => {
 
   // Old Used Context API
   // const [state, setState]:any = useContext(UserContext);
-
   // This is the context api that has cookies and store user detials when user login
+
   const { setUser } = useUserContext();
 
   // Context API to show user protected route.
@@ -35,8 +35,8 @@ const SignIn = () => {
   const [error, setError] = useState<string>("");
 
   const onSubmitUserSignIn = async (e: any) => {
-    e.preventDefault();
 
+    e.preventDefault();
     try {
       const payload: UserLoginProps = {
         email: email,
@@ -46,6 +46,7 @@ const SignIn = () => {
       const res = await userLogin(payload);
 
       if (res.data) {
+
         /////////////////////////////////////////////////////////////
         // save user info in local storage
         // localStorage.setItem("tokenLogin", JSON.stringify(res.data));
@@ -56,6 +57,7 @@ const SignIn = () => {
         // });
         ///////////////////////////////////////////////////////////////
         // This token is for protected route that is required to pass in the header
+        
         window.localStorage.setItem("token", res.data.token);
         // To test user protected route user context api
         localStorage.setItem(
