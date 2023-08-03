@@ -9,6 +9,7 @@ import {
   getUserAccountRegistrationLocation,
 } from "../../services/API";
 import { LocationData } from "../../services/DataProvider";
+import TextField from "../../components/Input/TextField";
 
 const SignUp = () => {
   
@@ -85,7 +86,7 @@ const SignUp = () => {
         });
         navigate("/");
       }
-      
+
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {
         position: toast.POSITION.TOP_RIGHT,
