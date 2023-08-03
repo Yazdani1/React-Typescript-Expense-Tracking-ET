@@ -72,28 +72,25 @@ export const getUserAccountRegistrationLocation = async (
   );
   return res;
 };
+
 // Update loged in user profile
+
 export interface UpdateUserProfileProps {
   name: string;
   email: string;
   imageUrl: string;
 }
-export const updateSingleUserProfile = async (
-  id: string,
-  props: UpdateUserProfileProps
-): Promise<UserProfileUpdate> => {
-  const res = await axios.put(
-    API_URL + "/update-single-user-profile/" + id,
-    { ...props },
-    headerConfig()
-  );
+export const updateSingleUserProfile = async (id: string,props: UpdateUserProfileProps): Promise<UserProfileUpdate> => {
+  const res = await axios.put(API_URL + "/update-single-user-profile/" + id,{ ...props },headerConfig());
   return res.data;
 };
+
 // To get loged in user profile and its only for test purpose and maybe can use in the profile page and context api
 export const getLogedInUserProfile = async (): Promise<UserProfileDetails> => {
   const res = await axios.get(API_URL + "/user-profile", headerConfig());
   return res.data as UserProfileDetails;
 };
+
 /****************************************/
 /*********User Role For Admin Site ******/
 /****************************************/
