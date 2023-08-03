@@ -65,6 +65,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
+
       const payload: UserRegistrationProps = {
         name: userName,
         email: userEmail,
@@ -77,12 +78,14 @@ const SignUp = () => {
       };
 
       const res = await userRegistration(payload);
+
       if (res.data) {
         toast.success("Your account created successfully!", {
           position: toast.POSITION.TOP_RIGHT,
         });
         navigate("/");
       }
+      
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {
         position: toast.POSITION.TOP_RIGHT,
