@@ -12,6 +12,7 @@ import HomePageLayout from "../../layouts/HomePageLayout";
 import TextField from "../../components/Input/TextField";
 
 const SignIn = () => {
+
   let navigate = useNavigate();
 
   // Old Used Context API
@@ -21,6 +22,7 @@ const SignIn = () => {
   const { setUser } = useUserContext();
 
   // Context API to show user protected route.
+
   const [userInfo, setUserInfo]: any = useContext(UserProtectedRouteContext);
 
   /****************************************/
@@ -72,6 +74,7 @@ const SignIn = () => {
         setUser(res.data.user);
 
         // To clean the state as soon as user loged in
+        
         setEmail("");
         setPassword("");
 
