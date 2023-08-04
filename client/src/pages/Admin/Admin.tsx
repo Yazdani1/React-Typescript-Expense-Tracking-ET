@@ -16,10 +16,13 @@ const Admin = () => {
   const [allUser, setAllUser] = useState<UserProfileDetails[]>([]);
   const loadAllUserList = async () => {
     try {
+
       const res = await getAllUserList();
+
       if (res) {
         setAllUser(res);
       }
+
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {
         position: toast.POSITION.TOP_RIGHT,
@@ -34,6 +37,7 @@ const Admin = () => {
   return (
     <AdminPageLayout>
       <div className="container-fluid">
+        
         {/* Row Header */}
 
         <CardLayout>
