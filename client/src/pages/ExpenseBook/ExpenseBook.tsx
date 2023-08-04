@@ -188,9 +188,6 @@ const ExpenseBook = () => {
 
 
           {/***  Creat Expense Book Modal Box  ******/}
-
-
-          
           <ModalBox
             open={open}
             onCloseModal={onCloseModal}
