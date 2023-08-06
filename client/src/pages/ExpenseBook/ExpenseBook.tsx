@@ -7,9 +7,13 @@ import {
   getExpenseBookList,
   createExpenseBook,
   CreateExpenseProps,
-  getLogedInUserProfile
+  getLogedInUserProfile,
 } from "../../services/API";
-import { ExpenseBookColor, ExpenseBookInfo,UserProfileDetails } from "../../services/DataProvider";
+import {
+  ExpenseBookColor,
+  ExpenseBookInfo,
+  UserProfileDetails,
+} from "../../services/DataProvider";
 import SubscriberPageLayout from "../../layouts/SubscriberPageLayout";
 import CardLayout from "../../components/CardLayout/CardLayout";
 import expenseBookStyle from "./ExpenseBook.module.scss";
@@ -18,12 +22,10 @@ import ModalBox from "../../components/Modal/ModalBox";
 import ConfirmModal from "../../components/Modal/ConfirmModal";
 import { UserContext } from "../../contextapi/UserContext";
 import { UserProfileDetailsContext } from "../../contextapi/UserProfileDetailsContext";
-import {useUserContext} from "../../contextapi/UserContextCookies"
+import { useUserContext } from "../../contextapi/UserContextCookies";
 
 const ExpenseBook = () => {
-
   const dispatch = useDispatch();
-
 
   ///////////////////////////////////////////////////////////////////////
   // const [state, setState] = useContext(UserContext);
@@ -72,12 +74,10 @@ const ExpenseBook = () => {
 
   // to keep adding post, This will open a modal and when user click on the Keep button it should
   // disable the modal box.
-  
+
   const keepAddingExpenseBook = () => {
     setOpenDiscardModal(false);
   };
-
-
 
   /****************************************/
   /****** Load All Expense Book      ******/
@@ -88,7 +88,7 @@ const ExpenseBook = () => {
   /**
    * Here Promise<void> is a return type. it means this function return nothing..
    */
-  
+
   const loadAllExpenseBookList = async (): Promise<void> => {
     try {
       const res = await getExpenseBookList();
@@ -124,7 +124,6 @@ const ExpenseBook = () => {
 
   const onSubmitCreateExpenseBook = async () => {
     try {
-      
       const payload: CreateExpenseProps = {
         name: expenseBookName,
         color: expenseBookColor,
@@ -144,13 +143,11 @@ const ExpenseBook = () => {
         // // To update Context API cookies
         // setUser(res.addUserPoints)
         ///////////////////////////////////////////////////
-
       }
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {
         position: toast.POSITION.TOP_RIGHT,
       });
-      
     }
   };
 
@@ -159,10 +156,8 @@ const ExpenseBook = () => {
    * Then user will see empty input fields
    */
   const resetInputFields = () => {
-
     setExpenseBookName("");
     setExpenseBookColor(ExpenseBookColor.Orange);
-
   };
 
   /****************************************/
@@ -196,8 +191,6 @@ const ExpenseBook = () => {
             {/* //End Test to add multiple image into an array in database*/}
           </CardLayout>
 
-
-
           {/***  Creat Expense Book Modal Box  ******/}
           <ModalBox
             open={open}
@@ -206,9 +199,7 @@ const ExpenseBook = () => {
             onResetButton={resetInputFields}
             onSaveButton={onSubmitCreateExpenseBook}
           >
-
             {/* Radio button to choose expense book color*/}
-
 
             <div
               onChange={onChangeRadioButtonSelectExpenseBookColor}
@@ -303,7 +294,6 @@ const ExpenseBook = () => {
         <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
           <CardLayout title="Recently Opened"></CardLayout>
         </div>
-
       </div>
     </SubscriberPageLayout>
   );

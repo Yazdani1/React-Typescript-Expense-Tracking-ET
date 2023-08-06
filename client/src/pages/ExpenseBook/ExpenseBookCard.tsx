@@ -3,17 +3,13 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 
 import expenseBookCardStyle from "./ExpenseBookCard.module.scss";
-import {
-  ExpenseBookInfo,
-  ExpenseBookColor,
-} from "../../services/DataProvider";
+import { ExpenseBookInfo, ExpenseBookColor } from "../../services/DataProvider";
 
 interface ExpenseBookCardProps {
   expense_book: ExpenseBookInfo;
 }
 
 const ExpenseBookCard: FC<ExpenseBookCardProps> = ({ expense_book }) => {
-
   return (
     <div
       className={
@@ -24,7 +20,6 @@ const ExpenseBookCard: FC<ExpenseBookCardProps> = ({ expense_book }) => {
           : expenseBookCardStyle.expenseBookCardGreen
       }
     >
-      
       <Link
         to={"/expense-details/" + expense_book.slug}
         style={{ textDecoration: "none", color: "inherit" }}
@@ -35,10 +30,8 @@ const ExpenseBookCard: FC<ExpenseBookCardProps> = ({ expense_book }) => {
           <p>{moment(expense_book?.date).format("MMM Do YYYY")}</p>
         </div>
       </Link>
-
     </div>
   );
-
 };
 
 export default ExpenseBookCard;

@@ -61,7 +61,6 @@ const ExpenseBookDetails = () => {
 
   const loadExpenseBookDetails = async () => {
     try {
-
       const res = await getExpenseBookDetails(slug!);
 
       if (res) {
@@ -97,7 +96,7 @@ const ExpenseBookDetails = () => {
   const onOpenModal = () => {
     setOpen(true);
   };
-  
+
   const onCloseModal = () => {
     setOpen(false);
   };
@@ -154,7 +153,6 @@ const ExpenseBookDetails = () => {
 
   const onSubmitCreateExpenseList = async () => {
     try {
-
       const payload: CreateExpenseListProps = {
         title: expenseTitle,
         expense_category: expenseCategory,
@@ -187,7 +185,7 @@ const ExpenseBookDetails = () => {
     useState<TotalExpenseChartTypes>(TotalExpenseChartTypes.Area_Chart);
 
   //This function is to set tab value,.when user click one option it set one interger value
-  
+
   const [expenseChartType, setExpenseChartType] = useState<number>(1);
 
   const handleChartType = (position: number) => {
@@ -204,11 +202,11 @@ const ExpenseBookDetails = () => {
     setDebugData(!showDebugData);
   };
 
-  const [count,setCount] = useState<number>(1);
-  const handleCount = ()=>{
-    setCount((prev)=>prev+5);
-  }
+  const [count, setCount] = useState<number>(1);
 
+  const handleCount = () => {
+    setCount((prev) => prev + 5);
+  };
 
   useEffect(() => {
     loadExpenseBookDetails();
@@ -247,7 +245,7 @@ const ExpenseBookDetails = () => {
                   }
                   onClick={() => handleChartType(2)}
                 >
-                  <h6> Day Expenses</h6>
+                  <h6>Day Expenses</h6>
                 </div>
               </div>
 
@@ -294,8 +292,10 @@ const ExpenseBookDetails = () => {
                 Debug
               </button>
               {showDebugData && <h6>{JSON.stringify(expenseBookDetails)}</h6>}
-              <button className="btn btn-success" onClick={handleCount}>CountChange</button>
-              <h6>{count}</h6>
+              <button className="btn btn-success" onClick={handleCount}>
+                CountChange
+              </button>
+              <h6> {count}</h6>
             </CardLayout>
 
             <CardLayout title="Expense Book Details">
