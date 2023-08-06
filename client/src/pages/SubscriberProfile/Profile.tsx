@@ -27,13 +27,14 @@ const Profile = () => {
   );
   const dispatch = useDispatch();
 
+  ////////////////////////////////////////////////////////////////////////////////
   //Context api state - these are context api that i used previously.
   // Now will not use this context api
   // const [state, setState] = useContext(UserContext);
   // const {userProfileDetails,updateUserProfileDetails} = useContext(UserProfileDetailsContext);
-
   // Context API to update new user info -Cookies context api
   // const { user, setUser } = useUserContext();
+  ////////////////////////////////////////////////////////////////////////////////
 
   /****************************************/
   /******  To Open Modal Box     **********/
@@ -62,7 +63,7 @@ const Profile = () => {
         imageUrl: profilePic,
       };
       const res = await updateSingleUserProfile(
-        userProfileDetails?.user?._id!,
+        userProfileDetails?._id!,
         payload
       );
       if (res) {
@@ -70,7 +71,7 @@ const Profile = () => {
           position: toast.POSITION.TOP_CENTER,
         });
 
-        dispatch(loginSuccess(res));
+        dispatch(loginSuccess(res.user));
 
         /////////////////////////////////////////
         // To update the user context api with the updated profile data need to set response in the local storage
@@ -98,9 +99,9 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    setName(userProfileDetails?.user?.name!);
-    setEmail(userProfileDetails?.user?.email!);
-    setProfilePic(userProfileDetails?.user?.imageUrl!);
+    setName(userProfileDetails?.name!);
+    setEmail(userProfileDetails?.email!);
+    setProfilePic(userProfileDetails?.imageUrl!);
   }, []);
 
   /****************************************/
@@ -130,9 +131,9 @@ const Profile = () => {
         <div className={style.profileContainer}>
           {/*  To show profile picture and if user did not add any profile picture then an avatar will be shown here */}
           <div>
-            {userProfileDetails?.user?.imageUrl ? (
+            {userProfileDetails?.imageUrl ? (
               <div className={style.profilePicture}>
-                <img src={userProfileDetails?.user?.imageUrl} />
+                <img src={userProfileDetails?.imageUrl} />
               </div>
             ) : (
               <div className={style.profilePictureAvatar}>
@@ -141,7 +142,7 @@ const Profile = () => {
                 </p>
               </div>
             )}
-            {userProfileDetails?.user?.award.map(
+            {userProfileDetails?.award.map(
               (award: any, index: number) => (
                 <p key={index}>{award}</p>
               )
@@ -149,12 +150,12 @@ const Profile = () => {
           </div>
 
           <div className={style.profileDetails}>
-            <h6>Name: {userProfileDetails?.user?._id}</h6>
-            <h6>Name: {userProfileDetails?.user?.name}</h6>
-            <h6>E-mail: {userProfileDetails?.user?.email}</h6>
-            <h6>Role: {userProfileDetails?.user?.role}</h6>
-            <h6>Joined: {userProfileDetails?.user?.date}</h6>
-            <h6>Points: {userProfileDetails?.user?.points}</h6>
+            <h6>Id: {userProfileDetails?._id}</h6>
+            <h6>Name: {userProfileDetails?.name}</h6>
+            <h6>E-mail: {userProfileDetails?.email}</h6>
+            <h6>Role: {userProfileDetails?.role}</h6>
+            <h6>Joined: {userProfileDetails?.date}</h6>
+            <h6>Points: {userProfileDetails?.points}</h6>
           </div>
 
           <div className={style.editIcon} onClick={onOpenModal}>
@@ -162,27 +163,6 @@ const Profile = () => {
           </div>
         </div>
       </CardLayout>
-
-      {/* In the below card components i was showing user data from a context api. -- it was for testing purpose.
-       now no need to use it */}
-
-      {/* <CardLayout>
-        <div className={style.profileDetails}>
-          <h6>id: {userProfileDetails?._id}</h6>
-          <h6>Name: {userProfileDetails?.name}</h6>
-          <h6>E-mail: {userProfileDetails?.email}</h6>
-          <h6>Role: {userProfileDetails?.role}</h6>
-          <h6>Joined: {userProfileDetails?.date}</h6>
-          <h6>Account Type: {userProfileDetails?.accountType}</h6>
-          <h6>Points: {userProfileDetails?.points}</h6>
-          <h6>City: {userProfileDetails?.city}</h6>
-          <h6>Country: {userProfileDetails?.countryName}</h6>
-
-          <div className={style.profilePicture}>
-            <img src={userProfileDetails?.imageUrl} />
-          </div>
-        </div>
-      </CardLayout> */}
 
       {/* //////////////////////////////////////////////////////////////////////// */}
       {/* ////             Modal Box to Update User Profile                /////// */}

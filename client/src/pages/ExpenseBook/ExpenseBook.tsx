@@ -1,12 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
 
+import { loginSuccess } from "../../redux/userSlice";
 import {
   getExpenseBookList,
   createExpenseBook,
   CreateExpenseProps,
+  getLogedInUserProfile
 } from "../../services/API";
-import { ExpenseBookColor, ExpenseBookInfo } from "../../services/DataProvider";
+import { ExpenseBookColor, ExpenseBookInfo,UserProfileDetails } from "../../services/DataProvider";
 import SubscriberPageLayout from "../../layouts/SubscriberPageLayout";
 import CardLayout from "../../components/CardLayout/CardLayout";
 import expenseBookStyle from "./ExpenseBook.module.scss";
@@ -18,14 +21,18 @@ import { UserProfileDetailsContext } from "../../contextapi/UserProfileDetailsCo
 import {useUserContext} from "../../contextapi/UserContextCookies"
 
 const ExpenseBook = () => {
-  const [state, setState] = useContext(UserContext);
-  const { userProfileDetails, updateUserProfileDetails } = useContext(
-    UserProfileDetailsContext
-  );
 
-  // Context API to update
+  const dispatch = useDispatch();
 
-  const { setUser  } = useUserContext();
+
+  ///////////////////////////////////////////////////////////////////////
+  // const [state, setState] = useContext(UserContext);
+  // const { userProfileDetails, updateUserProfileDetails } = useContext(
+  //   UserProfileDetailsContext
+  // );
+  //// Context API to update
+  //const { setUser  } = useUserContext();
+  ///////////////////////////////////////////////////////////////////////
 
   /****************************************/
   /******  To Open Modal Box     **********/
@@ -69,6 +76,9 @@ const ExpenseBook = () => {
   const keepAddingExpenseBook = () => {
     setOpenDiscardModal(false);
   };
+
+
+
   /****************************************/
   /****** Load All Expense Book      ******/
   /****************************************/
@@ -119,22 +129,24 @@ const ExpenseBook = () => {
         name: expenseBookName,
         color: expenseBookColor,
       };
-
       const res = await createExpenseBook(payload);
       if (res) {
         toast.success("You have Created Expense Book Successfully!", {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
+        dispatch(loginSuccess(res.addUserPoints));
         loadAllExpenseBookList();
         resetInputFields();
-        // To update the context api
-        updateUserProfileDetails(res.addUserPoints);
-        // To update Context API cookies
-        setUser(res.addUserPoints)
+
+        ///////////////////////////////////////////////////
+        // // To update the context api
+        // updateUserProfileDetails(res.addUserPoints);
+        // // To update Context API cookies
+        // setUser(res.addUserPoints)
+        ///////////////////////////////////////////////////
 
       }
     } catch (error: any) {
-
       toast.error(error.response && error.response.data.error, {
         position: toast.POSITION.TOP_RIGHT,
       });
@@ -165,7 +177,6 @@ const ExpenseBook = () => {
     <SubscriberPageLayout>
       <div className="row">
         <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-          {JSON.stringify(userProfileDetails)}
           <CardLayout
             title="All Expense Book"
             openModal={onOpenModal}

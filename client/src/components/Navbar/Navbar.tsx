@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
+import { logOut } from "../../redux/userSlice";
 import navbarStyle from "./Navbar.module.scss";
 import { UserProfileDetails } from "../../services/DataProvider";
 
@@ -13,14 +15,13 @@ import { useUserContext } from "../../contextapi/UserContextCookies";
 import { UserProtectedRouteContext } from "../../contextapi/UserProtectedRouteContext";
 
 const Navbar = () => {
-
-    // to use redux toolkit
-    const userProfileDetails = useSelector((state: any) => state.user.currentUser);
-
+  // to use redux toolkit
+  const userProfileDetails = useSelector(
+    (state: any) => state.user.currentUser
+  );
+  const dispatch = useDispatch();
 
   let navigate = useNavigate();
-
-  const { user, logout } = useUserContext();
 
   /////////////////////////////////////////////////////////////////////
   // All these are old context api that i used.
@@ -29,6 +30,8 @@ const Navbar = () => {
   //   UserProfileDetailsContext
   // );
   // Context API to show user protected route. But this context api is used to show protected route
+  // Context api with cookies
+  //  const { user, logout } = useUserContext();
   /////////////////////////////////////////////////////////////////////
 
   const [userInfo, setUserInfo]: any = useContext(UserProtectedRouteContext);
@@ -41,7 +44,7 @@ const Navbar = () => {
   // };
 
   const handleLogout = () => {
-    logout();
+    dispatch(logOut())
     navigate("/");
     window.localStorage.removeItem("tokenLogin");
     window.localStorage.removeItem("token");
@@ -51,14 +54,14 @@ const Navbar = () => {
     // setState("");
     // Additional logout-related logic, such as redirecting to the login page
   };
-  
+
   return (
     <nav className={navbarStyle.navbarContainer}>
       <ul>
-        <li>Redux:{userProfileDetails?.user?.name}||</li>
+        <li>Redux:{userProfileDetails?.name}||</li>
 
-        <li>{userProfileDetails?.user?.points} Points</li>
-        <li>{userProfileDetails?.user?.role}</li>
+        <li>{userProfileDetails?.points} Points</li>
+        <li>{userProfileDetails?.role}</li>
 
         <li className="nav-item">
           <Link
@@ -94,7 +97,6 @@ const Navbar = () => {
           </Link>
         </li>
 
-
         <li className="nav-item">
           <Link
             to={"/profile"}
@@ -112,9 +114,6 @@ const Navbar = () => {
             Home Rental
           </Link>
         </li>
-
-
-
 
         <li
           className="nav-item"

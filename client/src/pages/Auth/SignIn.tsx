@@ -1,7 +1,8 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import signInPageStyle from "./SignIn.module.scss";
 import { userLogin, UserLoginProps } from "../../services/API";
@@ -12,10 +13,16 @@ import HomePageLayout from "../../layouts/HomePageLayout";
 import TextField from "../../components/Input/TextField";
 import { loginStart, loginSuccess, loginFailure } from "../../redux/userSlice";
 import { useDispatch } from "react-redux";
+import { UserProfileDetails } from "../../services/DataProvider";
+import { getLogedInUserProfile } from "../../services/API";
 
 const SignIn = () => {
   let navigate = useNavigate();
 
+  // to use redux toolkit
+  const userProfileDetails = useSelector(
+    (state: any) => state.user.currentUser
+  );
   // to use redux toolkit
   const dispatch = useDispatch();
 
@@ -28,6 +35,7 @@ const SignIn = () => {
   // Context API to show user protected route.
 
   const [userInfo, setUserInfo]: any = useContext(UserProtectedRouteContext);
+
 
   /****************************************/
   /*********  User Login      *************/
@@ -53,38 +61,18 @@ const SignIn = () => {
       const res = await userLogin(payload);
 
       if (res.data) {
-        /////////////////////////////////////////////////////////////
-        // save user info in local storage
-        // localStorage.setItem("tokenLogin", JSON.stringify(res.data));
-        // update user information to context api
-        // setState({
-        //   user: res.data.user,
-        //   token: res.data.token,
-        // });
-        ///////////////////////////////////////////////////////////////
+   
         // This token is for protected route that is required to pass in the header
 
         window.localStorage.setItem("token", res.data.token);
-        // To test user protected route user context api
-        localStorage.setItem(
-          "userInforProtectedRoute",
-          JSON.stringify(res.data.user?.date)
-        );
-        setUserInfo(res.data.user?.date);
-        ////////////////// end
-        //To set User cookie context api.
-        // As soon as user login - we need to store user info in this context api can
-        //used any component to show user data. it also encrypt
-        setUser(res.data.user);
 
-        // To store data in redux toolkit
-
-        dispatch(loginSuccess(res.data));
+        dispatch(loginSuccess(res.data?.user));
 
         // To clean the state as soon as user loged in
 
         setEmail("");
         setPassword("");
+
 
         if (res.data.user?.blockUser) {
           setError("Your account is blocked. Please contact with the support1");
@@ -99,6 +87,32 @@ const SignIn = () => {
             navigate("/dashboard");
           }
         }
+
+        /////////////////////////////////////////////////////////////
+        // save user info in local storage
+        // localStorage.setItem("tokenLogin", JSON.stringify(res.data));
+        // update user information to context api
+        // setState({
+        //   user: res.data.user,
+        //   token: res.data.token,
+        // });
+        ///////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        // To test user protected route user context api
+        // localStorage.setItem(
+        //   "userInforProtectedRoute",
+        //   JSON.stringify(res.data.user?.date)
+        // );
+        // setUserInfo(res.data.user?.date);
+        ///////////////////////////////////// end
+        ///////////////////////////////////////////////////////////////
+        //To set User cookie context api.
+        // As soon as user login - we need to store user info in this context api can
+        //used any component to show user data. it also encrypt
+        //setUser(res.data.user);
+        ///////////////////////////////////////////////////////////////
+
+        // To store data in redux toolkit
       }
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {

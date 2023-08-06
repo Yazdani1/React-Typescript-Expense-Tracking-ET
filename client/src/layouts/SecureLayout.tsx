@@ -1,5 +1,6 @@
 import { useContext, ReactNode, FC } from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { UserContext } from "../contextapi/UserContext";
 import { useUserContext } from "../contextapi/UserContextCookies";
@@ -12,13 +13,26 @@ interface IProposSecureLayout {
 const SecureLayout: FC<IProposSecureLayout> = ({ children }) => {
   let location = useLocation();
 
-  const [userInfo] = useContext(UserProtectedRouteContext);
+    // to use redux toolkit
+    const userProfileDetails = useSelector(
+      (state: any) => state.user.currentUser
+    );
 
-  return userInfo ? (
-    <> {children}</>
-  ) : (
-    <Navigate to="/" replace state={{ from: location }} />
-  );
+
+    return userProfileDetails ? (
+      <> {children}</>
+    ) : (
+      <Navigate to="/" replace state={{ from: location }} />
+    );
+
+  /////////////////////////////////////////////////////////////////////////
+  // const [userInfo] = useContext(UserProtectedRouteContext);
+  // return userInfo ? (
+  //   <> {children}</>
+  // ) : (
+  //   <Navigate to="/" replace state={{ from: location }} />
+  // );
+  //////////////////////////////////////////////////////////////////////////
 
   /////////////////////////////////////////////////////////////////////
   // const [userstate] = useContext(UserContext);
