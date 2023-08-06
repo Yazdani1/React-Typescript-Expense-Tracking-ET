@@ -3,6 +3,8 @@ import "react-responsive-modal/styles.css";
 import { CiEdit } from "react-icons/ci";
 import { toast } from "react-toastify";
 import { CgProfile } from "react-icons/cg";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import SubscriberPageLayout from "../../layouts/SubscriberPageLayout";
 import CardLayout from "../../components/CardLayout/CardLayout";
@@ -16,16 +18,22 @@ import {
   getLogedInUserProfile,
 } from "../../services/API";
 import { useUserContext } from "../../contextapi/UserContextCookies";
+import { loginSuccess } from "../../redux/userSlice";
 
 const Profile = () => {
-  
+  // to use redux toolkit
+  const userProfileDetails = useSelector(
+    (state: any) => state.user.currentUser
+  );
+  const dispatch = useDispatch();
+
   //Context api state - these are context api that i used previously.
   // Now will not use this context api
   // const [state, setState] = useContext(UserContext);
   // const {userProfileDetails,updateUserProfileDetails} = useContext(UserProfileDetailsContext);
-  // Context API to update new user info -Cookies context api
 
-  const { user, setUser } = useUserContext();
+  // Context API to update new user info -Cookies context api
+  // const { user, setUser } = useUserContext();
 
   /****************************************/
   /******  To Open Modal Box     **********/
@@ -53,11 +61,16 @@ const Profile = () => {
         email: email,
         imageUrl: profilePic,
       };
-      const res = await updateSingleUserProfile(user?._id!, payload);
+      const res = await updateSingleUserProfile(
+        userProfileDetails?.user?._id!,
+        payload
+      );
       if (res) {
         toast.success("Successfully Updated Profile", {
           position: toast.POSITION.TOP_CENTER,
         });
+
+        dispatch(loginSuccess(res));
 
         /////////////////////////////////////////
         // To update the user context api with the updated profile data need to set response in the local storage
@@ -74,10 +87,9 @@ const Profile = () => {
         // updateUserProfileDetails(res?.user!);
         ////////////////////////////////////////////
         // From cookie context api - to update user info in the context api as soon as user update user info
-        
-        setUser(res.user);
+        //setUser(res.user);
+        /////////////////////////////////////////
       }
-
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {
         position: toast.POSITION.TOP_RIGHT,
@@ -86,10 +98,10 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    setName(user?.name!);
-    setEmail(user?.email!);
-    setProfilePic(user?.imageUrl!);
-  }, [user]);
+    setName(userProfileDetails?.user?.name!);
+    setEmail(userProfileDetails?.user?.email!);
+    setProfilePic(userProfileDetails?.user?.imageUrl!);
+  }, []);
 
   /****************************************/
   /******  To Show User Profile    ********/
@@ -118,9 +130,9 @@ const Profile = () => {
         <div className={style.profileContainer}>
           {/*  To show profile picture and if user did not add any profile picture then an avatar will be shown here */}
           <div>
-            {user?.imageUrl ? (
+            {userProfileDetails?.user?.imageUrl ? (
               <div className={style.profilePicture}>
-                <img src={user?.imageUrl} />
+                <img src={userProfileDetails?.user?.imageUrl} />
               </div>
             ) : (
               <div className={style.profilePictureAvatar}>
@@ -129,18 +141,20 @@ const Profile = () => {
                 </p>
               </div>
             )}
-            {user?.award.map((award, index) => (
-              <p key={index}>{award}</p>
-            ))}
+            {userProfileDetails?.user?.award.map(
+              (award: any, index: number) => (
+                <p key={index}>{award}</p>
+              )
+            )}
           </div>
 
           <div className={style.profileDetails}>
-            <h6>Name: {user?._id}</h6>
-            <h6>Name: {user?.name}</h6>
-            <h6>E-mail: {user?.email}</h6>
-            <h6>Role: {user?.role}</h6>
-            <h6>Joined: {user?.date}</h6>
-            <h6>Points: {user?.points}</h6>
+            <h6>Name: {userProfileDetails?.user?._id}</h6>
+            <h6>Name: {userProfileDetails?.user?.name}</h6>
+            <h6>E-mail: {userProfileDetails?.user?.email}</h6>
+            <h6>Role: {userProfileDetails?.user?.role}</h6>
+            <h6>Joined: {userProfileDetails?.user?.date}</h6>
+            <h6>Points: {userProfileDetails?.user?.points}</h6>
           </div>
 
           <div className={style.editIcon} onClick={onOpenModal}>

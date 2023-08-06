@@ -10,10 +10,14 @@ import { useUserContext } from "../../contextapi/UserContextCookies";
 import { UserProtectedRouteContext } from "../../contextapi/UserProtectedRouteContext";
 import HomePageLayout from "../../layouts/HomePageLayout";
 import TextField from "../../components/Input/TextField";
+import { loginStart, loginSuccess, loginFailure } from "../../redux/userSlice";
+import { useDispatch } from "react-redux";
 
 const SignIn = () => {
-
   let navigate = useNavigate();
+
+  // to use redux toolkit
+  const dispatch = useDispatch();
 
   // Old Used Context API
   // const [state, setState]:any = useContext(UserContext);
@@ -37,6 +41,7 @@ const SignIn = () => {
   const [error, setError] = useState<string>("");
 
   const onSubmitUserSignIn = async (e: any) => {
+    dispatch(loginStart());
 
     e.preventDefault();
     try {
@@ -48,7 +53,6 @@ const SignIn = () => {
       const res = await userLogin(payload);
 
       if (res.data) {
-
         /////////////////////////////////////////////////////////////
         // save user info in local storage
         // localStorage.setItem("tokenLogin", JSON.stringify(res.data));
@@ -59,7 +63,7 @@ const SignIn = () => {
         // });
         ///////////////////////////////////////////////////////////////
         // This token is for protected route that is required to pass in the header
-        
+
         window.localStorage.setItem("token", res.data.token);
         // To test user protected route user context api
         localStorage.setItem(
@@ -73,17 +77,18 @@ const SignIn = () => {
         //used any component to show user data. it also encrypt
         setUser(res.data.user);
 
+        // To store data in redux toolkit
+
+        dispatch(loginSuccess(res.data));
+
         // To clean the state as soon as user loged in
-        
+
         setEmail("");
         setPassword("");
 
         if (res.data.user?.blockUser) {
-
           setError("Your account is blocked. Please contact with the support1");
-
         } else {
-
           toast.success("You have Loged In Successfully!", {
             position: toast.POSITION.BOTTOM_RIGHT,
           });
@@ -93,13 +98,13 @@ const SignIn = () => {
           } else {
             navigate("/dashboard");
           }
-          
         }
       }
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {
         position: toast.POSITION.TOP_RIGHT,
       });
+      dispatch(loginFailure());
     }
   };
 

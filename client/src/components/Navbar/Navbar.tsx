@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import navbarStyle from "./Navbar.module.scss";
 import { UserProfileDetails } from "../../services/DataProvider";
@@ -12,6 +13,11 @@ import { useUserContext } from "../../contextapi/UserContextCookies";
 import { UserProtectedRouteContext } from "../../contextapi/UserProtectedRouteContext";
 
 const Navbar = () => {
+
+    // to use redux toolkit
+    const userProfileDetails = useSelector((state: any) => state.user.currentUser);
+
+
   let navigate = useNavigate();
 
   const { user, logout } = useUserContext();
@@ -49,10 +55,10 @@ const Navbar = () => {
   return (
     <nav className={navbarStyle.navbarContainer}>
       <ul>
-        <li>Protected: {userInfo}</li>
-        <li>{user?.name}</li>
-        <li>{user?.points} Points</li>
-        <li>{user?.role}</li>
+        <li>Redux:{userProfileDetails?.user?.name}||</li>
+
+        <li>{userProfileDetails?.user?.points} Points</li>
+        <li>{userProfileDetails?.user?.role}</li>
 
         <li className="nav-item">
           <Link

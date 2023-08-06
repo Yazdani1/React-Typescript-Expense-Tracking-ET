@@ -1,5 +1,6 @@
 import React, { useContext, ReactNode, FC, useEffect, useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 import { UserContext } from "../contextapi/UserContext";
 import { getUserRoleForAdmin } from "../services/API";
@@ -33,8 +34,13 @@ const AdminSecureLayout: FC<AdminSecureLayoutProps> = ({ children }) => {
         //   } else {
         //   }
       }
-    } catch (error) {
+    } catch (error:any) {
       navigate("/");
+
+
+      toast.error(error.response && error.response.data.error, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
     }
   };
 
