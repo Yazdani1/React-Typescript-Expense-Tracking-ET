@@ -33,7 +33,7 @@ const Profile = () => {
   // const [state, setState] = useContext(UserContext);
   // const {userProfileDetails,updateUserProfileDetails} = useContext(UserProfileDetailsContext);
   // Context API to update new user info -Cookies context api
-  // const { user, setUser } = useUserContext();
+  const { user, setUser } = useUserContext();
   ////////////////////////////////////////////////////////////////////////////////
 
   /****************************************/
@@ -88,7 +88,7 @@ const Profile = () => {
         // updateUserProfileDetails(res?.user!);
         ////////////////////////////////////////////
         // From cookie context api - to update user info in the context api as soon as user update user info
-        //setUser(res.user);
+        setUser(res.user);
         /////////////////////////////////////////
       }
     } catch (error: any) {
@@ -103,6 +103,15 @@ const Profile = () => {
     setEmail(userProfileDetails?.email!);
     setProfilePic(userProfileDetails?.imageUrl!);
   }, []);
+
+  /////////////////////////////////////////////
+  // With context api
+  // useEffect(() => {
+  //   setName(user?.name!);
+  //   setEmail(user?.email!);
+  //   setProfilePic(user?.imageUrl!);
+  // }, [user]);
+  /////////////////////////////////////////////
 
   /****************************************/
   /******  To Show User Profile    ********/
@@ -131,6 +140,7 @@ const Profile = () => {
         <div className={style.profileContainer}>
           {/*  To show profile picture and if user did not add any profile picture then an avatar will be shown here */}
           <div>
+            {user?.name}
             {userProfileDetails?.imageUrl ? (
               <div className={style.profilePicture}>
                 <img src={userProfileDetails?.imageUrl} />
