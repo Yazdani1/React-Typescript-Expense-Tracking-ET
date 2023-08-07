@@ -1,23 +1,19 @@
-import { FC, useState } from "react";
-import { AiFillDelete } from "react-icons/ai";
-import { FiMoreVertical } from "react-icons/fi";
-import { RiEdit2Fill } from "react-icons/ri";
+import { FC, useState } from 'react';
+import { AiFillDelete } from 'react-icons/ai';
+import { FiMoreVertical } from 'react-icons/fi';
+import { RiEdit2Fill } from 'react-icons/ri';
 
-import style from "./DropDownList.module.scss";
+import style from './DropDownList.module.scss';
 
 interface DropDownCardProps {
   handleUpdateOnOpenModal?: () => void;
   deleteSingleItem?: () => void;
 }
 
-const DropDownList: FC<DropDownCardProps> = ({
-  handleUpdateOnOpenModal,
-  deleteSingleItem,
-}) => {
-  
+const DropDownList: FC<DropDownCardProps> = ({ handleUpdateOnOpenModal, deleteSingleItem }) => {
   // to show dropdown card details
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
-  
+
   const handleDropDownCard = () => {
     setShowDropDown(!showDropDown);
   };

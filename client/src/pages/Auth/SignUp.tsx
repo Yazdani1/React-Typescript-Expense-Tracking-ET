@@ -154,7 +154,7 @@ const SignUp = () => {
                 onChange={(e) => setUserName(e.target.value)}
               />
             </div>
-            <p>{emailError}</p>
+            <p style={{ color: 'red' }}>{emailError}</p>
             <div className="form-group">
               <input
                 type="text"
@@ -167,7 +167,7 @@ const SignUp = () => {
               />
             </div>
 
-            <h6>{passwordError}</h6>
+            <h6 style={{ color: 'red' }}>{passwordError}</h6>
 
             <div className="form-group">
               <input
