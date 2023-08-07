@@ -1,6 +1,8 @@
 import { useContext, useState, useEffect } from 'react';
 import 'react-responsive-modal/styles.css';
 import { CiEdit } from 'react-icons/ci';
+import { IoMdClose } from 'react-icons/io';
+
 import { toast } from 'react-toastify';
 import { CgProfile } from 'react-icons/cg';
 import { useDispatch } from 'react-redux';
@@ -95,6 +97,11 @@ const Profile = () => {
   const addUserSkills = () => {
     setUserSkills([...userSkills, addSkills]);
     setAddSkills('');
+  };
+
+  const removeSkills = (skillIndex: string) => {
+    const skills = userSkills.filter((item) => item !== skillIndex);
+    setUserSkills(skills);
   };
 
   useEffect(() => {
@@ -203,9 +210,14 @@ const Profile = () => {
           <input type="text" name="Name" className={style.userForm} value={addSkills} onChange={(e) => setAddSkills(e.target.value)} />
         </div>
 
-        <div className={style.skillsDesing}>
-          {userSkills.map((skill: any, index: number) => (
-            <p key={index}>{skill}</p>
+        <div className={style.skills_container}>
+          {userSkills.map((skill, index) => (
+            <div key={index} className={style.skill_item}>
+              <p className={style.skill}>{skill}</p>
+              <p className={style.close_icon} onClick={() => removeSkills(skill)}>
+                <IoMdClose />
+              </p>
+            </div>
           ))}
         </div>
 

@@ -76,6 +76,7 @@
   p {
     background-color: orangered;
     border-radius: 60px;
+    margin-right: 1px;
     padding: 10px;
     color: wheat;
     row-gap: 20px;
@@ -85,4 +86,46 @@
       cursor: pointer;
     }
   }
+}
+
+.skills_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.skill_item {
+  display: flex;
+  align-items: center;
+  background-color: orangered;
+  border-radius: 10px;
+  color: wheat;
+  margin-right: 20px;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.skill {
+  padding: 5px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.close_icon {
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 1px; /* Adjust this value to fine-tune icon positioning */
+  right: -10px; /* Adjust this value to fine-tune icon positioning */
+  background-color: red; /* Set background color for the close icon */
+  border-radius: 50%; /* Make the icon container circular */
+  width: 24px;
+  height: 24px;
+}
+
+.close_icon:hover {
+  background-color: #e0e0e0; /* Change background color on hover */
 }
