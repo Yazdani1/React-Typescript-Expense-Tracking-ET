@@ -1,7 +1,7 @@
 import { useState, useEffect, MouseEvent } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate, Link } from 'react-router-dom';
-import { RiCheckFill } from 'react-icons/ri';
+import { HiCheckCircle } from 'react-icons/hi';
 
 import signInPageStyle from './SignIn.module.scss';
 import { UserRegistrationProps, userRegistration, getUserAccountRegistrationLocation } from '../../services/API';
@@ -177,7 +177,7 @@ const SignUp = () => {
                 onChange={handleEmailChange}
                 // onChange={(e) => setUserEmail(e.target.value)}
               />
-              <p className={signInPageStyle.checkIconDesign}>{isEmailValid && <RiCheckFill size={30} color="green" />}</p>
+              <p className={signInPageStyle.checkIconDesign}>{isEmailValid && <HiCheckCircle size={30} color="green" />}</p>
             </div>
 
             <h6 style={{ color: 'red' }}>{passwordError}</h6>
@@ -192,7 +192,7 @@ const SignUp = () => {
                 onChange={handlePasswordChange}
                 // onChange={(e) => setUserPassword(e.target.value)}
               />
-              <p className={signInPageStyle.checkIconDesign}>{isPasswordValid && <RiCheckFill size={30} color="green" />}</p>
+              <p className={signInPageStyle.checkIconDesign}>{isPasswordValid && <HiCheckCircle size={30} color="green" />}</p>
             </div>
 
             <button className={signInPageStyle.signInButton} onClick={(e) => onSubmitUserRegistration(e)}>
