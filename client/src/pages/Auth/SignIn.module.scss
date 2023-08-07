@@ -1,5 +1,5 @@
-@import "../../styles/Variables.scss";
-@import "../../styles/Mixin.scss";
+@import '../../styles/Variables.scss';
+@import '../../styles/Mixin.scss';
 
 .signInContainer {
   @include formContainer();
@@ -39,5 +39,22 @@
         font-size: 17px;
       }
     }
+  }
+}
+
+.email_filed_design {
+  position: relative;
+
+  .checkIconDesign {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-65%);
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #999;
   }
 }

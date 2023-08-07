@@ -1,6 +1,7 @@
 import { useState, useEffect, MouseEvent } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate, Link } from 'react-router-dom';
+import { RiCheckFill } from 'react-icons/ri';
 
 import signInPageStyle from './SignIn.module.scss';
 import { UserRegistrationProps, userRegistration, getUserAccountRegistrationLocation } from '../../services/API';
@@ -59,20 +60,30 @@ const SignUp = () => {
 
   const [emailError, setEmailError] = useState<string>('');
   const [passwordError, setPasswordError] = useState<string>('');
+  const [isEmailValid, setIsEmailValid] = useState<boolean>(false);
+  const [isPasswordValid, setIsPasswordValid] = useState<boolean>(false);
 
   // Reusable function to handle input validation and errors
-  const handleInputChange = (value: string, regex: RegExp, setError: React.Dispatch<React.SetStateAction<string>>, errorMessage: string) => {
+  const handleInputChange = (
+    value: string,
+    regex: RegExp,
+    setError: React.Dispatch<React.SetStateAction<string>>,
+    setValidity: React.Dispatch<React.SetStateAction<boolean>>,
+    errorMessage: string
+  ) => {
     if (!regex.test(value)) {
       setError(errorMessage);
+      setValidity(false);
     } else {
       setError('');
+      setValidity(true);
     }
   };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const email = e.target.value;
     setUserEmail(email);
-    handleInputChange(email, emailRegex, setEmailError, 'Please enter a valid email address.');
+    handleInputChange(email, emailRegex, setEmailError, setIsEmailValid, 'Please enter a valid email address.');
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,6 +93,7 @@ const SignUp = () => {
       password,
       passwordRegex,
       setPasswordError,
+      setIsPasswordValid,
       'Password must be at least 8 characters long and contain at least one letter and one digit.'
     );
   };
@@ -155,7 +167,7 @@ const SignUp = () => {
               />
             </div>
             <p style={{ color: 'red' }}>{emailError}</p>
-            <div className="form-group">
+            <div className={signInPageStyle.email_filed_design}>
               <input
                 type="text"
                 name="Name"
@@ -165,11 +177,12 @@ const SignUp = () => {
                 onChange={handleEmailChange}
                 // onChange={(e) => setUserEmail(e.target.value)}
               />
+              <p className={signInPageStyle.checkIconDesign}>{isEmailValid && <RiCheckFill size={30} color="green" />}</p>
             </div>
 
             <h6 style={{ color: 'red' }}>{passwordError}</h6>
 
-            <div className="form-group">
+            <div className={signInPageStyle.email_filed_design}>
               <input
                 type="password"
                 name="password"
@@ -179,6 +192,7 @@ const SignUp = () => {
                 onChange={handlePasswordChange}
                 // onChange={(e) => setUserPassword(e.target.value)}
               />
+              <p className={signInPageStyle.checkIconDesign}>{isPasswordValid && <RiCheckFill size={30} color="green" />}</p>
             </div>
 
             <button className={signInPageStyle.signInButton} onClick={(e) => onSubmitUserRegistration(e)}>
