@@ -1,5 +1,5 @@
-@import "../../styles/Variables.scss";
-@import "../../styles/Mixin.scss";
+@import '../../styles/Variables.scss';
+@import '../../styles/Mixin.scss';
 
 .profileContainer {
   display: flex;
@@ -67,4 +67,22 @@
 }
 .userForm {
   @include inputFieldDesign();
+}
+
+.skillsDesing {
+  display: flex;
+  gap: inherit;
+
+  p {
+    background-color: orangered;
+    border-radius: 60px;
+    padding: 10px;
+    color: wheat;
+    row-gap: 20px;
+    &:hover {
+      background-color: brown;
+      color: white;
+      cursor: pointer;
+    }
+  }
 }

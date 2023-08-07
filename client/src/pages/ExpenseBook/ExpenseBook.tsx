@@ -1,28 +1,19 @@
-import React, { useEffect, useState, useContext } from "react";
-import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState, useContext } from 'react';
+import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
 
-import { loginSuccess } from "../../redux/userSlice";
-import {
-  getExpenseBookList,
-  createExpenseBook,
-  CreateExpenseProps,
-  getLogedInUserProfile,
-} from "../../services/API";
-import {
-  ExpenseBookColor,
-  ExpenseBookInfo,
-  UserProfileDetails,
-} from "../../services/DataProvider";
-import SubscriberPageLayout from "../../layouts/SubscriberPageLayout";
-import CardLayout from "../../components/CardLayout/CardLayout";
-import expenseBookStyle from "./ExpenseBook.module.scss";
-import ExpenseBookCard from "./ExpenseBookCard";
-import ModalBox from "../../components/Modal/ModalBox";
-import ConfirmModal from "../../components/Modal/ConfirmModal";
-import { UserContext } from "../../contextapi/UserContext";
-import { UserProfileDetailsContext } from "../../contextapi/UserProfileDetailsContext";
-import { useUserContext } from "../../contextapi/UserContextCookies";
+import { loginSuccess } from '../../redux/userSlice';
+import { getExpenseBookList, createExpenseBook, CreateExpenseProps, getLogedInUserProfile } from '../../services/API';
+import { ExpenseBookColor, ExpenseBookInfo, UserProfileDetails } from '../../services/DataProvider';
+import SubscriberPageLayout from '../../layouts/SubscriberPageLayout';
+import CardLayout from '../../components/CardLayout/CardLayout';
+import expenseBookStyle from './ExpenseBook.module.scss';
+import ExpenseBookCard from './ExpenseBookCard';
+import ModalBox from '../../components/Modal/ModalBox';
+import ConfirmModal from '../../components/Modal/ConfirmModal';
+import { UserContext } from '../../contextapi/UserContext';
+import { UserProfileDetailsContext } from '../../contextapi/UserProfileDetailsContext';
+import { useUserContext } from '../../contextapi/UserContextCookies';
 
 const ExpenseBook = () => {
   const dispatch = useDispatch();
@@ -106,19 +97,16 @@ const ExpenseBook = () => {
   /****** Create  Expense Book      *******/
   /****************************************/
 
-  const [expenseBookName, setExpenseBookName] = useState<string>("");
-  const [expenseBookColor, setExpenseBookColor] = useState<ExpenseBookColor>(
-    ExpenseBookColor.Orange
-  );
+  const [expenseBookName, setExpenseBookName] = useState<string>('');
+
+  const [expenseBookColor, setExpenseBookColor] = useState<ExpenseBookColor>(ExpenseBookColor.Orange);
 
   //////////////////////////////////////////////////////
   /////////////////    Radio button start ///////////////
   //////////////////////////////////////////////////////
 
   // to select expense book color from radio button
-  const onChangeRadioButtonSelectExpenseBookColor = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const onChangeRadioButtonSelectExpenseBookColor = (event: React.ChangeEvent<HTMLInputElement>) => {
     setExpenseBookColor(event.target.value as ExpenseBookColor);
   };
 
@@ -130,7 +118,7 @@ const ExpenseBook = () => {
       };
       const res = await createExpenseBook(payload);
       if (res) {
-        toast.success("You have Created Expense Book Successfully!", {
+        toast.success('You have Created Expense Book Successfully!', {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
         dispatch(loginSuccess(res.addUserPoints));
@@ -156,7 +144,7 @@ const ExpenseBook = () => {
    * Then user will see empty input fields
    */
   const resetInputFields = () => {
-    setExpenseBookName("");
+    setExpenseBookName('');
     setExpenseBookColor(ExpenseBookColor.Orange);
   };
 
@@ -172,19 +160,12 @@ const ExpenseBook = () => {
     <SubscriberPageLayout>
       <div className="row">
         <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-          <CardLayout
-            title="All Expense Book"
-            openModal={onOpenModal}
-            showAddIcon={true}
-          >
+          <CardLayout title="All Expense Book" openModal={onOpenModal} showAddIcon={true}>
             <div className="row">
               {allExpenseBook &&
                 allExpenseBook.map((expensebook) => (
                   <div className="col-xl-4 col-lg-4">
-                    <ExpenseBookCard
-                      expense_book={expensebook}
-                      key={expensebook._id}
-                    />
+                    <ExpenseBookCard expense_book={expensebook} key={expensebook._id} />
                   </div>
                 ))}
             </div>
@@ -201,10 +182,7 @@ const ExpenseBook = () => {
           >
             {/* Radio button to choose expense book color*/}
 
-            <div
-              onChange={onChangeRadioButtonSelectExpenseBookColor}
-              className={expenseBookStyle.chooseExpenseColorContainer}
-            >
+            <div onChange={onChangeRadioButtonSelectExpenseBookColor} className={expenseBookStyle.chooseExpenseColorContainer}>
               {/* To loop color from enum and set into the radio button */}
               {Object.keys(ExpenseBookColor).map((color) => (
                 <div
@@ -217,12 +195,7 @@ const ExpenseBook = () => {
                   }
                 >
                   <label>
-                    <input
-                      type="radio"
-                      value={color}
-                      name="color"
-                      checked={expenseBookColor === color}
-                    />
+                    <input type="radio" value={color} name="color" checked={expenseBookColor === color} />
                   </label>
                 </div>
               ))}
@@ -284,10 +257,7 @@ const ExpenseBook = () => {
             open={openDiscardModal}
             showDiscardButton={true}
           >
-            <h6>
-              Are you sure you want to discard this expense book? Your expense
-              book won't be saved.
-            </h6>
+            <h6>Are you sure you want to discard this expense book? Your expense book won't be saved.</h6>
           </ConfirmModal>
         </div>
 

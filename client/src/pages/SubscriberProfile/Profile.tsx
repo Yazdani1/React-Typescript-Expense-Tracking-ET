@@ -1,30 +1,24 @@
-import { useContext, useState, useEffect } from "react";
-import "react-responsive-modal/styles.css";
-import { CiEdit } from "react-icons/ci";
-import { toast } from "react-toastify";
-import { CgProfile } from "react-icons/cg";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useContext, useState, useEffect } from 'react';
+import 'react-responsive-modal/styles.css';
+import { CiEdit } from 'react-icons/ci';
+import { toast } from 'react-toastify';
+import { CgProfile } from 'react-icons/cg';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import SubscriberPageLayout from "../../layouts/SubscriberPageLayout";
-import CardLayout from "../../components/CardLayout/CardLayout";
-import { UserContext } from "../../contextapi/UserContext";
-import { UserProfileDetailsContext } from "../../contextapi/UserProfileDetailsContext";
-import style from "./Profile.module.scss";
-import ModalBox from "../../components/Modal/ModalBox";
-import {
-  UpdateUserProfileProps,
-  updateSingleUserProfile,
-  getLogedInUserProfile,
-} from "../../services/API";
-import { useUserContext } from "../../contextapi/UserContextCookies";
-import { loginSuccess } from "../../redux/userSlice";
+import SubscriberPageLayout from '../../layouts/SubscriberPageLayout';
+import CardLayout from '../../components/CardLayout/CardLayout';
+import { UserContext } from '../../contextapi/UserContext';
+import { UserProfileDetailsContext } from '../../contextapi/UserProfileDetailsContext';
+import style from './Profile.module.scss';
+import ModalBox from '../../components/Modal/ModalBox';
+import { UpdateUserProfileProps, updateSingleUserProfile, getLogedInUserProfile } from '../../services/API';
+import { useUserContext } from '../../contextapi/UserContextCookies';
+import { loginSuccess } from '../../redux/userSlice';
 
 const Profile = () => {
   // to use redux toolkit
-  const userProfileDetails = useSelector(
-    (state: any) => state.user.currentUser
-  );
+  const userProfileDetails = useSelector((state: any) => state.user.currentUser);
   const dispatch = useDispatch();
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -51,9 +45,11 @@ const Profile = () => {
   /******  To Update User Profile    ******/
   /****************************************/
 
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [profilePic, setProfilePic] = useState<string>("");
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [profilePic, setProfilePic] = useState<string>('');
+  const [userSkills, setUserSkills] = useState<string[]>([]);
+  const [addSkills, setAddSkills] = useState<string>('');
 
   const onSubmitUpdateProfile = async () => {
     try {
@@ -61,13 +57,11 @@ const Profile = () => {
         name: name,
         email: email,
         imageUrl: profilePic,
+        skills: userSkills,
       };
-      const res = await updateSingleUserProfile(
-        userProfileDetails?._id!,
-        payload
-      );
+      const res = await updateSingleUserProfile(userProfileDetails?._id!, payload);
       if (res) {
-        toast.success("Successfully Updated Profile", {
+        toast.success('Successfully Updated Profile', {
           position: toast.POSITION.TOP_CENTER,
         });
 
@@ -98,10 +92,16 @@ const Profile = () => {
     }
   };
 
+  const addUserSkills = () => {
+    setUserSkills([...userSkills, addSkills]);
+    setAddSkills('');
+  };
+
   useEffect(() => {
     setName(userProfileDetails?.name!);
     setEmail(userProfileDetails?.email!);
     setProfilePic(userProfileDetails?.imageUrl!);
+    setUserSkills(userProfileDetails?.skills);
   }, []);
 
   /////////////////////////////////////////////
@@ -152,11 +152,15 @@ const Profile = () => {
                 </p>
               </div>
             )}
-            {userProfileDetails?.award.map(
-              (award: any, index: number) => (
-                <p key={index}>{award}</p>
-              )
-            )}
+            {userProfileDetails?.award.map((award: any, index: number) => (
+              <p key={index}>{award}</p>
+            ))}
+
+            <div className={style.skillsDesing}>
+              {userProfileDetails?.skills.map((skill: any, index: number) => (
+                <p key={index}>{skill}</p>
+              ))}
+            </div>
           </div>
 
           <div className={style.profileDetails}>
@@ -180,44 +184,34 @@ const Profile = () => {
 
       {/* To update user info - Modal Box */}
 
-      <ModalBox
-        open={open}
-        onCloseModal={onCloseModal}
-        onSaveButton={onSubmitUpdateProfile}
-        title="Update Profile"
-      >
+      <ModalBox open={open} onCloseModal={onCloseModal} onSaveButton={onSubmitUpdateProfile} title="Update Profile">
         <label>Name:</label>
         <div className="form-group">
-          <input
-            type="text"
-            name="Name"
-            className={style.userForm}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+          <input type="text" name="Name" className={style.userForm} value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <label>E-mail:</label>
 
         <div className="form-group">
-          <input
-            type="text"
-            name="Name"
-            className={style.userForm}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <input type="text" name="Name" className={style.userForm} value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <label>Profile Pic:</label>
 
         <div className="form-group">
-          <input
-            type="text"
-            name="Name"
-            className={style.userForm}
-            value={profilePic}
-            onChange={(e) => setProfilePic(e.target.value)}
-          />
+          <input type="text" name="Name" className={style.userForm} value={profilePic} onChange={(e) => setProfilePic(e.target.value)} />
         </div>
+        <div className="form-group">
+          <input type="text" name="Name" className={style.userForm} value={addSkills} onChange={(e) => setAddSkills(e.target.value)} />
+        </div>
+
+        <div className={style.skillsDesing}>
+          {userSkills.map((skill: any, index: number) => (
+            <p key={index}>{skill}</p>
+          ))}
+        </div>
+
+        <button className="btn btn-warning" onClick={addUserSkills}>
+          Add Skills
+        </button>
       </ModalBox>
     </SubscriberPageLayout>
   );

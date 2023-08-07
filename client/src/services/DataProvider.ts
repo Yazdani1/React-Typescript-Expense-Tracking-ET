@@ -40,6 +40,7 @@ export interface UserProfileDetails extends IBase {
   longitude: number;
   points: number;
   award: UserAward[];
+  skills: string[]
 }
 
 export interface UserProfileUpdate {
