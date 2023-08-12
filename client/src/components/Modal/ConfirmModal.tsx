@@ -1,9 +1,9 @@
-import { FC, ReactNode } from "react";
-import "react-responsive-modal/styles.css";
-import { Modal } from "react-responsive-modal";
+import { FC, ReactNode } from 'react';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 
-import modalBoxStyle from "./ModalBox.module.scss";
-import confirmModalStyle from "./ConfirmModal.module.scss";
+import modalBoxStyle from './ModalBox.module.scss';
+import confirmModalStyle from './ConfirmModal.module.scss';
 
 interface ConfirmModalProps {
   open: boolean;
@@ -40,9 +40,7 @@ const ConfirmModal: FC<ConfirmModalProps> = ({
         <h5>{title}</h5>
       </div>
       <hr />
-      <div className={confirmModalStyle.confirmModalMainChildren}>
-        {children}
-      </div>
+      <div className={confirmModalStyle.confirmModalMainChildren}>{children}</div>
       {showDiscardButton && (
         <div className={modalBoxStyle.modalActionButton}>
           <button className="btn btn-info" onClick={keepAddingExpenseBook}>
