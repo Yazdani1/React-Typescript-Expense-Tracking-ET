@@ -1,9 +1,8 @@
+import { useHomeRentalContext } from '../../contextapi/HomeRentalContext';
+import SubscriberPageLayout from '../../layouts/SubscriberPageLayout';
+import CardLayout from '../../components/CardLayout/CardLayout';
 
-import { useHomeRentalContext } from "../../contextapi/HomeRentalContext";
-import SubscriberPageLayout from "../../layouts/SubscriberPageLayout";
-import CardLayout from "../../components/CardLayout/CardLayout";
-
-import { useIncomeRecordContext } from "../../contextapi/IncomeRecordContext";
+import { useIncomeRecordContext } from '../../contextapi/IncomeRecordContext';
 
 const HomeRentalPost = () => {
   // Here I am using context api to show user data and home rental post.
@@ -11,8 +10,7 @@ const HomeRentalPost = () => {
   // here i just need to use all the api data that passed then i can use it here.
 
   const { allHomeRentPosts, allUsers } = useHomeRentalContext();
-  const { allIncomeRecords } =
-    useIncomeRecordContext();
+  const { allIncomeRecords } = useIncomeRecordContext();
   return (
     <SubscriberPageLayout>
       <div className="row">
@@ -21,10 +19,7 @@ const HomeRentalPost = () => {
           <CardLayout>
             <h5>{allIncomeRecords.length}</h5>
 
-            {allIncomeRecords &&
-              allIncomeRecords.map((income: any, index: any) => (
-                <h6>{income.title}</h6>
-              ))}
+            {allIncomeRecords && allIncomeRecords.map((income: any, index: any) => <h6>{income.title}</h6>)}
           </CardLayout>
           <CardLayout>
             <p>HomeRentalPost. {allHomeRentPosts.length}</p>
@@ -33,10 +28,10 @@ const HomeRentalPost = () => {
                 allHomeRentPosts.map((post: any) => (
                   <div
                     style={{
-                      borderRadius: "10px",
-                      margin: "5px",
-                      padding: "5px",
-                      border: "1px solid black",
+                      borderRadius: '10px',
+                      margin: '5px',
+                      padding: '5px',
+                      border: '1px solid black',
                     }}
                   >
                     <h6>{post.title}</h6>
@@ -55,10 +50,10 @@ const HomeRentalPost = () => {
                 allUsers.map((user: any) => (
                   <div
                     style={{
-                      borderRadius: "10px",
-                      margin: "5px",
-                      padding: "5px",
-                      border: "1px solid black",
+                      borderRadius: '10px',
+                      margin: '5px',
+                      padding: '5px',
+                      border: '1px solid black',
                     }}
                   >
                     <h6>{user.name}</h6>

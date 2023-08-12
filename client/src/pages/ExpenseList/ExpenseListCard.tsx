@@ -1,8 +1,8 @@
-import { FC } from "react";
-import moment from "moment";
+import { FC } from 'react';
+import moment from 'moment';
 
-import expenseListCardStyle from "./ExpenseListCard.module.scss";
-import { ExpenseList } from "../../services/DataProvider";
+import expenseListCardStyle from './ExpenseListCard.module.scss';
+import { ExpenseList } from '../../services/DataProvider';
 
 interface ExpenseListCardProps {
   expenseList: ExpenseList;
@@ -23,9 +23,8 @@ const ExpenseListCard: FC<ExpenseListCardProps> = ({ expenseList }) => {
         </div>
 
         <div className="col-xl-3 col-lg-2 col-md-12 col-sm-6">
-          <h6> {moment(expenseList.date).format("MMM Do YY")}</h6>
+          <h6> {moment(expenseList.date).format('MMM Do YY')}</h6>
         </div>
-        
       </div>
     </div>
   );
