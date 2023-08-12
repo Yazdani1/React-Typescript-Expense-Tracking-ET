@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
-import AdminPageLayout from "../../layouts/AdminPageLayout";
-import { getAllUserList } from "../../services/API";
-import { UserProfileDetails } from "../../services/DataProvider";
-import UserListsCard from "./UserListsCard";
-import CardLayout from "../../components/CardLayout/CardLayout";
+import AdminPageLayout from '../../layouts/AdminPageLayout';
+import { getAllUserList } from '../../services/API';
+import { UserProfileDetails } from '../../services/DataProvider';
+import UserListsCard from './UserListsCard';
+import CardLayout from '../../components/CardLayout/CardLayout';
 
 const Admin = () => {
-
   /****************************************/
   /*********Load All Users List     ******/
   /****************************************/
@@ -16,13 +15,11 @@ const Admin = () => {
   const [allUser, setAllUser] = useState<UserProfileDetails[]>([]);
   const loadAllUserList = async () => {
     try {
-
       const res = await getAllUserList();
 
       if (res) {
         setAllUser(res);
       }
-
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {
         position: toast.POSITION.TOP_RIGHT,
@@ -37,22 +34,13 @@ const Admin = () => {
   return (
     <AdminPageLayout>
       <div className="container-fluid">
-        
         {/* Row Header */}
 
         <CardLayout>
           <UserListHeader />
         </CardLayout>
 
-        {allUser &&
-          allUser.map((users) => (
-            <UserListsCard
-              user={users}
-              key={users._id}
-              loadUserList={loadAllUserList}
-            />
-          ))}
-          
+        {allUser && allUser.map((users) => <UserListsCard user={users} key={users._id} loadUserList={loadAllUserList} />)}
       </div>
     </AdminPageLayout>
   );
