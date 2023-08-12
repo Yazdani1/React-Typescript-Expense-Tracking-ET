@@ -9,21 +9,21 @@ interface IBase {
 /****************************************/
 
 export enum UserRole {
-  Admin = "Admin",
-  Subscriber = "Subscriber",
+  Admin = 'Admin',
+  Subscriber = 'Subscriber',
 }
 
 export enum AccountType {
-  Silver = "Silver",
-  Gold = "Gold",
-  Premium = "Premium",
+  Silver = 'Silver',
+  Gold = 'Gold',
+  Premium = 'Premium',
 }
 
 export enum UserAward {
-  PullShark = "PullShark",
-  QuickDraw = "QuickDraw",
-  Yolo = "Yolo",
-  GoldVolt = "GoldVolt",
+  PullShark = 'PullShark',
+  QuickDraw = 'QuickDraw',
+  Yolo = 'Yolo',
+  GoldVolt = 'GoldVolt',
 }
 
 export interface UserProfileDetails extends IBase {
@@ -40,7 +40,7 @@ export interface UserProfileDetails extends IBase {
   longitude: number;
   points: number;
   award: UserAward[];
-  skills: string[]
+  skills: string[];
 }
 
 export interface UserProfileUpdate {
@@ -71,9 +71,9 @@ export interface CreateExpenseBook extends IBase {
   addUserPoints: UserProfileDetails;
 }
 export enum ExpenseBookColor {
-  Orange = "Orange",
-  Green = "Green",
-  Yellow = "Yellow",
+  Orange = 'Orange',
+  Green = 'Green',
+  Yellow = 'Yellow',
 }
 /****************************************/
 /*** Expense Book Details         ******/
@@ -114,11 +114,11 @@ export interface ExpenseCountByCategory {
 /****************************************/
 
 export enum TotalExpenseChartTypes {
-  Line_Chart = "Line_Chart",
-  Area_Chart = "Area_Chart",
-  Bar_Chart = "Bar_Chart",
-  Line_Bar_Area_Composed_Chart = "Line_Bar_Area_Composed_Chart",
-  Pie_Chart = "Pie_Chart",
+  Line_Chart = 'Line_Chart',
+  Area_Chart = 'Area_Chart',
+  Bar_Chart = 'Bar_Chart',
+  Line_Bar_Area_Composed_Chart = 'Line_Bar_Area_Composed_Chart',
+  Pie_Chart = 'Pie_Chart',
 }
 
 /****************************************/
