@@ -1,10 +1,10 @@
-import { useContext, ReactNode, FC } from "react";
-import { Navigate, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useContext, ReactNode, FC } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import { UserContext } from "../contextapi/UserContext";
-import { useUserContext } from "../contextapi/UserContextCookies";
-import { UserProtectedRouteContext } from "../contextapi/UserProtectedRouteContext";
+import { UserContext } from '../contextapi/UserContext';
+import { useUserContext } from '../contextapi/UserContextCookies';
+import { UserProtectedRouteContext } from '../contextapi/UserProtectedRouteContext';
 
 interface IProposSecureLayout {
   children: ReactNode;
@@ -13,17 +13,10 @@ interface IProposSecureLayout {
 const SecureLayout: FC<IProposSecureLayout> = ({ children }) => {
   let location = useLocation();
 
-    // to use redux toolkit
-    const userProfileDetails = useSelector(
-      (state: any) => state.user.currentUser
-    );
+  // to use redux toolkit
+  const userProfileDetails = useSelector((state: any) => state.user.currentUser);
 
-
-    return userProfileDetails ? (
-      <> {children}</>
-    ) : (
-      <Navigate to="/" replace state={{ from: location }} />
-    );
+  return userProfileDetails ? <> {children}</> : <Navigate to="/" replace state={{ from: location }} />;
 
   /////////////////////////////////////////////////////////////////////////
   // const [userInfo] = useContext(UserProtectedRouteContext);

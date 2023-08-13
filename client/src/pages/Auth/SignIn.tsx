@@ -1,28 +1,26 @@
-import { useState, useContext, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useNavigate, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useState, useContext, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import signInPageStyle from "./SignIn.module.scss";
-import { userLogin, UserLoginProps } from "../../services/API";
-import { UserContext } from "../../contextapi/UserContext";
-import { useUserContext } from "../../contextapi/UserContextCookies";
-import { UserProtectedRouteContext } from "../../contextapi/UserProtectedRouteContext";
-import HomePageLayout from "../../layouts/HomePageLayout";
-import TextField from "../../components/Input/TextField";
-import { loginStart, loginSuccess, loginFailure } from "../../redux/userSlice";
-import { useDispatch } from "react-redux";
-import { UserProfileDetails } from "../../services/DataProvider";
-import { getLogedInUserProfile } from "../../services/API";
+import signInPageStyle from './SignIn.module.scss';
+import { userLogin, UserLoginProps } from '../../services/API';
+import { UserContext } from '../../contextapi/UserContext';
+import { useUserContext } from '../../contextapi/UserContextCookies';
+import { UserProtectedRouteContext } from '../../contextapi/UserProtectedRouteContext';
+import HomePageLayout from '../../layouts/HomePageLayout';
+import TextField from '../../components/Input/TextField';
+import { loginStart, loginSuccess, loginFailure } from '../../redux/userSlice';
+import { useDispatch } from 'react-redux';
+import { UserProfileDetails } from '../../services/DataProvider';
+import { getLogedInUserProfile } from '../../services/API';
 
 const SignIn = () => {
   let navigate = useNavigate();
 
   // to use redux toolkit
-  const userProfileDetails = useSelector(
-    (state: any) => state.user.currentUser
-  );
+  const userProfileDetails = useSelector((state: any) => state.user.currentUser);
   // to use redux toolkit
   const dispatch = useDispatch();
 
@@ -36,17 +34,16 @@ const SignIn = () => {
 
   const [userInfo, setUserInfo]: any = useContext(UserProtectedRouteContext);
 
-
   /****************************************/
   /*********  User Login      *************/
   /****************************************/
 
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   // to show blocked user error message
 
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string>('');
 
   const onSubmitUserSignIn = async (e: any) => {
     dispatch(loginStart());
@@ -61,30 +58,28 @@ const SignIn = () => {
       const res = await userLogin(payload);
 
       if (res.data) {
-   
         // This token is for protected route that is required to pass in the header
 
-        window.localStorage.setItem("token", res.data.token);
+        window.localStorage.setItem('token', res.data.token);
 
         dispatch(loginSuccess(res.data?.user));
 
         // To clean the state as soon as user loged in
 
-        setEmail("");
-        setPassword("");
-
+        setEmail('');
+        setPassword('');
 
         if (res.data.user?.blockUser) {
-          setError("Your account is blocked. Please contact with the support1");
+          setError('Your account is blocked. Please contact with the support1');
         } else {
-          toast.success("You have Loged In Successfully!", {
+          toast.success('You have Loged In Successfully!', {
             position: toast.POSITION.BOTTOM_RIGHT,
           });
 
-          if (res.data.user?.role === "Admin") {
-            navigate("/admin");
+          if (res.data.user?.role === 'Admin') {
+            navigate('/admin');
           } else {
-            navigate("/dashboard");
+            navigate('/dashboard');
           }
         }
 
@@ -128,7 +123,7 @@ const SignIn = () => {
         <div className={signInPageStyle.signInContainer}>
           <div className={signInPageStyle.signInFormDesign}>
             <h5>Sign In</h5>
-            {error && <h6 style={{ color: "red" }}>{error}</h6>}
+            {error && <h6 style={{ color: 'red' }}>{error}</h6>}
             <div className={signInPageStyle.inputFormArea}>
               <div className="form-group">
                 <input
@@ -152,16 +147,10 @@ const SignIn = () => {
                 />
               </div>
 
-              <button
-                className={signInPageStyle.signInButton}
-                onClick={(e) => onSubmitUserSignIn(e)}
-              >
+              <button className={signInPageStyle.signInButton} onClick={(e) => onSubmitUserSignIn(e)}>
                 Sign In
               </button>
-              <Link
-                to={"/signup"}
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
+              <Link to={'/signup'} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <span className={signInPageStyle.signUpHereOption}>
                   <p>Don't have an account? Sign Up here</p>
                 </span>
