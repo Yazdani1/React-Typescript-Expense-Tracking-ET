@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
-import SubscriberPageLayout from "../../layouts/SubscriberPageLayout";
-import CardLayout from "../../components/CardLayout/CardLayout";
-import { getAllHomeRentPosts } from "../../services/API";
+import SubscriberPageLayout from '../../layouts/SubscriberPageLayout';
+import CardLayout from '../../components/CardLayout/CardLayout';
+import { getAllHomeRentPosts } from '../../services/API';
 
 const HomeRentalOfflineData = () => {
   const [allHomeRentPosts, setAllHomeRentPosts] = useState<any>([]);
 
   const loadAllHomeRentPosts = async () => {
     try {
-      const offlineData = localStorage.getItem("homeRentPosts");
+      const offlineData = localStorage.getItem('homeRentPosts');
       if (offlineData) {
         setAllHomeRentPosts(JSON.parse(offlineData));
       } else {
         const res = await getAllHomeRentPosts();
         setAllHomeRentPosts(res.data);
-        localStorage.setItem("homeRentPosts", JSON.stringify(res.data));
+        localStorage.setItem('homeRentPosts', JSON.stringify(res.data));
       }
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {
@@ -32,7 +32,7 @@ const HomeRentalOfflineData = () => {
   const [testData, setTestData] = useState<any>([]);
 
   const loadLocalStorageData = () => {
-    const testofflineData = localStorage.getItem("homeRentPosts");
+    const testofflineData = localStorage.getItem('homeRentPosts');
     if (testofflineData) {
       setTestData(JSON.parse(testofflineData));
     }
@@ -45,12 +45,10 @@ const HomeRentalOfflineData = () => {
 
   return (
     <SubscriberPageLayout>
-        <CardLayout>
-            <h6>{testData.length}</h6>
-            {testData && testData.map((item:any)=>(
-                <h6>{item.title}</h6>
-            ))}
-        </CardLayout>
+      <CardLayout>
+        <h6>{testData.length}</h6>
+        {testData && testData.map((item: any) => <h6>{item.title}</h6>)}
+      </CardLayout>
       <CardLayout>
         <h6>Home Rental Offline Data</h6>
         <p>{JSON.stringify(allHomeRentPosts)}</p>

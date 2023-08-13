@@ -1,23 +1,18 @@
-import { useState } from "react";
-import { toast } from "react-toastify";
+import { useState } from 'react';
+import { toast } from 'react-toastify';
 
-import style from "./Income.module.scss";
-import SubscriberPageLayout from "../../layouts/SubscriberPageLayout";
-import CardLayout from "../../components/CardLayout/CardLayout";
-import { useIncomeRecordContext } from "../../contextapi/IncomeRecordContext";
-import IncomeCard from "./IncomeCard";
-import ModalBox from "../../components/Modal/ModalBox";
-import {
-  createIncomeRecord,
-  CreateIncomeRecordProps,
-} from "../../services/API";
-import TextField from "../../components/Input/TextField";
+import style from './Income.module.scss';
+import SubscriberPageLayout from '../../layouts/SubscriberPageLayout';
+import CardLayout from '../../components/CardLayout/CardLayout';
+import { useIncomeRecordContext } from '../../contextapi/IncomeRecordContext';
+import IncomeCard from './IncomeCard';
+import ModalBox from '../../components/Modal/ModalBox';
+import { createIncomeRecord, CreateIncomeRecordProps } from '../../services/API';
+import TextField from '../../components/Input/TextField';
 
 const Income = () => {
-  
   //Context API
-  const { allIncomeRecords, loadLogedInUserIncomeRecords } =
-    useIncomeRecordContext();
+  const { allIncomeRecords, loadLogedInUserIncomeRecords } = useIncomeRecordContext();
 
   /****************************************/
   /******  To Open Modal Box     **********/
@@ -36,9 +31,9 @@ const Income = () => {
   /****** Create Income Record   **********/
   /****************************************/
 
-  const [title, setTitle] = useState<string>("");
-  const [des, setDes] = useState<string>("");
-  const [amount, setAmount] = useState<string>("");
+  const [title, setTitle] = useState<string>('');
+  const [des, setDes] = useState<string>('');
+  const [amount, setAmount] = useState<string>('');
 
   const onSubmitCreateIncomeRecord = async () => {
     try {
@@ -49,7 +44,7 @@ const Income = () => {
       };
       const res = await createIncomeRecord(payload);
       if (res) {
-        toast.success("Income record created successfully", {
+        toast.success('Income record created successfully', {
           position: toast.POSITION.TOP_RIGHT,
         });
         loadLogedInUserIncomeRecords();
@@ -65,44 +60,17 @@ const Income = () => {
 
   return (
     <SubscriberPageLayout>
-      <CardLayout
-        title="Income Record Lists"
-        showAddIcon
-        openModal={onOpenModal}
-      >
+      <CardLayout title="Income Record Lists" showAddIcon openModal={onOpenModal}>
         {allIncomeRecords.length}
-        {allIncomeRecords &&
-          allIncomeRecords.map((income: any, index: any) => (
-            <IncomeCard incomeRecord={income} key={index} postid={income._id} />
-          ))}
+        {allIncomeRecords && allIncomeRecords.map((income: any, index: any) => <IncomeCard incomeRecord={income} key={index} postid={income._id} />)}
       </CardLayout>
 
       {/* Modal Box to add income record */}
 
-      <ModalBox
-        open={open}
-        onCloseModal={onCloseModal}
-        title="Create Income Record"
-        onSaveButton={onSubmitCreateIncomeRecord}
-      >
-        <TextField
-          label="Title"
-          placeholder="title.."
-          value={title}
-          setValue={setTitle}
-        />
-        <TextField
-          label="Description"
-          placeholder="description.."
-          value={des}
-          setValue={setDes}
-        />
-        <TextField
-          label="Amount"
-          placeholder="amount.."
-          value={amount}
-          setValue={setAmount}
-        />
+      <ModalBox open={open} onCloseModal={onCloseModal} title="Create Income Record" onSaveButton={onSubmitCreateIncomeRecord}>
+        <TextField label="Title" placeholder="title.." value={title} setValue={setTitle} />
+        <TextField label="Description" placeholder="description.." value={des} setValue={setDes} />
+        <TextField label="Amount" placeholder="amount.." value={amount} setValue={setAmount} />
       </ModalBox>
     </SubscriberPageLayout>
   );
