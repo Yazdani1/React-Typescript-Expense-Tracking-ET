@@ -1,0 +1,15 @@
+.courseContainer {
+  background-color: #ffffff;
+  border-radius: 10px; /* Adjust the value to control the roundness of the corners */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adjust the values for the desired shadow effect */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+
+  .itemRow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+  }
+}

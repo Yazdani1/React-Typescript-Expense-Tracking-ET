@@ -152,3 +152,23 @@ export interface IncomeRecord extends IBase {
   amount: number;
   postedBy: UserProfileDetails;
 }
+
+/****************************************/
+/*********** Instructor    *************/
+/****************************************/
+
+export interface Course extends IBase {
+  title: string;
+  des: string;
+  coupon: string;
+  maxStudents: number;
+  enrolledStudents: number;
+  postedBy: UserProfileDetails;
+}
+
+export interface Lecture extends IBase {
+  lectureTitle: string;
+  lectureDes: string;
+  courseId: string;
+  postedBy: UserProfileDetails;
+}

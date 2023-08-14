@@ -73,11 +73,13 @@ const SignIn = () => {
           setError('Your account is blocked. Please contact with the support1');
         } else {
           toast.success('You have Loged In Successfully!', {
-            position: toast.POSITION.BOTTOM_RIGHT,
+            position: toast.POSITION.TOP_CENTER,
           });
 
           if (res.data.user?.role === 'Admin') {
             navigate('/admin');
+          } else if (res.data.user?.role === 'Instructor') {
+            navigate('/instructor-dashboard');
           } else {
             navigate('/dashboard');
           }

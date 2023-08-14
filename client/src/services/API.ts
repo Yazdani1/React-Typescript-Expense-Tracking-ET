@@ -12,6 +12,7 @@ import {
   ExpenseCategory,
   ExpenseList,
   CreateExpenseBook,
+  Course,
 } from '../services/DataProvider';
 
 /****************************************/
@@ -206,4 +207,13 @@ export const deleteIncomeRecord = async (id: string) => {
 export const getInstructorRole = async (): Promise<UserProfileDetails> => {
   const res = await axios.get(API_URL + '/instructor-profile', headerConfig());
   return res.data as UserProfileDetails;
+};
+
+/****************************************/
+/********    Course     *****************/
+/****************************************/
+
+export const getCourseLists = async (): Promise<Course[]> => {
+  const res = await axios.get(API_URL + '/get-instructor-courses', headerConfig());
+  return res.data as Course[];
 };

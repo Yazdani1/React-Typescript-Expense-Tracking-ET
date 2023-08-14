@@ -6,9 +6,14 @@ import { UserProvider } from './contextapi/UserContext';
 import SignIn from './pages/Auth/SignIn';
 import SignUp from './pages/Auth/SignUp';
 import ExpenseBook from './pages/ExpenseBook/ExpenseBook';
+
+// Secure Layout
 import SecureLayout from './layouts/SecureLayout';
-import Admin from './pages/Admin/Admin';
 import AdminSecureLayout from './layouts/AdminSecureLayout';
+import InstructorSecureLayout from './layouts/InstructorSecureLayout';
+
+//Pages
+import Admin from './pages/Admin/Admin';
 import Profile from './pages/SubscriberProfile/Profile';
 import ExpenseBookDetails from './pages/ExpenseBookDetails/ExpenseBookDetails';
 import UserListPagination from './pages/Admin/UserListPagination';
@@ -16,6 +21,8 @@ import HomeRentalPost from './pages/HomeRentalApp/HomeRentalPost';
 import NationalId from './pages/NationalId/NationalId';
 import Income from './pages/Income/Income';
 import HomeRentalOfflineData from './pages/HomeRentalOfflineData/HomeRentalOfflineData';
+import InstructorDashboard from './pages/Instructor/InstructorDashboard';
+
 //Context API
 import { UserProfileDetailsProvider } from './contextapi/UserProfileDetailsContext';
 import { UserContextCookieProvider } from './contextapi/UserContextCookies';
@@ -113,6 +120,17 @@ const App = () => {
                         <AdminSecureLayout>
                           <UserListPagination />
                         </AdminSecureLayout>
+                      }
+                    />
+
+                    {/* Protected route for only Instructor*/}
+
+                    <Route
+                      path="/instructor-dashboard"
+                      element={
+                        <InstructorSecureLayout>
+                          <InstructorDashboard />
+                        </InstructorSecureLayout>
                       }
                     />
                   </Routes>
