@@ -14,6 +14,7 @@ import {
   CreateExpenseBook,
   Course,
   CourseDetails,
+  Lecture,
 } from '../services/DataProvider';
 
 /****************************************/
@@ -226,6 +227,17 @@ export const createCourse = async (props: CreateCourseProps): Promise<Course> =>
   return res.data;
 };
 
+export interface CreateLectureProps {
+  lectureTitle: string;
+  lectureDes: string;
+  courseId: string;
+}
+
+export const createLecture = async (props: CreateLectureProps): Promise<Lecture> => {
+  const res = await axios.post(API_URL + '/create-lectures', { ...props }, headerConfig());
+  return res.data;
+};
+
 export const getCourseLists = async (): Promise<Course[]> => {
   const res = await axios.get(API_URL + '/get-instructor-courses', headerConfig());
   return res.data as Course[];
@@ -234,4 +246,16 @@ export const getCourseLists = async (): Promise<Course[]> => {
 export const getSingleCourseLectures = async (slug: string): Promise<CourseDetails> => {
   const res = await axios.get(API_URL + '/get-course-lectures/' + slug, headerConfig());
   return res.data as CourseDetails;
+};
+
+// For subscriber
+
+export const getCourseListsForSubscriber = async (): Promise<Course[]> => {
+  const res = await axios.get(API_URL + '/get-all-courses', headerConfig());
+  return res.data as Course[];
+};
+
+export const getSingleCourseDetailsForSubscriber = async (slug: string): Promise<Course> => {
+  const res = await axios.get(API_URL + '/get-single-course-details/' + slug, headerConfig());
+  return res.data as Course;
 };

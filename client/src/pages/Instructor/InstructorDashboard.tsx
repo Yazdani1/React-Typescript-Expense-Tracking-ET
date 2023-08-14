@@ -6,7 +6,7 @@ import InstructorPageLayout from '../../layouts/InstructorPageLayout';
 import CardLayout from '../../components/CardLayout/CardLayout';
 import { getCourseLists, createCourse, CreateCourseProps } from '../../services/API';
 import { Course } from '../../services/DataProvider';
-import CourseCard from './CourseCard';
+import InstructorCourseCard from './InstructorCourseCard';
 import ModalBox from '../../components/Modal/ModalBox';
 import TextField from '../../components/Input/TextField';
 
@@ -32,11 +32,14 @@ const InstructorDashboard = () => {
       const res = await createCourse(payload);
 
       if (res) {
+        toast.success('Course created', {
+          position: toast.POSITION.TOP_CENTER,
+        });
         loadCourses();
       }
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {
-        position: toast.POSITION.TOP_RIGHT,
+        position: toast.POSITION.TOP_CENTER,
       });
     }
   };
@@ -63,7 +66,7 @@ const InstructorDashboard = () => {
       }
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {
-        position: toast.POSITION.TOP_RIGHT,
+        position: toast.POSITION.TOP_CENTER,
       });
     }
   };
@@ -103,7 +106,7 @@ const InstructorDashboard = () => {
           {courses &&
             courses.map((course) => (
               <div className="col-xl-4 col-lg-4">
-                <CourseCard course={course} key={course._id} />
+                <InstructorCourseCard course={course} key={course._id} />
               </div>
             ))}
         </div>

@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import { Course } from '../../services/DataProvider';
 import style from './InstructorDashboard.module.scss';
 
-interface CourseCardProps {
+interface InstructorCourseCardProps {
   course: Course;
 }
 
-const CourseCard: FC<CourseCardProps> = ({ course }) => {
+const InstructorCourseCard: FC<InstructorCourseCardProps> = ({ course }) => {
   return (
     <Link to={'/instructor-dashboard/course-details/' + course.slug} style={{ textDecoration: 'none', color: 'inherit' }}>
       <div className={style.courseContainer}>
@@ -23,4 +23,4 @@ const CourseCard: FC<CourseCardProps> = ({ course }) => {
   );
 };
 
-export default CourseCard;
+export default InstructorCourseCard;

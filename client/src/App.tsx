@@ -22,7 +22,9 @@ import NationalId from './pages/NationalId/NationalId';
 import Income from './pages/Income/Income';
 import HomeRentalOfflineData from './pages/HomeRentalOfflineData/HomeRentalOfflineData';
 import InstructorDashboard from './pages/Instructor/InstructorDashboard';
-import CourseDetails from './pages/Instructor/CourseDetails';
+import InstructorCourseDetails from './pages/Instructor/InstructorCourseDetails';
+import Courses from './pages/Courses/Courses';
+import CourseDetails from './pages/Courses/CourseDetails';
 //Context API
 import { UserProfileDetailsProvider } from './contextapi/UserProfileDetailsContext';
 import { UserContextCookieProvider } from './contextapi/UserContextCookies';
@@ -43,6 +45,7 @@ const App = () => {
                     <Route path="/" element={<SignIn />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/search-nationalid-details" element={<NationalId />} />
+
                     {/* Protected route for subscriber*/}
                     <Route
                       path="/dashboard"
@@ -68,6 +71,23 @@ const App = () => {
                         </SecureLayout>
                       }
                     />
+                    <Route
+                      path="/courses"
+                      element={
+                        <SecureLayout>
+                          <Courses />
+                        </SecureLayout>
+                      }
+                    />
+                    <Route
+                      path="/course-details/:slug"
+                      element={
+                        <SecureLayout>
+                          <CourseDetails />
+                        </SecureLayout>
+                      }
+                    />
+
                     {/* This route is for Home renatal app api and its only for testing purpose... */}
                     <Route
                       path="/home-rental"
@@ -124,7 +144,7 @@ const App = () => {
                       path="/instructor-dashboard/course-details/:slug"
                       element={
                         <InstructorSecureLayout>
-                          <CourseDetails />
+                          <InstructorCourseDetails />
                         </InstructorSecureLayout>
                       }
                     />
