@@ -11,6 +11,7 @@ interface IBase {
 export enum UserRole {
   Admin = 'Admin',
   Subscriber = 'Subscriber',
+  Instructor = 'Instructor',
 }
 
 export enum AccountType {

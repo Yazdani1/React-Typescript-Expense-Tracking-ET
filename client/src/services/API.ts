@@ -198,3 +198,12 @@ export const deleteIncomeRecord = async (id: string) => {
   const res = await axios.delete(API_URL + '/delete-single-income-record/' + id, headerConfig());
   return res;
 };
+
+/****************************************/
+/******** Instructor   *****************/
+/****************************************/
+
+export const getInstructorRole = async (): Promise<UserProfileDetails> => {
+  const res = await axios.get(API_URL + '/instructor-profile', headerConfig());
+  return res.data as UserProfileDetails;
+};
