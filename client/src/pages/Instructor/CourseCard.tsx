@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Course } from '../../services/DataProvider';
 import style from './InstructorDashboard.module.scss';
@@ -9,14 +10,16 @@ interface CourseCardProps {
 
 const CourseCard: FC<CourseCardProps> = ({ course }) => {
   return (
-    <div className={style.courseContainer}>
-      <h6>{course.title}</h6>
-      <p>{course.des}</p>
-      <div className={style.itemRow}>
-        <p>Enrolled:{course.enrolledStudents}</p>
-        <p>Seats:{course.maxStudents}</p>
+    <Link to={'/instructor-dashboard/course-details/' + course.slug} style={{ textDecoration: 'none', color: 'inherit' }}>
+      <div className={style.courseContainer}>
+        <h6>{course.title}</h6>
+        <p>{course.des}</p>
+        <div className={style.itemRow}>
+          <p>Enrolled:{course.enrolledStudents}</p>
+          <p>Seats:{course.maxStudents}</p>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

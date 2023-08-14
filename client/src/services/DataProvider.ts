@@ -172,3 +172,8 @@ export interface Lecture extends IBase {
   courseId: string;
   postedBy: UserProfileDetails;
 }
+
+export interface CourseDetails {
+  singleCourse: Course;
+  lectureLists: Lecture[];
+}

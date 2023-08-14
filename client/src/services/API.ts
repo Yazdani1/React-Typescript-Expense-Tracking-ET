@@ -13,6 +13,7 @@ import {
   ExpenseList,
   CreateExpenseBook,
   Course,
+  CourseDetails,
 } from '../services/DataProvider';
 
 /****************************************/
@@ -213,7 +214,24 @@ export const getInstructorRole = async (): Promise<UserProfileDetails> => {
 /********    Course     *****************/
 /****************************************/
 
+export interface CreateCourseProps {
+  title: string;
+  des: string;
+  coupon: string;
+  maxStudents: Number;
+}
+
+export const createCourse = async (props: CreateCourseProps): Promise<Course> => {
+  const res = await axios.post(API_URL + '/create-course', { ...props }, headerConfig());
+  return res.data;
+};
+
 export const getCourseLists = async (): Promise<Course[]> => {
   const res = await axios.get(API_URL + '/get-instructor-courses', headerConfig());
   return res.data as Course[];
+};
+
+export const getSingleCourseLectures = async (slug: string): Promise<CourseDetails> => {
+  const res = await axios.get(API_URL + '/get-course-lectures/' + slug, headerConfig());
+  return res.data as CourseDetails;
 };

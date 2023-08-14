@@ -22,7 +22,7 @@ import NationalId from './pages/NationalId/NationalId';
 import Income from './pages/Income/Income';
 import HomeRentalOfflineData from './pages/HomeRentalOfflineData/HomeRentalOfflineData';
 import InstructorDashboard from './pages/Instructor/InstructorDashboard';
-
+import CourseDetails from './pages/Instructor/CourseDetails';
 //Context API
 import { UserProfileDetailsProvider } from './contextapi/UserProfileDetailsContext';
 import { UserContextCookieProvider } from './contextapi/UserContextCookies';
@@ -43,9 +43,7 @@ const App = () => {
                     <Route path="/" element={<SignIn />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/search-nationalid-details" element={<NationalId />} />
-
                     {/* Protected route for subscriber*/}
-
                     <Route
                       path="/dashboard"
                       element={
@@ -54,7 +52,6 @@ const App = () => {
                         </SecureLayout>
                       }
                     />
-
                     <Route
                       path="/profile"
                       element={
@@ -63,7 +60,6 @@ const App = () => {
                         </SecureLayout>
                       }
                     />
-
                     <Route
                       path="/expense-details/:slug"
                       element={
@@ -72,7 +68,6 @@ const App = () => {
                         </SecureLayout>
                       }
                     />
-
                     {/* This route is for Home renatal app api and its only for testing purpose... */}
                     <Route
                       path="/home-rental"
@@ -82,7 +77,6 @@ const App = () => {
                         </SecureLayout>
                       }
                     />
-
                     <Route
                       path="/home-rental-offline-data"
                       element={
@@ -91,7 +85,6 @@ const App = () => {
                         </SecureLayout>
                       }
                     />
-
                     <Route
                       path="/income-record"
                       element={
@@ -100,11 +93,8 @@ const App = () => {
                         </SecureLayout>
                       }
                     />
-
                     {/* End of Home rental platform */}
-
                     {/* Protected route for only admin*/}
-
                     <Route
                       path="/admin"
                       element={
@@ -113,7 +103,6 @@ const App = () => {
                         </AdminSecureLayout>
                       }
                     />
-
                     <Route
                       path="/list"
                       element={
@@ -122,14 +111,20 @@ const App = () => {
                         </AdminSecureLayout>
                       }
                     />
-
                     {/* Protected route for only Instructor*/}
-
                     <Route
                       path="/instructor-dashboard"
                       element={
                         <InstructorSecureLayout>
                           <InstructorDashboard />
+                        </InstructorSecureLayout>
+                      }
+                    />
+                    <Route
+                      path="/instructor-dashboard/course-details/:slug"
+                      element={
+                        <InstructorSecureLayout>
+                          <CourseDetails />
                         </InstructorSecureLayout>
                       }
                     />

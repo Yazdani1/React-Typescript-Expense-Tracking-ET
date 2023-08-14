@@ -5,7 +5,7 @@ import style from './TextField.module.scss';
 
 interface TextFieldProps {
   label: string;
-  placeholder: string;
+  placeholder?: string;
   value: string;
   setValue: (value: string) => void;
   name?: string;
