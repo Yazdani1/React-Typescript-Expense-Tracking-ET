@@ -36,8 +36,13 @@ const CourseDetails = () => {
   /****************************************/
 
   const [courseCoupon, setCourseCoupon] = useState<string>('');
-  const [error, setError] = useState<string>('');
 
+
+
+  
+
+
+  const [error, setError] = useState<string>('');
   const handleEnrollClick = () => {
     if (courseDetails?.coupon === courseCoupon) {
       setError('');
@@ -77,7 +82,7 @@ const CourseDetails = () => {
 
         <div className="col-xl-4 col-lg-4">
           <CardLayout>
-            <h6>{error}</h6>
+            <p>{error}</p>
             <TextField label="Coupon" value={courseCoupon} setValue={setCourseCoupon} />
             <button className="btn btn-primary">Enroll</button>
           </CardLayout>

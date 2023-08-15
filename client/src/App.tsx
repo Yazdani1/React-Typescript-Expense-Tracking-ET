@@ -25,6 +25,7 @@ import InstructorDashboard from './pages/Instructor/InstructorDashboard';
 import InstructorCourseDetails from './pages/Instructor/InstructorCourseDetails';
 import Courses from './pages/Courses/Courses';
 import CourseDetails from './pages/Courses/CourseDetails';
+import CourseEnrolment from './pages/CourseEnrolment/CourseEnrolment';
 //Context API
 import { UserProfileDetailsProvider } from './contextapi/UserProfileDetailsContext';
 import { UserContextCookieProvider } from './contextapi/UserContextCookies';
@@ -84,6 +85,15 @@ const App = () => {
                       element={
                         <SecureLayout>
                           <CourseDetails />
+                        </SecureLayout>
+                      }
+                    />
+
+                    <Route
+                      path="/enroled-courses"
+                      element={
+                        <SecureLayout>
+                          <CourseEnrolment />
                         </SecureLayout>
                       }
                     />

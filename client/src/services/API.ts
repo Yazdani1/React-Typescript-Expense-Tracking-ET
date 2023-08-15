@@ -15,6 +15,7 @@ import {
   Course,
   CourseDetails,
   Lecture,
+  CourseEnrolmentItems,
 } from '../services/DataProvider';
 
 /****************************************/
@@ -258,4 +259,13 @@ export const getCourseListsForSubscriber = async (): Promise<Course[]> => {
 export const getSingleCourseDetailsForSubscriber = async (slug: string): Promise<Course> => {
   const res = await axios.get(API_URL + '/get-single-course-details/' + slug, headerConfig());
   return res.data as Course;
+};
+
+/****************************************/
+/*********  Course Enrolment  ***********/
+/****************************************/
+
+export const getEnroledCourseLists = async (): Promise<CourseEnrolmentItems[]> => {
+  const res = await axios.get(API_URL + '/get-enroled-course-lists', headerConfig());
+  return res.data as CourseEnrolmentItems[];
 };

@@ -62,34 +62,34 @@ const Navbar = () => {
         <li className="nav-item">
           <Link to={'/dashboard'} style={{ textDecoration: 'none', color: 'white' }}></Link>
         </li>
-
         <li className="nav-item">
           <Link to={'/dashboard'} style={{ textDecoration: 'none', color: 'white' }}>
             Expense Book
           </Link>
         </li>
-
         <li className="nav-item">
           <Link to={'/courses'} style={{ textDecoration: 'none', color: 'white' }}>
             Courses
           </Link>
         </li>
-
         <li className="nav-item">
           <Link to={'/income-record'} style={{ textDecoration: 'none', color: 'white' }}>
             Income Record
           </Link>
         </li>
-
         <li className="nav-item">
           <Link to={'/home-rental-offline-data'} style={{ textDecoration: 'none', color: 'white' }}>
             Home Rental Offline Data
           </Link>
         </li>
-
         <li className="nav-item">
           <Link to={'/profile'} style={{ textDecoration: 'none', color: 'white' }}>
             Profile
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to={'/enroled-courses'} style={{ textDecoration: 'none', color: 'white' }}>
+            Enroled Courses
           </Link>
         </li>
 
@@ -98,7 +98,6 @@ const Navbar = () => {
             Home Rental
           </Link>
         </li>
-
         <li className="nav-item" onClick={handleLogout} style={{ cursor: 'pointer' }}>
           Log Out
         </li>

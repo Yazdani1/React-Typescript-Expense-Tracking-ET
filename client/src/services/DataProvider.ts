@@ -177,3 +177,14 @@ export interface CourseDetails {
   singleCourse: Course;
   lectureLists: Lecture[];
 }
+
+/****************************************/
+/*********  Course Enrolment  ***********/
+/****************************************/
+
+export interface CourseEnrolmentItems extends IBase {
+  courseInstructorId: UserProfileDetails;
+  courseId: Course;
+  coupon: string;
+  enrolledBy: UserProfileDetails;
+}
