@@ -33,7 +33,7 @@ const CourseDetails = () => {
   };
 
   // Conttext API for Enroled Courses
-  const { allEnroledCourses } = useEnroledCoursesContext();
+  const { allEnroledCourses, loadEnroledCourses } = useEnroledCoursesContext();
   const isCourseEnrolled = allEnroledCourses && allEnroledCourses.some((enrollment) => enrollment.courseId?._id === courseDetails?._id);
 
   /****************************************/
@@ -56,6 +56,8 @@ const CourseDetails = () => {
         toast.success('You have enroled to this course!', {
           position: toast.POSITION.TOP_CENTER,
         });
+        loadEnroledCourses();
+        setCourseCoupon('');
       }
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {
