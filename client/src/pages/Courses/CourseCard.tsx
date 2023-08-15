@@ -10,7 +10,7 @@ interface CourseCardProps {
 
 const CourseCard: FC<CourseCardProps> = ({ course }) => {
   return (
-    <Link to={'/course-details/' + course.slug} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <Link to={'/course-details-page/' + course.slug} style={{ textDecoration: 'none', color: 'inherit' }}>
       <div className={style.courseContainer}>
         <h6>{course.title}</h6>
         <p>{course.postedBy?.name}</p>

@@ -265,6 +265,17 @@ export const getSingleCourseDetailsForSubscriber = async (slug: string): Promise
 /*********  Course Enrolment  ***********/
 /****************************************/
 
+export interface CreateCourseEnrolmentProps {
+  courseId: string;
+  courseInstructorId: string;
+  coupon: string;
+}
+
+export const createCourseEnrolment = async (props: CreateCourseEnrolmentProps): Promise<CourseEnrolmentItems> => {
+  const res = await axios.post(API_URL + '/create-course-enrollment', { ...props }, headerConfig());
+  return res.data;
+};
+
 export const getEnroledCourseLists = async (): Promise<CourseEnrolmentItems[]> => {
   const res = await axios.get(API_URL + '/get-enroled-course-lists', headerConfig());
   return res.data as CourseEnrolmentItems[];

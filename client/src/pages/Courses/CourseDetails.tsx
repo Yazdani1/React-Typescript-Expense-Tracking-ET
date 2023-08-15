@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import SubscriberPageLayout from '../../layouts/SubscriberPageLayout';
-import { getSingleCourseDetailsForSubscriber } from '../../services/API';
+import { getSingleCourseDetailsForSubscriber, createCourseEnrolment, CreateCourseEnrolmentProps } from '../../services/API';
 import { Course } from '../../services/DataProvider';
 import CardLayout from '../../components/CardLayout/CardLayout';
 import TextField from '../../components/Input/TextField';
@@ -37,10 +37,27 @@ const CourseDetails = () => {
 
   const [courseCoupon, setCourseCoupon] = useState<string>('');
 
+  const onSubmitCreateCourseEnrolment = async () => {
+    try {
+      const payload: CreateCourseEnrolmentProps = {
+        courseId: courseDetails?._id!,
+        courseInstructorId: courseDetails?.postedBy?._id!,
+        coupon: courseCoupon,
+      };
 
+      const res = await createCourseEnrolment(payload);
 
-  
-
+      if (res) {
+        toast.success('You have enroled to this course!', {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }
+    } catch (error: any) {
+      toast.error(error.response && error.response.data.error, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  };
 
   const [error, setError] = useState<string>('');
   const handleEnrollClick = () => {
@@ -84,7 +101,9 @@ const CourseDetails = () => {
           <CardLayout>
             <p>{error}</p>
             <TextField label="Coupon" value={courseCoupon} setValue={setCourseCoupon} />
-            <button className="btn btn-primary">Enroll</button>
+            <button className="btn btn-primary" onClick={onSubmitCreateCourseEnrolment}>
+              Enroll
+            </button>
           </CardLayout>
         </div>
       </div>

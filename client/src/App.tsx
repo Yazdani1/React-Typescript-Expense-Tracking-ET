@@ -81,7 +81,7 @@ const App = () => {
                       }
                     />
                     <Route
-                      path="/course-details/:slug"
+                      path="/course-details-page/:slug"
                       element={
                         <SecureLayout>
                           <CourseDetails />
