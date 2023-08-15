@@ -7,26 +7,14 @@ import { getEnroledCourseLists } from '../../services/API';
 import { CourseEnrolmentItems } from '../../services/DataProvider';
 import CourseEnrolmentCard from './CourseEnrolmentCard';
 import CardLayout from '../../components/CardLayout/CardLayout';
+import { useEnroledCoursesContext } from '../../contextapi/EnroledCoursesContext';
 
 const CourseEnrolment = () => {
   /****************************************/
   /*********  Course Enrolment  ***********/
   /****************************************/
 
-  const [enroledCourseLists, setEnroledCourseLists] = useState<CourseEnrolmentItems[]>([]);
-
-  const loadEnroledCourses = async () => {
-    try {
-      const res = await getEnroledCourseLists();
-      if (res) {
-        setEnroledCourseLists(res);
-      }
-    } catch (error: any) {
-      toast.error(error.response && error.response.data.error, {
-        position: toast.POSITION.TOP_CENTER,
-      });
-    }
-  };
+  const { allEnroledCourses, loadEnroledCourses } = useEnroledCoursesContext();
 
   useEffect(() => {
     loadEnroledCourses();
@@ -37,8 +25,8 @@ const CourseEnrolment = () => {
       <CardLayout>
         <h6>Enrolled Courses</h6>
         <div className="row">
-          {enroledCourseLists &&
-            enroledCourseLists.map((course) => (
+          {allEnroledCourses &&
+            allEnroledCourses.map((course) => (
               <div className="col-xl-4 col-lg-4">
                 <CourseEnrolmentCard course={course} />
               </div>

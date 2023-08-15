@@ -7,6 +7,7 @@ import { getSingleCourseDetailsForSubscriber, createCourseEnrolment, CreateCours
 import { Course } from '../../services/DataProvider';
 import CardLayout from '../../components/CardLayout/CardLayout';
 import TextField from '../../components/Input/TextField';
+import { useEnroledCoursesContext } from '../../contextapi/EnroledCoursesContext';
 
 const CourseDetails = () => {
   const { slug } = useParams();
@@ -30,6 +31,10 @@ const CourseDetails = () => {
       });
     }
   };
+
+  // Conttext API for Enroled Courses
+  const { allEnroledCourses } = useEnroledCoursesContext();
+  const isCourseEnrolled = allEnroledCourses && allEnroledCourses.some((enrollment) => enrollment.courseId?._id === courseDetails?._id);
 
   /****************************************/
   /*********** Enroll Course **************/
@@ -101,9 +106,14 @@ const CourseDetails = () => {
           <CardLayout>
             <p>{error}</p>
             <TextField label="Coupon" value={courseCoupon} setValue={setCourseCoupon} />
-            <button className="btn btn-primary" onClick={onSubmitCreateCourseEnrolment}>
-              Enroll
-            </button>
+
+            {isCourseEnrolled ? (
+              <button className="btn btn-success">You already enroled</button>
+            ) : (
+              <button className="btn btn-primary" onClick={onSubmitCreateCourseEnrolment}>
+                Enroll
+              </button>
+            )}
           </CardLayout>
         </div>
       </div>
