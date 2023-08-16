@@ -239,6 +239,16 @@ export const createLecture = async (props: CreateLectureProps): Promise<Lecture>
   return res.data;
 };
 
+export interface UpdateLectureProps {
+  lectureTitle: string;
+  lectureDes: string;
+}
+
+export const updateLecture = async (id: string, props: UpdateLectureProps): Promise<Lecture> => {
+  const res = await axios.put(API_URL + '/update-lecture/' + id, { ...props }, headerConfig());
+  return res.data;
+};
+
 export const getCourseLists = async (): Promise<Course[]> => {
   const res = await axios.get(API_URL + '/get-instructor-courses', headerConfig());
   return res.data as Course[];
