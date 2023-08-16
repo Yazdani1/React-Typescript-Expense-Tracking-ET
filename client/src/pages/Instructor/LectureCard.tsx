@@ -7,16 +7,32 @@ import CardLayout from '../../components/CardLayout/CardLayout';
 
 interface LectureCardProps {
   lecture: Lecture;
+  indexDrag: number;
+  indexDrop: number;
 }
 
-const LectureCard: FC<LectureCardProps> = ({ lecture }) => {
+const LectureCard: FC<LectureCardProps> = ({ lecture, indexDrag, indexDrop }) => {
+  const handleDrag = (e: any, indexDrag: number) => {
+    console.log('Drag ' + e, indexDrag);
+  };
+
+  const handleDrop = (e: any, indexDrop: number) => {
+    console.log('Drop' + e, indexDrop);
+  };
+
   return (
-    <CardLayout>
-      <h6>{lecture.lectureTitle}</h6>
-      <p>{lecture.lectureDes}</p>
-      <p>{lecture.postedBy?.name}</p>
-      <p>{lecture.courseId?.title}</p>
-    </CardLayout>
+    <div onDragOver={(e) => e.preventDefault}>
+      <CardLayout>
+        <div draggable onDragStart={(e) => handleDrag(e, indexDrag)} onDragEnd={(e) => handleDrop(e, indexDrop)}>
+          <h6>{lecture.lectureTitle}</h6>
+          <p>{lecture.lectureDes}</p>
+          <p>{lecture.postedBy?.name}</p>
+          <p>{lecture.courseId?.title}</p>
+          <p>{indexDrag}</p>
+          <p>fff{lecture._id}</p>
+        </div>
+      </CardLayout>
+    </div>
   );
 };
 

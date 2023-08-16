@@ -92,6 +92,47 @@ const InstructorCourseDetails = () => {
     loadCourseDetailsLectures();
   }, []);
 
+  const handleDrag = (e: any, index: number) => {
+    e.dataTransfer.setData('text/plain', index.toString());
+  };
+
+  const handleDrop = (e: any, dropIndex: number) => {
+    e.preventDefault();
+
+    const draggedIndex = parseInt(e.dataTransfer.getData('text/plain'));
+    if (draggedIndex === dropIndex) {
+      return; // No change needed if dropped at the same position
+    }
+
+    const newLectures = [...lectures];
+    const [draggedLecture] = newLectures.splice(draggedIndex, 1);
+
+    if (draggedIndex < dropIndex) {
+      // If the dragged lecture was placed before the drop position
+      newLectures.splice(dropIndex, 0, draggedLecture);
+    } else {
+      // If the dragged lecture was placed after the drop position
+      newLectures.splice(dropIndex, 0, draggedLecture);
+    }
+
+    setLectures(newLectures);
+  };
+
+  // const handleDrop = (e: any, dropIndex: number) => {
+  //   e.preventDefault();
+
+  //   const draggedIndex = parseInt(e.dataTransfer.getData('text/plain'));
+  //   const newLectures = [...lectures];
+
+  //   // Remove the dragged lecture from its original position
+  //   const [draggedLecture] = newLectures.splice(draggedIndex, 1);
+
+  //   // Insert the dragged lecture at the new drop position
+  //   newLectures.splice(dropIndex, 0, draggedLecture);
+
+  //   setLectures(newLectures);
+  // };
+
   return (
     <InstructorPageLayout>
       <CardLayout>
@@ -111,7 +152,24 @@ const InstructorCourseDetails = () => {
       </CardLayout>
 
       <div className="row">
-        <div className="col-xl-8 col-lg-8">{lectures && lectures.map((lecture) => <LectureCard lecture={lecture} />)}</div>
+        <div className="col-xl-8 col-lg-8">
+          <div onDragOver={(e) => e.preventDefault()}>
+            {lectures &&
+              lectures.map((lecture, index) => (
+                <CardLayout key={lecture._id}>
+                  <div draggable onDragStart={(e) => handleDrag(e, index)} onDrop={(e) => handleDrop(e, index)}>
+                    <h5>{index}</h5>
+                    <h6>{lecture.lectureTitle}</h6>
+                    <p>{lecture.lectureDes}</p>
+                    <p>{lecture.courseId.title}</p>
+                  </div>
+                </CardLayout>
+              ))}
+          </div>
+
+          {/* {lectures && lectures.map((lecture, index) => <LectureCard lecture={lecture} indexDrag={index} indexDrop={index} />)} */}
+        </div>
+
         <div className="col-xl-4 col-lg-4">
           {enroledStudentsList && enroledStudentsList.map((student) => <EnroledStudentCard student={student} key={student._id} />)}
         </div>
