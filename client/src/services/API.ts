@@ -240,8 +240,9 @@ export const createLecture = async (props: CreateLectureProps): Promise<Lecture>
 };
 
 export interface UpdateLectureProps {
-  lectureTitle: string;
-  lectureDes: string;
+  lectureTitle?: string;
+  lectureDes?: string;
+  position?: Number;
 }
 
 export const updateLecture = async (id: string, props: UpdateLectureProps): Promise<Lecture> => {

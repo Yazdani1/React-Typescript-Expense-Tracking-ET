@@ -170,6 +170,7 @@ export interface Lecture extends IBase {
   lectureTitle: string;
   lectureDes: string;
   courseId: Course;
+  position: number;
   postedBy: UserProfileDetails;
 }
 
