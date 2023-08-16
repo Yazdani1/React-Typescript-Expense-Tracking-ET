@@ -13,7 +13,7 @@ const CourseEnrolmentCard: FC<CourseEnrolmentCardProps> = ({ course }) => {
     <Link to={'' + course.slug} style={{ textDecoration: 'none', color: 'inherit' }}>
       <div className={style.courseContainer}>
         <h6>{course.courseId?.title}</h6>
-        <p>{course.courseInstructorId?.name}</p>
+        <p style={{ color: 'green', fontWeight: 'bold' }}>{course.courseInstructorId?.name}</p>
         <hr />
         <p>{course.courseId?.des.substring(0, 50)}</p>
         <div className={style.itemRow}>

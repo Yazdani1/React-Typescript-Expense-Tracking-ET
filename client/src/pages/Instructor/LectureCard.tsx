@@ -14,6 +14,8 @@ const LectureCard: FC<LectureCardProps> = ({ lecture }) => {
     <CardLayout>
       <h6>{lecture.lectureTitle}</h6>
       <p>{lecture.lectureDes}</p>
+      <p>{lecture.postedBy?.name}</p>
+      <p>{lecture.courseId?.title}</p>
     </CardLayout>
   );
 };

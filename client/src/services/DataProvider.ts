@@ -169,13 +169,14 @@ export interface Course extends IBase {
 export interface Lecture extends IBase {
   lectureTitle: string;
   lectureDes: string;
-  courseId: string;
+  courseId: Course;
   postedBy: UserProfileDetails;
 }
 
 export interface CourseDetails {
   singleCourse: Course;
   lectureLists: Lecture[];
+  enroledStudents: CourseEnrolmentItems[];
 }
 
 /****************************************/

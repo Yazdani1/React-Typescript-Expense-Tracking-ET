@@ -4,11 +4,12 @@ import { toast } from 'react-toastify';
 
 import InstructorPageLayout from '../../layouts/InstructorPageLayout';
 import { getSingleCourseLectures, CreateLectureProps, createLecture } from '../../services/API';
-import { Course, Lecture } from '../../services/DataProvider';
+import { Course, Lecture, CourseEnrolmentItems } from '../../services/DataProvider';
 import CardLayout from '../../components/CardLayout/CardLayout';
 import LectureCard from './LectureCard';
 import ModalBox from '../../components/Modal/ModalBox';
 import TextField from '../../components/Input/TextField';
+import EnroledStudentCard from './EnroledStudentCard';
 
 const InstructorCourseDetails = () => {
   const { slug } = useParams();
@@ -19,6 +20,7 @@ const InstructorCourseDetails = () => {
 
   const [courseDetails, setCourseDetails] = useState<Course>();
   const [lectures, setLectures] = useState<Lecture[]>([]);
+  const [enroledStudentsList, setEnrolStudentsList] = useState<CourseEnrolmentItems[]>([]);
 
   const loadCourseDetailsLectures = async () => {
     try {
@@ -27,6 +29,7 @@ const InstructorCourseDetails = () => {
       if (res) {
         setCourseDetails(res.singleCourse);
         setLectures(res.lectureLists);
+        setEnrolStudentsList(res.enroledStudents);
       }
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {
@@ -107,7 +110,12 @@ const InstructorCourseDetails = () => {
         </button>
       </CardLayout>
 
-      {lectures && lectures.map((lecture) => <LectureCard lecture={lecture} />)}
+      <div className="row">
+        <div className="col-xl-8 col-lg-8">{lectures && lectures.map((lecture) => <LectureCard lecture={lecture} />)}</div>
+        <div className="col-xl-4 col-lg-4">
+          {enroledStudentsList && enroledStudentsList.map((student) => <EnroledStudentCard student={student} key={student._id} />)}
+        </div>
+      </div>
 
       {/* Modal box to create lectures */}
 
