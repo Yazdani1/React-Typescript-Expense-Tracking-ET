@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
-import style from './InstructorDashboard.module.scss';
 import InstructorPageLayout from '../../layouts/InstructorPageLayout';
 import CardLayout from '../../components/CardLayout/CardLayout';
 import { getCourseLists, createCourse, CreateCourseProps } from '../../services/API';
@@ -9,6 +8,7 @@ import { Course } from '../../services/DataProvider';
 import InstructorCourseCard from './InstructorCourseCard';
 import ModalBox from '../../components/Modal/ModalBox';
 import TextField from '../../components/Input/TextField';
+import style from './InstructorDashboard.module.scss';
 
 const InstructorDashboard = () => {
   /****************************************/
@@ -111,9 +111,7 @@ const InstructorDashboard = () => {
             ))}
         </div>
       </CardLayout>
-
       {/* Modal box to create course */}
-
       <ModalBox open={open} onCloseModal={onCloseModal} title="Create course" onResetButton={resetCourseInput} onSaveButton={onSubmitCreateCourse}>
         <TextField label="Title" value={title} setValue={setTitle} />
         <TextField label="Coupon" value={coupon} setValue={setCoupon} />
