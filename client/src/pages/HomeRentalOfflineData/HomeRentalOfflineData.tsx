@@ -47,6 +47,7 @@ const HomeRentalOfflineData = () => {
     <SubscriberPageLayout>
       <CardLayout>
         <h6>{testData.length}</h6>
+
         {testData && testData.map((item: any) => <h6>{item.title}</h6>)}
       </CardLayout>
       <CardLayout>
