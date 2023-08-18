@@ -261,7 +261,6 @@ export const getSingleCourseLectures = async (slug: string): Promise<CourseDetai
 };
 
 // For subscriber
-
 export const getCourseListsForSubscriber = async (): Promise<Course[]> => {
   const res = await axios.get(API_URL + '/get-all-courses', headerConfig());
   return res.data as Course[];
