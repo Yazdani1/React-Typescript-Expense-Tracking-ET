@@ -261,7 +261,7 @@ export const getSingleCourseLectures = async (slug: string): Promise<CourseDetai
 };
 
 export const filterInstructorCourse = async (sortbytitle: number): Promise<Course[]> => {
-  const res = await axios.get(API_URL + `/search-instrcutor-course?sortbytitle=${sortbytitle}`);
+  const res = await axios.get(API_URL + `/search-instrcutor-course?sortbytitle=${sortbytitle}`, headerConfig());
   return res.data as Course[];
 };
 

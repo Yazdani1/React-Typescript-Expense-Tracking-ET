@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 import InstructorPageLayout from '../../layouts/InstructorPageLayout';
 import CardLayout from '../../components/CardLayout/CardLayout';
-import { getCourseLists, createCourse, CreateCourseProps } from '../../services/API';
+import { getCourseLists, createCourse, CreateCourseProps, filterInstructorCourse } from '../../services/API';
 import { Course, FilterCourseByTitle } from '../../services/DataProvider';
 import InstructorCourseCard from './InstructorCourseCard';
 import ModalBox from '../../components/Modal/ModalBox';
@@ -75,6 +75,26 @@ const InstructorDashboard = () => {
 
   const [sortCoursesByTitle, setSortCoursesByTitle] = useState<FilterCourseByTitle>(FilterCourseByTitle.Ascending);
 
+  // This to get integer number from enum
+  const filterCourseOptions = {
+    Ascending: FilterCourseByTitle.Ascending,
+    Descending: FilterCourseByTitle.Descending,
+  };
+
+  const onSubmitsortCoursesByTitle = async () => {
+    try {
+      const res = await filterInstructorCourse(sortCoursesByTitle);
+
+      if (res) {
+        setCourses(res);
+      }
+    } catch (error: any) {
+      toast.error(error.response && error.response.data.error, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  };
+
   /****************************************/
   /******Modal Box to Create Courses   ***/
   /****************************************/
@@ -107,21 +127,25 @@ const InstructorDashboard = () => {
 
       <CardLayout>
         <div>
-          <h6>Sort By Title:{FilterCourseByTitle.Descending}</h6>
+          <h6>Sort By Title:{sortCoursesByTitle}</h6>
           <div className="selected-dropdownlist">
             <select
               className={style.expenseCategorySelect}
               value={sortCoursesByTitle}
               onChange={(e) => setSortCoursesByTitle(parseInt(e.target.value))}
             >
-              {/* {Object.keys(FilterCourseByTitle).map((key: number) => (
-                <option value={FilterCourseByTitle[key]} key={key}>
+              {Object.keys(filterCourseOptions).map((key) => (
+                <option value={filterCourseOptions[key as keyof typeof filterCourseOptions]} key={key}>
                   {key}
                 </option>
-              ))} */}
+              ))}
             </select>
           </div>
+          <button className="btn btn-success" onClick={onSubmitsortCoursesByTitle}>
+            Filter
+          </button>
         </div>
+
         <hr />
         <div className="row">
           {courses &&
