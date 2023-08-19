@@ -17,6 +17,7 @@ import { UserProfileDetails } from '../../services/DataProvider';
 import { getLogedInUserProfile } from '../../services/API';
 import { useEnroledCoursesContext } from '../../contextapi/EnroledCoursesContext';
 
+
 const SignIn = () => {
   let navigate = useNavigate();
 
@@ -153,6 +154,11 @@ const SignIn = () => {
               <button className={signInPageStyle.signInButton} onClick={(e) => onSubmitUserSignIn(e)}>
                 Sign In
               </button>
+              <Link to={'/forgot-password'} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <span className={signInPageStyle.signUpHereOption}>
+                  <p>Forgot Password?</p>
+                </span>
+              </Link>
               <Link to={'/signup'} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <span className={signInPageStyle.signUpHereOption}>
                   <p>Don't have an account? Sign Up here</p>

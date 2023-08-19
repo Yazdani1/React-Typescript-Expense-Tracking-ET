@@ -26,6 +26,8 @@ import InstructorCourseDetails from './pages/Instructor/InstructorCourseDetails'
 import Courses from './pages/Courses/Courses';
 import CourseDetails from './pages/Courses/CourseDetails';
 import CourseEnrolment from './pages/CourseEnrolment/CourseEnrolment';
+import ForgotPassword from './pages/Auth/ForgotPassword';
+
 //Context API
 import { UserProfileDetailsProvider } from './contextapi/UserProfileDetailsContext';
 import { UserContextCookieProvider } from './contextapi/UserContextCookies';
@@ -47,6 +49,8 @@ const App = () => {
                     <Routes>
                       <Route path="/" element={<SignIn />} />
                       <Route path="/signup" element={<SignUp />} />
+                      <Route path="/forgot-password" element={<ForgotPassword />} />
+
                       <Route path="/search-nationalid-details" element={<NationalId />} />
 
                       {/* Protected route for subscriber*/}
