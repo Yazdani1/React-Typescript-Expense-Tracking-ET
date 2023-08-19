@@ -180,6 +180,11 @@ export interface CourseDetails {
   enroledStudents: CourseEnrolmentItems[];
 }
 
+export enum FilterCourseByTitle {
+  Ascending = 1,
+  Descending = -1,
+}
+
 /****************************************/
 /*********  Course Enrolment  ***********/
 /****************************************/

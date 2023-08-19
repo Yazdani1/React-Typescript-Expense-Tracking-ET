@@ -9,7 +9,6 @@ import CardLayout from '../../components/CardLayout/CardLayout';
 import CourseCard from './CourseCard';
 
 const Courses = () => {
-  
   /****************************************/
   /*********** Course Lists ***************/
   /****************************************/

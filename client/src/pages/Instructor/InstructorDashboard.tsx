@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import InstructorPageLayout from '../../layouts/InstructorPageLayout';
 import CardLayout from '../../components/CardLayout/CardLayout';
 import { getCourseLists, createCourse, CreateCourseProps } from '../../services/API';
-import { Course } from '../../services/DataProvider';
+import { Course, FilterCourseByTitle } from '../../services/DataProvider';
 import InstructorCourseCard from './InstructorCourseCard';
 import ModalBox from '../../components/Modal/ModalBox';
 import TextField from '../../components/Input/TextField';
@@ -71,6 +71,10 @@ const InstructorDashboard = () => {
     }
   };
 
+  //Filter courses
+
+  const [sortCoursesByTitle, setSortCoursesByTitle] = useState<FilterCourseByTitle>(FilterCourseByTitle.Ascending);
+
   /****************************************/
   /******Modal Box to Create Courses   ***/
   /****************************************/
@@ -102,6 +106,23 @@ const InstructorDashboard = () => {
       </CardLayout>
 
       <CardLayout>
+        <div>
+          <h6>Sort By Title:{FilterCourseByTitle.Descending}</h6>
+          <div className="selected-dropdownlist">
+            <select
+              className={style.expenseCategorySelect}
+              value={sortCoursesByTitle}
+              onChange={(e) => setSortCoursesByTitle(parseInt(e.target.value))}
+            >
+              {/* {Object.keys(FilterCourseByTitle).map((key: number) => (
+                <option value={FilterCourseByTitle[key]} key={key}>
+                  {key}
+                </option>
+              ))} */}
+            </select>
+          </div>
+        </div>
+        <hr />
         <div className="row">
           {courses &&
             courses.map((course) => (
