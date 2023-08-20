@@ -81,6 +81,29 @@ export const updateSingleUserProfile = async (id: string, props: UpdateUserProfi
   return res.data;
 };
 
+// Forgot password and reset password
+
+export interface ForgotPasswordProps {
+  email: string;
+}
+
+export const createForgotPassword = async (props: ForgotPasswordProps): Promise<UserProfileDetails> => {
+  const res = await axios.post(API_URL + '/forgot-password', { ...props });
+  return res.data;
+};
+
+export interface ResetNewPasswordProps {
+  email: string;
+  verificationCode: string;
+  newPassowrd: string;
+}
+
+export const createResetPassword = async (props: ResetNewPasswordProps): Promise<UserProfileDetails> => {
+  const res = await axios.post(API_URL + '/reset-password', { ...props });
+  return res.data;
+};
+
+
 // To get loged in user profile and its only for test purpose and maybe can use in the profile page and context api
 export const getLogedInUserProfile = async (): Promise<UserProfileDetails> => {
   const res = await axios.get(API_URL + '/user-profile', headerConfig());

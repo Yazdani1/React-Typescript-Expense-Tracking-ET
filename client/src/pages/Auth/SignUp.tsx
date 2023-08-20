@@ -7,6 +7,7 @@ import signInPageStyle from './SignIn.module.scss';
 import { UserRegistrationProps, userRegistration, getUserAccountRegistrationLocation } from '../../services/API';
 import { LocationData } from '../../services/DataProvider';
 import TextField from '../../components/Input/TextField';
+import HomePageLayout from '../../layouts/HomePageLayout';
 
 const SignUp = () => {
   let navigate = useNavigate();
@@ -150,63 +151,65 @@ const SignUp = () => {
   };
 
   return (
-    <div className="container">
-      <div className={signInPageStyle.signInContainer}>
-        <div className={signInPageStyle.signInFormDesign}>
-          <h5>Sign Up</h5>
+    <HomePageLayout>
+      <div className="container">
+        <div className={signInPageStyle.signInContainer}>
+          <div className={signInPageStyle.signInFormDesign}>
+            <h5>Sign Up</h5>
 
-          <div className={signInPageStyle.inputFormArea}>
-            <div className="form-group">
-              <input
-                type="text"
-                name="Name"
-                className={signInPageStyle.formControlEmail}
-                placeholder="Your Name *"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-              />
+            <div className={signInPageStyle.inputFormArea}>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="Name"
+                  className={signInPageStyle.formControlEmail}
+                  placeholder="Your Name *"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                />
+              </div>
+              <p style={{ color: 'red' }}>{emailError}</p>
+              <div className={signInPageStyle.email_filed_design}>
+                <input
+                  type="text"
+                  name="Name"
+                  className={signInPageStyle.formControlEmail}
+                  placeholder="Your E-mail *"
+                  value={userEmail}
+                  onChange={handleEmailChange}
+                  // onChange={(e) => setUserEmail(e.target.value)}
+                />
+                <p className={signInPageStyle.checkIconDesign}>{isEmailValid && <HiCheckCircle size={30} color="green" />}</p>
+              </div>
+
+              <h6 style={{ color: 'red' }}>{passwordError}</h6>
+
+              <div className={signInPageStyle.email_filed_design}>
+                <input
+                  type="password"
+                  name="password"
+                  className={signInPageStyle.formControlPassword}
+                  placeholder="Your Password*"
+                  value={userPassword}
+                  onChange={handlePasswordChange}
+                  // onChange={(e) => setUserPassword(e.target.value)}
+                />
+                <p className={signInPageStyle.checkIconDesign}>{isPasswordValid && <HiCheckCircle size={30} color="green" />}</p>
+              </div>
+
+              <button className={signInPageStyle.signInButton} onClick={(e) => onSubmitUserRegistration(e)}>
+                Sign Up
+              </button>
+              <Link to={'/'} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <span className={signInPageStyle.signUpHereOption}>
+                  <p>Already have an account? Sign In here</p>
+                </span>
+              </Link>
             </div>
-            <p style={{ color: 'red' }}>{emailError}</p>
-            <div className={signInPageStyle.email_filed_design}>
-              <input
-                type="text"
-                name="Name"
-                className={signInPageStyle.formControlEmail}
-                placeholder="Your E-mail *"
-                value={userEmail}
-                onChange={handleEmailChange}
-                // onChange={(e) => setUserEmail(e.target.value)}
-              />
-              <p className={signInPageStyle.checkIconDesign}>{isEmailValid && <HiCheckCircle size={30} color="green" />}</p>
-            </div>
-
-            <h6 style={{ color: 'red' }}>{passwordError}</h6>
-
-            <div className={signInPageStyle.email_filed_design}>
-              <input
-                type="password"
-                name="password"
-                className={signInPageStyle.formControlPassword}
-                placeholder="Your Password*"
-                value={userPassword}
-                onChange={handlePasswordChange}
-                // onChange={(e) => setUserPassword(e.target.value)}
-              />
-              <p className={signInPageStyle.checkIconDesign}>{isPasswordValid && <HiCheckCircle size={30} color="green" />}</p>
-            </div>
-
-            <button className={signInPageStyle.signInButton} onClick={(e) => onSubmitUserRegistration(e)}>
-              Sign Up
-            </button>
-            <Link to={'/'} style={{ textDecoration: 'none', color: 'inherit' }}>
-              <span className={signInPageStyle.signUpHereOption}>
-                <p>Already have an account? Sign In here</p>
-              </span>
-            </Link>
           </div>
         </div>
       </div>
-    </div>
+    </HomePageLayout>
   );
 };
 

@@ -341,35 +341,36 @@ const InstructorCourseDetails = () => {
 
       <div className="row">
         <div className="col-xl-4 col-lg-4">
-          <DragDropContext onDragEnd={handleDragEnd}>
-            <Droppable droppableId="lectureList">
-              {(provided) => (
-                <div ref={provided.innerRef} {...provided.droppableProps}>
-                  {lectures
-                    .sort((a, b) => a.position - b.position)
-                    .map((lecture, index) => (
-                      <Draggable key={lecture._id} draggableId={lecture._id} index={index}>
-                        {(provided) => (
-                          <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                            <CardLayout>
-                              <h5>{index}</h5>
-                              <h6>{lecture.lectureTitle}</h6>
-                              <p>{lecture.lectureDes}</p>
-                              <p>{lecture.courseId.title}</p>
-                              <p>Position {lecture.position}</p>
-                            </CardLayout>
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-          </DragDropContext>
-
-          {/* {lectures && lectures.map((lecture, index) => <LectureCard lecture={lecture} indexDrag={index} indexDrop={index} />)} */}
+          <div className="row">
+            <DragDropContext onDragEnd={handleDragEnd}>
+              <Droppable droppableId="lectureList">
+                {(provided) => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    {lectures
+                      .sort((a, b) => a.position - b.position)
+                      .map((lecture, index) => (
+                        <Draggable key={lecture._id} draggableId={lecture._id} index={index}>
+                          {(provided) => (
+                            <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                              <CardLayout>
+                                <h5>{index}</h5>
+                                <h6>{lecture.lectureTitle}</h6>
+                                <p>{lecture.lectureDes}</p>
+                                <p>{lecture.courseId.title}</p>
+                                <p>Position {lecture.position}</p>
+                              </CardLayout>
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </DragDropContext>
+          </div>
         </div>
+        {/* {lectures && lectures.map((lecture, index) => <LectureCard lecture={lecture} indexDrag={index} indexDrop={index} />)} */}
 
         <div className="col-xl-4 col-lg-4">
           {lectures &&

@@ -59,6 +59,9 @@ const Navbar = () => {
         <li>Redux:{userProfileDetails?.name}||</li>
         <li>{userProfileDetails?.points} Points</li>
         <li>{userProfileDetails?.role}</li>
+        <Link to={'/'} style={{ textDecoration: 'none', color: 'white' }}>
+          <li>Home</li>
+        </Link>
         <li className="nav-item">
           <Link to={'/dashboard'} style={{ textDecoration: 'none', color: 'white' }}></Link>
         </li>

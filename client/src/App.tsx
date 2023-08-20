@@ -27,6 +27,7 @@ import Courses from './pages/Courses/Courses';
 import CourseDetails from './pages/Courses/CourseDetails';
 import CourseEnrolment from './pages/CourseEnrolment/CourseEnrolment';
 import ForgotPassword from './pages/Auth/ForgotPassword';
+import Home from './pages/Home/Home';
 
 //Context API
 import { UserProfileDetailsProvider } from './contextapi/UserProfileDetailsContext';
@@ -47,7 +48,9 @@ const App = () => {
                 <UserProvider>
                   <BrowserRouter>
                     <Routes>
-                      <Route path="/" element={<SignIn />} />
+                      <Route path="/" element={<Home />} />
+                      <Route path="/signin" element={<SignIn />} />
+
                       <Route path="/signup" element={<SignUp />} />
                       <Route path="/forgot-password" element={<ForgotPassword />} />
 
