@@ -8,6 +8,8 @@ import TextField from '../../components/Input/TextField';
 import { ForgotPasswordProps, createForgotPassword, createResetPassword, ResetNewPasswordProps } from '../../services/API';
 
 const ForgotPassword = () => {
+
+  
   let navigate = useNavigate();
 
   /****************************************/
@@ -19,6 +21,7 @@ const ForgotPassword = () => {
 
   const onSubmitForgotPassword = async () => {
     try {
+
       const payload: ForgotPasswordProps = {
         email: email,
       };
@@ -82,7 +85,6 @@ const ForgotPassword = () => {
                 <>
                   <h5>Forgot password</h5>
                   <TextField label="Email" value={email} setValue={setEmail} />
-
                   <button className={signInPageStyle.signInButton} onClick={onSubmitForgotPassword}>
                     Forgot Password
                   </button>
@@ -93,7 +95,6 @@ const ForgotPassword = () => {
                   </Link>
                 </>
               )}
-
               {success && (
                 <>
                   <h5>Reset password</h5>

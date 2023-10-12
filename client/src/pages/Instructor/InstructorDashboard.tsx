@@ -156,6 +156,7 @@ const InstructorDashboard = () => {
             ))}
         </div>
       </CardLayout>
+
       {/* Modal box to create course */}
       <ModalBox open={open} onCloseModal={onCloseModal} title="Create course" onResetButton={resetCourseInput} onSaveButton={onSubmitCreateCourse}>
         <TextField label="Title" value={title} setValue={setTitle} />

@@ -1,0 +1,110 @@
+// For job post card design
+.jobpost_container {
+  border-radius: 20px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin: 10px;
+}
+
+.jobpost_container > h6 {
+  flex: 2; /* Adjust the flex value as needed */
+  margin: 0 5px;
+}
+
+.jobpost_container > p {
+  flex: 1;
+  margin: 0 5px;
+  text-align: start;
+}
+
+// For job posts header row design
+
+.jobpost_header_row {
+  border-radius: 20px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin: 10px;
+}
+
+.jobpost_header_row > h6 {
+  flex: 2;
+  margin: 0 5px;
+  font-weight: bolder;
+}
+
+.jobpost_header_row > p {
+  flex: 1;
+  margin: 0 5px;
+  text-align: start;
+  font-weight: bolder;
+}
+
+// Create job post visibility drop down
+
+.visibility_drop_down_container {
+  margin-top: 10px;
+}
+
+.visiblity_item {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+// To desing job skills array data
+
+.skills_container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+}
+
+.skill_item {
+  display: flex;
+  align-items: center;
+  background-color: orangered;
+  border-radius: 10px;
+  color: wheat;
+  margin-right: 20px;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.skill {
+  padding: 5px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.close_icon {
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 1px;
+  right: -10px;
+  background-color: red;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+
+.close_icon:hover {
+  background-color: black;
+}

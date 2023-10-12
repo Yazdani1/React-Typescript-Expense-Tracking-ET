@@ -14,6 +14,7 @@ interface ConfirmModalProps {
   keepAddingExpenseBook?: () => void;
   showDiscardButton?: boolean;
   showDeleteButton?: boolean;
+  deletePost?: () => void;
 }
 
 const ConfirmModal: FC<ConfirmModalProps> = ({
@@ -25,6 +26,7 @@ const ConfirmModal: FC<ConfirmModalProps> = ({
   keepAddingExpenseBook,
   showDiscardButton,
   showDeleteButton,
+  deletePost,
 }) => {
   return (
     <Modal
@@ -53,8 +55,12 @@ const ConfirmModal: FC<ConfirmModalProps> = ({
       )}
       {showDeleteButton && (
         <div className={modalBoxStyle.modalActionButton}>
-          <button className="btn btn-info">Cancel</button>
-          <button className="btn btn-danger">Delete</button>
+          <button className="btn btn-info" onClick={onCloseModal}>
+            Cancel
+          </button>
+          <button className="btn btn-danger" onClick={deletePost}>
+            Delete
+          </button>
         </div>
       )}
     </Modal>

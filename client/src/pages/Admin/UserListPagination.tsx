@@ -16,7 +16,9 @@ const UserListPagination = () => {
       const response = await axios.get(`http://localhost:8080/api/alluser?page=${page}`);
       const newUsers = response.data;
       setPage(page + 1);
+
       setUserList([...userList, ...newUsers]);
+      
     } catch (error) {
       setError('Error fetching more users');
     }
@@ -47,7 +49,9 @@ const UserListPagination = () => {
         {error && <div>{error}</div>}
       </div>
       <h1>{userList.length}</h1>
+
       {isLoading && <div>Loading...</div>}
+
       {error && <div>{error}</div>}
     </AdminPageLayout>
   );

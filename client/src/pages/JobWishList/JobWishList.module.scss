@@ -1,0 +1,40 @@
+.job_post_container {
+  border-radius: 20px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+
+  margin-top: 10px;
+  margin: 10px;
+}
+
+.job_post_bottom_row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.job_post_bottom_row > p {
+  font-weight: bolder;
+  color: blueviolet;
+  flex: 1;
+}
+
+.job_skills {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.skill_item {
+  background-color: orangered;
+  color: white;
+  margin-right: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  &:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
+}

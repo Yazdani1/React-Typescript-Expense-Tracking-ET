@@ -19,6 +19,9 @@ const CourseCard: FC<CourseCardProps> = ({ course }) => {
         <div className={style.itemRow}>
           <p>Enrolled:{course.enrolledStudents}</p>
           <p>Seats:{course.maxStudents}</p>
+          {course.enrolledStudents === course.maxStudents && (
+            <p style={{ background: 'red', padding: '5px', color: 'white', borderRadius: '20px' }}>No seats!</p>
+          )}
         </div>
       </div>
     </Link>

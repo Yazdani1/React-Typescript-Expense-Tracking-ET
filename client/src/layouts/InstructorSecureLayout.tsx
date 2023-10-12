@@ -14,6 +14,7 @@ const InstructorSecureLayout: FC<InstructorSecureLayoutProps> = ({ children }) =
   let navigate = useNavigate();
 
   // to use redux toolkit
+  
   const userProfileDetails = useSelector((state: any) => state.user.currentUser);
 
     const loadInstructorRole = async () => {

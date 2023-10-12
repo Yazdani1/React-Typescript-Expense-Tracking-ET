@@ -1,0 +1,39 @@
+.navcontainer {
+  height: 60px;
+  background-color: black;
+  color: white;
+}
+
+.sidebar_large_container {
+  position: relative;
+  height: 90vh;
+  width: 300px;
+  background-color: black;
+  color: white;
+  margin-top: 10px;
+}
+
+.icon_large_sidebar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.sidebar_small_container {
+  position: relative;
+  height: 90vh;
+  width: 150px;
+  background-color: black;
+  color: white;
+  margin-top: 10px;
+}
+
+.icon_small_sidebar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  cursor: pointer;
+}

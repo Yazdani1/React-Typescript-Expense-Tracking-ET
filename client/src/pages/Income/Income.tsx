@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
-import style from './Income.module.scss';
 import SubscriberPageLayout from '../../layouts/SubscriberPageLayout';
 import CardLayout from '../../components/CardLayout/CardLayout';
 import { useIncomeRecordContext } from '../../contextapi/IncomeRecordContext';
@@ -62,7 +61,7 @@ const Income = () => {
     <SubscriberPageLayout>
       <CardLayout title="Income Record Lists" showAddIcon openModal={onOpenModal}>
         {allIncomeRecords.length}
-        {allIncomeRecords && allIncomeRecords.map((income: any, index: any) => <IncomeCard incomeRecord={income} key={index} postid={income._id} />)}
+        {allIncomeRecords && allIncomeRecords.map((income) => <IncomeCard incomeRecord={income} key={income._id} postid={income._id} />)}
       </CardLayout>
 
       {/* Modal Box to add income record */}

@@ -12,6 +12,7 @@ export enum UserRole {
   Admin = 'Admin',
   Subscriber = 'Subscriber',
   Instructor = 'Instructor',
+  Employer = 'Employer',
 }
 
 export enum AccountType {
@@ -194,4 +195,61 @@ export interface CourseEnrolmentItems extends IBase {
   courseId: Course;
   coupon: string;
   enrolledBy: UserProfileDetails;
+}
+
+/****************************************/
+/********* Job Posts          ***********/
+/****************************************/
+
+export enum Visibility {
+  Private = 'Private',
+  Public = 'Public',
+}
+
+export enum Status {
+  Panding = 'Panding',
+  Approved = 'Approved',
+}
+
+export interface JobPosts extends IBase {
+  title: string;
+  des: string;
+  jobCity: string;
+  jobSkills: string[];
+  visibility: Visibility;
+  status: Status;
+  totalApplication: number;
+  approvedBy: UserProfileDetails;
+  approvedDate: string;
+  postedBy: UserProfileDetails;
+}
+
+export interface JobWishList extends IBase {
+  jobPostPublishedBy: UserProfileDetails;
+  jobPostId: JobPosts;
+  postedBy: UserProfileDetails;
+}
+
+export interface JobPostDetails {
+  singleJob: JobPosts;
+  simmilarJobBySameEmployer: JobPosts[];
+}
+
+export enum JobApplicationStatus {
+  Applied = 'Applied',
+  InReview = 'InReview',
+  NotFit = 'NotFit',
+  ShortListed = 'ShortListed',
+}
+
+export interface JobApplication extends IBase {
+  jobPostOwnerId: UserProfileDetails;
+  jobPostId: JobPosts;
+  status: JobApplicationStatus;
+  jobAppliedBy: UserProfileDetails;
+}
+
+export interface EmployerJobDetailsItem extends IBase {
+  singleJobDetails: JobPosts;
+  jobApplicationList: JobApplication[];
 }

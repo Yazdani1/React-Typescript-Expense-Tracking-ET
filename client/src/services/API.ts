@@ -16,6 +16,13 @@ import {
   CourseDetails,
   Lecture,
   CourseEnrolmentItems,
+  JobPosts,
+  Visibility,
+  Status,
+  JobWishList,
+  JobPostDetails,
+  JobApplication,
+  EmployerJobDetailsItem,
 } from '../services/DataProvider';
 
 /****************************************/
@@ -103,7 +110,6 @@ export const createResetPassword = async (props: ResetNewPasswordProps): Promise
   return res.data;
 };
 
-
 // To get loged in user profile and its only for test purpose and maybe can use in the profile page and context api
 export const getLogedInUserProfile = async (): Promise<UserProfileDetails> => {
   const res = await axios.get(API_URL + '/user-profile', headerConfig());
@@ -111,11 +117,21 @@ export const getLogedInUserProfile = async (): Promise<UserProfileDetails> => {
 };
 
 /****************************************/
-/*********User Role For Admin Site ******/
+/********* User role based access ******/
 /****************************************/
 
 export const getUserRoleForAdmin = async (): Promise<UserProfileDetails> => {
   const res = await axios.get(API_URL + '/current-user-role', headerConfig());
+  return res.data as UserProfileDetails;
+};
+
+export const getInstructorRole = async (): Promise<UserProfileDetails> => {
+  const res = await axios.get(API_URL + '/instructor-profile', headerConfig());
+  return res.data as UserProfileDetails;
+};
+
+export const getEmployerRole = async (): Promise<UserProfileDetails> => {
+  const res = await axios.get(API_URL + '/employer-profile', headerConfig());
   return res.data as UserProfileDetails;
 };
 
@@ -227,15 +243,6 @@ export const deleteIncomeRecord = async (id: string) => {
 };
 
 /****************************************/
-/******** Instructor   *****************/
-/****************************************/
-
-export const getInstructorRole = async (): Promise<UserProfileDetails> => {
-  const res = await axios.get(API_URL + '/instructor-profile', headerConfig());
-  return res.data as UserProfileDetails;
-};
-
-/****************************************/
 /********    Course     *****************/
 /****************************************/
 
@@ -317,4 +324,161 @@ export const createCourseEnrolment = async (props: CreateCourseEnrolmentProps): 
 export const getEnroledCourseLists = async (): Promise<CourseEnrolmentItems[]> => {
   const res = await axios.get(API_URL + '/get-enroled-course-lists', headerConfig());
   return res.data as CourseEnrolmentItems[];
+};
+
+/****************************************/
+/*********Employer -  Job posts  ********/
+/****************************************/
+
+export interface CreateJobPostProps {
+  title: string;
+  des: string;
+  jobCity: string;
+  jobSkills: string[];
+  visibility: Visibility;
+}
+
+export const createJobPosts = async (props: CreateJobPostProps): Promise<JobPosts> => {
+  const res = await axios.post(API_URL + '/create-jobpost', { ...props }, headerConfig());
+  return res.data;
+};
+
+export const getEmployerJobPosts = async (): Promise<JobPosts[]> => {
+  const res = await axios.get(API_URL + '/get-employer-jobpost', headerConfig());
+  return res.data as JobPosts[];
+};
+
+export interface UpdateJobPostProps {
+  title?: string;
+  des?: string;
+  jobCity?: string;
+  jobSkills?: string[];
+  visibility?: Visibility;
+}
+
+export const updateSingleJobPost = async (id: string, props: UpdateJobPostProps): Promise<JobPosts> => {
+  const res = await axios.put(API_URL + '/update-employer-single-job/' + id, { ...props }, headerConfig());
+  return res.data;
+};
+
+export const deleteSingleJobPost = async (id: string) => {
+  const res = await axios.delete(API_URL + '/delete-single-jobpost/' + id, headerConfig());
+  return res;
+};
+
+// To update all the job posts visibility
+export interface JobpostsVisibilityUpdateProps {
+  updateVisibility: Visibility;
+}
+
+export const updateJobPostsVisibility = async (props: JobpostsVisibilityUpdateProps): Promise<JobPosts[]> => {
+  const res = await axios.post(API_URL + '/update-job-post-visiblity', { ...props }, headerConfig());
+  return res.data as JobPosts[];
+};
+
+export const employerJobPostDetails = async (slug: string): Promise<EmployerJobDetailsItem> => {
+  const res = await axios.get(API_URL + '/job-details-applicationlist/' + slug, headerConfig());
+  return res.data as EmployerJobDetailsItem;
+};
+
+/****************************************/
+/**Employer-Job Posts Admin Access  *****/
+/****************************************/
+
+export interface UpdateAnyEmployerJobPostProps {
+  title?: string;
+  des?: string;
+  jobCity?: string;
+  jobSkills?: string[];
+  visibility?: Visibility;
+  status?: Status;
+}
+
+export const updateAnyEmployerJobPosts = async (id: string, props: UpdateAnyEmployerJobPostProps): Promise<JobPosts> => {
+  const res = await axios.put(API_URL + '/update-job-posts/' + id, { ...props }, headerConfig());
+  return res.data;
+};
+
+export const getAllEmployerJobPosts = async (): Promise<JobPosts[]> => {
+  const res = await axios.get(API_URL + '/get-allemployer-jobposts', headerConfig());
+  return res.data as JobPosts[];
+};
+
+/****************************************/
+/*** Job Posts Home Page  ***************/
+/****************************************/
+
+export const getApprovedPublicJobPosts = async (): Promise<JobPosts[]> => {
+  const res = await axios.get(API_URL + '/all-job-posts');
+  return res.data as JobPosts[];
+};
+
+export const getJobDetails = async (slug: string): Promise<JobPostDetails> => {
+  const res = await axios.get(API_URL + '/get-job-details/' + slug);
+  return res.data as JobPostDetails;
+};
+
+/****************************************/
+/************** Job Match ***************/
+/****************************************/
+
+export const getMatchedJob = async (): Promise<JobPosts[]> => {
+  const res = await axios.get(API_URL + '/get-job-match', headerConfig());
+  return res.data as JobPosts[];
+};
+
+/****************************************/
+/************** Job Wish List************/
+/****************************************/
+
+export interface CreateJobWishListProps {
+  jobPostPublishedBy: string;
+  jobPostId: string;
+}
+
+export const createJobWishList = async (props: CreateJobWishListProps): Promise<JobWishList> => {
+  const res = await axios.post(API_URL + '/create-job-wishlist', { ...props }, headerConfig());
+  return res.data;
+};
+
+export const getJobWishList = async (): Promise<JobWishList[]> => {
+  const res = await axios.get(API_URL + '/get-job-wishlist', headerConfig());
+  return res.data as JobWishList[];
+};
+
+export const deleteJobWishList = async (id: string) => {
+  const res = await axios.delete(API_URL + '/delete-job-wishlist/' + id, headerConfig());
+  return res.data;
+};
+
+// To get single jobwishlist for a single post for a single user
+// This will need to delete a wishlist. Will just use the id of a wishlist for a single job
+
+export const getSingleJobWishlist = async (slug: string): Promise<JobWishList> => {
+  const res = await axios.get(API_URL + '/get-single-job-wishlist/' + slug, headerConfig());
+  return res.data as JobWishList;
+};
+
+/****************************************/
+/********** Job Application  ************/
+/****************************************/
+
+export interface CreateJobApplicationProps {
+  jobPostOwnerId: string;
+  jobPostId: string;
+}
+
+export const createJobApplication = async (props: CreateJobApplicationProps): Promise<JobApplication> => {
+  const res = await axios.post(API_URL + '/create-job-application', { ...props }, headerConfig());
+  return res.data;
+};
+
+export const getJobApplicationList = async (): Promise<JobApplication[]> => {
+  const res = await axios.get(API_URL + '/get-applied-job-lists', headerConfig());
+  return res.data as JobApplication[];
+};
+
+export const deleteJobApplication = async (id: string) => {
+  const res = await axios.delete(API_URL + '/delete-job-application/' + id, headerConfig());
+  return res.data;
 };

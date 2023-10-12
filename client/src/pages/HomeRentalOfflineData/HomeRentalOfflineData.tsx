@@ -16,7 +16,7 @@ const HomeRentalOfflineData = () => {
       } else {
         const res = await getAllHomeRentPosts();
         setAllHomeRentPosts(res.data);
-        localStorage.setItem('homeRentPosts', JSON.stringify(res.data));
+        // localStorage.setItem('homeRentPosts', JSON.stringify(res.data));
       }
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {

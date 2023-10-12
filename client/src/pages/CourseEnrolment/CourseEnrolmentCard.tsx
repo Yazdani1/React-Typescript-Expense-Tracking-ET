@@ -19,6 +19,7 @@ const CourseEnrolmentCard: FC<CourseEnrolmentCardProps> = ({ course }) => {
         <div className={style.itemRow}>
           <p>Enrolled:{course.courseId?.enrolledStudents}</p>
           <p>Seats:{course.courseId?.maxStudents}</p>
+          <p>{course.enrolledBy?.name}</p>
         </div>
       </div>
     </Link>

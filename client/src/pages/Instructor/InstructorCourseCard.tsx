@@ -7,7 +7,6 @@ import style from './InstructorDashboard.module.scss';
 interface InstructorCourseCardProps {
   course: Course;
 }
-
 const InstructorCourseCard: FC<InstructorCourseCardProps> = ({ course }) => {
   return (
     <Link to={'/instructor-dashboard/course-details/' + course.slug} style={{ textDecoration: 'none', color: 'inherit' }}>

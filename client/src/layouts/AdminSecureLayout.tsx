@@ -1,11 +1,11 @@
-import React, { useContext, ReactNode, FC, useEffect, useState } from "react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import { ReactNode, FC, useEffect } from 'react';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 
-import { UserContext } from "../contextapi/UserContext";
-import { getUserRoleForAdmin } from "../services/API";
-import { UserProtectedRouteContext } from "../contextapi/UserProtectedRouteContext";
+import { UserContext } from '../contextapi/UserContext';
+import { getUserRoleForAdmin } from '../services/API';
+import { UserProtectedRouteContext } from '../contextapi/UserProtectedRouteContext';
 
 interface AdminSecureLayoutProps {
   children: ReactNode;
@@ -16,15 +16,14 @@ const AdminSecureLayout: FC<AdminSecureLayoutProps> = ({ children }) => {
   let navigate = useNavigate();
 
   // to use redux toolkit
-  const userProfileDetails = useSelector(
-    (state: any) => state.user.currentUser
-  );
+
+  const userProfileDetails = useSelector((state: any) => state.user.currentUser);
 
   const loadCurrentUserAdminRole = async () => {
     try {
       const res = await getUserRoleForAdmin();
     } catch (error: any) {
-      navigate("/");
+      navigate('/');
       toast.error(error.response && error.response.data.error, {
         position: toast.POSITION.TOP_RIGHT,
       });
@@ -35,11 +34,7 @@ const AdminSecureLayout: FC<AdminSecureLayoutProps> = ({ children }) => {
     loadCurrentUserAdminRole();
   }, []);
 
-  return userProfileDetails ? (
-    <> {children}</>
-  ) : (
-    <Navigate to="/" replace state={{ from: location }} />
-  );
+  return userProfileDetails ? <> {children}</> : <Navigate to="/" replace state={{ from: location }} />;
 
   ////////////////////////////////////////////////////////////////////////////
   // useEffect(() => {

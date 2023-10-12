@@ -197,12 +197,10 @@ const Profile = () => {
           <input type="text" name="Name" className={style.userForm} value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <label>E-mail:</label>
-
         <div className="form-group">
           <input type="text" name="Name" className={style.userForm} value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <label>Profile Pic:</label>
-
         <div className="form-group">
           <input type="text" name="Name" className={style.userForm} value={profilePic} onChange={(e) => setProfilePic(e.target.value)} />
         </div>

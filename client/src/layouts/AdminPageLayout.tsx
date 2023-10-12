@@ -1,6 +1,6 @@
-import { ReactNode, FC } from "react";
+import { ReactNode, FC } from 'react';
 
-import AdminSidebar from "../components/AdminSidebar/AdminSidebar";
+import AdminSidebar from '../components/AdminSidebar/AdminSidebar';
 
 interface AdminPageLayoutProps {
   children: ReactNode;
@@ -13,6 +13,7 @@ const AdminPageLayout: FC<AdminPageLayoutProps> = ({ children }) => {
         <div className="col-lg-2">
           <AdminSidebar />
         </div>
+
         <div className="col-lg-10">{children}</div>
       </div>
     </div>

@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
-import CardLayout from "../../components/CardLayout/CardLayout";
-import style from "./NationalId.module.scss";
-import HomePageLayout from "../../layouts/HomePageLayout";
-import { NationalID } from "../../services/DataProvider";
-import { searchNationalId } from "../../services/API";
-import { useIncomeRecordContext } from "../../contextapi/IncomeRecordContext";
+import CardLayout from '../../components/CardLayout/CardLayout';
+import style from './NationalId.module.scss';
+import HomePageLayout from '../../layouts/HomePageLayout';
+import { NationalID } from '../../services/DataProvider';
+import { searchNationalId } from '../../services/API';
+import { useIncomeRecordContext } from '../../contextapi/IncomeRecordContext';
 
 const NationalId = () => {
   const { allIncomeRecords } = useIncomeRecordContext();
 
   // To add search value from the input fields
-  const [nationaId, setNationalId] = useState<number | any>("");
+  const [nationaId, setNationalId] = useState<number | any>('');
   const [error, setError] = useState<string>();
 
   // To store national id search result data
-  const [nationalIdDetails, setNationalIdDetails] =
-    useState<NationalID | null>();
+  const [nationalIdDetails, setNationalIdDetails] = useState<NationalID | null>();
 
   const onSubmitSearchNationalId = async () => {
     try {
       // To replace the space from the nationaId state to pass it in the api url to search the data
-      const nationalIdWithoutSpaces = nationaId.replace(/\s/g, ""); // Remove spaces
+      const nationalIdWithoutSpaces = nationaId.replace(/\s/g, ''); // Remove spaces
       const res = await searchNationalId(nationalIdWithoutSpaces!);
       if (res) {
         setNationalIdDetails(res);
         // To clean the error state if we get the response
-        setError("");
+        setError('');
       }
     } catch (error: any) {
       setError(error.response && error.response.data.error);
       // if it retunrs an error for wrong id then it should empty the state
       setNationalIdDetails(null);
+
       toast.error(error.response && error.response.data.error, {
         position: toast.POSITION.TOP_RIGHT,
       });
@@ -44,11 +44,11 @@ const NationalId = () => {
 
   const handleNationalIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value;
-    const sanitizedInput = input.replace(/\D/g, ""); // Remove non-digit characters
+    const sanitizedInput = input.replace(/\D/g, ''); // Remove non-digit characters
     let formattedInput = sanitizedInput.substr(0, 16); // Take the first 13 digits
     if (formattedInput.length > 4) {
       // Insert spaces after every 4 digits
-      formattedInput = formattedInput.replace(/(\d{4})/g, "$1 ");
+      formattedInput = formattedInput.replace(/(\d{4})/g, '$1 ');
     }
     if (formattedInput.length <= 16) {
       //This is the state where it load theinput
@@ -61,7 +61,6 @@ const NationalId = () => {
       <div className="container">
         <div className="row">
           <div className="col-xl-4">
-
             <CardLayout>
               <h5>{allIncomeRecords.length}</h5>
             </CardLayout>
@@ -84,10 +83,7 @@ const NationalId = () => {
                   />
                 </div>
 
-                <div
-                  className={style.searchButton}
-                  onClick={onSubmitSearchNationalId}
-                >
+                <div className={style.searchButton} onClick={onSubmitSearchNationalId}>
                   <button className="btn btn-success">Search</button>
                 </div>
               </div>

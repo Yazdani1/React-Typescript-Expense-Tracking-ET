@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import signInPageStyle from './SignIn.module.scss';
@@ -17,8 +17,8 @@ import { UserProfileDetails } from '../../services/DataProvider';
 import { getLogedInUserProfile } from '../../services/API';
 import { useEnroledCoursesContext } from '../../contextapi/EnroledCoursesContext';
 
-
 const SignIn = () => {
+  const location = useLocation();
   let navigate = useNavigate();
 
   // to use redux toolkit
@@ -47,6 +47,8 @@ const SignIn = () => {
 
   const [error, setError] = useState<string>('');
 
+  const [autoLogoutStatusCode, setAutoLogoutStatusCode] = useState<string>('');
+
   const onSubmitUserSignIn = async (e: any) => {
     dispatch(loginStart());
 
@@ -60,12 +62,6 @@ const SignIn = () => {
       const res = await userLogin(payload);
 
       if (res.data) {
-        // This token is for protected route that is required to pass in the header
-
-        window.localStorage.setItem('token', res.data.token);
-
-        dispatch(loginSuccess(res.data?.user));
-
         // To clean the state as soon as user loged in
 
         setEmail('');
@@ -74,16 +70,37 @@ const SignIn = () => {
         if (res.data.user?.blockUser) {
           setError('Your account is blocked. Please contact with the support1');
         } else {
+          // To send user to the las visited route when they were auto loged out
+
+          /////////////////////////////////////////////////////////
+          // Check if there's a last visited route in local storage
+          ///////////////////////////////////////////////////////////
+
+          // This token is for protected route that is required to pass in the header
+          window.localStorage.setItem('token', res.data.token);
+
+          dispatch(loginSuccess(res.data?.user));
+          // setUser(res.data.user);
           toast.success('You have Loged In Successfully!', {
             position: toast.POSITION.TOP_CENTER,
           });
 
-          if (res.data.user?.role === 'Admin') {
-            navigate('/admin');
-          } else if (res.data.user?.role === 'Instructor') {
-            navigate('/instructor-dashboard');
+          const lastVisitedRoute = localStorage.getItem('lastVisitedRoute');
+          if (lastVisitedRoute) {
+            navigate(lastVisitedRoute);
+            // Clear the last visited route from local storage
+            localStorage.removeItem('lastVisitedRoute');
+            // Navigate to the last visited route
           } else {
-            navigate('/dashboard');
+            if (res.data.user?.role === 'Admin') {
+              navigate('/admin');
+            } else if (res.data.user?.role === 'Instructor') {
+              navigate('/instructor-dashboard');
+            } else if (res.data.user?.role === 'Employer') {
+              navigate('/employer-dashboard');
+            } else {
+              navigate('/dashboard');
+            }
           }
         }
 
@@ -121,12 +138,24 @@ const SignIn = () => {
     }
   };
 
+  // To show status code if user auto loged out then we show a message in the signin page
+  useEffect(() => {
+    const lastVisitedRouteAvailable = localStorage.getItem('lastVisitedRoute');
+
+    if (lastVisitedRouteAvailable) {
+      setAutoLogoutStatusCode('Auto logout for inactivity, status code 404');
+    }
+  }, []);
+
   return (
     <HomePageLayout>
       <div className="container">
         <div className={signInPageStyle.signInContainer}>
           <div className={signInPageStyle.signInFormDesign}>
             <h5>Sign In</h5>
+
+            {autoLogoutStatusCode && <h4>{autoLogoutStatusCode}</h4>}
+
             {error && <h6 style={{ color: 'red' }}>{error}</h6>}
             <div className={signInPageStyle.inputFormArea}>
               <div className="form-group">
@@ -150,7 +179,6 @@ const SignIn = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-
               <button className={signInPageStyle.signInButton} onClick={(e) => onSubmitUserSignIn(e)}>
                 Sign In
               </button>

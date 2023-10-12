@@ -168,7 +168,9 @@ const SignUp = () => {
                   onChange={(e) => setUserName(e.target.value)}
                 />
               </div>
+
               <p style={{ color: 'red' }}>{emailError}</p>
+
               <div className={signInPageStyle.email_filed_design}>
                 <input
                   type="text"
@@ -179,9 +181,9 @@ const SignUp = () => {
                   onChange={handleEmailChange}
                   // onChange={(e) => setUserEmail(e.target.value)}
                 />
+
                 <p className={signInPageStyle.checkIconDesign}>{isEmailValid && <HiCheckCircle size={30} color="green" />}</p>
               </div>
-
               <h6 style={{ color: 'red' }}>{passwordError}</h6>
 
               <div className={signInPageStyle.email_filed_design}>
@@ -194,6 +196,7 @@ const SignUp = () => {
                   onChange={handlePasswordChange}
                   // onChange={(e) => setUserPassword(e.target.value)}
                 />
+
                 <p className={signInPageStyle.checkIconDesign}>{isPasswordValid && <HiCheckCircle size={30} color="green" />}</p>
               </div>
 

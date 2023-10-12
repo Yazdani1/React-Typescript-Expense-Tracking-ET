@@ -17,11 +17,10 @@ const InstructorSidebar = () => {
 
   const handleLogout = () => {
     dispatch(logOut());
-    navigate('/');
     window.localStorage.removeItem('tokenLogin');
     window.localStorage.removeItem('token');
     window.localStorage.removeItem('userInforProtectedRoute');
-    navigate('/');
+    navigate('/signin');
   };
 
   return (

@@ -13,12 +13,21 @@ const NavbarHome = () => {
         <div className={styles.logo}>Logo</div>
 
         <div className={styles.navItems}>
-          <li>{userProfileDetails?.name}</li>
+          <li>
+            {userProfileDetails?.name} - {userProfileDetails?.role}
+          </li>
           <Link to={'/'} style={{ textDecoration: 'none', color: 'white' }}>
             <li>Home</li>
           </Link>
           <Link to={'/search-nationalid-details'} style={{ textDecoration: 'none', color: 'white' }}>
             <li>National ID </li>
+          </Link>
+          <Link to={'/job-posts'} style={{ textDecoration: 'none', color: 'white' }}>
+            <li>Job Posts </li>
+          </Link>
+
+          <Link to={'/company-dashboard'} style={{ textDecoration: 'none', color: 'white' }}>
+            <li>Company Dashboard</li>
           </Link>
 
           {!userProfileDetails && (
@@ -26,7 +35,6 @@ const NavbarHome = () => {
               <li> Login </li>
             </Link>
           )}
-
           {userProfileDetails?.role === 'Subscriber' && (
             <li className="nav-item">
               <Link to={'/dashboard'} style={{ textDecoration: 'none', color: 'white' }}>
@@ -34,18 +42,24 @@ const NavbarHome = () => {
               </Link>
             </li>
           )}
-
           {userProfileDetails?.role === 'Instructor' && (
             <li className="nav-item">
-              <Link to={'/dashboard'} style={{ textDecoration: 'none', color: 'white' }}>
+              <Link to={'/instructor-dashboard'} style={{ textDecoration: 'none', color: 'white' }}>
                 Instructor Dashboard
               </Link>
             </li>
           )}
           {userProfileDetails?.role === 'Admin' && (
             <li className="nav-item">
-              <Link to={'/dashboard'} style={{ textDecoration: 'none', color: 'white' }}>
+              <Link to={'/admin'} style={{ textDecoration: 'none', color: 'white' }}>
                 Admin Dashboard
+              </Link>
+            </li>
+          )}
+          {userProfileDetails?.role === 'Employer' && (
+            <li className="nav-item">
+              <Link to={'/employer-dashboard'} style={{ textDecoration: 'none', color: 'white' }}>
+                Employer Dashboard
               </Link>
             </li>
           )}

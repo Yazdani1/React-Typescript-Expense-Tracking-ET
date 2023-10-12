@@ -10,16 +10,20 @@ import { UserProfileDetails } from '../../services/DataProvider';
 //Context API
 import { UserContext } from '../../contextapi/UserContext';
 import { UserProfileDetailsContext } from '../../contextapi/UserProfileDetailsContext';
+import { useJobWishListContext } from '../../contextapi/JobWishListContext';
 
 import { useUserContext } from '../../contextapi/UserContextCookies';
 import { UserProtectedRouteContext } from '../../contextapi/UserProtectedRouteContext';
 
 const Navbar = () => {
+  let navigate = useNavigate();
+  //Context API
+
+  const { clearJobWishList } = useJobWishListContext();
+
   // to use redux toolkit
   const userProfileDetails = useSelector((state: any) => state.user.currentUser);
   const dispatch = useDispatch();
-
-  let navigate = useNavigate();
 
   /////////////////////////////////////////////////////////////////////
   // All these are old context api that i used.
@@ -29,7 +33,7 @@ const Navbar = () => {
   // );
   // Context API to show user protected route. But this context api is used to show protected route
   // Context api with cookies
-  //  const { user, logout } = useUserContext();
+  const { user, logout } = useUserContext();
   /////////////////////////////////////////////////////////////////////
 
   const [userInfo, setUserInfo]: any = useContext(UserProtectedRouteContext);
@@ -43,14 +47,15 @@ const Navbar = () => {
 
   const handleLogout = () => {
     dispatch(logOut());
-    navigate('/');
     window.localStorage.removeItem('tokenLogin');
     window.localStorage.removeItem('token');
     window.localStorage.removeItem('userInforProtectedRoute');
+    window.localStorage.removeItem('userData');
+
     setUserInfo('');
-    navigate('/');
-    // setState("");
-    // Additional logout-related logic, such as redirecting to the login page
+    navigate('/signin');
+    clearJobWishList();
+    logout();
   };
 
   return (
@@ -93,6 +98,21 @@ const Navbar = () => {
         <li className="nav-item">
           <Link to={'/enroled-courses'} style={{ textDecoration: 'none', color: 'white' }}>
             Enroled Courses
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to={'/job-match'} style={{ textDecoration: 'none', color: 'white' }}>
+            Job Match
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to={'/job-wishlist'} style={{ textDecoration: 'none', color: 'white' }}>
+            Job Wishlist
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to={'/job-application'} style={{ textDecoration: 'none', color: 'white' }}>
+            Job Application
           </Link>
         </li>
 
