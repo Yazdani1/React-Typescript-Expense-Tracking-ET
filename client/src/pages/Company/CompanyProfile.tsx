@@ -8,7 +8,7 @@ const CompanyProfile = () => {
 		<CompanyPageLayout>
 			<CardLayout>
 				<div>
-					<h2>Company Profile</h2>
+					<h2>Company Profile .......</h2>
 				</div>
 			</CardLayout>
 
