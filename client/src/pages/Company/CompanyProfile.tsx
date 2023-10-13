@@ -14,11 +14,9 @@ const CompanyProfile = () => {
 			</CardLayout>
 
 			<CardLayout>
-				<div style={{ margin: '30px' }}>
-					<h2>Company Profile</h2>
-					<p>Test project</p>
-					<p>Test project</p>
-				</div>
+				{[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
+					<h4>{item}. This is a new text</h4>
+				))}
 			</CardLayout>
 		</CompanyPageLayout>
 	);
