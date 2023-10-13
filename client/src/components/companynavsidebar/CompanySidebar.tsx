@@ -124,7 +124,7 @@ const CompanySidebar: FC<CompanySidebarProps> = ({ show, setShow }) => {
 
 					<h6>
 						<NavLink
-							to={'/setting'}
+							to={'/company-profile'}
 							style={({ isActive }) =>
 								isActive
 									? {
@@ -141,7 +141,7 @@ const CompanySidebar: FC<CompanySidebarProps> = ({ show, setShow }) => {
 
 					<h6>
 						<NavLink
-							to={'/company-profile'}
+							to={'/setting'}
 							style={({ isActive }) =>
 								isActive
 									? {
