@@ -9,7 +9,6 @@ const CompanyProfile = () => {
 			<CardLayout>
 				<div>
 					<h2>Company Profile</h2>
-					<p>Test project</p>
 				</div>
 			</CardLayout>
 
