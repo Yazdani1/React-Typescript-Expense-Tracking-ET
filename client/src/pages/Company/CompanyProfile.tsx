@@ -15,7 +15,7 @@ const CompanyProfile = () => {
 
 			<CardLayout>
 				{[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
-					<h4>{item}. This is a new text</h4>
+					<h4>{item}.</h4>
 				))}
 			</CardLayout>
 		</CompanyPageLayout>
