@@ -58,74 +58,75 @@
 // // Now I can use this context api and can show my desire data in any component.
 
 import {
-  useState,
-  createContext,
-  useEffect,
-  FC,
-  ReactNode,
-  useContext,
-} from "react";
-import { toast } from "react-toastify";
+	useState,
+	createContext,
+	useEffect,
+	FC,
+	ReactNode,
+	useContext,
+} from 'react';
+import { toast } from 'react-toastify';
 
-import { getLogedInUserIncomeRecord } from "../services/API";
-import { IncomeRecord } from "../services/DataProvider";
+import { getLogedInUserIncomeRecord } from '../services/API';
+import { IncomeRecord } from '../services/DataProvider';
 
 interface IncomeRecordContextProps {
-  allIncomeRecords: IncomeRecord[];
-  // addNewIncomeRecords: (newIncomeRecord: IncomeRecord) => void;
-  loadLogedInUserIncomeRecords: () => void;
+	allIncomeRecords: IncomeRecord[];
+	// addNewIncomeRecords: (newIncomeRecord: IncomeRecord) => void;
+	loadLogedInUserIncomeRecords: () => void;
 }
 
 export const IncomeRecordContext = createContext<IncomeRecordContextProps>({
-  allIncomeRecords: [],
-  // addNewIncomeRecords: () => {},
-  loadLogedInUserIncomeRecords: () => {},
+	allIncomeRecords: [],
+	// addNewIncomeRecords: () => {},
+	loadLogedInUserIncomeRecords: () => {},
 });
 
 export const useIncomeRecordContext = () => useContext(IncomeRecordContext);
 
 interface IncomeRecordProviderProps {
-  children: ReactNode;
+	children: ReactNode;
 }
 
 export const IncomeRecordProvider: FC<IncomeRecordProviderProps> = ({
-  children,
+	children,
 }) => {
+	const [allIncomeRecords, setAllIncomeRecords] = useState<IncomeRecord[]>([]);
+	const loadLogedInUserIncomeRecords = async () => {
+		try {
+			const res = await getLogedInUserIncomeRecord();
+			setAllIncomeRecords(res);
+		} catch (error: any) {
+			toast.error(error.response && error.response.data.error, {
+				position: toast.POSITION.TOP_RIGHT,
+			});
+		}
+	};
 
-  const [allIncomeRecords, setAllIncomeRecords] = useState<IncomeRecord[]>([]);
-  const loadLogedInUserIncomeRecords = async () => {
-    try {
-      const res = await getLogedInUserIncomeRecord();
-      setAllIncomeRecords(res);
-    } catch (error: any) {
-      toast.error(error.response && error.response.data.error, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-    }
-  };
+	useEffect(() => {
+		loadLogedInUserIncomeRecords();
+	}, []);
 
-  useEffect(() => {
-    loadLogedInUserIncomeRecords();
-  }, []);
+	// const addNewIncomeRecords = (newIncomeRecord: IncomeRecord) => {
+	//   setAllIncomeRecords((prevRecords) => [newIncomeRecord, ...prevRecords]);
+	// };
 
-  // const addNewIncomeRecords = (newIncomeRecord: IncomeRecord) => {
-  //   setAllIncomeRecords((prevRecords) => [newIncomeRecord, ...prevRecords]);
-  // };
-  // This function just take the response after creating a new income record and then update the state.
-  // This is a ways to update and show the new created post in the context api array.
-  // const addNewIncomeRecords = (newIncomeRecord: IncomeRecord) => {
-  //   setAllIncomeRecords([newIncomeRecord, ...allIncomeRecords]);
-  // };
+	// This function just take the response after creating a new income record and then update the state.
 
-  return (
-    <IncomeRecordContext.Provider
-      value={{
-        allIncomeRecords,
-        // addNewIncomeRecords,
-        loadLogedInUserIncomeRecords,
-      }}
-    >
-      {children}
-    </IncomeRecordContext.Provider>
-  );
+	// This is a ways to update and show the new created post in the context api array.
+	// const addNewIncomeRecords = (newIncomeRecord: IncomeRecord) => {
+	//   setAllIncomeRecords([newIncomeRecord, ...allIncomeRecords]);
+	// };
+
+	return (
+		<IncomeRecordContext.Provider
+			value={{
+				allIncomeRecords,
+				// addNewIncomeRecords,
+				loadLogedInUserIncomeRecords,
+			}}
+		>
+			{children}
+		</IncomeRecordContext.Provider>
+	);
 };
