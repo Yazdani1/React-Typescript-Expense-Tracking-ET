@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/userSlice';
 import { useIdleTimer } from 'react-idle-timer';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const AutoLogout: React.FC = () => {
 	const location = useLocation();
