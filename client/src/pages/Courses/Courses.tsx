@@ -17,7 +17,6 @@ const Courses = () => {
 	const loadAllCourses = async () => {
 		try {
 			const res = await getCourseListsForSubscriber();
-
 			if (res) {
 				setCourseLists(res);
 			}
