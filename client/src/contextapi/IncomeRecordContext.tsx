@@ -7,25 +7,18 @@
 //   useContext,
 // } from "react";
 // import { toast } from "react-toastify";
-
 // import { getLogedInUserIncomeRecord } from "../services/API";
 // import { IncomeRecord } from "../services/DataProvider";
-
 // export const IncomeRecordContext = createContext<null | any>(null);
-
 // // To use this context api - now from any other component i just need to call useHomeRentalContext function
 // // and then i can use all these api data in any other components..
-
 // export const useIncomeRecordContext = () => useContext(IncomeRecordContext);
-
 // interface IncomeRecordProviderProps {
 //   children: ReactNode;
 // }
-
 // export const IncomeRecordProvider: FC<IncomeRecordProviderProps> = ({
 //   children,
 // }) => {
-
 //   /****************************************/
 //   /*** Loged In User Income Record ********/
 //   /****************************************/
@@ -110,9 +103,7 @@ export const IncomeRecordProvider: FC<IncomeRecordProviderProps> = ({
 	// const addNewIncomeRecords = (newIncomeRecord: IncomeRecord) => {
 	//   setAllIncomeRecords((prevRecords) => [newIncomeRecord, ...prevRecords]);
 	// };
-
 	// This function just take the response after creating a new income record and then update the state.
-
 	// This is a ways to update and show the new created post in the context api array.
 	// const addNewIncomeRecords = (newIncomeRecord: IncomeRecord) => {
 	//   setAllIncomeRecords([newIncomeRecord, ...allIncomeRecords]);
