@@ -37,6 +37,7 @@ export const EnroledCoursesProvider: FC<EnroledCoursesProviderProps> = ({
 	const loadEnroledCourses = async () => {
 		try {
 			const res = await getEnroledCourseLists();
+
 			if (res) {
 				setAllEnroledCourses(res);
 			}
