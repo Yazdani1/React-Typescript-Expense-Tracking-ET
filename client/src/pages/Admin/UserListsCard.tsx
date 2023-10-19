@@ -7,8 +7,9 @@ import style from './UserLists.module.scss';
 import CardLayout from '../../components/CardLayout/CardLayout';
 import DropDownList from '../../components/DropDown/DropDownList';
 import ModalBox from '../../components/Modal/ModalBox';
-import { UserRole } from '../../services/DataProvider';
+
 import { UserDetailsUpdateProps, updateUserDetails } from '../../services/API';
+import { UserRole } from '../../services/DataProvider';
 
 interface UserListsProps {
 	user: UserProfileDetails;
