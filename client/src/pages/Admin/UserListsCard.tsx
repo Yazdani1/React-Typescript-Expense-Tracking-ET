@@ -27,6 +27,7 @@ const UserListsCard: FC<UserListsProps> = ({ user, loadUserList }) => {
 	const onCloseModal = () => {
 		setOpen(false);
 	};
+
 	/****************************************/
 	/*****      Update user details     ****/
 	/****************************************/
@@ -45,6 +46,7 @@ const UserListsCard: FC<UserListsProps> = ({ user, loadUserList }) => {
 			setUserAwards((prevAwards) => [...prevAwards, selectedAward]);
 		}
 	};
+
 	// TO handle block switch button
 	const handleChange = (checked: boolean) => {
 		setBlockUser(checked);
