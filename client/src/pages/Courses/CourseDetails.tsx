@@ -33,6 +33,7 @@ const CourseDetails = () => {
   };
 
   // Conttext API for Enroled Courses
+  
   const { allEnroledCourses, loadEnroledCourses } = useEnroledCoursesContext();
   const isCourseEnrolled = allEnroledCourses && allEnroledCourses.some((enrollment) => enrollment.courseId?._id === courseDetails?._id);
 
