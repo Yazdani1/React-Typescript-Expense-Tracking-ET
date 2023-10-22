@@ -38,6 +38,7 @@ const UserListsCard: FC<UserListsProps> = ({ user, loadUserList }) => {
 	const [blockUser, setBlockUser] = useState<boolean>(false);
 
 	// To add uesr awards option
+
 	const [awards, setAwards] = useState<UserAward>();
 	const [userAwards, setUserAwards] = useState<UserAward[]>([]);
 
