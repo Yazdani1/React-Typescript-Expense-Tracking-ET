@@ -1,7 +1,6 @@
 import { useHomeRentalContext } from '../../contextapi/HomeRentalContext';
 import SubscriberPageLayout from '../../layouts/SubscriberPageLayout';
 import CardLayout from '../../components/CardLayout/CardLayout';
-
 import { useIncomeRecordContext } from '../../contextapi/IncomeRecordContext';
 
 const HomeRentalPost = () => {
@@ -19,7 +18,6 @@ const HomeRentalPost = () => {
 				<div className='col-xl-6'>
 					<CardLayout>
 						<h5>{allIncomeRecords.length}</h5>
-
 						{allIncomeRecords &&
 							allIncomeRecords.map((income: any, index: any) => (
 								<h6>{income.title}</h6>
