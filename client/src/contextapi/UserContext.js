@@ -3,6 +3,7 @@ import { useState, createContext, useEffect } from "react";
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
+  
   const [state, setState] = useState({
     user: {},
     token: "",
