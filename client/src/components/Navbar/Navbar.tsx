@@ -126,6 +126,7 @@ const Navbar = () => {
 						Enroled Courses
 					</Link>
 				</li>
+
 				<li className='nav-item'>
 					<Link
 						to={'/job-match'}
@@ -142,6 +143,7 @@ const Navbar = () => {
 						Job Wishlist
 					</Link>
 				</li>
+
 				<li className='nav-item'>
 					<Link
 						to={'/job-application'}
