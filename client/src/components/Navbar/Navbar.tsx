@@ -17,6 +17,7 @@ import { UserProtectedRouteContext } from '../../contextapi/UserProtectedRouteCo
 
 const Navbar = () => {
 	let navigate = useNavigate();
+
 	//Context API
 
 	const { clearJobWishList } = useJobWishListContext();
@@ -33,7 +34,6 @@ const Navbar = () => {
 	// const { userProfileDetails, updateUserProfileDetails } = useContext(
 	//   UserProfileDetailsContext
 	// );
-
 	// Context API to show user protected route. But this context api is used to show protected route
 	// Context api with cookies
 
