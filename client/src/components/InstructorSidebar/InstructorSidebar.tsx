@@ -44,6 +44,7 @@ const InstructorSidebar = () => {
 					<li className={style.username}>{userProfileDetails?.name}</li>
 					<li className={style.username}>{userProfileDetails?.role}</li>
 					<hr />
+
 					<li>
 						<NavLink
 							to={'/'}
@@ -95,6 +96,7 @@ const InstructorSidebar = () => {
 							Photo Library
 						</NavLink>
 					</li>
+
 					<li>
 						<NavLink
 							to={'/profile'}
