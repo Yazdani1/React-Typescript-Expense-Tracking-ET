@@ -96,6 +96,7 @@ const InstructorSidebar = () => {
 							Photo Library
 						</NavLink>
 					</li>
+					
 
 					<li>
 						<NavLink
@@ -113,6 +114,7 @@ const InstructorSidebar = () => {
 							Profile
 						</NavLink>
 					</li>
+
 				</ul>
 
 				<span className={style.logoutButton} onClick={handleLogout}>
