@@ -45,7 +45,6 @@ const DropDownList: FC<DropDownCardProps> = ({
         <div className={style.dropdownTrigger} onClick={() => handleDropDownCard(0)}>
           <FiMoreVertical size={24} />
         </div>
-
         {openDropDownIndex === 0 && (
           <div className={style.dropDownCard}>
             {showUpdateDeleteButton && (
@@ -62,6 +61,7 @@ const DropDownList: FC<DropDownCardProps> = ({
                     <RiEdit2Fill size={20} color="green" />
                   </p>
                 </div>
+
                 <div
                   className={style.rowEachItem}
                   onClick={() => {
@@ -70,9 +70,11 @@ const DropDownList: FC<DropDownCardProps> = ({
                   }}
                 >
                   <p>Delete</p>
+
                   <p>
                     <AiFillDelete size={20} color="red" />
                   </p>
+                  
                 </div>
               </>
             )}
