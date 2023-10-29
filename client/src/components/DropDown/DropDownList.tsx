@@ -12,7 +12,6 @@ interface DropDownCardProps {
   showJobWithdraw?: boolean;
   showUpdateDeleteButton?: boolean;
 }
-
 const DropDownList: FC<DropDownCardProps> = ({
   showJobWithdraw,
   showUpdateDeleteButton,
@@ -20,13 +19,13 @@ const DropDownList: FC<DropDownCardProps> = ({
   deleteSingleItem,
   withdrawJobApplication,
 }) => {
+
   const [openDropDownIndex, setOpenDropDownIndex] = useState<number | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleDropDownCard = (index: number) => {
     setOpenDropDownIndex(openDropDownIndex === index ? null : index);
   };
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
