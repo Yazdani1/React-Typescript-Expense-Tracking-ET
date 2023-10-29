@@ -11,7 +11,6 @@ const Courses = () => {
 	/****************************************/
 	/*********** Course Lists ***************/
 	/****************************************/
-
 	const [courseLists, setCourseLists] = useState<Course[]>([]);
 
 	const loadAllCourses = async () => {
