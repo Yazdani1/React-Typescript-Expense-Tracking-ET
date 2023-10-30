@@ -18,187 +18,196 @@ import { getLogedInUserProfile } from '../../services/API';
 import { useEnroledCoursesContext } from '../../contextapi/EnroledCoursesContext';
 
 const SignIn = () => {
-  const location = useLocation();
-  let navigate = useNavigate();
+	const location = useLocation();
+	let navigate = useNavigate();
 
-  // to use redux toolkit
-  const userProfileDetails = useSelector((state: any) => state.user.currentUser);
-  // to use redux toolkit
-  const dispatch = useDispatch();
+	// to use redux toolkit
+	const userProfileDetails = useSelector(
+		(state: any) => state.user.currentUser
+	);
+	// to use redux toolkit
+	const dispatch = useDispatch();
 
-  // Old Used Context API
-  // const [state, setState]:any = useContext(UserContext);
-  // This is the context api that has cookies and store user detials when user login
+	// Old Used Context API
+	// const [state, setState]:any = useContext(UserContext);
+	// This is the context api that has cookies and store user detials when user login
 
-  const { setUser } = useUserContext();
+	const { setUser } = useUserContext();
 
-  // Context API to show user protected route.
+	// Context API to show user protected route.
+	const [userInfo, setUserInfo]: any = useContext(UserProtectedRouteContext);
 
-  const [userInfo, setUserInfo]: any = useContext(UserProtectedRouteContext);
+	/****************************************/
+	/*********  User Login      *************/
+	/****************************************/
 
-  /****************************************/
-  /*********  User Login      *************/
-  /****************************************/
+	const [email, setEmail] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
 
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+	// to show blocked user error message
+	const [error, setError] = useState<string>('');
 
-  // to show blocked user error message
+	const [autoLogoutStatusCode, setAutoLogoutStatusCode] = useState<string>('');
 
-  const [error, setError] = useState<string>('');
+	const onSubmitUserSignIn = async (e: any) => {
+		dispatch(loginStart());
 
-  const [autoLogoutStatusCode, setAutoLogoutStatusCode] = useState<string>('');
+		e.preventDefault();
+		try {
+			const payload: UserLoginProps = {
+				email: email,
+				password: password,
+			};
 
-  const onSubmitUserSignIn = async (e: any) => {
-    dispatch(loginStart());
+			const res = await userLogin(payload);
 
-    e.preventDefault();
-    try {
-      const payload: UserLoginProps = {
-        email: email,
-        password: password,
-      };
+			if (res.data) {
+				// To clean the state as soon as user loged in
 
-      const res = await userLogin(payload);
+				setEmail('');
+				setPassword('');
 
-      if (res.data) {
-        // To clean the state as soon as user loged in
+				if (res.data.user?.blockUser) {
+					setError('Your account is blocked. Please contact with the support1');
+				} else {
+					// To send user to the las visited route when they were auto loged out
 
-        setEmail('');
-        setPassword('');
+					/////////////////////////////////////////////////////////
+					// Check if there's a last visited route in local storage
+					///////////////////////////////////////////////////////////
 
-        if (res.data.user?.blockUser) {
-          setError('Your account is blocked. Please contact with the support1');
-        } else {
-          // To send user to the las visited route when they were auto loged out
+					// This token is for protected route that is required to pass in the header
+					window.localStorage.setItem('token', res.data.token);
 
-          /////////////////////////////////////////////////////////
-          // Check if there's a last visited route in local storage
-          ///////////////////////////////////////////////////////////
+					dispatch(loginSuccess(res.data?.user));
+					// setUser(res.data.user);
+					toast.success('You have Loged In Successfully!', {
+						position: toast.POSITION.TOP_CENTER,
+					});
 
-          // This token is for protected route that is required to pass in the header
-          window.localStorage.setItem('token', res.data.token);
+					const lastVisitedRoute = localStorage.getItem('lastVisitedRoute');
+					if (lastVisitedRoute) {
+						navigate(lastVisitedRoute);
+						// Clear the last visited route from local storage
+						localStorage.removeItem('lastVisitedRoute');
+						// Navigate to the last visited route
+					} else {
+						if (res.data.user?.role === 'Admin') {
+							navigate('/admin');
+						} else if (res.data.user?.role === 'Instructor') {
+							navigate('/instructor-dashboard');
+						} else if (res.data.user?.role === 'Employer') {
+							navigate('/employer-dashboard');
+						} else {
+							navigate('/dashboard');
+						}
+					}
+				}
 
-          dispatch(loginSuccess(res.data?.user));
-          // setUser(res.data.user);
-          toast.success('You have Loged In Successfully!', {
-            position: toast.POSITION.TOP_CENTER,
-          });
+				/////////////////////////////////////////////////////////////
+				// save user info in local storage
+				// localStorage.setItem("tokenLogin", JSON.stringify(res.data));
+				// update user information to context api
+				// setState({
+				//   user: res.data.user,
+				//   token: res.data.token,
+				// });
+				///////////////////////////////////////////////////////////////
+				//////////////////////////////////////////////////////////////
+				// To test user protected route user context api
+				// localStorage.setItem(
+				//   "userInforProtectedRoute",
+				//   JSON.stringify(res.data.user?.date)
+				// );
+				// setUserInfo(res.data.user?.date);
+				///////////////////////////////////// end
+				///////////////////////////////////////////////////////////////
+				//To set User cookie context api.
+				// As soon as user login - we need to store user info in this context api can
+				//used any component to show user data. it also encrypt
+				//setUser(res.data.user);
+				///////////////////////////////////////////////////////////////
 
-          const lastVisitedRoute = localStorage.getItem('lastVisitedRoute');
-          if (lastVisitedRoute) {
-            navigate(lastVisitedRoute);
-            // Clear the last visited route from local storage
-            localStorage.removeItem('lastVisitedRoute');
-            // Navigate to the last visited route
-          } else {
-            if (res.data.user?.role === 'Admin') {
-              navigate('/admin');
-            } else if (res.data.user?.role === 'Instructor') {
-              navigate('/instructor-dashboard');
-            } else if (res.data.user?.role === 'Employer') {
-              navigate('/employer-dashboard');
-            } else {
-              navigate('/dashboard');
-            }
-          }
-        }
+				// To store data in redux toolkit
+			}
+		} catch (error: any) {
+			toast.error(error.response && error.response.data.error, {
+				position: toast.POSITION.TOP_RIGHT,
+			});
+			dispatch(loginFailure());
+		}
+	};
 
-        /////////////////////////////////////////////////////////////
-        // save user info in local storage
-        // localStorage.setItem("tokenLogin", JSON.stringify(res.data));
-        // update user information to context api
-        // setState({
-        //   user: res.data.user,
-        //   token: res.data.token,
-        // });
-        ///////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////
-        // To test user protected route user context api
-        // localStorage.setItem(
-        //   "userInforProtectedRoute",
-        //   JSON.stringify(res.data.user?.date)
-        // );
-        // setUserInfo(res.data.user?.date);
-        ///////////////////////////////////// end
-        ///////////////////////////////////////////////////////////////
-        //To set User cookie context api.
-        // As soon as user login - we need to store user info in this context api can
-        //used any component to show user data. it also encrypt
-        //setUser(res.data.user);
-        ///////////////////////////////////////////////////////////////
+	// To show status code if user auto loged out then we show a message in the signin page
+	useEffect(() => {
+		const lastVisitedRouteAvailable = localStorage.getItem('lastVisitedRoute');
 
-        // To store data in redux toolkit
-      }
-    } catch (error: any) {
-      toast.error(error.response && error.response.data.error, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-      dispatch(loginFailure());
-    }
-  };
+		if (lastVisitedRouteAvailable) {
+			setAutoLogoutStatusCode('Auto logout for inactivity, status code 404');
+		}
+	}, []);
 
-  // To show status code if user auto loged out then we show a message in the signin page
-  useEffect(() => {
-    const lastVisitedRouteAvailable = localStorage.getItem('lastVisitedRoute');
+	return (
+		<HomePageLayout>
+			<div className='container'>
+				<div className={signInPageStyle.signInContainer}>
+					<div className={signInPageStyle.signInFormDesign}>
+						<h5>Sign In</h5>
 
-    if (lastVisitedRouteAvailable) {
-      setAutoLogoutStatusCode('Auto logout for inactivity, status code 404');
-    }
-  }, []);
+						{autoLogoutStatusCode && <h4>{autoLogoutStatusCode}</h4>}
 
-  return (
-    <HomePageLayout>
-      <div className="container">
-        <div className={signInPageStyle.signInContainer}>
-          <div className={signInPageStyle.signInFormDesign}>
-            <h5>Sign In</h5>
+						{error && <h6 style={{ color: 'red' }}>{error}</h6>}
+						<div className={signInPageStyle.inputFormArea}>
+							<div className='form-group'>
+								<input
+									type='text'
+									name='Name'
+									className={signInPageStyle.formControlEmail}
+									placeholder='Your E-mail *'
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
+								/>
+							</div>
 
-            {autoLogoutStatusCode && <h4>{autoLogoutStatusCode}</h4>}
-
-            {error && <h6 style={{ color: 'red' }}>{error}</h6>}
-            <div className={signInPageStyle.inputFormArea}>
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="Name"
-                  className={signInPageStyle.formControlEmail}
-                  placeholder="Your E-mail *"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-
-              <div className="form-group">
-                <input
-                  type="password"
-                  name="email"
-                  className={signInPageStyle.formControlPassword}
-                  placeholder="Your Password*"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <button className={signInPageStyle.signInButton} onClick={(e) => onSubmitUserSignIn(e)}>
-                Sign In
-              </button>
-              <Link to={'/forgot-password'} style={{ textDecoration: 'none', color: 'inherit' }}>
-                <span className={signInPageStyle.signUpHereOption}>
-                  <p>Forgot Password?</p>
-                </span>
-              </Link>
-              <Link to={'/signup'} style={{ textDecoration: 'none', color: 'inherit' }}>
-                <span className={signInPageStyle.signUpHereOption}>
-                  <p>Don't have an account? Sign Up here</p>
-                </span>
-              </Link>
-            </div>
-          </div>
-        </div>
-        <ToastContainer autoClose={8000} />
-      </div>
-    </HomePageLayout>
-  );
+							<div className='form-group'>
+								<input
+									type='password'
+									name='email'
+									className={signInPageStyle.formControlPassword}
+									placeholder='Your Password*'
+									value={password}
+									onChange={(e) => setPassword(e.target.value)}
+								/>
+							</div>
+							<button
+								className={signInPageStyle.signInButton}
+								onClick={(e) => onSubmitUserSignIn(e)}
+							>
+								Sign In
+							</button>
+							<Link
+								to={'/forgot-password'}
+								style={{ textDecoration: 'none', color: 'inherit' }}
+							>
+								<span className={signInPageStyle.signUpHereOption}>
+									<p>Forgot Password?</p>
+								</span>
+							</Link>
+							<Link
+								to={'/signup'}
+								style={{ textDecoration: 'none', color: 'inherit' }}
+							>
+								<span className={signInPageStyle.signUpHereOption}>
+									<p>Don't have an account? Sign Up here</p>
+								</span>
+							</Link>
+						</div>
+					</div>
+				</div>
+				<ToastContainer autoClose={8000} />
+			</div>
+		</HomePageLayout>
+	);
 };
 
 export default SignIn;
