@@ -33,6 +33,7 @@ const Courses = () => {
 	return (
 		<SubscriberPageLayout>
 			<CardLayout>
+
 				<div className='row'>
 					{courseLists &&
 						courseLists.map((course) => (
@@ -41,6 +42,7 @@ const Courses = () => {
 							</div>
 						))}
 				</div>
+				
 			</CardLayout>
 		</SubscriberPageLayout>
 	);
