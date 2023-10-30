@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { IoAddCircleSharp } from 'react-icons/io5';
 
-import cardStyle from './CardLayout.module.scss';
+import style from './CardLayout.module.scss';
 
 interface CardLayoutProps {
 	title?: string;
@@ -19,8 +19,8 @@ const CardLayout: FC<CardLayoutProps> = ({
 	showAddIcon,
 }) => {
 	return (
-		<div className={cardStyle.cardContainer}>
-			<div className={cardStyle.cardLayoutHeader}>
+		<div className={style.cardContainer}>
+			<div className={style.cardLayoutHeader}>
 				<h5>{title}</h5>
 				{showAddIcon && (
 					<p onClick={openModal}>
