@@ -25,9 +25,9 @@ const SignIn = () => {
 	const userProfileDetails = useSelector(
 		(state: any) => state.user.currentUser
 	);
+
 	// to use redux toolkit
 	const dispatch = useDispatch();
-
 	// Old Used Context API
 	// const [state, setState]:any = useContext(UserContext);
 	// This is the context api that has cookies and store user detials when user login
