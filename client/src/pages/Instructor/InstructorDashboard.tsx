@@ -122,13 +122,11 @@ const InstructorDashboard = () => {
 			<CardLayout>
 				<h6>Instructor dashboard</h6>
 			</CardLayout>
-
 			<CardLayout>
 				<button className='btn btn-primary' onClick={onOpenModal}>
 					Create Course
 				</button>
 			</CardLayout>
-
 			<CardLayout>
 				<div>
 					<h6>Sort By Title:{sortCoursesByTitle}</h6>
@@ -157,7 +155,6 @@ const InstructorDashboard = () => {
 						Filter
 					</button>
 				</div>
-
 				<hr />
 				<div className='row'>
 					{courses &&
@@ -168,7 +165,6 @@ const InstructorDashboard = () => {
 						))}
 				</div>
 			</CardLayout>
-
 			{/* Modal box to create course */}
 			<ModalBox
 				open={open}

@@ -28,7 +28,9 @@ const CardLayout: FC<CardLayoutProps> = ({
 					</p>
 				)}
 			</div>
+
 			{children}
+
 			{showButton && <button className='btn btn-success'>Submit</button>}
 		</div>
 	);
