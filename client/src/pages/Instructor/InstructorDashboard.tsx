@@ -33,9 +33,7 @@ const InstructorDashboard = () => {
 				coupon: coupon,
 				maxStudents: parseInt(maxStudents),
 			};
-
 			const res = await createCourse(payload);
-
 			if (res) {
 				toast.success('Course created', {
 					position: toast.POSITION.TOP_CENTER,
@@ -59,9 +57,7 @@ const InstructorDashboard = () => {
 	/****************************************/
 	/***********  Load courses **************/
 	/****************************************/
-
 	const [courses, setCourses] = useState<Course[]>([]);
-
 	const loadCourses = async () => {
 		try {
 			const res = await getCourseLists();
