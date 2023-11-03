@@ -1,4 +1,4 @@
-import { useState, useEffect, MouseEvent } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate, Link } from 'react-router-dom';
 import { HiCheckCircle } from 'react-icons/hi';
@@ -10,7 +10,7 @@ import {
 	getUserAccountRegistrationLocation,
 } from '../../services/API';
 import { LocationData } from '../../services/DataProvider';
-import TextField from '../../components/Input/TextField';
+// import TextField from '../../components/Input/TextField';
 import HomePageLayout from '../../layouts/HomePageLayout';
 
 const SignUp = () => {
