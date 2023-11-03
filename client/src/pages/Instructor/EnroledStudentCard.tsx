@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 
 import { CourseEnrolmentItems } from '../../services/DataProvider';
-// import style from './InstructorDashboard.module.scss';
 import CardLayout from '../../components/CardLayout/CardLayout';
 
 interface EnroledStudentCardProps {
