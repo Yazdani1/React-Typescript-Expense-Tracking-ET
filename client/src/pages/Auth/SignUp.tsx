@@ -10,7 +10,6 @@ import {
 	getUserAccountRegistrationLocation,
 } from '../../services/API';
 import { LocationData } from '../../services/DataProvider';
-// import TextField from '../../components/Input/TextField';
 import HomePageLayout from '../../layouts/HomePageLayout';
 
 const SignUp = () => {
@@ -121,7 +120,6 @@ const SignUp = () => {
 	//     setEmailError('');
 	//   }
 	// };
-
 	// const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 	//   const password = e.target.value;
 	//   setUserPassword(password);
