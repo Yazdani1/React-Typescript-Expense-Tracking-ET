@@ -52,10 +52,13 @@ const JobPostItemRow = () => {
 		<div className={style.jobpost_header_row}>
 			<h6>Title</h6>
 			<p>Visibility</p>
+
 			<p>Status</p>
 			<p>City</p>
+
 			<p>Application</p>
 			<p>Published By</p>
+
 			<p>Edit</p>
 			<p>Preview</p>
 		</div>
