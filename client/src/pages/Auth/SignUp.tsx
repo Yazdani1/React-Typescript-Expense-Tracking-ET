@@ -31,14 +31,12 @@ const SignUp = () => {
 		// Get user's geolocation coordinates
 		navigator.geolocation.getCurrentPosition(async (position) => {
 			const { latitude, longitude } = position.coords;
-
 			// To get city, country and other info based on user latitude and longitude
 			const locationResponse = await getUserAccountRegistrationLocation(
 				latitude,
 				longitude
 			);
 			const locationData: LocationData = locationResponse.data;
-
 			setLocation({
 				city: locationData.city,
 				countryName: locationData.countryName,
