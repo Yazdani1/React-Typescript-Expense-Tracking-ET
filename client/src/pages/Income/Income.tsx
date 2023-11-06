@@ -31,7 +31,6 @@ const Income = () => {
 	/****************************************/
 	/****** Create Income Record   **********/
 	/****************************************/
-
 	const [title, setTitle] = useState<string>('');
 	const [des, setDes] = useState<string>('');
 	const [amount, setAmount] = useState<string>('');
