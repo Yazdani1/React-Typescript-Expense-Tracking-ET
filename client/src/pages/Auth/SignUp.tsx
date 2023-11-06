@@ -146,7 +146,6 @@ const SignUp = () => {
 			};
 
 			const res = await userRegistration(payload);
-
 			if (res.data) {
 				toast.success('Your account created successfully!', {
 					position: toast.POSITION.TOP_RIGHT,
@@ -165,8 +164,7 @@ const SignUp = () => {
 			<div className='container'>
 				<div className={signInPageStyle.signInContainer}>
 					<div className={signInPageStyle.signInFormDesign}>
-						<h5>Sign Up</h5>
-
+						<h6>Sign Up</h6>
 						<div className={signInPageStyle.inputFormArea}>
 							<div className='form-group'>
 								<input
@@ -178,9 +176,7 @@ const SignUp = () => {
 									onChange={(e) => setUserName(e.target.value)}
 								/>
 							</div>
-
 							<p style={{ color: 'red' }}>{emailError}</p>
-
 							<div className={signInPageStyle.email_filed_design}>
 								<input
 									type='text'
