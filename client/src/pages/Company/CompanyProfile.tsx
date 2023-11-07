@@ -1,5 +1,3 @@
-import React from 'react';
-
 import CompanyPageLayout from '../../layouts/CompanyPageLayout';
 import CardLayout from '../../components/CardLayout/CardLayout';
 

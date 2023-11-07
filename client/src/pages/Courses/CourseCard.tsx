@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Course } from '../../services/DataProvider';
@@ -17,10 +17,8 @@ const CourseCard: FC<CourseCardProps> = ({ course }) => {
 			<div className={style.courseContainer}>
 				<h6>{course.title}</h6>
 				<p>{course.postedBy?.name}</p>
-
 				<hr />
 				<p>{course.des.substring(0, 50)}</p>
-
 				<div className={style.itemRow}>
 					<p>Enrolled:{course.enrolledStudents}</p>
 					<p>Seats:{course.maxStudents}</p>
