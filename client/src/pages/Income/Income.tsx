@@ -48,6 +48,7 @@ const Income = () => {
 					position: toast.POSITION.TOP_RIGHT,
 				});
 				loadLogedInUserIncomeRecords();
+				
 				// To update newly created income record in the context api
 				// addNewIncomeRecords(res);
 			}

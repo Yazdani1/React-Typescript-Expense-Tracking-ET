@@ -13,8 +13,6 @@ const HomeRentalPost = () => {
 	return (
 		<SubscriberPageLayout>
 			<div className='row'>
-				{/* Home rental posts data */}
-
 				<div className='col-xl-6'>
 					<CardLayout>
 						<h5>{allIncomeRecords.length}</h5>
