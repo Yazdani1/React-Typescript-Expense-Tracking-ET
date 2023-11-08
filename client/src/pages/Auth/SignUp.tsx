@@ -174,7 +174,9 @@ const SignUp = () => {
 									onChange={(e) => setUserName(e.target.value)}
 								/>
 							</div>
+
 							<p style={{ color: 'red' }}>{emailError}</p>
+
 							<div className={signInPageStyle.email_filed_design}>
 								<input
 									type='text'
