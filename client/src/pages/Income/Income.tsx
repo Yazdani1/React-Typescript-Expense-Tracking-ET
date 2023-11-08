@@ -31,24 +31,26 @@ const Income = () => {
 	/****************************************/
 	/****** Create Income Record   **********/
 	/****************************************/
+
 	const [title, setTitle] = useState<string>('');
 	const [des, setDes] = useState<string>('');
 	const [amount, setAmount] = useState<string>('');
 
 	const onSubmitCreateIncomeRecord = async () => {
 		try {
+
 			const payload: CreateIncomeRecordProps = {
 				title: title,
 				des: des,
 				amount: parseInt(amount),
 			};
+
 			const res = await createIncomeRecord(payload);
 			if (res) {
 				toast.success('Income record created successfully', {
 					position: toast.POSITION.TOP_RIGHT,
 				});
 				loadLogedInUserIncomeRecords();
-				
 				// To update newly created income record in the context api
 				// addNewIncomeRecords(res);
 			}
