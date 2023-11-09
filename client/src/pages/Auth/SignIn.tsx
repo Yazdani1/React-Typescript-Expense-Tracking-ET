@@ -47,37 +47,28 @@ const SignIn = () => {
 	const [error, setError] = useState<string>('');
 
 	const [autoLogoutStatusCode, setAutoLogoutStatusCode] = useState<string>('');
-
 	const onSubmitUserSignIn = async (e: any) => {
 		dispatch(loginStart());
-
 		e.preventDefault();
 		try {
 			const payload: UserLoginProps = {
 				email: email,
 				password: password,
 			};
-
 			const res = await userLogin(payload);
-
 			if (res.data) {
 				// To clean the state as soon as user loged in
-
 				setEmail('');
 				setPassword('');
-
 				if (res.data.user?.blockUser) {
 					setError('Your account is blocked. Please contact with the support1');
 				} else {
 					// To send user to the las visited route when they were auto loged out
-
 					/////////////////////////////////////////////////////////
 					// Check if there's a last visited route in local storage
 					///////////////////////////////////////////////////////////
-
 					// This token is for protected route that is required to pass in the header
 					window.localStorage.setItem('token', res.data.token);
-
 					dispatch(loginSuccess(res.data?.user));
 					// setUser(res.data.user);
 					toast.success('You have Loged In Successfully!', {
