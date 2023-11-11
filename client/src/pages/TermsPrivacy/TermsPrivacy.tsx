@@ -5,9 +5,8 @@ const TermsPrivacy = () => {
 		<div>
 			<h1>Data Component</h1>
 			<p
-				dangerouslySetInnerHTML={{
-					__html: data.data.replace(/\n/g, '<br />'),
-				}}
+				style={{ marginLeft: '10px' }}
+				dangerouslySetInnerHTML={{ __html: data.data.replace(/\n/g, '<br />') }}
 			></p>
 			{/* {data.map((item, index) => (
 				<div style={{ padding: '20px' }}>
