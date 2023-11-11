@@ -24,3 +24,14 @@ const TermsPrivacy = () => {
 };
 
 export default TermsPrivacy;
+
+// [
+// 	{
+// 		title: 'Test title',
+// 		data: '1. Text data is here, This is just a description\n2. Next generation:\n   1. First day work:\n     We are looking for first day work not for the last time of the month. This is the main reason here to solve the issues.\n   2. We all are here for different reason.',
+// 	},
+// 	{
+// 		title: 'Test title two',
+// 		data: '1. Text data is here, This is just a description\n2. Next generation:\n   1. First day work:\n     We are looking for first day work not for the last time of the month. This is the main reason here to solve the issues.\n   2. We all are here for different reason.',
+// 	},
+// ];
