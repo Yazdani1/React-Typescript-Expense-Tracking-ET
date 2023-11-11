@@ -1,4 +1,34 @@
 {
-	"title": "Test title is here doing so many things that need to be done",
-	"data": "1. Text data is here,\n\nThis is just a description\n\n2. Next generation:\n   1. First day work:\n     We are looking for first-day work, not for the last time of the month. This is the main reason here to solve the issues.\n   2. We are all here for different reasons.\n      (a) Test a for title two\n      (b) Test b for the new one"
+	"title": "Data Description",
+	"sections": [
+		{
+			"type": "text",
+			"content": "Text data is here,\n\nThis is just a description"
+		},
+		{
+			"type": "nextGeneration",
+			"content": "Next generation:",
+			"subSections": [
+				{
+					"type": "firstDayWork",
+					"content": "First day work:",
+					"details": "We are looking for first day work not for the last time of the month. This is the main reason here to solve the issues."
+				},
+				{
+					"type": "reasons",
+					"content": "We all are here for different reasons.",
+					"subSections": [
+						{
+							"type": "a",
+							"content": "Test a for the title two"
+						},
+						{
+							"type": "b",
+							"content": "Test b for the new one"
+						}
+					]
+				}
+			]
+		}
+	]
 }
