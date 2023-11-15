@@ -99,7 +99,6 @@ const NationalId = () => {
 									<div className={style.imageDesign}>
 										<img src={nationalIdDetails?.photo} />
 									</div>
-
 									<div className={style.nationalIdDetails}>
 										<p>First Name:{nationalIdDetails?.firstName}</p>
 										<p>Last Name:{nationalIdDetails?.lastName}</p>
@@ -116,7 +115,6 @@ const NationalId = () => {
 								</div>
 							</CardLayout>
 						)}
-
 						{error && (
 							<CardLayout>
 								<h4>{error}</h4>
