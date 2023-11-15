@@ -86,7 +86,6 @@ const App = () => {
 														path='/job-details/:slug'
 														element={<JobPostDetails />}
 													/>
-
 													{/* Protected route for subscriber*/}
 													<Route
 														path='/dashboard'
