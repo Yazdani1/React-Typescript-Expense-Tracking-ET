@@ -14,7 +14,6 @@ const NationalId = () => {
 	// To add search value from the input fields
 	const [nationaId, setNationalId] = useState<number | any>('');
 	const [error, setError] = useState<string>();
-
 	// To store national id search result data
 	const [nationalIdDetails, setNationalIdDetails] =
 		useState<NationalID | null>();
@@ -26,7 +25,6 @@ const NationalId = () => {
 			const res = await searchNationalId(nationalIdWithoutSpaces!);
 			if (res) {
 				setNationalIdDetails(res);
-				// To clean the error state if we get the response
 				setError('');
 			}
 		} catch (error: any) {
@@ -69,7 +67,6 @@ const NationalId = () => {
 							<h3>Nationa Id Details You Can Search Here</h3>
 						</CardLayout>
 					</div>
-
 					<div className='col-xl-8'>
 						<CardLayout>
 							<div className={style.search_nationaid}>
@@ -83,7 +80,6 @@ const NationalId = () => {
 										onChange={handleNationalIdChange}
 									/>
 								</div>
-
 								<div
 									className={style.searchButton}
 									onClick={onSubmitSearchNationalId}
@@ -92,7 +88,6 @@ const NationalId = () => {
 								</div>
 							</div>
 						</CardLayout>
-
 						{nationalIdDetails && (
 							<CardLayout>
 								<div className={style.searchResultContainer}>
