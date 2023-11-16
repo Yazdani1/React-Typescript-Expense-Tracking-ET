@@ -46,11 +46,15 @@ const JobWishListCard: FC<JobWishListCardProps> = ({ jobwishlist }) => {
 						{skill}
 					</p>
 				))}
+
 			</div>
 			<div className={style.job_post_bottom_row}>
 				<p>{jobwishlist.jobPostId?.jobCity}</p>
+
 				<p>{jobwishlist.jobPostId?.visibility}</p>
+
 				<p>{jobwishlist.jobPostId?.status}</p>
+				
 				<p onClick={handleDeleteJobWishList}>
 					<AiFillHeart size={25} />
 					Unsaved
