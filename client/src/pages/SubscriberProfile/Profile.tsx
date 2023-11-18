@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import 'react-responsive-modal/styles.css';
 import { CiEdit } from 'react-icons/ci';
 import { IoMdClose } from 'react-icons/io';
@@ -10,14 +10,11 @@ import { useSelector } from 'react-redux';
 
 import SubscriberPageLayout from '../../layouts/SubscriberPageLayout';
 import CardLayout from '../../components/CardLayout/CardLayout';
-import { UserContext } from '../../contextapi/UserContext';
-import { UserProfileDetailsContext } from '../../contextapi/UserProfileDetailsContext';
 import style from './Profile.module.scss';
 import ModalBox from '../../components/Modal/ModalBox';
 import {
 	UpdateUserProfileProps,
 	updateSingleUserProfile,
-	getLogedInUserProfile,
 } from '../../services/API';
 import { useUserContext } from '../../contextapi/UserContextCookies';
 import { loginSuccess } from '../../redux/userSlice';
@@ -124,7 +121,6 @@ const Profile = () => {
 	//   setProfilePic(user?.imageUrl!);
 	// }, [user]);
 	/////////////////////////////////////////////
-
 	/****************************************/
 	/******  To Show User Profile    ********/
 	/****************************************/
