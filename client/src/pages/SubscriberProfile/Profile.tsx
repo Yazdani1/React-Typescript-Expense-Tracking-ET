@@ -37,7 +37,6 @@ const Profile = () => {
 	// Context API to update new user info -Cookies context api
 	const { user, setUser } = useUserContext();
 	////////////////////////////////////////////////////////////////////////////////
-
 	/****************************************/
 	/******  To Open Modal Box     **********/
 	/****************************************/
@@ -48,7 +47,6 @@ const Profile = () => {
 	const onCloseModal = () => {
 		setOpen(false);
 	};
-
 	/****************************************/
 	/******  To Update User Profile    ******/
 	/****************************************/
@@ -75,9 +73,7 @@ const Profile = () => {
 				toast.success('Successfully Updated Profile', {
 					position: toast.POSITION.TOP_CENTER,
 				});
-
 				dispatch(loginSuccess(res.user));
-
 				/////////////////////////////////////////
 				// To update the user context api with the updated profile data need to set response in the local storage
 				// Then also need to update the setState so that newly profile info can be added in th state and can show in the
