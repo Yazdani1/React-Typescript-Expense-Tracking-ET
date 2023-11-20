@@ -118,7 +118,6 @@ const CompanySidebar: FC<CompanySidebarProps> = ({ show, setShow }) => {
 							Company dashboard
 						</NavLink>
 					</h6>
-
 					<h6>
 						<NavLink
 							to={'/company-profile'}
@@ -135,7 +134,6 @@ const CompanySidebar: FC<CompanySidebarProps> = ({ show, setShow }) => {
 							Profile
 						</NavLink>
 					</h6>
-
 					<h6>
 						<NavLink
 							to={'/setting'}
@@ -152,7 +150,6 @@ const CompanySidebar: FC<CompanySidebarProps> = ({ show, setShow }) => {
 							Setting
 						</NavLink>
 					</h6>
-
 					<p
 						onClick={handleShowSmallSidebar}
 						className={style.icon_large_sidebar}
