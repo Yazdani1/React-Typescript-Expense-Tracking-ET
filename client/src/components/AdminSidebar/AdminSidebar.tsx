@@ -11,7 +11,6 @@ import style from './AdminSidebar.module.scss';
 const AdminSidebar = () => {
   let navigate = useNavigate();
   const userProfileDetails = useSelector((state: any) => state.user.currentUser);
-
   const dispatch = useDispatch();
 
   // to use context api
@@ -40,12 +39,9 @@ const AdminSidebar = () => {
               </div>
             )}
           </div>
-
           <li className={style.username}>{userProfileDetails?.name}</li>
           <li className={style.username}>{userProfileDetails?.role}</li>
-
           <hr />
-
           <li>
             <NavLink
               to={'/'}
