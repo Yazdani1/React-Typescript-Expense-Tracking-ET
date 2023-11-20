@@ -61,7 +61,6 @@ const CompanySidebar: FC<CompanySidebarProps> = ({ show, setShow }) => {
 							<AiFillDashboard size={40} />
 						</NavLink>
 					</h6>
-
 					<h6>
 						<NavLink
 							to={'/company-profile'}
@@ -78,7 +77,6 @@ const CompanySidebar: FC<CompanySidebarProps> = ({ show, setShow }) => {
 							<ImProfile size={40} />
 						</NavLink>
 					</h6>
-
 					<h6>
 						<NavLink
 							to={'/company-profile'}
@@ -95,7 +93,6 @@ const CompanySidebar: FC<CompanySidebarProps> = ({ show, setShow }) => {
 							<ImProfile size={40} />
 						</NavLink>
 					</h6>
-
 					<p
 						onClick={handleShowLargeSidebar}
 						className={style.icon_small_sidebar}
