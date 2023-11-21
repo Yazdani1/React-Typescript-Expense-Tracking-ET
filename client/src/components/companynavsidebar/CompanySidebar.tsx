@@ -26,12 +26,10 @@ const saveSidebarViewMode = (isSmall: boolean) => {
 
 const CompanySidebar: FC<CompanySidebarProps> = ({ show, setShow }) => {
 	const [isSmall, setIsSmall] = useState(getSidebarViewMode());
-
 	const handleShowLargeSidebar = () => {
 		setIsSmall(false);
 		setShow(true);
 	};
-
 	const handleShowSmallSidebar = () => {
 		setIsSmall(true);
 		setShow(false);
