@@ -40,11 +40,9 @@ const InstructorSidebar = () => {
 							</div>
 						)}
 					</div>
-
 					<li className={style.username}>{userProfileDetails?.name}</li>
 					<li className={style.username}>{userProfileDetails?.role}</li>
 					<hr />
-
 					<li>
 						<NavLink
 							to={'/'}
@@ -61,7 +59,6 @@ const InstructorSidebar = () => {
 							Home
 						</NavLink>
 					</li>
-
 					<li>
 						<NavLink
 							to={'/instructor-dashboard'}
@@ -78,7 +75,6 @@ const InstructorSidebar = () => {
 							Dashboard
 						</NavLink>
 					</li>
-
 					<li>
 						<NavLink
 							to={'/photo-library'}
@@ -96,7 +92,6 @@ const InstructorSidebar = () => {
 							Photo Library
 						</NavLink>
 					</li>
-					
 
 					<li>
 						<NavLink
@@ -114,9 +109,7 @@ const InstructorSidebar = () => {
 							Profile
 						</NavLink>
 					</li>
-
 				</ul>
-
 				<span className={style.logoutButton} onClick={handleLogout}>
 					Log Out
 				</span>
