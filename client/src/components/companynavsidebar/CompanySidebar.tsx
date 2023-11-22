@@ -1,10 +1,8 @@
-// CompanySidebar.tsx
-
-import React, { useState, useEffect, FC } from 'react';
+import { useState, useEffect, FC } from 'react';
 import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from 'react-icons/bs';
 import { ImProfile } from 'react-icons/im';
 import { AiFillDashboard } from 'react-icons/ai';
-import { useNavigate, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import style from './CompanyNavSidebar.module.css';
 
@@ -19,11 +17,9 @@ const getSidebarViewMode = () => {
 	const storedMode = localStorage.getItem(SIDEBAR_STORAGE_KEY);
 	return storedMode === 'small';
 };
-
 const saveSidebarViewMode = (isSmall: boolean) => {
 	localStorage.setItem(SIDEBAR_STORAGE_KEY, isSmall ? 'small' : 'large');
 };
-
 const CompanySidebar: FC<CompanySidebarProps> = ({ show, setShow }) => {
 	const [isSmall, setIsSmall] = useState(getSidebarViewMode());
 	const handleShowLargeSidebar = () => {
@@ -34,7 +30,6 @@ const CompanySidebar: FC<CompanySidebarProps> = ({ show, setShow }) => {
 		setIsSmall(true);
 		setShow(false);
 	};
-
 	useEffect(() => {
 		saveSidebarViewMode(isSmall);
 	}, [isSmall]);
