@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -14,7 +13,6 @@ const InstructorSidebar = () => {
 		(state: any) => state.user.currentUser
 	);
 	const dispatch = useDispatch();
-
 	let navigate = useNavigate();
 
 	const handleLogout = () => {
