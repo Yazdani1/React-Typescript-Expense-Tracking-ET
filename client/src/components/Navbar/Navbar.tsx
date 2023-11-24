@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 
 import { logOut } from '../../redux/userSlice';
 import navbarStyle from './Navbar.module.scss';
-import { UserProfileDetails } from '../../services/DataProvider';
 
 //Context API
 import { UserContext } from '../../contextapi/UserContext';
@@ -19,7 +18,6 @@ const Navbar = () => {
 	let navigate = useNavigate();
 
 	//Context API
-
 	const { clearJobWishList } = useJobWishListContext();
 
 	// to use redux toolkit
@@ -126,7 +124,6 @@ const Navbar = () => {
 						Enroled Courses
 					</Link>
 				</li>
-
 				<li className='nav-item'>
 					<Link
 						to={'/job-match'}
