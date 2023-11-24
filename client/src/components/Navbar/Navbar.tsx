@@ -7,8 +7,6 @@ import { logOut } from '../../redux/userSlice';
 import navbarStyle from './Navbar.module.scss';
 
 //Context API
-import { UserContext } from '../../contextapi/UserContext';
-import { UserProfileDetailsContext } from '../../contextapi/UserProfileDetailsContext';
 import { useJobWishListContext } from '../../contextapi/JobWishListContext';
 
 import { useUserContext } from '../../contextapi/UserContextCookies';
