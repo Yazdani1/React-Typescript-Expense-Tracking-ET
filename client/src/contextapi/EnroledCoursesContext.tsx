@@ -33,7 +33,6 @@ export const EnroledCoursesProvider: FC<EnroledCoursesProviderProps> = ({
 	const [allEnroledCourses, setAllEnroledCourses] = useState<
 		CourseEnrolmentItems[]
 	>([]);
-
 	const loadEnroledCourses = async () => {
 		try {
 			const res = await getEnroledCourseLists();
@@ -47,7 +46,6 @@ export const EnroledCoursesProvider: FC<EnroledCoursesProviderProps> = ({
 			});
 		}
 	};
-
 	useEffect(() => {
 		loadEnroledCourses();
 	}, []);
