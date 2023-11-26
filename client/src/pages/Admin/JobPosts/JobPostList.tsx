@@ -43,7 +43,6 @@ const JobPostList = () => {
 		</AdminPageLayout>
 	);
 };
-
 export default JobPostList;
 
 const JobPostItemRow = () => {
