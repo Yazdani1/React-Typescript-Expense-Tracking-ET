@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import style from './JobPosts.module.scss';
@@ -13,7 +13,6 @@ const JobPostList = () => {
 	/****************************************/
 
 	const [allJobPosts, setAllJobPosts] = useState<JobPosts[]>([]);
-
 	const loadAllEmployerJobPosts = async () => {
 		try {
 			const res = await getAllEmployerJobPosts();
@@ -52,13 +51,10 @@ const JobPostItemRow = () => {
 		<div className={style.jobpost_header_row}>
 			<h6>Title</h6>
 			<p>Visibility</p>
-
 			<p>Status</p>
 			<p>City</p>
-
 			<p>Application</p>
 			<p>Published By</p>
-
 			<p>Edit</p>
 			<p>Preview</p>
 		</div>
