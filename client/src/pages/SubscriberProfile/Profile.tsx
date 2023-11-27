@@ -95,12 +95,10 @@ const Profile = () => {
 			});
 		}
 	};
-
 	const addUserSkills = () => {
 		setUserSkills([...userSkills, addSkills]);
 		setAddSkills('');
 	};
-
 	const removeSkills = (skillIndex: string) => {
 		const skills = userSkills.filter((item) => item !== skillIndex);
 		setUserSkills(skills);
