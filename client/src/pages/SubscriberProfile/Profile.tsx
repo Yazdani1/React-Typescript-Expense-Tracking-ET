@@ -180,7 +180,6 @@ const Profile = () => {
 						<h6>Joined: {userProfileDetails?.date}</h6>
 						<h6>Points: {userProfileDetails?.points}</h6>
 					</div>
-
 					<div className={style.editIcon} onClick={onOpenModal}>
 						<CiEdit size={35} color='green' />
 					</div>
@@ -237,7 +236,6 @@ const Profile = () => {
 						onChange={(e) => setAddSkills(e.target.value)}
 					/>
 				</div>
-
 				<div className={style.skills_container}>
 					{userSkills.map((skill, index) => (
 						<div key={index} className={style.skill_item}>
@@ -251,7 +249,6 @@ const Profile = () => {
 						</div>
 					))}
 				</div>
-
 				<button className='btn btn-warning' onClick={addUserSkills}>
 					Add Skills
 				</button>

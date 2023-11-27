@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import data from './t.json';
 const TermsPrivacy = () => {
 	const renderSubSection = (subSection: any, level: number) => (
