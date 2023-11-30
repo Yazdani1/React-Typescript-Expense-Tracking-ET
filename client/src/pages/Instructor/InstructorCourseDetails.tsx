@@ -54,11 +54,9 @@ const InstructorCourseDetails = () => {
 	/****************************************/
 
 	const [open, setOpen] = useState<boolean>(false);
-
 	const onOpenModal = () => {
 		setOpen(true);
 	};
-
 	const onCloseModal = () => {
 		setOpen(false);
 	};
