@@ -26,13 +26,11 @@ const InstructorCourseDetails = () => {
 	/****************************************/
 	/* Course details and lectures   ********/
 	/****************************************/
-
 	const [courseDetails, setCourseDetails] = useState<Course>();
 	const [lectures, setLectures] = useState<Lecture[]>([]);
 	const [enroledStudentsList, setEnrolStudentsList] = useState<
 		CourseEnrolmentItems[]
 	>([]);
-
 	const loadCourseDetailsLectures = async () => {
 		try {
 			const res = await getSingleCourseLectures(slug!);
@@ -52,7 +50,6 @@ const InstructorCourseDetails = () => {
 	/****************************************/
 	/******Modal Box to Create Courses   ***/
 	/****************************************/
-
 	const [open, setOpen] = useState<boolean>(false);
 	const onOpenModal = () => {
 		setOpen(true);
