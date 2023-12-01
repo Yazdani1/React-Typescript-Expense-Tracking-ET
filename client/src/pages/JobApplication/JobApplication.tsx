@@ -5,7 +5,6 @@ import {
 	updateSingleJobPost,
 	deleteSingleJobPost,
 } from '../../services/API';
-import { JobPosts, Visibility } from '../../services/DataProvider';
 import SubscriberPageLayout from '../../layouts/SubscriberPageLayout';
 import { useJobApplicationContext } from '../../contextapi/JobApplicationContext';
 import style from './JobApplication.module.scss';
