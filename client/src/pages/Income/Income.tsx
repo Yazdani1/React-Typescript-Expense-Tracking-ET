@@ -19,8 +19,7 @@ const Income = () => {
 
 	/****************************************/
 	/******  To Open Modal Box     **********/
-	/****************************************/
-
+	/***************************************/
 	const [open, setOpen] = useState<boolean>(false);
 	const onOpenModal = () => {
 		setOpen(true);
@@ -38,13 +37,11 @@ const Income = () => {
 
 	const onSubmitCreateIncomeRecord = async () => {
 		try {
-
 			const payload: CreateIncomeRecordProps = {
 				title: title,
 				des: des,
 				amount: parseInt(amount),
 			};
-
 			const res = await createIncomeRecord(payload);
 			if (res) {
 				toast.success('Income record created successfully', {
