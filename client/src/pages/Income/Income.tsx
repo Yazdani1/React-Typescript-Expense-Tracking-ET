@@ -75,9 +75,7 @@ const Income = () => {
 						/>
 					))}
 			</CardLayout>
-
 			{/* Modal Box to add income record */}
-
 			<ModalBox
 				open={open}
 				onCloseModal={onCloseModal}
