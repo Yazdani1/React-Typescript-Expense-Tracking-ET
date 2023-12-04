@@ -25,7 +25,6 @@ const Profile = () => {
 		(state: any) => state.user.currentUser
 	);
 	const dispatch = useDispatch();
-
 	////////////////////////////////////////////////////////////////////////////////
 	//Context api state - these are context api that i used previously.
 	// Now will not use this context api
@@ -47,7 +46,6 @@ const Profile = () => {
 	/****************************************/
 	/******  To Update User Profile    ******/
 	/****************************************/
-
 	const [name, setName] = useState<string>('');
 	const [email, setEmail] = useState<string>('');
 	const [profilePic, setProfilePic] = useState<string>('');
@@ -87,6 +85,7 @@ const Profile = () => {
 				////////////////////////////////////////////
 				// From cookie context api - to update user info in the context api as soon as user update user info
 				setUser(res.user);
+
 				/////////////////////////////////////////
 			}
 		} catch (error: any) {
