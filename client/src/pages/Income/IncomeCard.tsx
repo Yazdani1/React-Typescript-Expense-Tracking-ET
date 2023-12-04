@@ -19,7 +19,6 @@ const IncomeCard: FC<IncomeCardProps> = ({ incomeRecord, postid }) => {
 	/****************************************/
 	/****** To delete income record  ********/
 	/****************************************/
-
 	const deleteSingleIncomeRecord = async () => {
 		try {
 			const res = await deleteIncomeRecord(incomeRecord._id);
@@ -38,12 +37,17 @@ const IncomeCard: FC<IncomeCardProps> = ({ incomeRecord, postid }) => {
 	return (
 		<div className={style.incomeRecordItems}>
 			<h6>{incomeRecord.title}</h6>
+
 			<h6>{incomeRecord.des}</h6>
+
 			<h6>{incomeRecord.amount}</h6>
+
 			<h6>{incomeRecord.date}</h6>
+
 			<button className='btn btn-danger' onClick={deleteSingleIncomeRecord}>
 				Delete
 			</button>
+
 			<p>{incomeRecord._id === postid && 'Saved'} </p>
 		</div>
 	);
