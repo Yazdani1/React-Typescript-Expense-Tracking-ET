@@ -102,14 +102,12 @@ const Profile = () => {
 		const skills = userSkills.filter((item) => item !== skillIndex);
 		setUserSkills(skills);
 	};
-
 	useEffect(() => {
 		setName(userProfileDetails?.name!);
 		setEmail(userProfileDetails?.email!);
 		setProfilePic(userProfileDetails?.imageUrl!);
 		setUserSkills(userProfileDetails?.skills);
 	}, []);
-
 	/////////////////////////////////////////////
 	// With context api
 	// useEffect(() => {
@@ -117,13 +115,10 @@ const Profile = () => {
 	//   setEmail(user?.email!);
 	//   setProfilePic(user?.imageUrl!);
 	// }, [user]);
-
 	/////////////////////////////////////////////
-
 	/****************************************/
 	/******  To Show User Profile    ********/
 	/****************************************/
-
 	// This code will load user profile info- but its only for the test purpose
 	// const [userProfileDetails, setUserInfo] = useState<UserProfileDetails>();
 	// const loadUserProfileDetails = async () => {
