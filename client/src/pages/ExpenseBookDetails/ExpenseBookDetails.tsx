@@ -63,13 +63,11 @@ const ExpenseBookDetails = () => {
 			if (res) {
 				setExpenseBookDetails(res.data.singleExpenseBook);
 				setExpenseBookCategory(res.data.expenseBookCategory);
-
 				// To set default value for the category state in the select tag.
 				// While user create expense list they need to choose category then the first item will be auto select
 				// in the select tag.
 				setExpenseCategory(res.data.expenseBookCategory[0]?.category_name);
 				//End To default save the first category in the state
-
 				setExpenseBookList(res.data.expenseList);
 				setExpenseBookTotalAmount(res.data.totalExpenses);
 				setExpenseCountByDate(res.data.totalExpensesCountByDate);
@@ -87,13 +85,10 @@ const ExpenseBookDetails = () => {
 	/****************************************/
 	/******Modal Box to Create Category   ***/
 	/****************************************/
-
 	const [open, setOpen] = useState<boolean>(false);
-
 	const onOpenModal = () => {
 		setOpen(true);
 	};
-
 	const onCloseModal = () => {
 		setOpen(false);
 	};
