@@ -6,14 +6,20 @@ import CardLayout from '../../components/CardLayout/CardLayout';
 import { useParams } from 'react-router-dom';
 import SubscriberPageLayout from '../../layouts/SubscriberPageLayout';
 import {
-  getExpenseBookDetails,
-  CreateExpenseCategoryProps,
-  createExpenseCategory,
-  CreateExpenseListProps,
-  createExpenseList,
+	getExpenseBookDetails,
+	CreateExpenseCategoryProps,
+	createExpenseCategory,
+	CreateExpenseListProps,
+	createExpenseList,
 } from '../../services/API';
 import ExpenseCategoryCard from '../ExpenseCategory/ExpenseCategoryCard';
-import { ExpenseCountByCategory, TotalExpenseChartTypes, ExpenseList, ExpenseCategory, ExpenseBookInfo } from '../../services/DataProvider';
+import {
+	ExpenseCountByCategory,
+	TotalExpenseChartTypes,
+	ExpenseList,
+	ExpenseCategory,
+	ExpenseBookInfo,
+} from '../../services/DataProvider';
 import ExpenseListCard from '../ExpenseList/ExpenseListCard';
 import ModalBox from '../../components/Modal/ModalBox';
 import Charts from '../../components/Charts/Charts';
@@ -22,331 +28,384 @@ import TextField from '../../components/Input/TextField';
 import { count } from 'console';
 
 const ExpenseBookDetails = () => {
-  const { slug } = useParams();
+	const { slug } = useParams();
 
-  /****************************************/
-  /********* Expense Book Details   ******/
-  /****************************************/
-  // expense book details
-  const [expenseBookDetails, setExpenseBookDetails] = useState<ExpenseBookInfo>();
-  // expense book category
-  const [expenseBookCategory, setExpenseBookCategory] = useState<ExpenseCategory[]>([]);
+	/****************************************/
+	/********* Expense Book Details   ******/
+	/****************************************/
+	// expense book details
+	const [expenseBookDetails, setExpenseBookDetails] =
+		useState<ExpenseBookInfo>();
+	// expense book category
+	const [expenseBookCategory, setExpenseBookCategory] = useState<
+		ExpenseCategory[]
+	>([]);
+	// expense book Expense list
+	const [expenseBookList, setExpenseBookList] = useState<ExpenseList[]>([]);
+	//expense book total amount count based on each category
+	const [expenseListTotalAmount, setExpenseBookTotalAmount] = useState<
+		ExpenseCountByCategory[]
+	>([]);
+	// expense book total expenses count by each date.
+	const [expenseCountByDate, setExpenseCountByDate] = useState<
+		ExpenseCountByCategory[]
+	>([]);
+	// expense book total expense count
+	const [
+		totalExpenseCountForEachExpenseBook,
+		setTotalExpenseCountForEachExpenseBook,
+	] = useState<ExpenseCountByCategory[]>([]);
 
-  // expense book Expense list
-  const [expenseBookList, setExpenseBookList] = useState<ExpenseList[]>([]);
-  //expense book total amount count based on each category
-  const [expenseListTotalAmount, setExpenseBookTotalAmount] = useState<ExpenseCountByCategory[]>([]);
+	const loadExpenseBookDetails = async () => {
+		try {
+			const res = await getExpenseBookDetails(slug!);
 
-  // expense book total expenses count by each date.
-  const [expenseCountByDate, setExpenseCountByDate] = useState<ExpenseCountByCategory[]>([]);
-  // expense book total expense count
+			if (res) {
+				setExpenseBookDetails(res.data.singleExpenseBook);
+				setExpenseBookCategory(res.data.expenseBookCategory);
 
-  const [totalExpenseCountForEachExpenseBook, setTotalExpenseCountForEachExpenseBook] = useState<ExpenseCountByCategory[]>([]);
+				// To set default value for the category state in the select tag.
+				// While user create expense list they need to choose category then the first item will be auto select
+				// in the select tag.
+				setExpenseCategory(res.data.expenseBookCategory[0]?.category_name);
+				//End To default save the first category in the state
 
-  const loadExpenseBookDetails = async () => {
-    try {
-      const res = await getExpenseBookDetails(slug!);
+				setExpenseBookList(res.data.expenseList);
+				setExpenseBookTotalAmount(res.data.totalExpenses);
+				setExpenseCountByDate(res.data.totalExpensesCountByDate);
+				setTotalExpenseCountForEachExpenseBook(
+					res.data.totalExpensesForEachExpenseBook
+				);
+			}
+		} catch (error: any) {
+			toast.error(error.response && error.response.data.error, {
+				position: toast.POSITION.TOP_RIGHT,
+			});
+		}
+	};
 
-      if (res) {
-        setExpenseBookDetails(res.data.singleExpenseBook);
-        setExpenseBookCategory(res.data.expenseBookCategory);
+	/****************************************/
+	/******Modal Box to Create Category   ***/
+	/****************************************/
 
-        // To set default value for the category state in the select tag.
-        // While user create expense list they need to choose category then the first item will be auto select
-        // in the select tag.
-        setExpenseCategory(res.data.expenseBookCategory[0]?.category_name);
-        //End To default save the first category in the state
+	const [open, setOpen] = useState<boolean>(false);
 
-        setExpenseBookList(res.data.expenseList);
-        setExpenseBookTotalAmount(res.data.totalExpenses);
-        setExpenseCountByDate(res.data.totalExpensesCountByDate);
-        setTotalExpenseCountForEachExpenseBook(res.data.totalExpensesForEachExpenseBook);
-      }
-    } catch (error: any) {
-      toast.error(error.response && error.response.data.error, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-    }
-  };
+	const onOpenModal = () => {
+		setOpen(true);
+	};
 
-  /****************************************/
-  /******Modal Box to Create Category   ***/
-  /****************************************/
+	const onCloseModal = () => {
+		setOpen(false);
+	};
 
-  const [open, setOpen] = useState<boolean>(false);
+	/****************************************/
+	/****** Create Category   ***************/
+	/****************************************/
 
-  const onOpenModal = () => {
-    setOpen(true);
-  };
+	const [categoryName, setCategoryName] = useState<string>('');
 
-  const onCloseModal = () => {
-    setOpen(false);
-  };
+	const onSubmitCreateCategory = async () => {
+		try {
+			const payload: CreateExpenseCategoryProps = {
+				category_name: categoryName,
+				expense_book_id: expenseBookDetails?._id!,
+			};
+			const res = await createExpenseCategory(payload);
+			if (res) {
+				toast.success('Successfully created category', {
+					position: toast.POSITION.TOP_RIGHT,
+				});
+				loadExpenseBookDetails();
+			}
+		} catch (error: any) {
+			toast.error(error.response && error.response.data.error, {
+				position: toast.POSITION.TOP_RIGHT,
+			});
+		}
+	};
 
-  /****************************************/
-  /****** Create Category   ***************/
-  /****************************************/
+	/****************************************/
+	/***Modal Box to Create Expense List  ***/
+	/****************************************/
 
-  const [categoryName, setCategoryName] = useState<string>('');
+	const [openCreateExpenseListModal, setOpenCreateExpenseListModal] =
+		useState<boolean>(false);
 
-  const onSubmitCreateCategory = async () => {
-    try {
-      const payload: CreateExpenseCategoryProps = {
-        category_name: categoryName,
-        expense_book_id: expenseBookDetails?._id!,
-      };
-      const res = await createExpenseCategory(payload);
-      if (res) {
-        toast.success('Successfully created category', {
-          position: toast.POSITION.TOP_RIGHT,
-        });
-        loadExpenseBookDetails();
-      }
-    } catch (error: any) {
-      toast.error(error.response && error.response.data.error, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-    }
-  };
+	const onOpenCreateExpenseListModal = () => {
+		setOpenCreateExpenseListModal(true);
+	};
+	const onCloseCreateExpenseListModal = () => {
+		setOpenCreateExpenseListModal(false);
+	};
 
-  /****************************************/
-  /***Modal Box to Create Expense List  ***/
-  /****************************************/
+	/****************************************/
+	/****** Create Expense List    **********/
+	/****************************************/
 
-  const [openCreateExpenseListModal, setOpenCreateExpenseListModal] = useState<boolean>(false);
+	// Here by default to save the first category in the category state while create expense list.
 
-  const onOpenCreateExpenseListModal = () => {
-    setOpenCreateExpenseListModal(true);
-  };
-  const onCloseCreateExpenseListModal = () => {
-    setOpenCreateExpenseListModal(false);
-  };
+	const [expenseTitle, setExpenseTitle] = useState<string>('');
+	const [expenseCategory, setExpenseCategory] = useState<string>('');
+	const [expenseAmmount, setExpenseAmmount] = useState<string>('');
 
-  /****************************************/
-  /****** Create Expense List    **********/
-  /****************************************/
+	const onSubmitCreateExpenseList = async () => {
+		try {
+			const payload: CreateExpenseListProps = {
+				title: expenseTitle,
+				expense_category: expenseCategory,
+				amount: parseInt(expenseAmmount),
+				expense_book_id: expenseBookDetails!._id,
+			};
 
-  // Here by default to save the first category in the category state while create expense list.
+			const res = await createExpenseList(payload);
 
-  const [expenseTitle, setExpenseTitle] = useState<string>('');
-  const [expenseCategory, setExpenseCategory] = useState<string>('');
-  const [expenseAmmount, setExpenseAmmount] = useState<string>('');
+			if (res) {
+				toast.success('Successfully created expense', {
+					position: toast.POSITION.TOP_RIGHT,
+				});
+				loadExpenseBookDetails();
+			}
+		} catch (error: any) {
+			toast.error(error.response && error.response.data.error, {
+				position: toast.POSITION.TOP_RIGHT,
+			});
+		}
+	};
 
-  const onSubmitCreateExpenseList = async () => {
-    try {
-      const payload: CreateExpenseListProps = {
-        title: expenseTitle,
-        expense_category: expenseCategory,
-        amount: parseInt(expenseAmmount),
-        expense_book_id: expenseBookDetails!._id,
-      };
+	/****************************************/
+	/****** Choose Chart Type     **********/
+	/****************************************/
 
-      const res = await createExpenseList(payload);
+	// to choose chart type from a select option --- dropdown list
 
-      if (res) {
-        toast.success('Successfully created expense', {
-          position: toast.POSITION.TOP_RIGHT,
-        });
-        loadExpenseBookDetails();
-      }
-    } catch (error: any) {
-      toast.error(error.response && error.response.data.error, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-    }
-  };
+	const [chooseChartType, setChooseChartType] =
+		useState<TotalExpenseChartTypes>(TotalExpenseChartTypes.Area_Chart);
 
-  /****************************************/
-  /****** Choose Chart Type     **********/
-  /****************************************/
+	//This function is to set tab value,.when user click one option it set one interger value
 
-  // to choose chart type from a select option --- dropdown list
+	const [expenseChartType, setExpenseChartType] = useState<number>(1);
 
-  const [chooseChartType, setChooseChartType] = useState<TotalExpenseChartTypes>(TotalExpenseChartTypes.Area_Chart);
+	const handleChartType = (position: number) => {
+		setExpenseChartType(position);
+	};
 
-  //This function is to set tab value,.when user click one option it set one interger value
+	/****************************************/
+	/******To show debug mode api data  *****/
+	/****************************************/
 
-  const [expenseChartType, setExpenseChartType] = useState<number>(1);
+	const [showDebugData, setDebugData] = useState<boolean>(false);
 
-  const handleChartType = (position: number) => {
-    setExpenseChartType(position);
-  };
+	const handleDebugData = () => {
+		setDebugData(!showDebugData);
+	};
 
-  /****************************************/
-  /******To show debug mode api data  *****/
-  /****************************************/
+	const [count, setCount] = useState<number>(1);
 
-  const [showDebugData, setDebugData] = useState<boolean>(false);
+	const handleCount = () => {
+		setCount((prev) => prev + 5);
+	};
 
-  const handleDebugData = () => {
-    setDebugData(!showDebugData);
-  };
+	useEffect(() => {
+		loadExpenseBookDetails();
+	}, []);
 
-  const [count, setCount] = useState<number>(1);
+	return (
+		<SubscriberPageLayout>
+			<div className='container'>
+				<div className='row'>
+					<div className='col-xl-8 col-lg-8'>
+						<CardLayout>
+							{/* Tab option to choose graph item */}
+							<div className={expenseBookDetailsStyle.selectChartDataTab}>
+								<div
+									className={
+										expenseChartType === 1
+											? expenseBookDetailsStyle.expenseCategoryButtonActive
+											: expenseBookDetailsStyle.expenseCategoryButton
+									}
+									onClick={() => handleChartType(1)}
+								>
+									<h6>Category Expenses</h6>
 
-  const handleCount = () => {
-    setCount((prev) => prev + 5);
-  };
+									{totalExpenseCountForEachExpenseBook &&
+										totalExpenseCountForEachExpenseBook.map((total: any) => (
+											<h5>{total.totalammount}.EUR</h5>
+										))}
+								</div>
 
-  useEffect(() => {
-    loadExpenseBookDetails();
-  }, []);
+								{/* Chart to show expenses based on each date */}
+								<div
+									className={
+										expenseChartType === 2
+											? expenseBookDetailsStyle.expenseTotalExpenseButtonActive
+											: expenseBookDetailsStyle.expenseTotalExpenseButton
+									}
+									onClick={() => handleChartType(2)}
+								>
+									<h6>Day Expenses</h6>
+								</div>
+							</div>
 
-  return (
-    <SubscriberPageLayout>
-      <div className="container">
-        <div className="row">
-          <div className="col-xl-8 col-lg-8">
-            <CardLayout>
-              {/* Tab option to choose graph item */}
-              <div className={expenseBookDetailsStyle.selectChartDataTab}>
-                <div
-                  className={
-                    expenseChartType === 1 ? expenseBookDetailsStyle.expenseCategoryButtonActive : expenseBookDetailsStyle.expenseCategoryButton
-                  }
-                  onClick={() => handleChartType(1)}
-                >
-                  <h6>Category Expenses</h6>
+							{/* To show chart */}
+							{/* Chart to count total expenses by date */}
 
-                  {totalExpenseCountForEachExpenseBook && totalExpenseCountForEachExpenseBook.map((total: any) => <h5>{total.totalammount}.EUR</h5>)}
-                </div>
+							{expenseChartType === 1 && (
+								<>
+									<div className='choose_chart'>
+										<select
+											className={expenseBookDetailsStyle.expenseChartSelection}
+											value={chooseChartType}
+											onChange={(e) =>
+												setChooseChartType(
+													e.target.value as TotalExpenseChartTypes
+												)
+											}
+										>
+											{Object.keys(TotalExpenseChartTypes).map((chart_type) => (
+												<option value={chart_type}>{chart_type}</option>
+											))}
+										</select>
+									</div>
+									<Charts
+										expenseListTotalAmount={expenseListTotalAmount}
+										chooseChartType={chooseChartType}
+									/>
+								</>
+							)}
 
-                {/* Chart to show expenses based on each date */}
-                <div
-                  className={
-                    expenseChartType === 2
-                      ? expenseBookDetailsStyle.expenseTotalExpenseButtonActive
-                      : expenseBookDetailsStyle.expenseTotalExpenseButton
-                  }
-                  onClick={() => handleChartType(2)}
-                >
-                  <h6>Day Expenses</h6>
-                </div>
-              </div>
+							{/* Chart for showing expenses by category */}
 
-              {/* To show chart */}
-              {/* Chart to count total expenses by date */}
+							{expenseChartType === 2 && (
+								<TotalExpenseByDateChart
+									totalExpensesByDate={expenseCountByDate}
+								/>
+							)}
+						</CardLayout>
 
-              {expenseChartType === 1 && (
-                <>
-                  <div className="choose_chart">
-                    <select
-                      className={expenseBookDetailsStyle.expenseChartSelection}
-                      value={chooseChartType}
-                      onChange={(e) => setChooseChartType(e.target.value as TotalExpenseChartTypes)}
-                    >
-                      {Object.keys(TotalExpenseChartTypes).map((chart_type) => (
-                        <option value={chart_type}>{chart_type}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <Charts expenseListTotalAmount={expenseListTotalAmount} chooseChartType={chooseChartType} />
-                </>
-              )}
+						{/* To show debug option */}
 
-              {/* Chart for showing expenses by category */}
+						<CardLayout>
+							<button className='btn btn-primary' onClick={handleDebugData}>
+								Debug
+							</button>
+							{showDebugData && <h6>{JSON.stringify(expenseBookDetails)}</h6>}
+							<button className='btn btn-success' onClick={handleCount}>
+								CountChange
+							</button>
+							<h6> {count}</h6>
+						</CardLayout>
 
-              {expenseChartType === 2 && <TotalExpenseByDateChart totalExpensesByDate={expenseCountByDate} />}
-            </CardLayout>
+						<CardLayout title='Expense Book Details'>
+							{expenseCategory}
+						</CardLayout>
 
-            {/* To show debug option */}
+						{/* To Show Expense List all the list of expense book */}
 
-            <CardLayout>
-              <button className="btn btn-primary" onClick={handleDebugData}>
-                Debug
-              </button>
-              {showDebugData && <h6>{JSON.stringify(expenseBookDetails)}</h6>}
-              <button className="btn btn-success" onClick={handleCount}>
-                CountChange
-              </button>
-              <h6> {count}</h6>
-            </CardLayout>
+						<CardLayout
+							title='Expense List'
+							showAddIcon={true}
+							openModal={onOpenCreateExpenseListModal}
+						>
+							{expenseBookList &&
+								expenseBookList.map((list) => (
+									<ExpenseListCard key={list._id} expenseList={list} />
+								))}
 
-            <CardLayout title="Expense Book Details">{expenseCategory}</CardLayout>
-
-            {/* To Show Expense List all the list of expense book */}
-
-            <CardLayout title="Expense List" showAddIcon={true} openModal={onOpenCreateExpenseListModal}>
-              {expenseBookList && expenseBookList.map((list) => <ExpenseListCard key={list._id} expenseList={list} />)}
-
-              {/* Modal Box -To create expense list  
+							{/* Modal Box -To create expense list  
               
               in this modal box user will have option to create expense list for each expense book
               */}
 
-              <ModalBox
-                title="Create Expense Category"
-                open={openCreateExpenseListModal}
-                onCloseModal={onCloseCreateExpenseListModal}
-                onSaveButton={onSubmitCreateExpenseList}
-              >
-                <label>Title:</label>
+							<ModalBox
+								title='Create Expense Category'
+								open={openCreateExpenseListModal}
+								onCloseModal={onCloseCreateExpenseListModal}
+								onSaveButton={onSubmitCreateExpenseList}
+							>
+								<label>Title:</label>
 
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="Name"
-                    className={expenseBookDetailsStyle.expenseTitle}
-                    placeholder="Title.."
-                    value={expenseTitle}
-                    onChange={(e) => setExpenseTitle(e.target.value)}
-                  />
-                </div>
-                <label>Ammount:</label>
+								<div className='form-group'>
+									<input
+										type='text'
+										name='Name'
+										className={expenseBookDetailsStyle.expenseTitle}
+										placeholder='Title..'
+										value={expenseTitle}
+										onChange={(e) => setExpenseTitle(e.target.value)}
+									/>
+								</div>
+								<label>Ammount:</label>
 
-                <div className="form-group">
-                  <input
-                    type="number"
-                    name="Name"
-                    className={expenseBookDetailsStyle.expenseAmmount}
-                    placeholder="Ammount.."
-                    value={expenseAmmount}
-                    onChange={(e) => setExpenseAmmount(e.target.value)}
-                  />
-                </div>
-                <label>Choose type:</label>
+								<div className='form-group'>
+									<input
+										type='number'
+										name='Name'
+										className={expenseBookDetailsStyle.expenseAmmount}
+										placeholder='Ammount..'
+										value={expenseAmmount}
+										onChange={(e) => setExpenseAmmount(e.target.value)}
+									/>
+								</div>
+								<label>Choose type:</label>
 
-                {expenseCategory}
+								{expenseCategory}
 
-                <div className="selected-dropdownlist">
-                  <select
-                    className={expenseBookDetailsStyle.expenseCategorySelect}
-                    value={expenseCategory}
-                    onChange={(e) => setExpenseCategory(e.target.value)}
-                  >
-                    {expenseBookCategory &&
-                      expenseBookCategory.map((c) => (
-                        <>
-                          <option value={c.category_name} key={c._id}>
-                            {c.category_name}
-                          </option>
-                        </>
-                      ))}
-                  </select>
-                </div>
-              </ModalBox>
-            </CardLayout>
-          </div>
+								<div className='selected-dropdownlist'>
+									<select
+										className={expenseBookDetailsStyle.expenseCategorySelect}
+										value={expenseCategory}
+										onChange={(e) => setExpenseCategory(e.target.value)}
+									>
+										{expenseBookCategory &&
+											expenseBookCategory.map((c) => (
+												<>
+													<option value={c.category_name} key={c._id}>
+														{c.category_name}
+													</option>
+												</>
+											))}
+									</select>
+								</div>
+							</ModalBox>
+						</CardLayout>
+					</div>
 
-          {/* To Show Expense Book Category 
+					{/* To Show Expense Book Category 
           List of category for each expense book. This category list is inside of each expense book..
           */}
 
-          <div className="col-xl-4 col-lg-4">
-            <CardLayout title="Expense Category" showAddIcon={true} openModal={onOpenModal}>
-              {expenseBookCategory && expenseBookCategory.map((cat) => <ExpenseCategoryCard expense_category={cat} key={cat._id} />)}
-            </CardLayout>
+					<div className='col-xl-4 col-lg-4'>
+						<CardLayout
+							title='Expense Category'
+							showAddIcon={true}
+							openModal={onOpenModal}
+						>
+							{expenseBookCategory &&
+								expenseBookCategory.map((cat) => (
+									<ExpenseCategoryCard expense_category={cat} key={cat._id} />
+								))}
+						</CardLayout>
 
-            {/* Modal Box -To create category  */}
+						{/* Modal Box -To create category  */}
 
-            <ModalBox title="Create Expense Category" open={open} onCloseModal={onCloseModal} onSaveButton={onSubmitCreateCategory}>
-              <TextField label="Category" placeholder="Category name...." value={categoryName} setValue={setCategoryName} />
-            </ModalBox>
-          </div>
-        </div>
-      </div>
-    </SubscriberPageLayout>
-  );
+						<ModalBox
+							title='Create Expense Category'
+							open={open}
+							onCloseModal={onCloseModal}
+							onSaveButton={onSubmitCreateCategory}
+						>
+							<TextField
+								label='Category'
+								placeholder='Category name....'
+								value={categoryName}
+								setValue={setCategoryName}
+							/>
+						</ModalBox>
+					</div>
+				</div>
+			</div>
+		</SubscriberPageLayout>
+	);
 };
 
 export default ExpenseBookDetails;
