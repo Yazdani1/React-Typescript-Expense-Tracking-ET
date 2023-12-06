@@ -96,7 +96,6 @@ const ExpenseBookDetails = () => {
 	/****************************************/
 	/****** Create Category   ***************/
 	/****************************************/
-
 	const [categoryName, setCategoryName] = useState<string>('');
 
 	const onSubmitCreateCategory = async () => {
@@ -105,6 +104,7 @@ const ExpenseBookDetails = () => {
 				category_name: categoryName,
 				expense_book_id: expenseBookDetails?._id!,
 			};
+
 			const res = await createExpenseCategory(payload);
 			if (res) {
 				toast.success('Successfully created category', {
@@ -136,9 +136,7 @@ const ExpenseBookDetails = () => {
 	/****************************************/
 	/****** Create Expense List    **********/
 	/****************************************/
-
 	// Here by default to save the first category in the category state while create expense list.
-
 	const [expenseTitle, setExpenseTitle] = useState<string>('');
 	const [expenseCategory, setExpenseCategory] = useState<string>('');
 	const [expenseAmmount, setExpenseAmmount] = useState<string>('');
