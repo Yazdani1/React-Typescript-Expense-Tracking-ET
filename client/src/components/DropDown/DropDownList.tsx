@@ -23,10 +23,10 @@ const DropDownList: FC<DropDownCardProps> = ({
 		null
 	);
 	const dropdownRef = useRef<HTMLDivElement>(null);
-
 	const handleDropDownCard = (index: number) => {
 		setOpenDropDownIndex(openDropDownIndex === index ? null : index);
 	};
+
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			if (
@@ -51,6 +51,7 @@ const DropDownList: FC<DropDownCardProps> = ({
 				>
 					<FiMoreVertical size={24} />
 				</div>
+
 				{openDropDownIndex === 0 && (
 					<div className={style.dropDownCard}>
 						{showUpdateDeleteButton && (
