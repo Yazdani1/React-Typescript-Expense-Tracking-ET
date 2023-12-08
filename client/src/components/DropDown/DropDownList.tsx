@@ -64,10 +64,12 @@ const DropDownList: FC<DropDownCardProps> = ({
 									}}
 								>
 									<p>Update</p>
+
 									<p>
 										<RiEdit2Fill size={20} color='green' />
 									</p>
 								</div>
+
 								<div
 									className={style.rowEachItem}
 									onClick={() => {
