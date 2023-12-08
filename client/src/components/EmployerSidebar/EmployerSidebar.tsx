@@ -12,9 +12,7 @@ const EmployerSidebar = () => {
 		(state: any) => state.user.currentUser
 	);
 	const dispatch = useDispatch();
-
 	let navigate = useNavigate();
-
 	const handleLogout = () => {
 		dispatch(logOut());
 		window.localStorage.removeItem('tokenLogin');
@@ -92,7 +90,6 @@ const EmployerSidebar = () => {
 						</NavLink>
 					</li>
 				</ul>
-
 				<span className={style.logoutButton} onClick={handleLogout}>
 					Log Out
 				</span>
