@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -33,7 +32,6 @@ const NavbarHome = () => {
 					>
 						<li>Job Posts </li>
 					</Link>
-
 					<Link
 						to={'/company-dashboard'}
 						style={{ textDecoration: 'none', color: 'white' }}
@@ -59,7 +57,6 @@ const NavbarHome = () => {
 							</Link>
 						</li>
 					)}
-
 					{userProfileDetails?.role === 'Instructor' && (
 						<li className='nav-item'>
 							<Link
@@ -70,7 +67,6 @@ const NavbarHome = () => {
 							</Link>
 						</li>
 					)}
-
 					{userProfileDetails?.role === 'Admin' && (
 						<li className='nav-item'>
 							<Link
@@ -81,7 +77,6 @@ const NavbarHome = () => {
 							</Link>
 						</li>
 					)}
-
 					{userProfileDetails?.role === 'Employer' && (
 						<li className='nav-item'>
 							<Link
