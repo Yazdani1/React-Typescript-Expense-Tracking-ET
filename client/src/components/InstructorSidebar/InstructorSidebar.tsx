@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 
 import { logOut } from '../../redux/userSlice';
 import { CgProfile } from 'react-icons/cg';
-
 import style from './SubscriberSidebar.module.scss';
 
 const InstructorSidebar = () => {
@@ -90,7 +89,6 @@ const InstructorSidebar = () => {
 							Photo Library
 						</NavLink>
 					</li>
-
 					<li>
 						<NavLink
 							to={'/profile'}
