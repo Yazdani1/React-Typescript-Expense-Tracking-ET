@@ -38,7 +38,6 @@ const NavbarHome = () => {
 					>
 						<li>Company Dashboard</li>
 					</Link>
-
 					{!userProfileDetails && (
 						<Link
 							to={'/signin'}
