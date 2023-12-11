@@ -7,7 +7,6 @@ const NavbarHome = () => {
 	const userProfileDetails = useSelector(
 		(state: any) => state.user.currentUser
 	);
-
 	return (
 		<nav className={styles.navContainer}>
 			<div className={styles.navbar}>

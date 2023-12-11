@@ -8,7 +8,6 @@ import navbarStyle from './Navbar.module.scss';
 
 //Context API
 import { useJobWishListContext } from '../../contextapi/JobWishListContext';
-
 import { useUserContext } from '../../contextapi/UserContextCookies';
 import { UserProtectedRouteContext } from '../../contextapi/UserProtectedRouteContext';
 
@@ -36,10 +35,8 @@ const Navbar = () => {
 	const { user, logout } = useUserContext();
 
 	/////////////////////////////////////////////////////////////////////
-
 	const [userInfo, setUserInfo]: any = useContext(UserProtectedRouteContext);
-
-	// const logOut = () => {
+	// const logOut = ) => {
 	//   window.localStorage.removeItem("tokenLogin");
 	//   window.localStorage.removeItem("token");
 	//   navigate("/");
