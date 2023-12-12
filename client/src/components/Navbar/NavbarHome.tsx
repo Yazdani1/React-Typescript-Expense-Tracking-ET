@@ -13,18 +13,22 @@ const NavbarHome = () => {
 				<div className={styles.logo}>Logo</div>
 
 				<div className={styles.navItems}>
+
 					<li>
 						{userProfileDetails?.name} - {userProfileDetails?.role}
 					</li>
+					
 					<Link to={'/'} style={{ textDecoration: 'none', color: 'white' }}>
 						<li>Home</li>
 					</Link>
+
 					<Link
 						to={'/search-nationalid-details'}
 						style={{ textDecoration: 'none', color: 'white' }}
 					>
 						<li>National ID </li>
 					</Link>
+
 					<Link
 						to={'/job-posts'}
 						style={{ textDecoration: 'none', color: 'white' }}
@@ -37,6 +41,7 @@ const NavbarHome = () => {
 					>
 						<li>Company Dashboard</li>
 					</Link>
+
 					{!userProfileDetails && (
 						<Link
 							to={'/signin'}
@@ -45,6 +50,7 @@ const NavbarHome = () => {
 							<li> Login </li>
 						</Link>
 					)}
+
 					{userProfileDetails?.role === 'Subscriber' && (
 						<li className='nav-item'>
 							<Link
