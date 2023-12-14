@@ -10,7 +10,6 @@ interface TextFieldProps {
 	setValue: (value: string) => void;
 	name?: string;
 }
-
 const TextField: FC<TextFieldProps> = ({
 	label,
 	placeholder,
@@ -25,7 +24,6 @@ const TextField: FC<TextFieldProps> = ({
 	return (
 		<div className={style.textField}>
 			<label className={style.label}>{label}</label>
-
 			<div className={style.inputContainer}>
 				<input
 					type='text'

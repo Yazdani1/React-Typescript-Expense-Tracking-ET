@@ -13,7 +13,6 @@ const InstructorSidebar = () => {
 	);
 	const dispatch = useDispatch();
 	let navigate = useNavigate();
-
 	const handleLogout = () => {
 		dispatch(logOut());
 		window.localStorage.removeItem('tokenLogin');
@@ -21,7 +20,6 @@ const InstructorSidebar = () => {
 		window.localStorage.removeItem('userInforProtectedRoute');
 		navigate('/signin');
 	};
-
 	return (
 		<div className={style.subscriberSidebar}>
 			<div className={style.sideBarList}>
