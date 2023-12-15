@@ -13,7 +13,6 @@ const CourseEnrolment = () => {
   /****************************************/
   /*********  Course Enrolment  ***********/
   /****************************************/
-
   const { allEnroledCourses, loadEnroledCourses } = useEnroledCoursesContext();
 
   useEffect(() => {
