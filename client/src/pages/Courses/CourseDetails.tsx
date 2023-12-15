@@ -110,7 +110,6 @@ const CourseDetails = () => {
 						<p>{courseDetails?.postedBy?.name}</p>
 					</CardLayout>
 				</div>
-
 				<div className='col-xl-4 col-lg-4'>
 					<CardLayout>
 						<p>{error}</p>
@@ -119,7 +118,6 @@ const CourseDetails = () => {
 							value={courseCoupon}
 							setValue={setCourseCoupon}
 						/>
-
 						{isCourseEnrolled ? (
 							<button className='btn btn-success'>You already enroled</button>
 						) : (
