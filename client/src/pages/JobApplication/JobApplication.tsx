@@ -1,10 +1,5 @@
 import { useEffect } from 'react';
 
-import {
-	UpdateJobPostProps,
-	updateSingleJobPost,
-	deleteSingleJobPost,
-} from '../../services/API';
 import SubscriberPageLayout from '../../layouts/SubscriberPageLayout';
 import { useJobApplicationContext } from '../../contextapi/JobApplicationContext';
 import style from './JobApplication.module.scss';
