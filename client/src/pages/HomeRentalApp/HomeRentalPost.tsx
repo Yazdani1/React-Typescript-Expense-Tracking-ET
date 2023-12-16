@@ -21,8 +21,10 @@ const HomeRentalPost = () => {
 								<h6>{income.title}</h6>
 							))}
 					</CardLayout>
+
 					<CardLayout>
 						<p>HomeRentalPost. {allHomeRentPosts.length}</p>
+
 						<div>
 							{allHomeRentPosts &&
 								allHomeRentPosts.map((post: any) => (
@@ -33,8 +35,10 @@ const HomeRentalPost = () => {
 											padding: '5px',
 											border: '1px solid black',
 										}}
+
 									>
 										<h6>{post.title}</h6>
+										
 										<p>{post.rentAmount}.Eur</p>
 									</div>
 								))}
