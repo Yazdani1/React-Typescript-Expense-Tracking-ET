@@ -67,6 +67,7 @@ const NationalId = () => {
 							<h3>Nationa Id Details You Can Search Here</h3>
 						</CardLayout>
 					</div>
+
 					<div className='col-xl-8'>
 						<CardLayout>
 							<div className={style.search_nationaid}>
@@ -110,13 +111,11 @@ const NationalId = () => {
 								</div>
 							</CardLayout>
 						)}
-
 						{error && (
 							<CardLayout>
 								<h4>{error}</h4>
 							</CardLayout>
 						)}
-						
 					</div>
 				</div>
 			</div>
