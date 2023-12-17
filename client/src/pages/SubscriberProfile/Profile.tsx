@@ -209,7 +209,9 @@ const Profile = () => {
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 				</div>
+
 				<label>Profile Pic:</label>
+
 				<div className='form-group'>
 					<input
 						type='text'
@@ -219,6 +221,7 @@ const Profile = () => {
 						onChange={(e) => setProfilePic(e.target.value)}
 					/>
 				</div>
+
 				<div className='form-group'>
 					<input
 						type='text'
@@ -228,6 +231,7 @@ const Profile = () => {
 						onChange={(e) => setAddSkills(e.target.value)}
 					/>
 				</div>
+
 				<div className={style.skills_container}>
 					{userSkills.map((skill, index) => (
 						<div key={index} className={style.skill_item}>
