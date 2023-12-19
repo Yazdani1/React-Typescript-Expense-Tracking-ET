@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import 'react-responsive-modal/styles.css';
 import { CiEdit } from 'react-icons/ci';
 import { IoMdClose } from 'react-icons/io';
-
 import { toast } from 'react-toastify';
 import { CgProfile } from 'react-icons/cg';
 import { useDispatch } from 'react-redux';
@@ -177,12 +176,10 @@ const Profile = () => {
 					</div>
 				</div>
 			</CardLayout>
-
 			{/* //////////////////////////////////////////////////////////////////////// */}
 			{/* ////             Modal Box to Update User Profile                /////// */}
 			{/* //////////////////////////////////////////////////////////////////////// */}
 			{/* To update user info - Modal Box */}
-
 			<ModalBox
 				open={open}
 				onCloseModal={onCloseModal}
@@ -209,9 +206,7 @@ const Profile = () => {
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 				</div>
-
 				<label>Profile Pic:</label>
-
 				<div className='form-group'>
 					<input
 						type='text'
@@ -221,7 +216,6 @@ const Profile = () => {
 						onChange={(e) => setProfilePic(e.target.value)}
 					/>
 				</div>
-
 				<div className='form-group'>
 					<input
 						type='text'
@@ -231,7 +225,6 @@ const Profile = () => {
 						onChange={(e) => setAddSkills(e.target.value)}
 					/>
 				</div>
-
 				<div className={style.skills_container}>
 					{userSkills.map((skill, index) => (
 						<div key={index} className={style.skill_item}>
