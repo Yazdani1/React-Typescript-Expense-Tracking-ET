@@ -9,7 +9,6 @@ const JobApplication = () => {
 	// Context API
 	const { allJobApplication, loadJobApplication, loading } =
 		useJobApplicationContext();
-
 	useEffect(() => {
 		loadJobApplication();
 	}, []);
