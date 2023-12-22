@@ -10,6 +10,7 @@ const JobMatch = () => {
 	/****************************************/
 	/****** To load matched jobs   **********/
 	/****************************************/
+
 	const [matchedJobs, setMatchedJobs] = useState<JobPosts[]>([]);
 	const loadMatchedJobs = async () => {
 		try {
