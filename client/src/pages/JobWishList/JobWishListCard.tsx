@@ -14,11 +14,9 @@ interface JobWishListCardProps {
 const JobWishListCard: FC<JobWishListCardProps> = ({ jobwishlist }) => {
 	//Context api
 	const { allJobWishList, loadJobWishList } = useJobWishListContext();
-
 	/****************************************/
 	/****** Delete job wishlist *************/
 	/****************************************/
-
 	const handleDeleteJobWishList = async () => {
 		try {
 			const res = await deleteJobWishList(jobwishlist?._id);
@@ -34,7 +32,6 @@ const JobWishListCard: FC<JobWishListCardProps> = ({ jobwishlist }) => {
 			});
 		}
 	};
-
 	return (
 		<div className={style.job_post_container}>
 			<h6>{jobwishlist.jobPostId?.title}</h6>
@@ -46,7 +43,6 @@ const JobWishListCard: FC<JobWishListCardProps> = ({ jobwishlist }) => {
 						{skill}
 					</p>
 				))}
-
 			</div>
 			<div className={style.job_post_bottom_row}>
 				<p>{jobwishlist.jobPostId?.jobCity}</p>
@@ -54,7 +50,7 @@ const JobWishListCard: FC<JobWishListCardProps> = ({ jobwishlist }) => {
 				<p>{jobwishlist.jobPostId?.visibility}</p>
 
 				<p>{jobwishlist.jobPostId?.status}</p>
-				
+
 				<p onClick={handleDeleteJobWishList}>
 					<AiFillHeart size={25} />
 					Unsaved
