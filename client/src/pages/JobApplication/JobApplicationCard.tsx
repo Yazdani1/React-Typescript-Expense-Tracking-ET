@@ -34,7 +34,6 @@ const JobApplicationCard: FC<JobApplicationCardProps> = ({
 	/****************************************/
 	/****** To delete job application *******/
 	/****************************************/
-
 	const withdrawJobApplication = async () => {
 		try {
 			const res = await deleteJobApplication(job_application?._id!);
@@ -68,7 +67,9 @@ const JobApplicationCard: FC<JobApplicationCardProps> = ({
 				showJobWithdraw={true}
 				withdrawJobApplication={onOpenModal}
 			/>
+
 			{/* Modal box to to delete job application */}
+
 			<ConfirmModal
 				open={open}
 				onCloseModal={onCloseModal}
