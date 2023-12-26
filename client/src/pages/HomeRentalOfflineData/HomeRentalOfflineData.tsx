@@ -27,6 +27,7 @@ const HomeRentalOfflineData = () => {
 	// This is another way to get the data from local storage and then show it
 	// So first we need to get the data from local storage and then set the data to array state
 	// Then from that state, we can show the data in the component.
+
 	const [testData, setTestData] = useState<any>([]);
 	const loadLocalStorageData = () => {
 		const testofflineData = localStorage.getItem('homeRentPosts');
@@ -34,6 +35,7 @@ const HomeRentalOfflineData = () => {
 			setTestData(JSON.parse(testofflineData));
 		}
 	};
+
 	useEffect(() => {
 		loadAllHomeRentPosts();
 		loadLocalStorageData();
@@ -43,9 +45,9 @@ const HomeRentalOfflineData = () => {
 		<SubscriberPageLayout>
 			<CardLayout>
 				<h6>{testData.length}</h6>
+
 				{testData && testData.map((item: any) => <h6>{item.title}</h6>)}
 			</CardLayout>
-
 			<CardLayout>
 				<h6>Home Rental Offline Data</h6>
 				<p>{JSON.stringify(allHomeRentPosts)}</p>

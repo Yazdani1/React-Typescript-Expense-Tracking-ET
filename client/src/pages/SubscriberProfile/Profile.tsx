@@ -23,12 +23,11 @@ const Profile = () => {
 	const userProfileDetails = useSelector(
 		(state: any) => state.user.currentUser
 	);
-
 	const dispatch = useDispatch();
-
 	////////////////////////////////////////////////////////////////////////////////
 	//Context api state - these are context api that i used previously.
 	// Now will not use this context api
+	
 	// const [state, setState] = useContext(UserContext);
 	// const {userProfileDetails,updateUserProfileDetails} = useContext(UserProfileDetailsContext);
 	// Context API to update new user info -Cookies context api
