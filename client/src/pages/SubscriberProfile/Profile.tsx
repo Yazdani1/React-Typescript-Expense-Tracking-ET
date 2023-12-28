@@ -85,7 +85,6 @@ const Profile = () => {
 				////////////////////////////////////////////
 				// From cookie context api - to update user info in the context api as soon as user update user info
 				setUser(res.user);
-
 				/////////////////////////////////////////
 			}
 		} catch (error: any) {
