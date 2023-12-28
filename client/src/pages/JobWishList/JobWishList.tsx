@@ -6,6 +6,7 @@ import JobWishListCard from './JobWishListCard';
 
 const JobWishList = () => {
 	const { allJobWishList, loadJobWishList } = useJobWishListContext();
+
 	useEffect(() => {
 		loadJobWishList();
 	}, []);
