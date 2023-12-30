@@ -27,7 +27,7 @@ const Profile = () => {
 	////////////////////////////////////////////////////////////////////////////////
 	//Context api state - these are context api that i used previously.
 	// Now will not use this context api
-	
+
 	// const [state, setState] = useContext(UserContext);
 	// const {userProfileDetails,updateUserProfileDetails} = useContext(UserProfileDetailsContext);
 	// Context API to update new user info -Cookies context api
@@ -93,10 +93,12 @@ const Profile = () => {
 			});
 		}
 	};
+
 	const addUserSkills = () => {
 		setUserSkills([...userSkills, addSkills]);
 		setAddSkills('');
 	};
+
 	const removeSkills = (skillIndex: string) => {
 		const skills = userSkills.filter((item) => item !== skillIndex);
 		setUserSkills(skills);
@@ -143,6 +145,7 @@ const Profile = () => {
 					{/*  To show profile picture and if user did not add any profile picture then an avatar will be shown here */}
 					<div>
 						{user?.name}
+
 						{userProfileDetails?.imageUrl ? (
 							<div className={style.profilePicture}>
 								<img src={userProfileDetails?.imageUrl} alt='profileimg' />
@@ -154,9 +157,11 @@ const Profile = () => {
 								</p>
 							</div>
 						)}
+
 						{userProfileDetails?.award?.map((award: any, index: number) => (
 							<p key={index}>{award}</p>
 						))}
+
 						<div className={style.skillsDesing}>
 							{userProfileDetails?.skills?.map((skill: any, index: number) => (
 								<p key={index}>{skill}</p>
