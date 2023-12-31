@@ -157,7 +157,6 @@ const Profile = () => {
 								</p>
 							</div>
 						)}
-
 						{userProfileDetails?.award?.map((award: any, index: number) => (
 							<p key={index}>{award}</p>
 						))}
@@ -181,9 +180,11 @@ const Profile = () => {
 					</div>
 				</div>
 			</CardLayout>
+
 			{/* //////////////////////////////////////////////////////////////////////// */}
 			{/* ////             Modal Box to Update User Profile                /////// */}
 			{/* //////////////////////////////////////////////////////////////////////// */}
+
 			{/* To update user info - Modal Box */}
 			<ModalBox
 				open={open}
@@ -201,7 +202,9 @@ const Profile = () => {
 						onChange={(e) => setName(e.target.value)}
 					/>
 				</div>
+
 				<label>E-mail:</label>
+
 				<div className='form-group'>
 					<input
 						type='text'
@@ -211,6 +214,7 @@ const Profile = () => {
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 				</div>
+
 				<label>Profile Pic:</label>
 				<div className='form-group'>
 					<input
