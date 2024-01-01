@@ -104,19 +104,15 @@ const EmployerDashboard = () => {
 	/****************************************/
 	/* Update all visibility for job post ***/
 	/****************************************/
-
 	const [updateJobVisibility, setUpdateJobVisibility] = useState<Visibility>(
 		Visibility.Public
 	);
-
 	const handleUpdateJobVisibility = async () => {
 		try {
 			const payload: JobpostsVisibilityUpdateProps = {
 				updateVisibility: updateJobVisibility,
 			};
-
 			const res = await updateJobPostsVisibility(payload);
-
 			if (res) {
 				toast.success('Job post visibility updated successfully!', {
 					position: toast.POSITION.TOP_RIGHT,
@@ -137,13 +133,11 @@ const EmployerDashboard = () => {
 	return (
 		<EmployerPageLayout>
 			<h1>Employer dashboar</h1>
-
 			<CardLayout>
 				<button className='btn btn-success' onClick={onOpenModal}>
 					Create job post
 				</button>
 			</CardLayout>
-
 			{/* To update all the job visibility */}
 			<CardLayout>
 				<div className={style.updateVisibilitycontainer}>
