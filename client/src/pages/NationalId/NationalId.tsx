@@ -36,9 +36,11 @@ const NationalId = () => {
 			});
 		}
 	};
+
 	// This function code is used to have a space after each 4 digit in the search input field
 	// It will take total 13 digit and one space after each 4 digit.
 	// Then it's search query will load the data through query from api url
+
 	const handleNationalIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const input = e.target.value;
 		const sanitizedInput = input.replace(/\D/g, ''); // Remove non-digit characters
@@ -94,9 +96,13 @@ const NationalId = () => {
 									</div>
 									<div className={style.nationalIdDetails}>
 										<p>First Name:{nationalIdDetails?.firstName}</p>
+
 										<p>Last Name:{nationalIdDetails?.lastName}</p>
+
 										<p>Id Number:{nationalIdDetails?.nationalIdNumber}</p>
+
 										<p>Date of Birth:{nationalIdDetails?.dateOfBirth}</p>
+
 										<p>City:{nationalIdDetails?.city}</p>
 										<p>Father Name:{nationalIdDetails?.fatherName}</p>
 										<p>Mother Name:{nationalIdDetails?.motherName}</p>
