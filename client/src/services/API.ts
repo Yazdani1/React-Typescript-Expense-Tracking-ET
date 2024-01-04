@@ -221,7 +221,6 @@ export const createExpenseCategory = async (
 	);
 	return res.data;
 };
-
 export interface CreateExpenseListProps {
 	title: string;
 	amount: number;
@@ -243,7 +242,6 @@ export const createExpenseList = async (
 // Its for testing purpose -  to implement context api and multiple data in one api end point.
 const HRP_API =
 	'https://home-renting-platform-node-js-server-hrp.vercel.app/api/v0';
-
 export const getAllHomeRentPosts = async () => {
 	const res = await axios.get(HRP_API + '/getall-home-rent-post');
 	return res;
@@ -275,7 +273,6 @@ export interface CreateIncomeRecordProps {
 	des: string;
 	amount: number;
 }
-
 export const createIncomeRecord = async (
 	props: CreateIncomeRecordProps
 ): Promise<IncomeRecord> => {
@@ -299,7 +296,6 @@ export const deleteIncomeRecord = async (id: string) => {
 	);
 	return res;
 };
-
 /****************************************/
 /********    Course     *****************/
 /****************************************/
