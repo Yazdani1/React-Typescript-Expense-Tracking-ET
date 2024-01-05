@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import InstructorPageLayout from '../../layouts/InstructorPageLayout';
@@ -19,7 +19,6 @@ const InstructorDashboard = () => {
 	/****************************************/
 	/***********  Create course *************/
 	/****************************************/
-
 	const [title, setTitle] = useState<string>('');
 	const [des, setDes] = useState<string>('');
 	const [coupon, setCoupon] = useState<string>('');
@@ -57,11 +56,12 @@ const InstructorDashboard = () => {
 	/****************************************/
 	/***********  Load courses **************/
 	/****************************************/
+
 	const [courses, setCourses] = useState<Course[]>([]);
+
 	const loadCourses = async () => {
 		try {
 			const res = await getCourseLists();
-
 			if (res) {
 				setCourses(res);
 			}
@@ -73,6 +73,7 @@ const InstructorDashboard = () => {
 	};
 
 	//Filter courses
+
 	const [sortCoursesByTitle, setSortCoursesByTitle] =
 		useState<FilterCourseByTitle>(FilterCourseByTitle.Ascending);
 
