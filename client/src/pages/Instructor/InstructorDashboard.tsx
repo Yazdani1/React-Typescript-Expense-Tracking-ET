@@ -82,7 +82,6 @@ const InstructorDashboard = () => {
 		Ascending: FilterCourseByTitle.Ascending,
 		Descending: FilterCourseByTitle.Descending,
 	};
-
 	const onSubmitsortCoursesByTitle = async () => {
 		try {
 			const res = await filterInstructorCourse(sortCoursesByTitle);
@@ -102,7 +101,6 @@ const InstructorDashboard = () => {
 	/****************************************/
 
 	const [open, setOpen] = useState<boolean>(false);
-
 	const onOpenModal = () => {
 		setOpen(true);
 	};
@@ -162,7 +160,9 @@ const InstructorDashboard = () => {
 						))}
 				</div>
 			</CardLayout>
+
 			{/* Modal box to create course */}
+
 			<ModalBox
 				open={open}
 				onCloseModal={onCloseModal}
