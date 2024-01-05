@@ -96,11 +96,8 @@ const NationalId = () => {
 									</div>
 									<div className={style.nationalIdDetails}>
 										<p>First Name:{nationalIdDetails?.firstName}</p>
-
 										<p>Last Name:{nationalIdDetails?.lastName}</p>
-
 										<p>Id Number:{nationalIdDetails?.nationalIdNumber}</p>
-
 										<p>Date of Birth:{nationalIdDetails?.dateOfBirth}</p>
 
 										<p>City:{nationalIdDetails?.city}</p>
