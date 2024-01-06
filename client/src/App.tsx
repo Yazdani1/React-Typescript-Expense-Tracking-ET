@@ -41,6 +41,7 @@ import CompanyDashboard from './pages/Company/CompanyDashboard';
 import CompanyProfile from './pages/Company/CompanyProfile';
 import AutoLogout from './pages/Auth/AutoLogout';
 import TermsPrivacy from './pages/TermsPrivacy/TermsPrivacy';
+
 //Context API
 import { UserProfileDetailsProvider } from './contextapi/UserProfileDetailsContext';
 import { UserContextCookieProvider } from './contextapi/UserContextCookies';
@@ -64,7 +65,6 @@ const App = () => {
 										<UserProvider>
 											<BrowserRouter>
 												<AutoLogout />
-
 												<Routes>
 													<Route path='/' element={<Home />} />
 													<Route path='/terms' element={<TermsPrivacy />} />
@@ -87,6 +87,7 @@ const App = () => {
 														element={<JobPostDetails />}
 													/>
 													{/* Protected route for subscriber*/}
+
 													<Route
 														path='/dashboard'
 														element={
