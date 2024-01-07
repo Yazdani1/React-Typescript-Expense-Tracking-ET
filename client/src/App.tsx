@@ -87,7 +87,6 @@ const App = () => {
 														element={<JobPostDetails />}
 													/>
 													{/* Protected route for subscriber*/}
-
 													<Route
 														path='/dashboard'
 														element={
@@ -152,7 +151,6 @@ const App = () => {
 															</SecureLayout>
 														}
 													/>
-
 													<Route
 														path='/job-application'
 														element={
@@ -186,6 +184,7 @@ const App = () => {
 															</SecureLayout>
 														}
 													/>
+													
 													{/* End of Home rental platform */}
 													{/* Protected route for only admin*/}
 													<Route

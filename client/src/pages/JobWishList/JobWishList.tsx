@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
 import SubscriberPageLayout from '../../layouts/SubscriberPageLayout';
-import { useJobWishListContext } from '../../contextapi/JobWishListContext';
 import JobWishListCard from './JobWishListCard';
+import { useJobWishListContext } from '../../contextapi/JobWishListContext';
 
 const JobWishList = () => {
 	const { allJobWishList, loadJobWishList } = useJobWishListContext();
