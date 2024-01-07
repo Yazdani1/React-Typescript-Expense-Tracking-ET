@@ -267,7 +267,6 @@ export const searchNationalId = async (
 /****************************************/
 /************ Income Record  *************/
 /****************************************/
-
 export interface CreateIncomeRecordProps {
 	title: string;
 	des: string;
@@ -283,12 +282,10 @@ export const createIncomeRecord = async (
 	);
 	return res.data;
 };
-
 export const getLogedInUserIncomeRecord = async (): Promise<IncomeRecord[]> => {
 	const res = await axios.get(API_URL + '/get-income-record', headerConfig());
 	return res.data as IncomeRecord[];
 };
-
 export const deleteIncomeRecord = async (id: string) => {
 	const res = await axios.delete(
 		API_URL + '/delete-single-income-record/' + id,
