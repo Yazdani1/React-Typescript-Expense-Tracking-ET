@@ -113,7 +113,6 @@ export const updateSingleUserProfile = async (
 export interface ForgotPasswordProps {
 	email: string;
 }
-
 export const createForgotPassword = async (
 	props: ForgotPasswordProps
 ): Promise<UserProfileDetails> => {
@@ -137,7 +136,6 @@ export const getLogedInUserProfile = async (): Promise<UserProfileDetails> => {
 	const res = await axios.get(API_URL + '/user-profile', headerConfig());
 	return res.data as UserProfileDetails;
 };
-
 /****************************************/
 /********* User role based access ******/
 /****************************************/
@@ -146,12 +144,10 @@ export const getUserRoleForAdmin = async (): Promise<UserProfileDetails> => {
 	const res = await axios.get(API_URL + '/current-user-role', headerConfig());
 	return res.data as UserProfileDetails;
 };
-
 export const getInstructorRole = async (): Promise<UserProfileDetails> => {
 	const res = await axios.get(API_URL + '/instructor-profile', headerConfig());
 	return res.data as UserProfileDetails;
 };
-
 export const getEmployerRole = async (): Promise<UserProfileDetails> => {
 	const res = await axios.get(API_URL + '/employer-profile', headerConfig());
 	return res.data as UserProfileDetails;
