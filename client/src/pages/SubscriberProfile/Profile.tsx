@@ -145,7 +145,6 @@ const Profile = () => {
 					{/*  To show profile picture and if user did not add any profile picture then an avatar will be shown here */}
 					<div>
 						{user?.name}
-
 						{userProfileDetails?.imageUrl ? (
 							<div className={style.profilePicture}>
 								<img src={userProfileDetails?.imageUrl} alt='profileimg' />
@@ -180,7 +179,6 @@ const Profile = () => {
 					</div>
 				</div>
 			</CardLayout>
-
 			{/* //////////////////////////////////////////////////////////////////////// */}
 			{/* ////             Modal Box to Update User Profile                /////// */}
 			{/* //////////////////////////////////////////////////////////////////////// */}
@@ -202,9 +200,7 @@ const Profile = () => {
 						onChange={(e) => setName(e.target.value)}
 					/>
 				</div>
-
 				<label>E-mail:</label>
-
 				<div className='form-group'>
 					<input
 						type='text'
@@ -214,7 +210,6 @@ const Profile = () => {
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 				</div>
-
 				<label>Profile Pic:</label>
 				<div className='form-group'>
 					<input
