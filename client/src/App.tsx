@@ -184,7 +184,6 @@ const App = () => {
 															</SecureLayout>
 														}
 													/>
-													
 													{/* End of Home rental platform */}
 													{/* Protected route for only admin*/}
 													<Route
@@ -245,7 +244,6 @@ const App = () => {
 															</EmployerSecureLayout>
 														}
 													/>
-
 													{/* Company route - only for testing new dashboard design */}
 													<Route
 														path='/company-dashboard'
