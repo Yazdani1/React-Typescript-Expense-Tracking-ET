@@ -17,7 +17,6 @@ const JobWishListCard: FC<JobWishListCardProps> = ({ jobwishlist }) => {
 	/****************************************/
 	/****** Delete job wishlist *************/
 	/****************************************/
-
 	const handleDeleteJobWishList = async () => {
 		try {
 			const res = await deleteJobWishList(jobwishlist?._id);
@@ -33,12 +32,13 @@ const JobWishListCard: FC<JobWishListCardProps> = ({ jobwishlist }) => {
 			});
 		}
 	};
+
 	return (
 		<div className={style.job_post_container}>
 			<h6>{jobwishlist.jobPostId?.title}</h6>
 			<p>Published by:{jobwishlist.jobPostPublishedBy?.name}</p>
 			<p>{jobwishlist.jobPostId?.des}</p>
-			
+
 			<div className={style.job_skills}>
 				{jobwishlist.jobPostId?.jobSkills?.map((skill, index) => (
 					<p key={index} className={style.skill_item}>
