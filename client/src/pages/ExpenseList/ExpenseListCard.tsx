@@ -17,9 +17,11 @@ const ExpenseListCard: FC<ExpenseListCardProps> = ({ expenseList }) => {
 				<div className='col-xl-3 col-lg-2 col-md-12 col-sm-6'>
 					<h6>{expenseList.amount}</h6>
 				</div>
+
 				<div className='col-xl-3 col-lg-2 col-md-12 col-sm-6'>
 					<h6>{expenseList.expense_category}</h6>
 				</div>
+
 				<div className='col-xl-3 col-lg-2 col-md-12 col-sm-6'>
 					<h6> {moment(expenseList.date).format('MMM Do YY')}</h6>
 				</div>
