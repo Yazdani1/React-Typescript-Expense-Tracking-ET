@@ -35,7 +35,6 @@ const HomeRentalPost = () => {
 										}}
 									>
 										<h6>{post.title}</h6>
-
 										<p>{post.rentAmount}.Eur</p>
 									</div>
 								))}
@@ -58,7 +57,6 @@ const HomeRentalPost = () => {
 										}}
 									>
 										<h6>{user.name}</h6>
-
 										<p>{user.email}</p>
 									</div>
 								))}
