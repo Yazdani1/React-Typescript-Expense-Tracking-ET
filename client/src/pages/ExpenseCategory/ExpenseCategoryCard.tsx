@@ -7,6 +7,7 @@ import DropDownList from '../../components/DropDown/DropDownList';
 interface ExpenseCategoryCardProps {
 	expense_category: ExpenseCategory;
 }
+
 const ExpenseCategoryCard: FC<ExpenseCategoryCardProps> = ({
 	expense_category,
 }) => {
