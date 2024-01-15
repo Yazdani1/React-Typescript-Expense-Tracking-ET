@@ -130,7 +130,6 @@ export const createResetPassword = async (
 	const res = await axios.post(API_URL + '/reset-password', { ...props });
 	return res.data;
 };
-
 // To get loged in user profile and its only for test purpose and maybe can use in the profile page and context api
 export const getLogedInUserProfile = async (): Promise<UserProfileDetails> => {
 	const res = await axios.get(API_URL + '/user-profile', headerConfig());
@@ -139,7 +138,6 @@ export const getLogedInUserProfile = async (): Promise<UserProfileDetails> => {
 /****************************************/
 /********* User role based access ******/
 /****************************************/
-
 export const getUserRoleForAdmin = async (): Promise<UserProfileDetails> => {
 	const res = await axios.get(API_URL + '/current-user-role', headerConfig());
 	return res.data as UserProfileDetails;
@@ -152,11 +150,9 @@ export const getEmployerRole = async (): Promise<UserProfileDetails> => {
 	const res = await axios.get(API_URL + '/employer-profile', headerConfig());
 	return res.data as UserProfileDetails;
 };
-
 /****************************************/
 /********* All User List Only Admin ******/
 /****************************************/
-
 export const getAllUserList = async (): Promise<UserProfileDetails[]> => {
 	const res = await axios.get(API_URL + '/alluser', headerConfig());
 	return res.data as UserProfileDetails[];
