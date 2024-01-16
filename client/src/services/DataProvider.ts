@@ -86,11 +86,13 @@ export interface ExpenseBookDetails {
 /****************************************/
 /* Expense Book Category, ExpenseList   */
 /****************************************/
+
 export interface ExpenseCategory extends IBase {
 	category_name: string;
 	expense_book_id: string;
 	postedBy: UserProfileDetails;
 }
+
 export interface ExpenseList extends IBase {
 	title: string;
 	amount: number;
@@ -98,10 +100,12 @@ export interface ExpenseList extends IBase {
 	expense_category: string;
 	postedBy: UserProfileDetails;
 }
+
 export interface ExpenseCountByCategory {
 	_id: string;
 	totalammount: number;
 }
+
 /****************************************/
 /*** Chart Types                   ******/
 /****************************************/
@@ -147,7 +151,6 @@ export interface IncomeRecord extends IBase {
 /****************************************/
 /*********** Instructor    *************/
 /****************************************/
-
 export interface Course extends IBase {
 	title: string;
 	des: string;
@@ -163,15 +166,18 @@ export interface Lecture extends IBase {
 	position: number;
 	postedBy: UserProfileDetails;
 }
+
 export interface CourseDetails {
 	singleCourse: Course;
 	lectureLists: Lecture[];
 	enroledStudents: CourseEnrolmentItems[];
 }
+
 export enum FilterCourseByTitle {
 	Ascending = 1,
 	Descending = -1,
 }
+
 /****************************************/
 /*********  Course Enrolment  ***********/
 /****************************************/
