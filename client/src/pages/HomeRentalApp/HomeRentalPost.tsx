@@ -21,7 +21,6 @@ const HomeRentalPost = () => {
 								<h6>{income.title}</h6>
 							))}
 					</CardLayout>
-
 					<CardLayout>
 						<p>HomeRentalPost. {allHomeRentPosts.length}</p>
 						<div>
