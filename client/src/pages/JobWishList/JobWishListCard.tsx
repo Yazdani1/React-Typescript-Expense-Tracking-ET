@@ -10,6 +10,7 @@ import style from './JobWishList.module.scss';
 interface JobWishListCardProps {
 	jobwishlist: JobWishList;
 }
+
 const JobWishListCard: FC<JobWishListCardProps> = ({ jobwishlist }) => {
 	//Context api
 	const { allJobWishList, loadJobWishList } = useJobWishListContext();
@@ -37,11 +38,8 @@ const JobWishListCard: FC<JobWishListCardProps> = ({ jobwishlist }) => {
 	return (
 		<div className={style.job_post_container}>
 			<h6>{jobwishlist.jobPostId?.title}</h6>
-
 			<p>Published by:{jobwishlist.jobPostPublishedBy?.name}</p>
-
 			<p>{jobwishlist.jobPostId?.des}</p>
-
 			<div className={style.job_skills}>
 				{jobwishlist.jobPostId?.jobSkills?.map((skill, index) => (
 					<p key={index} className={style.skill_item}>
