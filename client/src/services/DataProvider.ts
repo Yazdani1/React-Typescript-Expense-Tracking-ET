@@ -78,11 +78,13 @@ export enum ExpenseBookColor {
 // This to show in the expense book detials and for other properties.
 // Cause when visit the detials page it returns other inof as well
 // This one will have to add in the API.ts file for this funciton getExpenseBookDetails();--panding
+
 export interface ExpenseBookDetails {
 	singleExpenseBook: ExpenseBookInfo;
 	expenseBookCategory: ExpenseCategory[];
 	expenseList: ExpenseList[];
 }
+
 /****************************************/
 /* Expense Book Category, ExpenseList   */
 /****************************************/
