@@ -7,9 +7,9 @@ const HomeRentalPost = () => {
 	// Here I am using context api to show user data and home rental post.
 	// Here i need to call the useHomeRentalContext function that is connected with the useContext in the contex api
 	// here i just need to use all the api data that passed then i can use it here.
-
 	const { allHomeRentPosts, allUsers } = useHomeRentalContext();
 	const { allIncomeRecords } = useIncomeRecordContext();
+
 	return (
 		<SubscriberPageLayout>
 			<div className='row'>
@@ -36,6 +36,7 @@ const HomeRentalPost = () => {
 										}}
 									>
 										<h6>{post.title}</h6>
+
 										<p>{post.rentAmount}.Eur</p>
 									</div>
 								))}
