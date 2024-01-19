@@ -42,9 +42,11 @@ export interface UserProfileDetails extends IBase {
 	award: UserAward[];
 	skills: string[];
 }
+
 export interface UserProfileUpdate {
 	user: UserProfileDetails;
 }
+
 //To get user location data
 export interface LocationData {
 	city: string;
@@ -53,16 +55,20 @@ export interface LocationData {
 	longitude: number;
 	continent: string;
 }
+
 /****************************************/
 /********* Expense Book            ******/
 /****************************************/
+
 export interface ExpenseBookInfo extends IBase {
 	name: string;
 	color: string;
 	postedBy: UserProfileDetails;
 }
+
 // This interface to add as a promise when user create the expense book and also update the user points
 // in the backend
+
 export interface CreateExpenseBook extends IBase {
 	saveExpenseBook: ExpenseBookInfo;
 	addUserPoints: UserProfileDetails;
@@ -72,6 +78,7 @@ export enum ExpenseBookColor {
 	Green = 'Green',
 	Yellow = 'Yellow',
 }
+
 /****************************************/
 /*** Expense Book Details         ******/
 /****************************************/
