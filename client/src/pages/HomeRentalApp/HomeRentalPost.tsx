@@ -36,14 +36,15 @@ const HomeRentalPost = () => {
 										}}
 									>
 										<h6>{post.title}</h6>
-
 										<p>{post.rentAmount}.Eur</p>
 									</div>
 								))}
 						</div>
 					</CardLayout>
 				</div>
+
 				{/* User lists data */}
+
 				<div className='col-xl-6'>
 					<CardLayout>
 						<h5>User: {allUsers.length}</h5>
