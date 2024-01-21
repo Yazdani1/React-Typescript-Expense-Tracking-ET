@@ -42,12 +42,11 @@ const HomeRentalPost = () => {
 						</div>
 					</CardLayout>
 				</div>
-
 				{/* User lists data */}
-
 				<div className='col-xl-6'>
 					<CardLayout>
 						<h5>User: {allUsers.length}</h5>
+
 						<div>
 							{allUsers &&
 								allUsers.map((user: any) => (
