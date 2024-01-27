@@ -19,11 +19,9 @@ const JobApplicationCard: FC<JobApplicationCardProps> = ({
 }) => {
 	// Context API
 	const { loadJobApplication } = useJobApplicationContext();
-
 	/****************************************/
 	/*Confirm modal to delete jobapplication**/
 	/****************************************/
-
 	const [open, setOpen] = useState<boolean>(false);
 	const onOpenModal = () => {
 		setOpen(true);
@@ -31,11 +29,9 @@ const JobApplicationCard: FC<JobApplicationCardProps> = ({
 	const onCloseModal = () => {
 		setOpen(false);
 	};
-
 	/****************************************/
 	/****** To delete job application *******/
 	/****************************************/
-
 	const withdrawJobApplication = async () => {
 		try {
 			const res = await deleteJobApplication(job_application?._id!);
