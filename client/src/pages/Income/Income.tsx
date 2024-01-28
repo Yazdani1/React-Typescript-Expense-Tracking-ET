@@ -10,13 +10,13 @@ import {
 	createIncomeRecord,
 	CreateIncomeRecordProps,
 } from '../../services/API';
+
 import TextField from '../../components/Input/TextField';
 
 const Income = () => {
 	//Context API
 	const { allIncomeRecords, loadLogedInUserIncomeRecords } =
 		useIncomeRecordContext();
-
 	/****************************************/
 	/******  To Open Modal Box     **********/
 	/***************************************/
