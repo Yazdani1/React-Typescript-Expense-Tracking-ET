@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-
 import SubscriberPageLayout from '../../layouts/SubscriberPageLayout';
 import CardLayout from '../../components/CardLayout/CardLayout';
 import { getAllHomeRentPosts } from '../../services/API';
@@ -44,7 +43,6 @@ const HomeRentalOfflineData = () => {
 				<h6>{testData.length}</h6>
 				{testData && testData.map((item: any) => <h6>{item.title}</h6>)}
 			</CardLayout>
-
 			<CardLayout>
 				<h6>Home Rental Offline Data</h6>
 				<p>{JSON.stringify(allHomeRentPosts)}</p>
