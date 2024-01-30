@@ -46,7 +46,6 @@ export interface UserProfileDetails extends IBase {
 export interface UserProfileUpdate {
 	user: UserProfileDetails;
 }
-
 //To get user location data
 export interface LocationData {
 	city: string;
@@ -65,10 +64,8 @@ export interface ExpenseBookInfo extends IBase {
 	color: string;
 	postedBy: UserProfileDetails;
 }
-
 // This interface to add as a promise when user create the expense book and also update the user points
 // in the backend
-
 export interface CreateExpenseBook extends IBase {
 	saveExpenseBook: ExpenseBookInfo;
 	addUserPoints: UserProfileDetails;
@@ -82,6 +79,7 @@ export enum ExpenseBookColor {
 /****************************************/
 /*** Expense Book Details         ******/
 /****************************************/
+
 // This to show in the expense book detials and for other properties.
 // Cause when visit the detials page it returns other inof as well
 // This one will have to add in the API.ts file for this funciton getExpenseBookDetails();--panding
@@ -95,13 +93,11 @@ export interface ExpenseBookDetails {
 /****************************************/
 /* Expense Book Category, ExpenseList   */
 /****************************************/
-
 export interface ExpenseCategory extends IBase {
 	category_name: string;
 	expense_book_id: string;
 	postedBy: UserProfileDetails;
 }
-
 export interface ExpenseList extends IBase {
 	title: string;
 	amount: number;
@@ -109,7 +105,6 @@ export interface ExpenseList extends IBase {
 	expense_category: string;
 	postedBy: UserProfileDetails;
 }
-
 export interface ExpenseCountByCategory {
 	_id: string;
 	totalammount: number;
