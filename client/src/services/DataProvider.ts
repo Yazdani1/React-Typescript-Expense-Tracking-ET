@@ -151,7 +151,6 @@ export interface IncomeRecord extends IBase {
 	amount: number;
 	postedBy: UserProfileDetails;
 }
-
 /****************************************/
 /*********** Instructor    *************/
 /****************************************/
@@ -170,18 +169,15 @@ export interface Lecture extends IBase {
 	position: number;
 	postedBy: UserProfileDetails;
 }
-
 export interface CourseDetails {
 	singleCourse: Course;
 	lectureLists: Lecture[];
 	enroledStudents: CourseEnrolmentItems[];
 }
-
 export enum FilterCourseByTitle {
 	Ascending = 1,
 	Descending = -1,
 }
-
 /****************************************/
 /*********  Course Enrolment  ***********/
 /****************************************/
