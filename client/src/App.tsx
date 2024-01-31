@@ -95,6 +95,7 @@ const App = () => {
 															</SecureLayout>
 														}
 													/>
+
 													<Route
 														path='/profile'
 														element={
@@ -111,6 +112,7 @@ const App = () => {
 															</SecureLayout>
 														}
 													/>
+
 													<Route
 														path='/job-wishlist'
 														element={
@@ -151,6 +153,7 @@ const App = () => {
 															</SecureLayout>
 														}
 													/>
+
 													<Route
 														path='/job-application'
 														element={
@@ -159,7 +162,9 @@ const App = () => {
 															</SecureLayout>
 														}
 													/>
+
 													{/* This route is for Home renatal app api and its only for testing purpose... */}
+
 													<Route
 														path='/home-rental'
 														element={
@@ -168,6 +173,7 @@ const App = () => {
 															</SecureLayout>
 														}
 													/>
+
 													<Route
 														path='/home-rental-offline-data'
 														element={
