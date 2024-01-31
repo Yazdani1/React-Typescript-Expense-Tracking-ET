@@ -9,7 +9,6 @@ const JobWishList = () => {
 	useEffect(() => {
 		loadJobWishList();
 	}, []);
-
 	return (
 		<SubscriberPageLayout>
 			<div>
