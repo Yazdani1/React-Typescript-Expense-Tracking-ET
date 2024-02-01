@@ -220,18 +220,21 @@ export interface JobPostDetails {
 	singleJob: JobPosts;
 	simmilarJobBySameEmployer: JobPosts[];
 }
+
 export enum JobApplicationStatus {
 	Applied = 'Applied',
 	InReview = 'InReview',
 	NotFit = 'NotFit',
 	ShortListed = 'ShortListed',
 }
+
 export interface JobApplication extends IBase {
 	jobPostOwnerId: UserProfileDetails;
 	jobPostId: JobPosts;
 	status: JobApplicationStatus;
 	jobAppliedBy: UserProfileDetails;
 }
+
 export interface EmployerJobDetailsItem extends IBase {
 	singleJobDetails: JobPosts;
 	jobApplicationList: JobApplication[];
