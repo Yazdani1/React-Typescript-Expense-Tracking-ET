@@ -27,6 +27,7 @@ const Income = () => {
 	const onCloseModal = () => {
 		setOpen(false);
 	};
+
 	/****************************************/
 	/****** Create Income Record   **********/
 	/****************************************/
