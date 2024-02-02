@@ -11,7 +11,6 @@ interface IncomeCardProps {
 	//This post id is just to test if saved post opiton and button change work
 	postid: string;
 }
-
 const IncomeCard: FC<IncomeCardProps> = ({ incomeRecord, postid }) => {
 	const { allIncomeRecords, loadLogedInUserIncomeRecords } =
 		useIncomeRecordContext();
@@ -47,5 +46,4 @@ const IncomeCard: FC<IncomeCardProps> = ({ incomeRecord, postid }) => {
 		</div>
 	);
 };
-
 export default IncomeCard;
