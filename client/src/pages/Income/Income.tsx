@@ -43,15 +43,12 @@ const Income = () => {
 				des: des,
 				amount: parseInt(amount),
 			};
-
 			const res = await createIncomeRecord(payload);
 			if (res) {
 				toast.success('Income record created successfully', {
 					position: toast.POSITION.TOP_RIGHT,
 				});
-
 				loadLogedInUserIncomeRecords();
-
 				// To update newly created income record in the context api
 				// addNewIncomeRecords(res);
 			}
