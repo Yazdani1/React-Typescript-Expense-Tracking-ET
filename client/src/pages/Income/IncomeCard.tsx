@@ -18,6 +18,7 @@ const IncomeCard: FC<IncomeCardProps> = ({ incomeRecord, postid }) => {
 	/****************************************/
 	/****** To delete income record  ********/
 	/****************************************/
+
 	const deleteSingleIncomeRecord = async () => {
 		try {
 			const res = await deleteIncomeRecord(incomeRecord._id);

@@ -31,7 +31,6 @@ const Income = () => {
 	/****************************************/
 	/****** Create Income Record   **********/
 	/****************************************/
-
 	const [title, setTitle] = useState<string>('');
 	const [des, setDes] = useState<string>('');
 	const [amount, setAmount] = useState<string>('');
@@ -77,6 +76,7 @@ const Income = () => {
 					))}
 			</CardLayout>
 			{/* Modal Box to add income record */}
+
 			<ModalBox
 				open={open}
 				onCloseModal={onCloseModal}
@@ -105,5 +105,4 @@ const Income = () => {
 		</SubscriberPageLayout>
 	);
 };
-
 export default Income;
