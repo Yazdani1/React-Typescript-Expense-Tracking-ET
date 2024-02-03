@@ -31,13 +31,10 @@ const LectureCard: FC<LectureCardProps> = ({
 					onDragEnd={(e) => handleDrop(e, indexDrop)}
 				>
 					<h6>{lecture.lectureTitle}</h6>
-
 					<p>{lecture.lectureDes}</p>
-
 					<p>{lecture.postedBy?.name}</p>
 					<p>{lecture.postedBy?.name}</p>
 					<p>{lecture.courseId?.title}</p>
-
 					<p>{indexDrag}</p>
 					<p>fff{lecture._id}</p>
 				</div>
