@@ -89,12 +89,14 @@ const Income = () => {
 					value={title}
 					setValue={setTitle}
 				/>
+
 				<TextField
 					label='Description'
 					placeholder='description..'
 					value={des}
 					setValue={setDes}
 				/>
+
 				<TextField
 					label='Amount'
 					placeholder='amount..'
