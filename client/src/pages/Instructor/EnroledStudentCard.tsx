@@ -11,8 +11,11 @@ const EnroledStudentCard: FC<EnroledStudentCardProps> = ({ student }) => {
 	return (
 		<CardLayout>
 			<h6>{student.enrolledBy?.name}</h6>
+
 			<p>{student.enrolledBy?.email}</p>
+
 			<p>{student.coupon}</p>
+			
 			<p>{student.date}</p>
 		</CardLayout>
 	);
