@@ -98,7 +98,6 @@ const Profile = () => {
 		setUserSkills([...userSkills, addSkills]);
 		setAddSkills('');
 	};
-
 	const removeSkills = (skillIndex: string) => {
 		const skills = userSkills.filter((item) => item !== skillIndex);
 		setUserSkills(skills);
@@ -109,6 +108,7 @@ const Profile = () => {
 		setProfilePic(userProfileDetails?.imageUrl!);
 		setUserSkills(userProfileDetails?.skills);
 	}, []);
+
 	/////////////////////////////////////////////
 	// With context api
 	// useEffect(() => {
