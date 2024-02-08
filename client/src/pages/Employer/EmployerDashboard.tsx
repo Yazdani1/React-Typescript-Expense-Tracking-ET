@@ -174,7 +174,6 @@ const EmployerDashboard = () => {
 						/>
 					))}
 			</div>
-
 			{/* Modal box to create jobpost */}
 			<ModalBox
 				open={open}
@@ -186,7 +185,6 @@ const EmployerDashboard = () => {
 				<TextField label='Title' value={title} setValue={setTitle} />
 				<TextField label='City' value={jobCity} setValue={setJobCity} />
 				<TextField label='Description' value={des} setValue={setDes} />
-
 				<div className={style.visibility_drop_down_container}>
 					<select
 						value={visibility}
@@ -198,13 +196,11 @@ const EmployerDashboard = () => {
 						))}
 					</select>
 				</div>
-
 				<TextField
 					label='Job skills'
 					value={addjobSkills}
 					setValue={setAddJobSkills}
 				/>
-
 				<div className={style.skills_container}>
 					{jobSkillsList.map((skill, index) => (
 						<div key={index} className={style.skill_item}>
