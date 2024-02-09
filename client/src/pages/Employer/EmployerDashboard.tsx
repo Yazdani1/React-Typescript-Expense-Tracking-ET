@@ -52,7 +52,6 @@ const EmployerDashboard = () => {
 	/****************************************/
 	/****** Create job posts ****************/
 	/****************************************/
-
 	const [title, setTitle] = useState<string>('');
 	const [des, setDes] = useState<string>('');
 	const [jobCity, setJobCity] = useState<string>('');
@@ -91,7 +90,6 @@ const EmployerDashboard = () => {
 			});
 		}
 	};
-
 	const onResetJobPostInputField = () => {
 		setTitle('');
 		setDes('');
@@ -125,7 +123,6 @@ const EmployerDashboard = () => {
 			});
 		}
 	};
-
 	useEffect(() => {
 		loadJobposts();
 	}, []);
@@ -162,7 +159,6 @@ const EmployerDashboard = () => {
 					</button>
 				</div>
 			</CardLayout>
-
 			<JobPostItemRow />
 			<div style={{ height: '100vh' }}>
 				{jobPosts &&
@@ -214,7 +210,6 @@ const EmployerDashboard = () => {
 						</div>
 					))}
 				</div>
-
 				<button className='btn btn-warning' onClick={addJobSkills}>
 					Add Skills
 				</button>
