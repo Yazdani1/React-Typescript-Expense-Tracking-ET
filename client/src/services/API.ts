@@ -138,18 +138,22 @@ export const getLogedInUserProfile = async (): Promise<UserProfileDetails> => {
 /****************************************/
 /********* User role based access ******/
 /****************************************/
+
 export const getUserRoleForAdmin = async (): Promise<UserProfileDetails> => {
 	const res = await axios.get(API_URL + '/current-user-role', headerConfig());
 	return res.data as UserProfileDetails;
 };
+
 export const getInstructorRole = async (): Promise<UserProfileDetails> => {
 	const res = await axios.get(API_URL + '/instructor-profile', headerConfig());
 	return res.data as UserProfileDetails;
 };
+
 export const getEmployerRole = async (): Promise<UserProfileDetails> => {
 	const res = await axios.get(API_URL + '/employer-profile', headerConfig());
 	return res.data as UserProfileDetails;
 };
+
 /****************************************/
 /********* All User List Only Admin ******/
 /****************************************/
