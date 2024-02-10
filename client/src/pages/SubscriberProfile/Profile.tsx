@@ -31,11 +31,14 @@ const Profile = () => {
 	// const [state, setState] = useContext(UserContext);
 	// const {userProfileDetails,updateUserProfileDetails} = useContext(UserProfileDetailsContext);
 	// Context API to update new user info -Cookies context api
+
 	const { user, setUser } = useUserContext();
+
 	////////////////////////////////////////////////////////////////////////////////
 	/****************************************/
 	/******  To Open Modal Box     **********/
 	/****************************************/
+
 	const [open, setOpen] = useState<boolean>(false);
 	const onOpenModal = () => {
 		setOpen(true);
