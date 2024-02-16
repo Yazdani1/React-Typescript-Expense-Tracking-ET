@@ -31,14 +31,11 @@ const Profile = () => {
 	// const [state, setState] = useContext(UserContext);
 	// const {userProfileDetails,updateUserProfileDetails} = useContext(UserProfileDetailsContext);
 	// Context API to update new user info -Cookies context api
-
 	const { user, setUser } = useUserContext();
-
 	////////////////////////////////////////////////////////////////////////////////
 	/****************************************/
 	/******  To Open Modal Box     **********/
 	/****************************************/
-
 	const [open, setOpen] = useState<boolean>(false);
 	const onOpenModal = () => {
 		setOpen(true);
@@ -46,7 +43,6 @@ const Profile = () => {
 	const onCloseModal = () => {
 		setOpen(false);
 	};
-
 	/****************************************/
 	/******  To Update User Profile    ******/
 	/****************************************/
@@ -64,12 +60,10 @@ const Profile = () => {
 				imageUrl: profilePic,
 				skills: userSkills,
 			};
-
 			const res = await updateSingleUserProfile(
 				userProfileDetails?._id!,
 				payload
 			);
-
 			if (res) {
 				toast.success('Successfully Updated Profile', {
 					position: toast.POSITION.TOP_CENTER,
