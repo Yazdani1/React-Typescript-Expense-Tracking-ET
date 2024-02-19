@@ -40,7 +40,6 @@ const EmployerDashboard = () => {
 	/****************************************/
 	/******Modal Box to Create Job Post   ***/
 	/****************************************/
-
 	const [open, setOpen] = useState<boolean>(false);
 	const onOpenModal = () => {
 		setOpen(true);
@@ -48,11 +47,9 @@ const EmployerDashboard = () => {
 	const onCloseModal = () => {
 		setOpen(false);
 	};
-
 	/****************************************/
 	/****** Create job posts ****************/
 	/****************************************/
-
 	const [title, setTitle] = useState<string>('');
 	const [des, setDes] = useState<string>('');
 	const [jobCity, setJobCity] = useState<string>('');
@@ -64,12 +61,10 @@ const EmployerDashboard = () => {
 		setJobSkillsList([...jobSkillsList, addjobSkills]);
 		setAddJobSkills('');
 	};
-
 	const removeJobSkills = (skillIndex: string) => {
 		const skills = jobSkillsList.filter((item) => item !== skillIndex);
 		setJobSkillsList(skills);
 	};
-
 	const onSubmitCreateJobPosts = async () => {
 		try {
 			const payload: CreateJobPostProps = {
