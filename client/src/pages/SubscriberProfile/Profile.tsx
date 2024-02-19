@@ -84,7 +84,9 @@ const Profile = () => {
 				// updateUserProfileDetails(res?.user!);
 				////////////////////////////////////////////
 				// From cookie context api - to update user info in the context api as soon as user update user info
+
 				setUser(res.user);
+
 				/////////////////////////////////////////
 			}
 		} catch (error: any) {
@@ -98,10 +100,12 @@ const Profile = () => {
 		setUserSkills([...userSkills, addSkills]);
 		setAddSkills('');
 	};
+
 	const removeSkills = (skillIndex: string) => {
 		const skills = userSkills.filter((item) => item !== skillIndex);
 		setUserSkills(skills);
 	};
+
 	useEffect(() => {
 		setName(userProfileDetails?.name!);
 		setEmail(userProfileDetails?.email!);
