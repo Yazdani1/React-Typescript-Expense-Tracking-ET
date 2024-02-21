@@ -84,9 +84,7 @@ const Profile = () => {
 				// updateUserProfileDetails(res?.user!);
 				////////////////////////////////////////////
 				// From cookie context api - to update user info in the context api as soon as user update user info
-
 				setUser(res.user);
-
 				/////////////////////////////////////////
 			}
 		} catch (error: any) {
@@ -95,24 +93,20 @@ const Profile = () => {
 			});
 		}
 	};
-
 	const addUserSkills = () => {
 		setUserSkills([...userSkills, addSkills]);
 		setAddSkills('');
 	};
-
 	const removeSkills = (skillIndex: string) => {
 		const skills = userSkills.filter((item) => item !== skillIndex);
 		setUserSkills(skills);
 	};
-
 	useEffect(() => {
 		setName(userProfileDetails?.name!);
 		setEmail(userProfileDetails?.email!);
 		setProfilePic(userProfileDetails?.imageUrl!);
 		setUserSkills(userProfileDetails?.skills);
 	}, []);
-
 	/////////////////////////////////////////////
 	// With context api
 	// useEffect(() => {
@@ -141,7 +135,6 @@ const Profile = () => {
 	// useEffect(() => {
 	//   loadUserProfileDetails();
 	// }, []);
-
 	return (
 		<SubscriberPageLayout>
 			<CardLayout title='Account Details'>
