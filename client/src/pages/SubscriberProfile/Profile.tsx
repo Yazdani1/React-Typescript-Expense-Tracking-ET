@@ -60,10 +60,12 @@ const Profile = () => {
 				imageUrl: profilePic,
 				skills: userSkills,
 			};
+
 			const res = await updateSingleUserProfile(
 				userProfileDetails?._id!,
 				payload
 			);
+
 			if (res) {
 				toast.success('Successfully Updated Profile', {
 					position: toast.POSITION.TOP_CENTER,
@@ -93,20 +95,24 @@ const Profile = () => {
 			});
 		}
 	};
+
 	const addUserSkills = () => {
 		setUserSkills([...userSkills, addSkills]);
 		setAddSkills('');
 	};
+
 	const removeSkills = (skillIndex: string) => {
 		const skills = userSkills.filter((item) => item !== skillIndex);
 		setUserSkills(skills);
 	};
+
 	useEffect(() => {
 		setName(userProfileDetails?.name!);
 		setEmail(userProfileDetails?.email!);
 		setProfilePic(userProfileDetails?.imageUrl!);
 		setUserSkills(userProfileDetails?.skills);
 	}, []);
+
 	/////////////////////////////////////////////
 	// With context api
 	// useEffect(() => {
