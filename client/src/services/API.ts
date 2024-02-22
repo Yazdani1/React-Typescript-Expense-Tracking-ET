@@ -151,16 +151,20 @@ export const getEmployerRole = async (): Promise<UserProfileDetails> => {
 	const res = await axios.get(API_URL + '/employer-profile', headerConfig());
 	return res.data as UserProfileDetails;
 };
+
 /****************************************/
 /********* All User List Only Admin ******/
 /****************************************/
+
 export const getAllUserList = async (): Promise<UserProfileDetails[]> => {
 	const res = await axios.get(API_URL + '/alluser', headerConfig());
 	return res.data as UserProfileDetails[];
 };
+
 /****************************************/
 /********* Expense Book            ******/
 /****************************************/
+
 export interface CreateExpenseProps {
 	name: string;
 	color: string;
