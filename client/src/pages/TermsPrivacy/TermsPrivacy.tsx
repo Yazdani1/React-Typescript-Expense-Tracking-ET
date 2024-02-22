@@ -6,6 +6,7 @@ const TermsPrivacy = () => {
 			<p>{`Type: ${subSection.type}, Content: ${subSection.content}`}</p>
 		</div>
 	);
+
 	const renderSection = (section: any, level: number) => (
 		<div key={section.type} style={{ marginLeft: `${level * 20}px` }}>
 			<h3>{section.content}</h3>
@@ -19,6 +20,7 @@ const TermsPrivacy = () => {
 			)}
 		</div>
 	);
+
 	return (
 		<div>
 			<h1>{data.title}</h1>
