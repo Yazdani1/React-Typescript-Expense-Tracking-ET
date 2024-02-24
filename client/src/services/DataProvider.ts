@@ -191,14 +191,17 @@ export interface CourseEnrolmentItems extends IBase {
 /****************************************/
 /********* Job Posts          ***********/
 /****************************************/
+
 export enum Visibility {
 	Private = 'Private',
 	Public = 'Public',
 }
+
 export enum Status {
 	Panding = 'Panding',
 	Approved = 'Approved',
 }
+
 export interface JobPosts extends IBase {
 	title: string;
 	des: string;
@@ -220,21 +223,18 @@ export interface JobPostDetails {
 	singleJob: JobPosts;
 	simmilarJobBySameEmployer: JobPosts[];
 }
-
 export enum JobApplicationStatus {
 	Applied = 'Applied',
 	InReview = 'InReview',
 	NotFit = 'NotFit',
 	ShortListed = 'ShortListed',
 }
-
 export interface JobApplication extends IBase {
 	jobPostOwnerId: UserProfileDetails;
 	jobPostId: JobPosts;
 	status: JobApplicationStatus;
 	jobAppliedBy: UserProfileDetails;
 }
-
 export interface EmployerJobDetailsItem extends IBase {
 	singleJobDetails: JobPosts;
 	jobApplicationList: JobApplication[];
