@@ -162,6 +162,7 @@ export interface Course extends IBase {
 	enrolledStudents: number;
 	postedBy: UserProfileDetails;
 }
+
 export interface Lecture extends IBase {
 	lectureTitle: string;
 	lectureDes: string;
@@ -169,18 +170,22 @@ export interface Lecture extends IBase {
 	position: number;
 	postedBy: UserProfileDetails;
 }
+
 export interface CourseDetails {
 	singleCourse: Course;
 	lectureLists: Lecture[];
 	enroledStudents: CourseEnrolmentItems[];
 }
+
 export enum FilterCourseByTitle {
 	Ascending = 1,
 	Descending = -1,
 }
+
 /****************************************/
 /*********  Course Enrolment  ***********/
 /****************************************/
+
 export interface CourseEnrolmentItems extends IBase {
 	courseInstructorId: UserProfileDetails;
 	courseId: Course;
