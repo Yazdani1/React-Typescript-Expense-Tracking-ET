@@ -95,7 +95,6 @@ const App = () => {
 															</SecureLayout>
 														}
 													/>
-
 													<Route
 														path='/profile'
 														element={
@@ -112,7 +111,6 @@ const App = () => {
 															</SecureLayout>
 														}
 													/>
-
 													<Route
 														path='/job-wishlist'
 														element={
