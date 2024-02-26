@@ -32,7 +32,6 @@ const JobWishListCard: FC<JobWishListCardProps> = ({ jobwishlist }) => {
 			});
 		}
 	};
-
 	return (
 		<div className={style.job_post_container}>
 			<h6>{jobwishlist.jobPostId?.title}</h6>
@@ -45,7 +44,6 @@ const JobWishListCard: FC<JobWishListCardProps> = ({ jobwishlist }) => {
 					</p>
 				))}
 			</div>
-
 			<div className={style.job_post_bottom_row}>
 				<p>{jobwishlist.jobPostId?.jobCity}</p>
 				<p>{jobwishlist.jobPostId?.visibility}</p>
@@ -58,5 +56,4 @@ const JobWishListCard: FC<JobWishListCardProps> = ({ jobwishlist }) => {
 		</div>
 	);
 };
-
 export default JobWishListCard;
