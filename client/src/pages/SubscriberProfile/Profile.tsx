@@ -43,9 +43,11 @@ const Profile = () => {
 	const onCloseModal = () => {
 		setOpen(false);
 	};
+
 	/****************************************/
 	/******  To Update User Profile    ******/
 	/****************************************/
+
 	const [name, setName] = useState<string>('');
 	const [email, setEmail] = useState<string>('');
 	const [profilePic, setProfilePic] = useState<string>('');
@@ -60,12 +62,10 @@ const Profile = () => {
 				imageUrl: profilePic,
 				skills: userSkills,
 			};
-
 			const res = await updateSingleUserProfile(
 				userProfileDetails?._id!,
 				payload
 			);
-
 			if (res) {
 				toast.success('Successfully Updated Profile', {
 					position: toast.POSITION.TOP_CENTER,
