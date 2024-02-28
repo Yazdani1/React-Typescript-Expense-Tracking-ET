@@ -34,6 +34,7 @@ const NationalId = () => {
 			setError(error.response && error.response.data.error);
 			// if it retunrs an error for wrong id then it should empty the state
 			setNationalIdDetails(null);
+
 			toast.error(error.response && error.response.data.error, {
 				position: toast.POSITION.TOP_RIGHT,
 			});
@@ -46,8 +47,9 @@ const NationalId = () => {
 
 	const handleNationalIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const input = e.target.value;
-		const sanitizedInput = input.replace(/\D/g, ''); // Remove non-digit characters
-		let formattedInput = sanitizedInput.substr(0, 16); // Take the first 13 digits
+
+		const sanitizedInput = input.replace(/\D/g, '');
+		let formattedInput = sanitizedInput.substr(0, 16);
 		if (formattedInput.length > 4) {
 			// Insert spaces after every 4 digits
 			formattedInput = formattedInput.replace(/(\d{4})/g, '$1 ');
