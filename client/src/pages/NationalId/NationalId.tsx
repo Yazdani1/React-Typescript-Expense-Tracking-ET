@@ -47,7 +47,6 @@ const NationalId = () => {
 
 	const handleNationalIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const input = e.target.value;
-
 		const sanitizedInput = input.replace(/\D/g, '');
 		let formattedInput = sanitizedInput.substr(0, 16);
 		if (formattedInput.length > 4) {
@@ -104,7 +103,6 @@ const NationalId = () => {
 										<p>Last Name:{nationalIdDetails?.lastName}</p>
 										<p>Id Number:{nationalIdDetails?.nationalIdNumber}</p>
 										<p>Date of Birth:{nationalIdDetails?.dateOfBirth}</p>
-
 										<p>City:{nationalIdDetails?.city}</p>
 										<p>Father Name:{nationalIdDetails?.fatherName}</p>
 										<p>Mother Name:{nationalIdDetails?.motherName}</p>
