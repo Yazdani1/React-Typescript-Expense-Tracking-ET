@@ -9,9 +9,7 @@ const TermsPrivacy = () => {
 	const renderSection = (section: any, level: number) => (
 		<div key={section.type} style={{ marginLeft: `${level * 20}px` }}>
 			<h3>{section.content}</h3>
-
 			{section.details && <p>{section.details}</p>}
-
 			{section.subSections && (
 				<div>
 					{section.subSections.map((subSection: any, subIndex: number) => (
