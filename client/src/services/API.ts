@@ -230,7 +230,6 @@ export const createExpenseList = async (
 	);
 	return res.data;
 };
-
 // This api end point and function is from Heme rental platform and i am using it here in the context api.
 // Its for testing purpose -  to implement context api and multiple data in one api end point.
 const HRP_API =
@@ -266,6 +265,7 @@ export interface CreateIncomeRecordProps {
 	des: string;
 	amount: number;
 }
+
 export const createIncomeRecord = async (
 	props: CreateIncomeRecordProps
 ): Promise<IncomeRecord> => {
@@ -276,10 +276,12 @@ export const createIncomeRecord = async (
 	);
 	return res.data;
 };
+
 export const getLogedInUserIncomeRecord = async (): Promise<IncomeRecord[]> => {
 	const res = await axios.get(API_URL + '/get-income-record', headerConfig());
 	return res.data as IncomeRecord[];
 };
+
 export const deleteIncomeRecord = async (id: string) => {
 	const res = await axios.delete(
 		API_URL + '/delete-single-income-record/' + id,
