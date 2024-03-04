@@ -210,7 +210,9 @@ const App = () => {
 															</AdminSecureLayout>
 														}
 													/>
+
 													{/* Protected route for only Instructor*/}
+
 													<Route
 														path='/instructor-dashboard'
 														element={
@@ -219,6 +221,7 @@ const App = () => {
 															</InstructorSecureLayout>
 														}
 													/>
+
 													<Route
 														path='/instructor-dashboard/course-details/:slug'
 														element={
@@ -227,7 +230,9 @@ const App = () => {
 															</InstructorSecureLayout>
 														}
 													/>
+
 													{/* Protected route for only Employer*/}
+
 													<Route
 														path='/employer-dashboard'
 														element={
