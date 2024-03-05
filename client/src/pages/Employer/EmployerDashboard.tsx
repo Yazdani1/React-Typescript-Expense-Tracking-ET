@@ -40,16 +40,21 @@ const EmployerDashboard = () => {
 	/****************************************/
 	/******Modal Box to Create Job Post   ***/
 	/****************************************/
+
 	const [open, setOpen] = useState<boolean>(false);
+
 	const onOpenModal = () => {
 		setOpen(true);
 	};
+
 	const onCloseModal = () => {
 		setOpen(false);
 	};
+
 	/****************************************/
 	/****** Create job posts ****************/
 	/****************************************/
+
 	const [title, setTitle] = useState<string>('');
 	const [des, setDes] = useState<string>('');
 	const [jobCity, setJobCity] = useState<string>('');
@@ -61,10 +66,12 @@ const EmployerDashboard = () => {
 		setJobSkillsList([...jobSkillsList, addjobSkills]);
 		setAddJobSkills('');
 	};
+
 	const removeJobSkills = (skillIndex: string) => {
 		const skills = jobSkillsList.filter((item) => item !== skillIndex);
 		setJobSkillsList(skills);
 	};
+
 	const onSubmitCreateJobPosts = async () => {
 		try {
 			const payload: CreateJobPostProps = {
@@ -88,6 +95,7 @@ const EmployerDashboard = () => {
 			});
 		}
 	};
+
 	const onResetJobPostInputField = () => {
 		setTitle('');
 		setDes('');
@@ -100,6 +108,7 @@ const EmployerDashboard = () => {
 	/****************************************/
 	/* Update all visibility for job post ***/
 	/****************************************/
+
 	const [updateJobVisibility, setUpdateJobVisibility] = useState<Visibility>(
 		Visibility.Public
 	);
@@ -121,6 +130,7 @@ const EmployerDashboard = () => {
 			});
 		}
 	};
+
 	useEffect(() => {
 		loadJobposts();
 	}, []);
