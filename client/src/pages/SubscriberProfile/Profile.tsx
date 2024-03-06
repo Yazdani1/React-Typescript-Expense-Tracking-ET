@@ -15,6 +15,7 @@ import {
 	UpdateUserProfileProps,
 	updateSingleUserProfile,
 } from '../../services/API';
+
 import { useUserContext } from '../../contextapi/UserContextCookies';
 import { loginSuccess } from '../../redux/userSlice';
 
@@ -42,9 +43,11 @@ const Profile = () => {
 	/****************************************/
 
 	const [open, setOpen] = useState<boolean>(false);
+
 	const onOpenModal = () => {
 		setOpen(true);
 	};
+
 	const onCloseModal = () => {
 		setOpen(false);
 	};
