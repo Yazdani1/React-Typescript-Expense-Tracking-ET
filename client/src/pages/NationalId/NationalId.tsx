@@ -84,6 +84,7 @@ const NationalId = () => {
 										onChange={handleNationalIdChange}
 									/>
 								</div>
+
 								<div
 									className={style.searchButton}
 									onClick={onSubmitSearchNationalId}
