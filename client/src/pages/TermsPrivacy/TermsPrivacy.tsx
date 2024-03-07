@@ -6,12 +6,12 @@ const TermsPrivacy = () => {
 			<p>{`Type: ${subSection.type}, Content: ${subSection.content}`}</p>
 		</div>
 	);
+
 	const renderSection = (section: any, level: number) => (
 		<div key={section.type} style={{ marginLeft: `${level * 20}px` }}>
 			<h3>{section.content}</h3>
 
 			{section.details && <p>{section.details}</p>}
-
 			{section.subSections && (
 				<div>
 					{section.subSections.map((subSection: any, subIndex: number) => (
@@ -24,6 +24,7 @@ const TermsPrivacy = () => {
 	return (
 		<div>
 			<h1>{data.title}</h1>
+
 			{data.sections.map((section: any, index: number) => (
 				<div key={index}>{renderSection(section, index + 1)}</div>
 			))}
