@@ -138,12 +138,15 @@ const EmployerDashboard = () => {
 	return (
 		<EmployerPageLayout>
 			<h1>Employer dashboar</h1>
+
 			<CardLayout>
 				<button className='btn btn-success' onClick={onOpenModal}>
 					Create job post
 				</button>
 			</CardLayout>
+
 			{/* To update all the job visibility */}
+
 			<CardLayout>
 				<div className={style.updateVisibilitycontainer}>
 					<div className={style.visibility_drop_down_container}>
@@ -159,6 +162,7 @@ const EmployerDashboard = () => {
 							))}
 						</select>
 					</div>
+
 					<button
 						className={style.updateVisibilityButton}
 						onClick={handleUpdateJobVisibility}
