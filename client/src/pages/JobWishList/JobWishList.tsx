@@ -5,6 +5,7 @@ import JobWishListCard from './JobWishListCard';
 import { useJobWishListContext } from '../../contextapi/JobWishListContext';
 
 const JobWishList = () => {
+
 	const { allJobWishList, loadJobWishList } = useJobWishListContext();
 
 	useEffect(() => {
@@ -14,10 +15,12 @@ const JobWishList = () => {
 	return (
 		<SubscriberPageLayout>
 			<div>
+
 				{allJobWishList &&
 					allJobWishList.map((job) => (
 						<JobWishListCard jobwishlist={job} key={job._id} />
 					))}
+					
 			</div>
 		</SubscriberPageLayout>
 	);
