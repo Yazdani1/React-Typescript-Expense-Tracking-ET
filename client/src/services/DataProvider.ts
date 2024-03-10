@@ -192,6 +192,7 @@ export interface CourseEnrolmentItems extends IBase {
 	coupon: string;
 	enrolledBy: UserProfileDetails;
 }
+
 /****************************************/
 /********* Job Posts          ***********/
 /****************************************/
@@ -218,15 +219,18 @@ export interface JobPosts extends IBase {
 	approvedDate: string;
 	postedBy: UserProfileDetails;
 }
+
 export interface JobWishList extends IBase {
 	jobPostPublishedBy: UserProfileDetails;
 	jobPostId: JobPosts;
 	postedBy: UserProfileDetails;
 }
+
 export interface JobPostDetails {
 	singleJob: JobPosts;
 	simmilarJobBySameEmployer: JobPosts[];
 }
+
 export enum JobApplicationStatus {
 	Applied = 'Applied',
 	InReview = 'InReview',
