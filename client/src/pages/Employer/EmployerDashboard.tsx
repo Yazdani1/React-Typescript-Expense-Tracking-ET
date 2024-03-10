@@ -210,11 +210,13 @@ const EmployerDashboard = () => {
 						))}
 					</select>
 				</div>
+
 				<TextField
 					label='Job skills'
 					value={addjobSkills}
 					setValue={setAddJobSkills}
 				/>
+
 				<div className={style.skills_container}>
 					{jobSkillsList.map((skill, index) => (
 						<div key={index} className={style.skill_item}>
@@ -228,6 +230,7 @@ const EmployerDashboard = () => {
 						</div>
 					))}
 				</div>
+
 				<button className='btn btn-warning' onClick={addJobSkills}>
 					Add Skills
 				</button>
