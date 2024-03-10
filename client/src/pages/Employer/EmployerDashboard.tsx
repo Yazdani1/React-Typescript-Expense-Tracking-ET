@@ -171,7 +171,9 @@ const EmployerDashboard = () => {
 					</button>
 				</div>
 			</CardLayout>
+
 			<JobPostItemRow />
+
 			<div style={{ height: '100vh' }}>
 				{jobPosts &&
 					jobPosts.map((jobpost) => (
@@ -182,6 +184,7 @@ const EmployerDashboard = () => {
 						/>
 					))}
 			</div>
+
 			{/* Modal box to create jobpost */}
 			<ModalBox
 				open={open}
@@ -191,8 +194,11 @@ const EmployerDashboard = () => {
 				onSaveButton={onSubmitCreateJobPosts}
 			>
 				<TextField label='Title' value={title} setValue={setTitle} />
+
 				<TextField label='City' value={jobCity} setValue={setJobCity} />
+
 				<TextField label='Description' value={des} setValue={setDes} />
+
 				<div className={style.visibility_drop_down_container}>
 					<select
 						value={visibility}
