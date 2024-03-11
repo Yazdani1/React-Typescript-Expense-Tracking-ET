@@ -17,11 +17,14 @@ const CourseCard: FC<CourseCardProps> = ({ course }) => {
 			<div className={style.courseContainer}>
 				<h6>{course.title}</h6>
 				<p>{course.postedBy?.name}</p>
+
 				<hr />
 				<p>{course.des.substring(0, 50)}</p>
+
 				<div className={style.itemRow}>
 					<p>Enrolled:{course.enrolledStudents}</p>
 					<p>Seats:{course.maxStudents}</p>
+
 					{course.enrolledStudents === course.maxStudents && (
 						<p
 							style={{
