@@ -26,6 +26,7 @@ const NationalId = () => {
 			// To replace the space from the nationaId state to pass it in the api url to search the data
 			const nationalIdWithoutSpaces = nationaId.replace(/\s/g, ''); // Remove spaces
 			const res = await searchNationalId(nationalIdWithoutSpaces!);
+
 			if (res) {
 				setNationalIdDetails(res);
 				setError('');
