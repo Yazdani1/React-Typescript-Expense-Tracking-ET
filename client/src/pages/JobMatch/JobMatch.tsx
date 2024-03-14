@@ -12,7 +12,6 @@ const JobMatch = () => {
 	/****************************************/
 
 	const [matchedJobs, setMatchedJobs] = useState<JobPosts[]>([]);
-
 	const loadMatchedJobs = async () => {
 		try {
 			const res = await getMatchedJob();
