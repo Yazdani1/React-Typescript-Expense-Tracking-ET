@@ -34,17 +34,14 @@ const NationalId = () => {
 			setError(error.response && error.response.data.error);
 			// if it retunrs an error for wrong id then it should empty the state
 			setNationalIdDetails(null);
-
 			toast.error(error.response && error.response.data.error, {
 				position: toast.POSITION.TOP_RIGHT,
 			});
 		}
 	};
-
 	// This function code is used to have a space after each 4 digit in the search input field
 	// It will take total 13 digit and one space after each 4 digit.
 	// Then it's search query will load the data through query from api url
-
 	const handleNationalIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const input = e.target.value;
 		const sanitizedInput = input.replace(/\D/g, '');
