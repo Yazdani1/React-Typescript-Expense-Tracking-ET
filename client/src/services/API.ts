@@ -352,6 +352,7 @@ export const getCourseLists = async (): Promise<Course[]> => {
 	);
 	return res.data as Course[];
 };
+
 export const getSingleCourseLectures = async (
 	slug: string
 ): Promise<CourseDetails> => {
@@ -361,6 +362,7 @@ export const getSingleCourseLectures = async (
 	);
 	return res.data as CourseDetails;
 };
+
 export const filterInstructorCourse = async (
 	sortbytitle: number
 ): Promise<Course[]> => {
@@ -370,6 +372,7 @@ export const filterInstructorCourse = async (
 	);
 	return res.data as Course[];
 };
+
 // For subscriber
 export const getCourseListsForSubscriber = async (): Promise<Course[]> => {
 	const res = await axios.get(API_URL + '/get-all-courses', headerConfig());
