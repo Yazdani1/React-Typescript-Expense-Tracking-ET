@@ -69,7 +69,6 @@ const NationalId = () => {
 						<CardLayout>
 							<h5>{allIncomeRecords.length}</h5>
 						</CardLayout>
-
 						<CardLayout>
 							<h3>Nationa Id Details You Can Search Here</h3>
 						</CardLayout>
@@ -87,7 +86,6 @@ const NationalId = () => {
 										onChange={handleNationalIdChange}
 									/>
 								</div>
-
 								<div
 									className={style.searchButton}
 									onClick={onSubmitSearchNationalId}
@@ -105,17 +103,11 @@ const NationalId = () => {
 
 									<div className={style.nationalIdDetails}>
 										<p>First Name:{nationalIdDetails?.firstName}</p>
-
 										<p>Last Name:{nationalIdDetails?.lastName}</p>
-
 										<p>Id Number:{nationalIdDetails?.nationalIdNumber}</p>
-
 										<p>Date of Birth:{nationalIdDetails?.dateOfBirth}</p>
-
 										<p>City:{nationalIdDetails?.city}</p>
-
 										<p>Father Name:{nationalIdDetails?.fatherName}</p>
-
 										<p>Mother Name:{nationalIdDetails?.motherName}</p>
 
 										<p>Street:{nationalIdDetails?.street}</p>
