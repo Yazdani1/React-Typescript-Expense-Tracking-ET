@@ -109,13 +109,9 @@ const NationalId = () => {
 										<p>City:{nationalIdDetails?.city}</p>
 										<p>Father Name:{nationalIdDetails?.fatherName}</p>
 										<p>Mother Name:{nationalIdDetails?.motherName}</p>
-
 										<p>Street:{nationalIdDetails?.street}</p>
-
 										<p>House Number:{nationalIdDetails?.houseNumber}</p>
-
 										<p>Postal Code:{nationalIdDetails?.postalCode}</p>
-
 										<p>Issued Date:{nationalIdDetails?.date}</p>
 									</div>
 								</div>
