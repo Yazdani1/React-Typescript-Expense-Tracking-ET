@@ -69,6 +69,7 @@ const NationalId = () => {
 						<CardLayout>
 							<h5>{allIncomeRecords.length}</h5>
 						</CardLayout>
+
 						<CardLayout>
 							<h3>Nationa Id Details You Can Search Here</h3>
 						</CardLayout>
@@ -100,7 +101,6 @@ const NationalId = () => {
 									<div className={style.imageDesign}>
 										<img src={nationalIdDetails?.photo} alt='images' />
 									</div>
-
 									<div className={style.nationalIdDetails}>
 										<p>First Name:{nationalIdDetails?.firstName}</p>
 										<p>Last Name:{nationalIdDetails?.lastName}</p>
