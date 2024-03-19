@@ -97,21 +97,23 @@ const Profile = () => {
 			});
 		}
 	};
-
 	const addUserSkills = () => {
 		setUserSkills([...userSkills, addSkills]);
 		setAddSkills('');
 	};
+
 	const removeSkills = (skillIndex: string) => {
 		const skills = userSkills.filter((item) => item !== skillIndex);
 		setUserSkills(skills);
 	};
+
 	useEffect(() => {
 		setName(userProfileDetails?.name!);
 		setEmail(userProfileDetails?.email!);
 		setProfilePic(userProfileDetails?.imageUrl!);
 		setUserSkills(userProfileDetails?.skills);
 	}, []);
+
 	/////////////////////////////////////////////
 	// With context api
 	// useEffect(() => {
@@ -120,6 +122,7 @@ const Profile = () => {
 	//   setProfilePic(user?.imageUrl!);
 	// }, [user]);
 	/////////////////////////////////////////////
+
 	/****************************************/
 	/******  To Show User Profile    ********/
 	/****************************************/
