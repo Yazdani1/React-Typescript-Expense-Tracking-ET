@@ -564,12 +564,10 @@ export const getMatchedJob = async (): Promise<JobPosts[]> => {
 /****************************************/
 /************** Job Wish List************/
 /****************************************/
-
 export interface CreateJobWishListProps {
 	jobPostPublishedBy: string;
 	jobPostId: string;
 }
-
 export const createJobWishList = async (
 	props: CreateJobWishListProps
 ): Promise<JobWishList> => {
@@ -593,6 +591,7 @@ export const deleteJobWishList = async (id: string) => {
 	);
 	return res.data;
 };
+
 // To get single jobwishlist for a single post for a single user
 // This will need to delete a wishlist. Will just use the id of a wishlist for a single job
 export const getSingleJobWishlist = async (
@@ -608,12 +607,10 @@ export const getSingleJobWishlist = async (
 /****************************************/
 /********** Job Application  ************/
 /****************************************/
-
 export interface CreateJobApplicationProps {
 	jobPostOwnerId: string;
 	jobPostId: string;
 }
-
 export const createJobApplication = async (
 	props: CreateJobApplicationProps
 ): Promise<JobApplication> => {
@@ -624,7 +621,6 @@ export const createJobApplication = async (
 	);
 	return res.data;
 };
-
 export const getJobApplicationList = async (): Promise<JobApplication[]> => {
 	const res = await axios.get(
 		API_URL + '/get-applied-job-lists',
