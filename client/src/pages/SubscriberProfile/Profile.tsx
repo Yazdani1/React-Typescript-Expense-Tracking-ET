@@ -58,18 +58,17 @@ const Profile = () => {
 
 	const onSubmitUpdateProfile = async () => {
 		try {
+
 			const payload: UpdateUserProfileProps = {
 				name: name,
 				email: email,
 				imageUrl: profilePic,
 				skills: userSkills,
 			};
-
 			const res = await updateSingleUserProfile(
 				userProfileDetails?._id!,
 				payload
 			);
-
 			if (res) {
 				toast.success('Successfully Updated Profile', {
 					position: toast.POSITION.TOP_CENTER,
@@ -83,6 +82,7 @@ const Profile = () => {
 				// setState({
 				//   user: res.user,
 				// });
+
 				////////////////////////////////////////////
 				// to update user profile in the context
 				// updateUserProfileDetails(res.user);
@@ -90,6 +90,7 @@ const Profile = () => {
 				// updateUserProfileDetails(res?.user!);
 				////////////////////////////////////////////
 				// From cookie context api - to update user info in the context api as soon as user update user info
+				
 				setUser(res.user);
 				/////////////////////////////////////////
 			}
