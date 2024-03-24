@@ -17,13 +17,16 @@ const Income = () => {
 	//Context API
 	const { allIncomeRecords, loadLogedInUserIncomeRecords } =
 		useIncomeRecordContext();
+
 	/****************************************/
 	/******  To Open Modal Box     **********/
 	/***************************************/
+
 	const [open, setOpen] = useState<boolean>(false);
 	const onOpenModal = () => {
 		setOpen(true);
 	};
+
 	const onCloseModal = () => {
 		setOpen(false);
 	};
