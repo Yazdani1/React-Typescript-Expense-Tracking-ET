@@ -34,6 +34,7 @@ const Income = () => {
 	/****************************************/
 	/****** Create Income Record   **********/
 	/****************************************/
+
 	const [title, setTitle] = useState<string>('');
 	const [des, setDes] = useState<string>('');
 	const [amount, setAmount] = useState<string>('');
@@ -45,7 +46,9 @@ const Income = () => {
 				des: des,
 				amount: parseInt(amount),
 			};
+
 			const res = await createIncomeRecord(payload);
+
 			if (res) {
 				toast.success('Income record created successfully', {
 					position: toast.POSITION.TOP_RIGHT,
