@@ -11,22 +11,16 @@ import { useIncomeRecordContext } from '../../contextapi/IncomeRecordContext';
 const NationalId = () => {
 	const { allIncomeRecords } = useIncomeRecordContext();
 	// To add search value from the input fields
-
 	const [nationaId, setNationalId] = useState<number | any>('');
-
 	const [error, setError] = useState<string>();
-
 	// To store national id search result data
-
 	const [nationalIdDetails, setNationalIdDetails] =
 		useState<NationalID | null>();
-
 	const onSubmitSearchNationalId = async () => {
 		try {
 			// To replace the space from the nationaId state to pass it in the api url to search the data
 			const nationalIdWithoutSpaces = nationaId.replace(/\s/g, ''); // Remove spaces
 			const res = await searchNationalId(nationalIdWithoutSpaces!);
-
 			if (res) {
 				setNationalIdDetails(res);
 				setError('');
