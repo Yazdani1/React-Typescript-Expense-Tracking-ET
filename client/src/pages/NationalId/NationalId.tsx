@@ -18,7 +18,6 @@ const NationalId = () => {
 	// To store national id search result data
 	const [nationalIdDetails, setNationalIdDetails] =
 		useState<NationalID | null>();
-
 	const onSubmitSearchNationalId = async () => {
 		try {
 			// To replace the space from the nationaId state to pass it in the api url to search the data
@@ -33,7 +32,6 @@ const NationalId = () => {
 
 			// if it retunrs an error for wrong id then it should empty the state
 			setNationalIdDetails(null);
-
 			toast.error(error.response && error.response.data.error, {
 				position: toast.POSITION.TOP_RIGHT,
 			});
