@@ -30,8 +30,10 @@ const NationalId = () => {
 			}
 		} catch (error: any) {
 			setError(error.response && error.response.data.error);
+
 			// if it retunrs an error for wrong id then it should empty the state
 			setNationalIdDetails(null);
+
 			toast.error(error.response && error.response.data.error, {
 				position: toast.POSITION.TOP_RIGHT,
 			});
