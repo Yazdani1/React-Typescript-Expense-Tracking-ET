@@ -20,12 +20,10 @@ interface JobPostsPublicCardProps {
 
 const JobPostsPublicCard: FC<JobPostsPublicCardProps> = ({ jobpost }) => {
 	let navigate = useNavigate();
-
 	// Redux toolkit for user profile details
 	const userProfileDetails = useSelector(
 		(state: any) => state.user.currentUser
 	);
-
 	//Context api
 	const { allJobWishList, loadJobWishList } = useJobWishListContext();
 
