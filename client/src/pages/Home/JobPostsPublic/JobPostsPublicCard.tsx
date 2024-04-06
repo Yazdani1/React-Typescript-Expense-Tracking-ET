@@ -17,7 +17,6 @@ import { useJobWishListContext } from '../../../contextapi/JobWishListContext';
 interface JobPostsPublicCardProps {
 	jobpost: JobPosts;
 }
-
 const JobPostsPublicCard: FC<JobPostsPublicCardProps> = ({ jobpost }) => {
 	let navigate = useNavigate();
 	// Redux toolkit for user profile details
@@ -26,7 +25,6 @@ const JobPostsPublicCard: FC<JobPostsPublicCardProps> = ({ jobpost }) => {
 	);
 	//Context api
 	const { allJobWishList, loadJobWishList } = useJobWishListContext();
-
 	const isJobPostSaved =
 		allJobWishList &&
 		allJobWishList.some((job) => job.jobPostId?._id === jobpost?._id);
@@ -34,21 +32,17 @@ const JobPostsPublicCard: FC<JobPostsPublicCardProps> = ({ jobpost }) => {
 	/****************************************/
 	/****** Create job wishlist *************/
 	/****************************************/
-
 	const handleSaveJobWishList = async () => {
 		try {
 			const payload: CreateJobWishListProps = {
 				jobPostPublishedBy: jobpost.postedBy?._id,
 				jobPostId: jobpost?._id,
 			};
-
 			const res = await createJobWishList(payload);
-
 			if (res) {
 				toast.success('You have saved this job post', {
 					position: toast.POSITION.TOP_CENTER,
 				});
-
 				loadSingleJobWishlist();
 				loadJobWishList();
 			}
@@ -62,13 +56,10 @@ const JobPostsPublicCard: FC<JobPostsPublicCardProps> = ({ jobpost }) => {
 	/****************************************/
 	/****** Get single job wishlist *********/
 	/****************************************/
-
 	const [jobWishList, setJobWishList] = useState<JobWishList>();
-
 	const loadSingleJobWishlist = async () => {
 		try {
 			const res = await getSingleJobWishlist(jobpost?.slug);
-
 			if (res) {
 				setJobWishList(res);
 			}
@@ -82,7 +73,6 @@ const JobPostsPublicCard: FC<JobPostsPublicCardProps> = ({ jobpost }) => {
 	/****************************************/
 	/****** Delete single job wishlist ******/
 	/****************************************/
-
 	const handleDeleteJobWishList = async () => {
 		try {
 			const res = await deleteJobWishList(jobWishList?._id!);
