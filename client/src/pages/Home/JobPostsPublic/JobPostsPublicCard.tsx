@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { useNavigate, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
 import style from './JobPostsPublic.module.scss';
 import {
 	createJobWishList,
@@ -28,7 +27,6 @@ const JobPostsPublicCard: FC<JobPostsPublicCardProps> = ({ jobpost }) => {
 	const isJobPostSaved =
 		allJobWishList &&
 		allJobWishList.some((job) => job.jobPostId?._id === jobpost?._id);
-
 	/****************************************/
 	/****** Create job wishlist *************/
 	/****************************************/
@@ -52,7 +50,6 @@ const JobPostsPublicCard: FC<JobPostsPublicCardProps> = ({ jobpost }) => {
 			});
 		}
 	};
-
 	/****************************************/
 	/****** Get single job wishlist *********/
 	/****************************************/
@@ -69,10 +66,10 @@ const JobPostsPublicCard: FC<JobPostsPublicCardProps> = ({ jobpost }) => {
 			});
 		}
 	};
-
 	/****************************************/
 	/****** Delete single job wishlist ******/
 	/****************************************/
+
 	const handleDeleteJobWishList = async () => {
 		try {
 			const res = await deleteJobWishList(jobWishList?._id!);
@@ -94,7 +91,6 @@ const JobPostsPublicCard: FC<JobPostsPublicCardProps> = ({ jobpost }) => {
 	useEffect(() => {
 		loadSingleJobWishlist();
 	}, []);
-
 	return (
 		<div className={style.job_post_container}>
 			<Link
