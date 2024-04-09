@@ -568,6 +568,7 @@ export interface CreateJobWishListProps {
 	jobPostPublishedBy: string;
 	jobPostId: string;
 }
+
 export const createJobWishList = async (
 	props: CreateJobWishListProps
 ): Promise<JobWishList> => {
@@ -578,7 +579,6 @@ export const createJobWishList = async (
 	);
 	return res.data;
 };
-
 export const getJobWishList = async (): Promise<JobWishList[]> => {
 	const res = await axios.get(API_URL + '/get-job-wishlist', headerConfig());
 	return res.data as JobWishList[];
