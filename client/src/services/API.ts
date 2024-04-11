@@ -560,7 +560,6 @@ export const getMatchedJob = async (): Promise<JobPosts[]> => {
 	const res = await axios.get(API_URL + '/get-job-match', headerConfig());
 	return res.data as JobPosts[];
 };
-
 /****************************************/
 /************** Job Wish List************/
 /****************************************/
@@ -568,7 +567,6 @@ export interface CreateJobWishListProps {
 	jobPostPublishedBy: string;
 	jobPostId: string;
 }
-
 export const createJobWishList = async (
 	props: CreateJobWishListProps
 ): Promise<JobWishList> => {
@@ -583,7 +581,6 @@ export const getJobWishList = async (): Promise<JobWishList[]> => {
 	const res = await axios.get(API_URL + '/get-job-wishlist', headerConfig());
 	return res.data as JobWishList[];
 };
-
 export const deleteJobWishList = async (id: string) => {
 	const res = await axios.delete(
 		API_URL + '/delete-job-wishlist/' + id,
