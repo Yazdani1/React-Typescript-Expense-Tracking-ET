@@ -611,6 +611,7 @@ export interface CreateJobApplicationProps {
 	jobPostOwnerId: string;
 	jobPostId: string;
 }
+
 export const createJobApplication = async (
 	props: CreateJobApplicationProps
 ): Promise<JobApplication> => {
@@ -621,6 +622,7 @@ export const createJobApplication = async (
 	);
 	return res.data;
 };
+
 export const getJobApplicationList = async (): Promise<JobApplication[]> => {
 	const res = await axios.get(
 		API_URL + '/get-applied-job-lists',
@@ -628,7 +630,6 @@ export const getJobApplicationList = async (): Promise<JobApplication[]> => {
 	);
 	return res.data as JobApplication[];
 };
-
 export const deleteJobApplication = async (id: string) => {
 	const res = await axios.delete(
 		API_URL + '/delete-job-application/' + id,
