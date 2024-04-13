@@ -483,7 +483,6 @@ export const deleteSingleJobPost = async (id: string) => {
 export interface JobpostsVisibilityUpdateProps {
 	updateVisibility: Visibility;
 }
-
 export const updateJobPostsVisibility = async (
 	props: JobpostsVisibilityUpdateProps
 ): Promise<JobPosts[]> => {
@@ -494,7 +493,6 @@ export const updateJobPostsVisibility = async (
 	);
 	return res.data as JobPosts[];
 };
-
 export const employerJobPostDetails = async (
 	slug: string
 ): Promise<EmployerJobDetailsItem> => {
