@@ -6,7 +6,6 @@ const TermsPrivacy = () => {
 			<p>{`Type: ${subSection.type}, Content: ${subSection.content}`}</p>
 		</div>
 	);
-
 	const renderSection = (section: any, level: number) => (
 		<div key={section.type} style={{ marginLeft: `${level * 20}px` }}>
 			<h3>{section.content}</h3>
@@ -30,6 +29,7 @@ const TermsPrivacy = () => {
 	);
 };
 export default TermsPrivacy;
+
 // {
 // 	"title": "Test title is here doing so many things that need to be done",
 // 	"data": "1. Text data is here,\n\nThis is just a description\n\n2. Next generation:\n   1. First day work:\n     We are looking for first-day work, not for the last time of the month. This is the main reason here to solve the issues.\n   2. We are all here for different reasons.\n      (a) Test a for title two\n      (b) Test b for the new one"
