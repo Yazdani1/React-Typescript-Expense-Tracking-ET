@@ -529,7 +529,6 @@ export const updateAnyEmployerJobPosts = async (
 	);
 	return res.data;
 };
-
 export const getAllEmployerJobPosts = async (): Promise<JobPosts[]> => {
 	const res = await axios.get(
 		API_URL + '/get-allemployer-jobposts',
@@ -541,25 +540,22 @@ export const getAllEmployerJobPosts = async (): Promise<JobPosts[]> => {
 /****************************************/
 /*** Job Posts Home Page  ***************/
 /****************************************/
-
 export const getApprovedPublicJobPosts = async (): Promise<JobPosts[]> => {
 	const res = await axios.get(API_URL + '/all-job-posts');
 	return res.data as JobPosts[];
 };
-
 export const getJobDetails = async (slug: string): Promise<JobPostDetails> => {
 	const res = await axios.get(API_URL + '/get-job-details/' + slug);
 	return res.data as JobPostDetails;
 };
-
 /****************************************/
 /************** Job Match ***************/
 /****************************************/
-
 export const getMatchedJob = async (): Promise<JobPosts[]> => {
 	const res = await axios.get(API_URL + '/get-job-match', headerConfig());
 	return res.data as JobPosts[];
 };
+
 /****************************************/
 /************** Job Wish List************/
 /****************************************/
