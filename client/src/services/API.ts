@@ -493,6 +493,7 @@ export const updateJobPostsVisibility = async (
 	);
 	return res.data as JobPosts[];
 };
+
 export const employerJobPostDetails = async (
 	slug: string
 ): Promise<EmployerJobDetailsItem> => {
