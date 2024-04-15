@@ -164,7 +164,6 @@ export interface Course extends IBase {
 	enrolledStudents: number;
 	postedBy: UserProfileDetails;
 }
-
 export interface Lecture extends IBase {
 	lectureTitle: string;
 	lectureDes: string;
@@ -172,17 +171,16 @@ export interface Lecture extends IBase {
 	position: number;
 	postedBy: UserProfileDetails;
 }
-
 export interface CourseDetails {
 	singleCourse: Course;
 	lectureLists: Lecture[];
 	enroledStudents: CourseEnrolmentItems[];
 }
-
 export enum FilterCourseByTitle {
 	Ascending = 1,
 	Descending = -1,
 }
+
 /****************************************/
 /*********  Course Enrolment  ***********/
 /****************************************/
@@ -201,12 +199,10 @@ export enum Visibility {
 	Private = 'Private',
 	Public = 'Public',
 }
-
 export enum Status {
 	Panding = 'Panding',
 	Approved = 'Approved',
 }
-
 export interface JobPosts extends IBase {
 	title: string;
 	des: string;
@@ -219,18 +215,15 @@ export interface JobPosts extends IBase {
 	approvedDate: string;
 	postedBy: UserProfileDetails;
 }
-
 export interface JobWishList extends IBase {
 	jobPostPublishedBy: UserProfileDetails;
 	jobPostId: JobPosts;
 	postedBy: UserProfileDetails;
 }
-
 export interface JobPostDetails {
 	singleJob: JobPosts;
 	simmilarJobBySameEmployer: JobPosts[];
 }
-
 export enum JobApplicationStatus {
 	Applied = 'Applied',
 	InReview = 'InReview',
