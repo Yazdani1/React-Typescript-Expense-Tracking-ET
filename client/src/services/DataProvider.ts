@@ -7,14 +7,12 @@ interface IBase {
 /****************************************/
 /*********       User             ******/
 /****************************************/
-
 export enum UserRole {
 	Admin = 'Admin',
 	Subscriber = 'Subscriber',
 	Instructor = 'Instructor',
 	Employer = 'Employer',
 }
-
 export enum AccountType {
 	Silver = 'Silver',
 	Gold = 'Gold',
@@ -42,7 +40,6 @@ export interface UserProfileDetails extends IBase {
 	award: UserAward[];
 	skills: string[];
 }
-
 export interface UserProfileUpdate {
 	user: UserProfileDetails;
 }
@@ -58,7 +55,6 @@ export interface LocationData {
 /****************************************/
 /********* Expense Book            ******/
 /****************************************/
-
 export interface ExpenseBookInfo extends IBase {
 	name: string;
 	color: string;
