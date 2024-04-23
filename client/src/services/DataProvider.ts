@@ -13,17 +13,20 @@ export enum UserRole {
 	Instructor = 'Instructor',
 	Employer = 'Employer',
 }
+
 export enum AccountType {
 	Silver = 'Silver',
 	Gold = 'Gold',
 	Premium = 'Premium',
 }
+
 export enum UserAward {
 	PullShark = 'PullShark',
 	QuickDraw = 'QuickDraw',
 	Yolo = 'Yolo',
 	GoldVolt = 'GoldVolt',
 }
+
 export interface UserProfileDetails extends IBase {
 	name: string;
 	role: UserRole;
@@ -40,10 +43,13 @@ export interface UserProfileDetails extends IBase {
 	award: UserAward[];
 	skills: string[];
 }
+
 export interface UserProfileUpdate {
 	user: UserProfileDetails;
 }
+
 //To get user location data
+
 export interface LocationData {
 	city: string;
 	countryName: string;
@@ -60,21 +66,17 @@ export interface ExpenseBookInfo extends IBase {
 	color: string;
 	postedBy: UserProfileDetails;
 }
-
 // This interface to add as a promise when user create the expense book and also update the user points
 // in the backend
-
 export interface CreateExpenseBook extends IBase {
 	saveExpenseBook: ExpenseBookInfo;
 	addUserPoints: UserProfileDetails;
 }
-
 export enum ExpenseBookColor {
 	Orange = 'Orange',
 	Green = 'Green',
 	Yellow = 'Yellow',
 }
-
 /****************************************/
 /*** Expense Book Details         ******/
 /****************************************/
