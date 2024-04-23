@@ -507,7 +507,6 @@ export const employerJobPostDetails = async (
 /****************************************/
 /**Employer-Job Posts Admin Access  *****/
 /****************************************/
-
 export interface UpdateAnyEmployerJobPostProps {
 	title?: string;
 	des?: string;
@@ -516,7 +515,6 @@ export interface UpdateAnyEmployerJobPostProps {
 	visibility?: Visibility;
 	status?: Status;
 }
-
 export const updateAnyEmployerJobPosts = async (
 	id: string,
 	props: UpdateAnyEmployerJobPostProps
@@ -535,18 +533,20 @@ export const getAllEmployerJobPosts = async (): Promise<JobPosts[]> => {
 	);
 	return res.data as JobPosts[];
 };
-
 /****************************************/
 /*** Job Posts Home Page  ***************/
 /****************************************/
+
 export const getApprovedPublicJobPosts = async (): Promise<JobPosts[]> => {
 	const res = await axios.get(API_URL + '/all-job-posts');
 	return res.data as JobPosts[];
 };
+
 export const getJobDetails = async (slug: string): Promise<JobPostDetails> => {
 	const res = await axios.get(API_URL + '/get-job-details/' + slug);
 	return res.data as JobPostDetails;
 };
+
 /****************************************/
 /************** Job Match ***************/
 /****************************************/
