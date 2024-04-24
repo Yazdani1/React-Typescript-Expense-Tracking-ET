@@ -458,7 +458,6 @@ export interface UpdateJobPostProps {
 	jobSkills?: string[];
 	visibility?: Visibility;
 }
-
 export const updateSingleJobPost = async (
 	id: string,
 	props: UpdateJobPostProps
@@ -470,7 +469,6 @@ export const updateSingleJobPost = async (
 	);
 	return res.data;
 };
-
 export const deleteSingleJobPost = async (id: string) => {
 	const res = await axios.delete(
 		API_URL + '/delete-single-jobpost/' + id,
@@ -478,11 +476,11 @@ export const deleteSingleJobPost = async (id: string) => {
 	);
 	return res;
 };
-
 // To update all the job posts visibility
 export interface JobpostsVisibilityUpdateProps {
 	updateVisibility: Visibility;
 }
+
 export const updateJobPostsVisibility = async (
 	props: JobpostsVisibilityUpdateProps
 ): Promise<JobPosts[]> => {
@@ -493,7 +491,6 @@ export const updateJobPostsVisibility = async (
 	);
 	return res.data as JobPosts[];
 };
-
 export const employerJobPostDetails = async (
 	slug: string
 ): Promise<EmployerJobDetailsItem> => {
@@ -503,10 +500,10 @@ export const employerJobPostDetails = async (
 	);
 	return res.data as EmployerJobDetailsItem;
 };
-
 /****************************************/
 /**Employer-Job Posts Admin Access  *****/
 /****************************************/
+
 export interface UpdateAnyEmployerJobPostProps {
 	title?: string;
 	des?: string;
@@ -515,6 +512,7 @@ export interface UpdateAnyEmployerJobPostProps {
 	visibility?: Visibility;
 	status?: Status;
 }
+
 export const updateAnyEmployerJobPosts = async (
 	id: string,
 	props: UpdateAnyEmployerJobPostProps
