@@ -13,20 +13,17 @@ export enum UserRole {
 	Instructor = 'Instructor',
 	Employer = 'Employer',
 }
-
 export enum AccountType {
 	Silver = 'Silver',
 	Gold = 'Gold',
 	Premium = 'Premium',
 }
-
 export enum UserAward {
 	PullShark = 'PullShark',
 	QuickDraw = 'QuickDraw',
 	Yolo = 'Yolo',
 	GoldVolt = 'GoldVolt',
 }
-
 export interface UserProfileDetails extends IBase {
 	name: string;
 	role: UserRole;
@@ -43,13 +40,10 @@ export interface UserProfileDetails extends IBase {
 	award: UserAward[];
 	skills: string[];
 }
-
 export interface UserProfileUpdate {
 	user: UserProfileDetails;
 }
-
 //To get user location data
-
 export interface LocationData {
 	city: string;
 	countryName: string;
@@ -88,7 +82,6 @@ export interface ExpenseBookDetails {
 	expenseBookCategory: ExpenseCategory[];
 	expenseList: ExpenseList[];
 }
-
 /****************************************/
 /* Expense Book Category, ExpenseList   */
 /****************************************/
