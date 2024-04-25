@@ -112,11 +112,9 @@ export enum TotalExpenseChartTypes {
 	Line_Bar_Area_Composed_Chart = 'Line_Bar_Area_Composed_Chart',
 	Pie_Chart = 'Pie_Chart',
 }
-
 /****************************************/
 /************* Nationa Id   *************/
 /****************************************/
-
 export interface NationalID extends IBase {
 	firstName: string;
 	lastName: string;
@@ -132,7 +130,6 @@ export interface NationalID extends IBase {
 	postalCode: number;
 	postedBy: UserProfileDetails;
 }
-
 /****************************************/
 /************ Income Record  *************/
 /****************************************/
