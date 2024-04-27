@@ -174,13 +174,13 @@ const Profile = () => {
 						{userProfileDetails?.award?.map((award: any, index: number) => (
 							<p key={index}>{award}</p>
 						))}
-
 						<div className={style.skillsDesing}>
 							{userProfileDetails?.skills?.map((skill: any, index: number) => (
 								<p key={index}>{skill}</p>
 							))}
 						</div>
 					</div>
+
 					<div className={style.profileDetails}>
 						<h6>Id: {userProfileDetails?._id}</h6>
 						<h6>Name: {userProfileDetails?.name}</h6>
@@ -189,6 +189,7 @@ const Profile = () => {
 						<h6>Joined: {userProfileDetails?.date}</h6>
 						<h6>Points: {userProfileDetails?.points}</h6>
 					</div>
+
 					<div className={style.editIcon} onClick={onOpenModal}>
 						<CiEdit size={35} color='green' />
 					</div>
