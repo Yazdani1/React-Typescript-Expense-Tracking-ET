@@ -54,6 +54,7 @@ const Profile = () => {
 	/****************************************/
 	/******  To Update User Profile    ******/
 	/****************************************/
+
 	const [name, setName] = useState<string>('');
 	const [email, setEmail] = useState<string>('');
 	const [profilePic, setProfilePic] = useState<string>('');
@@ -68,15 +69,19 @@ const Profile = () => {
 				imageUrl: profilePic,
 				skills: userSkills,
 			};
+
 			const res = await updateSingleUserProfile(
 				userProfileDetails?._id!,
 				payload
 			);
+
 			if (res) {
 				toast.success('Successfully Updated Profile', {
 					position: toast.POSITION.TOP_CENTER,
 				});
+
 				dispatch(loginSuccess(res.user));
+
 				/////////////////////////////////////////
 				// To update the user context api with the updated profile data need to set response in the local storage
 				// Then also need to update the setState so that newly profile info can be added in th state and can show in the
@@ -92,6 +97,7 @@ const Profile = () => {
 				// updateUserProfileDetails(res?.user!);
 				////////////////////////////////////////////
 				// From cookie context api - to update user info in the context api as soon as user update user info
+
 				setUser(res.user);
 				/////////////////////////////////////////
 			}
@@ -101,14 +107,17 @@ const Profile = () => {
 			});
 		}
 	};
+
 	const addUserSkills = () => {
 		setUserSkills([...userSkills, addSkills]);
 		setAddSkills('');
 	};
+
 	const removeSkills = (skillIndex: string) => {
 		const skills = userSkills.filter((item) => item !== skillIndex);
 		setUserSkills(skills);
 	};
+
 	useEffect(() => {
 		setName(userProfileDetails?.name!);
 		setEmail(userProfileDetails?.email!);
