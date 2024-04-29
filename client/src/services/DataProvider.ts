@@ -40,10 +40,13 @@ export interface UserProfileDetails extends IBase {
 	award: UserAward[];
 	skills: string[];
 }
+
 export interface UserProfileUpdate {
 	user: UserProfileDetails;
 }
+
 //To get user location data
+
 export interface LocationData {
 	city: string;
 	countryName: string;

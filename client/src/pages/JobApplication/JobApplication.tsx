@@ -12,9 +12,9 @@ const JobApplication = () => {
 	useEffect(() => {
 		loadJobApplication();
 	}, []);
-
 	return (
 		<SubscriberPageLayout>
+			
 			<div className={style.main_container}>
 				{loading && <h3>Loading...</h3>}
 				{allJobApplication &&
@@ -22,6 +22,7 @@ const JobApplication = () => {
 						<JobApplicationCard job_application={job} key={job._id} />
 					))}
 			</div>
+
 		</SubscriberPageLayout>
 	);
 };
