@@ -66,12 +66,15 @@ const JobApplicationCard: FC<JobApplicationCardProps> = ({
 				</Link>
 				<p>{job_application.jobPostOwnerId?.name}</p>
 			</div>
+
 			<p>{moment(job_application.date).format('MMM DD, YYYY HH:mm:ss')}</p>
 			<p>{job_application.status}</p>
+
 			<DropDownList
 				showJobWithdraw={true}
 				withdrawJobApplication={onOpenModal}
 			/>
+
 			{/* Modal box to to delete job application */}
 			<ConfirmModal
 				open={open}
