@@ -18,18 +18,16 @@ const JobApplicationCard: FC<JobApplicationCardProps> = ({
 	job_application,
 }) => {
 	// Context API
-
 	const { loadJobApplication } = useJobApplicationContext();
 
 	/****************************************/
 	/*Confirm modal to delete jobapplication**/
 	/****************************************/
-	const [open, setOpen] = useState<boolean>(false);
 
+	const [open, setOpen] = useState<boolean>(false);
 	const onOpenModal = () => {
 		setOpen(true);
 	};
-
 	const onCloseModal = () => {
 		setOpen(false);
 	};
@@ -41,7 +39,6 @@ const JobApplicationCard: FC<JobApplicationCardProps> = ({
 	const withdrawJobApplication = async () => {
 		try {
 			const res = await deleteJobApplication(job_application?._id!);
-
 			if (res) {
 				toast.success('Job application deleted successfully!', {
 					position: toast.POSITION.TOP_CENTER,
