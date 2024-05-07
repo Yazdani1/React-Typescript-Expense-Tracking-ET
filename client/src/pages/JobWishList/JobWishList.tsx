@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-
 import SubscriberPageLayout from '../../layouts/SubscriberPageLayout';
 import JobWishListCard from './JobWishListCard';
 import { useJobWishListContext } from '../../contextapi/JobWishListContext';
@@ -9,7 +8,6 @@ const JobWishList = () => {
 	useEffect(() => {
 		loadJobWishList();
 	}, []);
-
 	return (
 		<SubscriberPageLayout>
 			<div>
