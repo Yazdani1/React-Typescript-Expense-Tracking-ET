@@ -112,18 +112,17 @@ const Profile = () => {
 		setUserSkills([...userSkills, addSkills]);
 		setAddSkills('');
 	};
-
 	const removeSkills = (skillIndex: string) => {
 		const skills = userSkills.filter((item) => item !== skillIndex);
 		setUserSkills(skills);
 	};
-
 	useEffect(() => {
 		setName(userProfileDetails?.name!);
 		setEmail(userProfileDetails?.email!);
 		setProfilePic(userProfileDetails?.imageUrl!);
 		setUserSkills(userProfileDetails?.skills);
 	}, []);
+
 	/////////////////////////////////////////////
 	// With context api
 	// useEffect(() => {
@@ -180,7 +179,6 @@ const Profile = () => {
 							))}
 						</div>
 					</div>
-
 					<div className={style.profileDetails}>
 						<h6>Id: {userProfileDetails?._id}</h6>
 						<h6>Name: {userProfileDetails?.name}</h6>
