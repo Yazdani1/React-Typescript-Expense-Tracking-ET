@@ -131,7 +131,6 @@ const Profile = () => {
 	//   setProfilePic(user?.imageUrl!);
 	// }, [user]);
 	/////////////////////////////////////////////
-
 	/****************************************/
 	/******  To Show User Profile    ********/
 	/****************************************/
@@ -152,11 +151,11 @@ const Profile = () => {
 	// useEffect(() => {
 	//   loadUserProfileDetails();
 	// }, []);
+
 	return (
 		<SubscriberPageLayout>
 			<CardLayout title='Account Details'>
 				<div className={style.profileContainer}>
-					{/*  To show profile picture and if user did not add any profile picture then an avatar will be shown here */}
 					<div>
 						{user?.name}
 						{userProfileDetails?.imageUrl ? (
@@ -170,21 +169,26 @@ const Profile = () => {
 								</p>
 							</div>
 						)}
+
 						{userProfileDetails?.award?.map((award: any, index: number) => (
 							<p key={index}>{award}</p>
 						))}
+
 						<div className={style.skillsDesing}>
 							{userProfileDetails?.skills?.map((skill: any, index: number) => (
 								<p key={index}>{skill}</p>
 							))}
 						</div>
 					</div>
+
 					<div className={style.profileDetails}>
 						<h6>Id: {userProfileDetails?._id}</h6>
 						<h6>Name: {userProfileDetails?.name}</h6>
+
 						<h6>E-mail: {userProfileDetails?.email}</h6>
 						<h6>Role: {userProfileDetails?.role}</h6>
 						<h6>Joined: {userProfileDetails?.date}</h6>
+
 						<h6>Points: {userProfileDetails?.points}</h6>
 					</div>
 
