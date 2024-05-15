@@ -18,7 +18,6 @@ const SignUp = () => {
 	/****************************************/
 	/*********To get user location  *********/
 	/****************************************/
-
 	const [location, setLocation] = useState<LocationData>({
 		city: '',
 		countryName: '',

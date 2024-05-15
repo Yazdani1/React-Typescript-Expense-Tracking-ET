@@ -15,6 +15,11 @@ const CompanyProfile = () => {
 					<h4>{item}.</h4>
 				))}
 			</CardLayout>
+			<CardLayout>
+				{[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => (
+					<h4>{item}.</h4>
+				))}
+			</CardLayout>
 		</CompanyPageLayout>
 	);
 };

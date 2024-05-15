@@ -14,6 +14,7 @@ interface JobWishListCardProps {
 const JobWishListCard: FC<JobWishListCardProps> = ({ jobwishlist }) => {
 	//Context api
 	const { allJobWishList, loadJobWishList } = useJobWishListContext();
+
 	/****************************************/
 	/****** Delete job wishlist *************/
 	/****************************************/
@@ -45,6 +46,7 @@ const JobWishListCard: FC<JobWishListCardProps> = ({ jobwishlist }) => {
 					</p>
 				))}
 			</div>
+
 			<div className={style.job_post_bottom_row}>
 				<p>{jobwishlist.jobPostId?.jobCity}</p>
 				<p>{jobwishlist.jobPostId?.visibility}</p>
