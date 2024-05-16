@@ -24,6 +24,7 @@ const JobMatch = () => {
 			});
 		}
 	};
+
 	useEffect(() => {
 		loadMatchedJobs();
 	}, []);
