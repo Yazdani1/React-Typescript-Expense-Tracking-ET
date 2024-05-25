@@ -112,10 +112,12 @@ const Profile = () => {
 		setUserSkills([...userSkills, addSkills]);
 		setAddSkills('');
 	};
+
 	const removeSkills = (skillIndex: string) => {
 		const skills = userSkills.filter((item) => item !== skillIndex);
 		setUserSkills(skills);
 	};
+
 	useEffect(() => {
 		setName(userProfileDetails?.name!);
 		setEmail(userProfileDetails?.email!);
@@ -169,7 +171,6 @@ const Profile = () => {
 								</p>
 							</div>
 						)}
-
 						{userProfileDetails?.award?.map((award: any, index: number) => (
 							<p key={index}>{award}</p>
 						))}
@@ -180,18 +181,14 @@ const Profile = () => {
 							))}
 						</div>
 					</div>
-
 					<div className={style.profileDetails}>
 						<h6>Id: {userProfileDetails?._id}</h6>
 						<h6>Name: {userProfileDetails?.name}</h6>
-
 						<h6>E-mail: {userProfileDetails?.email}</h6>
 						<h6>Role: {userProfileDetails?.role}</h6>
 						<h6>Joined: {userProfileDetails?.date}</h6>
-
 						<h6>Points: {userProfileDetails?.points}</h6>
 					</div>
-
 					<div className={style.editIcon} onClick={onOpenModal}>
 						<CiEdit size={35} color='green' />
 					</div>
