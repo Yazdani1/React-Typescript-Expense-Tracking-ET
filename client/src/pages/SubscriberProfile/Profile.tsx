@@ -24,6 +24,7 @@ const Profile = () => {
 	const userProfileDetails = useSelector(
 		(state: any) => state.user.currentUser
 	);
+
 	const dispatch = useDispatch();
 
 	////////////////////////////////////////////////////////////////////////////////
@@ -33,10 +34,12 @@ const Profile = () => {
 	// const {userProfileDetails,updateUserProfileDetails} = useContext(UserProfileDetailsContext);
 	// Context API to update new user info -Cookies context api
 	const { user, setUser } = useUserContext();
+
 	////////////////////////////////////////////////////////////////////////////////
 	/****************************************/
 	/******  To Open Modal Box     **********/
 	/****************************************/
+
 	const [open, setOpen] = useState<boolean>(false);
 	const onOpenModal = () => {
 		setOpen(true);
@@ -106,12 +109,10 @@ const Profile = () => {
 		setUserSkills([...userSkills, addSkills]);
 		setAddSkills('');
 	};
-
 	const removeSkills = (skillIndex: string) => {
 		const skills = userSkills.filter((item) => item !== skillIndex);
 		setUserSkills(skills);
 	};
-
 	useEffect(() => {
 		setName(userProfileDetails?.name!);
 		setEmail(userProfileDetails?.email!);
