@@ -23,6 +23,7 @@ const JobWishListCard: FC<JobWishListCardProps> = ({ jobwishlist }) => {
 	const handleDeleteJobWishList = async () => {
 		try {
 			const res = await deleteJobWishList(jobwishlist?._id);
+
 			if (res) {
 				toast.success('Job post deleted from your wishlist', {
 					position: toast.POSITION.TOP_CENTER,
