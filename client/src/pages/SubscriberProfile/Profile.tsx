@@ -109,10 +109,12 @@ const Profile = () => {
 		setUserSkills([...userSkills, addSkills]);
 		setAddSkills('');
 	};
+
 	const removeSkills = (skillIndex: string) => {
 		const skills = userSkills.filter((item) => item !== skillIndex);
 		setUserSkills(skills);
 	};
+
 	useEffect(() => {
 		setName(userProfileDetails?.name!);
 		setEmail(userProfileDetails?.email!);
@@ -127,10 +129,13 @@ const Profile = () => {
 	//   setEmail(user?.email!);
 	//   setProfilePic(user?.imageUrl!);
 	// }, [user]);
+
 	/////////////////////////////////////////////
+
 	/****************************************/
 	/******  To Show User Profile    ********/
 	/****************************************/
+
 	// This code will load user profile info- but its only for the test purpose
 	// const [userProfileDetails, setUserInfo] = useState<UserProfileDetails>();
 	// const loadUserProfileDetails = async () => {
