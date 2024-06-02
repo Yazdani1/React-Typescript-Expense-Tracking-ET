@@ -160,6 +160,7 @@ const Profile = () => {
 				<div className={style.profileContainer}>
 					<div>
 						{user?.name}
+
 						{userProfileDetails?.imageUrl ? (
 							<div className={style.profilePicture}>
 								<img src={userProfileDetails?.imageUrl} alt='profileimg' />
@@ -171,6 +172,7 @@ const Profile = () => {
 								</p>
 							</div>
 						)}
+
 						{userProfileDetails?.award?.map((award: any, index: number) => (
 							<p key={index}>{award}</p>
 						))}
@@ -189,6 +191,7 @@ const Profile = () => {
 						<h6>Joined: {userProfileDetails?.date}</h6>
 						<h6>Points: {userProfileDetails?.points}</h6>
 					</div>
+
 					<div className={style.editIcon} onClick={onOpenModal}>
 						<CiEdit size={35} color='green' />
 					</div>
