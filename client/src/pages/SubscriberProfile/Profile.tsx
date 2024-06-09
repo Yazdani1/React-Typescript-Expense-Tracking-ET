@@ -123,6 +123,7 @@ const Profile = () => {
 	}, []);
 
 	/////////////////////////////////////////////
+
 	// With context api
 	// useEffect(() => {
 	//   setName(user?.name!);
@@ -135,7 +136,6 @@ const Profile = () => {
 	/****************************************/
 	/******  To Show User Profile    ********/
 	/****************************************/
-
 	// This code will load user profile info- but its only for the test purpose
 	// const [userProfileDetails, setUserInfo] = useState<UserProfileDetails>();
 	// const loadUserProfileDetails = async () => {
@@ -172,11 +172,9 @@ const Profile = () => {
 								</p>
 							</div>
 						)}
-
 						{userProfileDetails?.award?.map((award: any, index: number) => (
 							<p key={index}>{award}</p>
 						))}
-
 						<div className={style.skillsDesing}>
 							{userProfileDetails?.skills?.map((skill: any, index: number) => (
 								<p key={index}>{skill}</p>
