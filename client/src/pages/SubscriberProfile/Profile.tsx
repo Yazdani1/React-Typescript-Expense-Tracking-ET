@@ -47,11 +47,9 @@ const Profile = () => {
 	const onCloseModal = () => {
 		setOpen(false);
 	};
-
 	/****************************************/
 	/******  To Update User Profile    ******/
 	/****************************************/
-
 	const [name, setName] = useState<string>('');
 	const [email, setEmail] = useState<string>('');
 	const [profilePic, setProfilePic] = useState<string>('');
@@ -66,7 +64,6 @@ const Profile = () => {
 				imageUrl: profilePic,
 				skills: userSkills,
 			};
-
 			const res = await updateSingleUserProfile(
 				userProfileDetails?._id!,
 				payload
@@ -76,9 +73,7 @@ const Profile = () => {
 				toast.success('Successfully Updated Profile', {
 					position: toast.POSITION.TOP_CENTER,
 				});
-
 				dispatch(loginSuccess(res.user));
-
 				/////////////////////////////////////////
 				// To update the user context api with the updated profile data need to set response in the local storage
 				// Then also need to update the setState so that newly profile info can be added in th state and can show in the
@@ -87,7 +82,9 @@ const Profile = () => {
 				// setState({
 				//   user: res.user,
 				// });
+
 				////////////////////////////////////////////
+
 				// to update user profile in the context
 				// updateUserProfileDetails(res.user);
 				// When user update their profile we need to update user details in the context api with this function
