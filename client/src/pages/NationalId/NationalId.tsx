@@ -81,6 +81,7 @@ const NationalId = () => {
 										onChange={handleNationalIdChange}
 									/>
 								</div>
+
 								<div
 									className={style.searchButton}
 									onClick={onSubmitSearchNationalId}
@@ -95,6 +96,7 @@ const NationalId = () => {
 									<div className={style.imageDesign}>
 										<img src={nationalIdDetails?.photo} alt='images' />
 									</div>
+
 									<div className={style.nationalIdDetails}>
 										<p>First Name:{nationalIdDetails?.firstName}</p>
 										<p>Last Name:{nationalIdDetails?.lastName}</p>
