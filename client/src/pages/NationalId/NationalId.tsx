@@ -113,6 +113,7 @@ const NationalId = () => {
 								</div>
 							</CardLayout>
 						)}
+
 						{error && (
 							<CardLayout>
 								<h4>{error}</h4>
