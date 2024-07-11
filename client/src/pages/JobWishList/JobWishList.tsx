@@ -6,6 +6,7 @@ import { useJobWishListContext } from '../../contextapi/JobWishListContext';
 
 const JobWishList = () => {
 	const { allJobWishList, loadJobWishList } = useJobWishListContext();
+
 	useEffect(() => {
 		loadJobWishList();
 	}, []);

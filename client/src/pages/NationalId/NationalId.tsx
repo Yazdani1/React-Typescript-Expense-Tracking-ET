@@ -10,6 +10,7 @@ import { useIncomeRecordContext } from '../../contextapi/IncomeRecordContext';
 
 const NationalId = () => {
 	const { allIncomeRecords } = useIncomeRecordContext();
+
 	// To add search value from the input fields
 	const [nationaId, setNationalId] = useState<number | any>('');
 	const [error, setError] = useState<string>();
