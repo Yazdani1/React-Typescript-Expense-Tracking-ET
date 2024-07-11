@@ -10,11 +10,9 @@ import { useIncomeRecordContext } from '../../contextapi/IncomeRecordContext';
 
 const NationalId = () => {
 	const { allIncomeRecords } = useIncomeRecordContext();
-
 	// To add search value from the input fields
 	const [nationaId, setNationalId] = useState<number | any>('');
 	const [error, setError] = useState<string>();
-
 	// To store national id search result data
 	const [nationalIdDetails, setNationalIdDetails] =
 		useState<NationalID | null>();
@@ -37,7 +35,6 @@ const NationalId = () => {
 			});
 		}
 	};
-
 	// This function code is used to have a space after each 4 digit in the search input field
 	// It will take total 13 digit and one space after each 4 digit.
 	// Then it's search query will load the data through query from api url+
