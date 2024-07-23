@@ -16,6 +16,7 @@ const NationalId = () => {
 	// To store national id search result data
 	const [nationalIdDetails, setNationalIdDetails] =
 		useState<NationalID | null>();
+
 	const onSubmitSearchNationalId = async () => {
 		try {
 			// To replace the space from the nationaId state to pass it in the api url to search the data
@@ -34,7 +35,6 @@ const NationalId = () => {
 			});
 		}
 	};
-
 	// This function code is used to have a space after each 4 digit in the search input field
 	// It will take total 13 digit and one space after each 4 digit.
 	// Then it's search query will load the data through query from api url+
